@@ -1,0 +1,8 @@
+{
+	"pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+	"markdownlint.config": {
+		"default": true,
+		"line_length": false
+	},
+	"translator.engines": ["google", "youdao", "haici"]
+}
