@@ -121,10 +121,5 @@
 		nnoremap <C-b> :Buffers<CR>
 
 " 平滑翻页
-	noremap <silent> <BS> :call smooth_scroll#up(&scroll*2, 0, 5)<CR>
-	noremap <silent> <space> :call smooth_scroll#down(&scroll*2, 0, 5)<CR>
-
-" 当前行字号加粗
-    set cul
-    hi CursorLine term = bold cterm = bold ctermfg = NONE ctermbg = NONE
-    hi Normal ctermfg = 7
+	nnoremap <silent> <BS> :call smooth_scroll#up(&scroll*2, 0, 5)<CR>
+	nnoremap <silent> <space> :call smooth_scroll#down(&scroll*2, 0, 5)<CR>

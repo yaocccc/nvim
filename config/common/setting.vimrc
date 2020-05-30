@@ -32,6 +32,7 @@
 
 " 行号
     set nu
+	set signcolumn=yes
 
 " 显示
     set cmdheight=1
@@ -58,3 +59,7 @@
 
 " 光标回到上次位置
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" 当关闭文件并再次进入时，可以使用 u 进行撤销动作
+	set undofile
+	set undodir=~/.config/nvim/file_logs

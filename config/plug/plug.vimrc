@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 	" 状态栏和主题
 		Plug 'itchyny/lightline.vim'
 		Plug 'mengelbrecht/lightline-bufferline'
+		Plug 'junegunn/goyo.vim'
 	" git
 		Plug 'tpope/vim-fugitive'
 		Plug 'airblade/vim-gitgutter'

@@ -1,9 +1,9 @@
 {
-	"pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
-	"pairs.enableBackspace": false,
-	"markdownlint.config": {
-		"default": true,
-		"line_length": false
-	},
-	"translator.engines": ["google", "youdao", "haici"]
+    "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+    "pairs.enableBackspace": false,
+    "markdownlint.config": {
+        "default": true,
+        "line_length": false
+    },
+    "translator.engines": ["google", "youdao", "haici"] 
 }

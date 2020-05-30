@@ -11,6 +11,9 @@
 " 不显示模式
 	set noshowmode
 
+" 所在行高亮
+    set cul
+
 " 设置插入模式时光标变成竖线
     let &t_SI.="\e[5 q" "SI = INSERT mode
     let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
