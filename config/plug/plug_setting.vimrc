@@ -97,6 +97,9 @@
 		nnoremap <silent> n :call WordNavigation('forward')<CR>
 		nnoremap <silent> N :call WordNavigation('backward')<CR>
 
+" easymotion
+	nmap ss <Plug>(easymotion-s2)
+
 " markdown
 	" F7开始浏览器预览 F8关闭
 		nmap <silent> <F7> <Plug>MarkdownPreview

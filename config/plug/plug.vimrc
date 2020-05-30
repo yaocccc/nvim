@@ -11,10 +11,13 @@ call plug#begin('~/.config/nvim/plugged')
 		Plug 'terryma/vim-smooth-scroll'
 	" marks
 		Plug 'kshenoy/vim-signature'
+	" 重复操作
+		Plug 'tpope/vim-repeat'
 	" 快速选择
 		Plug 'terryma/vim-expand-region'
 	" 快速跳转
 		Plug 'lfv89/vim-interestingwords'
+		Plug 'Lokaltog/vim-easymotion'
 	" nerdtree
 		Plug 'scrooloose/nerdtree'
 		Plug 'Xuyuanp/nerdtree-git-plugin'
