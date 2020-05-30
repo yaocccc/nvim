@@ -1,0 +1,7 @@
+.idea/
+.vscode/
+logs/
+log/
+*.log
+**/dump.rdb
+**/.DS_Store
