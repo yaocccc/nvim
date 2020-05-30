@@ -1,8 +1,3 @@
-" 空格作为leader
-    let mapleader=" "
-
-" 不退出执行cmd
-    fun! Exec(cmd)
-        exe a:cmd
-        return ''
-    endf
+source ./config/common/common.vimrc
+source ./config/common/show.vimrc
+source ./config/common/setting.vimrc

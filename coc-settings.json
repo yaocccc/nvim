@@ -1,5 +1,6 @@
 {
 	"pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+	"pairs.enableBackspace": false,
 	"markdownlint.config": {
 		"default": true,
 		"line_length": false

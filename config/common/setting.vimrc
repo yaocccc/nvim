@@ -45,7 +45,7 @@
     set tabstop=4
     set softtabstop=4
     set laststatus=2
-    set showtabline=2
+    set showtabline=1
     set shiftwidth=4
 
 " 折叠
