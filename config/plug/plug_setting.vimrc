@@ -97,8 +97,12 @@
 		nnoremap <silent> n :call WordNavigation('forward')<CR>
 		nnoremap <silent> N :call WordNavigation('backward')<CR>
 
-" easymotion
-	nmap ss <Plug>(easymotion-s2)
+" incsearch
+	nmap /  <Plug>(incsearch-forward)
+	nmap ?  <Plug>(incsearch-backward)
+	nmap ss  <Plug>(incsearch-stay)
+	nmap s/  <Plug>(incsearch-fuzzyspell-/)
+	nmap s?  <Plug>(incsearch-fuzzyspell-?)
 
 " markdown
 	" F7开始浏览器预览 F8关闭
@@ -122,6 +126,5 @@
 
 " 当前行字号加粗
     set cul
-    hi CursorLine term=bold cterm=bold ctermfg=NONE ctermbg=NONE 
-    hi Normal ctermfg=7
-
+    hi CursorLine term = bold cterm = bold ctermfg = NONE ctermbg = NONE
+    hi Normal ctermfg = 7

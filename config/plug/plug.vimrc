@@ -17,7 +17,8 @@ call plug#begin('~/.config/nvim/plugged')
 		Plug 'terryma/vim-expand-region'
 	" 快速跳转
 		Plug 'lfv89/vim-interestingwords'
-		Plug 'Lokaltog/vim-easymotion'
+		Plug 'haya14busa/incsearch.vim'
+		Plug 'haya14busa/incsearch-fuzzy.vim'
 	" nerdtree
 		Plug 'scrooloose/nerdtree'
 		Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -28,9 +29,6 @@ call plug#begin('~/.config/nvim/plugged')
 		Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	" 括号高亮
 		Plug 'luochen1990/rainbow'
-	" 语法高亮
-		Plug 'posva/vim-vue'
-		Plug 'HerringtonDarkholme/yats.vim'
 	" markdown
 		Plug 'iamcco/mathjax-support-for-mkdp'
 		Plug 'iamcco/markdown-preview.vim'

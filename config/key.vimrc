@@ -1,4 +1,4 @@
-source ./config/key/common.vimrc
-source ./config/key/tabs.vimrc
-source ./config/key/windows.vimrc
-source ./config/key/buffers.vimrc
+source ~/.config/nvim/config/key/common.vimrc
+source ~/.config/nvim/config/key/tabs.vimrc
+source ~/.config/nvim/config/key/windows.vimrc
+source ~/.config/nvim/config/key/buffers.vimrc
