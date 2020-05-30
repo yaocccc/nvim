@@ -1,0 +1,57 @@
+snippet head "head~"
+	# 工作安排
+
+	## 今日工作
+
+	- [ ] ${1}
+	- [ ] ${2}
+
+	## 昨日工作
+
+	## 明日工作
+
+	## 记录
+
+snippet mm "month~"
+	# `strftime("%Y %m")`
+
+	## todo
+
+	- [ ] $1
+
+	## event
+
+	## summary
+
+snippet dd "day~"
+	# `strftime("%Y %m %d")`
+
+	## todo
+
+	- [ ] $1
+
+	## event
+
+	## check
+
+
+snippet td "todo list"
+	- [ ] ${1}
+
+snippet ref "ref~"
+	[${1}](${2})
+
+snippet mer "mermaid~"
+	~~~mermaid
+	graph TB
+		A --> B
+	~~~
+
+snippet sub "subgraph~"
+	~~~subgraph
+	graph TB
+	  subgraph g1
+	  end
+	  subgraph g2
+	  end
+	~~~

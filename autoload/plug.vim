@@ -1,89 +1,3 @@
-" vim-plug: Vim plugin manager
-" ============================
-"
-" Download plug.vim and put it in ~/.vim/autoload
-"
-"   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"
-" Edit your .vimrc
-"
-"   call plug#begin('~/.vim/plugged')
-"
-"   " Make sure you use single quotes
-"
-"   " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-"   Plug 'junegunn/vim-easy-align'
-"
-"   " Any valid git URL is allowed
-"   Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-"
-"   " Multiple Plug commands can be written in a single line using | separators
-"   Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-"
-"   " On-demand loading
-"   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"   Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-"
-"   " Using a non-master branch
-"   Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-"
-"   " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-"   Plug 'fatih/vim-go', { 'tag': '*' }
-"
-"   " Plugin options
-"   Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-"
-"   " Plugin outside ~/.vim/plugged with post-update hook
-"   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"
-"   " Unmanaged plugin (manually installed and updated)
-"   Plug '~/my-prototype-plugin'
-"
-"   " Initialize plugin system
-"   call plug#end()
-"
-" Then reload .vimrc and :PlugInstall to install plugins.
-"
-" Plug options:
-"
-"| Option                  | Description                                      |
-"| ----------------------- | ------------------------------------------------ |
-"| `branch`/`tag`/`commit` | Branch/tag/commit of the repository to use       |
-"| `rtp`                   | Subdirectory that contains Vim plugin            |
-"| `dir`                   | Custom directory for the plugin                  |
-"| `as`                    | Use different name for the plugin                |
-"| `do`                    | Post-update hook (string or funcref)             |
-"| `on`                    | On-demand loading: Commands or `<Plug>`-mappings |
-"| `for`                   | On-demand loading: File types                    |
-"| `frozen`                | Do not update unless explicitly specified        |
-"
-" More information: https://github.com/junegunn/vim-plug
-"
-"
-" Copyright (c) 2017 Junegunn Choi
-"
-" MIT License
-"
-" Permission is hereby granted, free of charge, to any person obtaining
-" a copy of this software and associated documentation files (the
-" "Software"), to deal in the Software without restriction, including
-" without limitation the rights to use, copy, modify, merge, publish,
-" distribute, sublicense, and/or sell copies of the Software, and to
-" permit persons to whom the Software is furnished to do so, subject to
-" the following conditions:
-"
-" The above copyright notice and this permission notice shall be
-" included in all copies or substantial portions of the Software.
-"
-" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-" EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-" NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-" LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-" OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-" WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 if exists('g:loaded_plug')
   finish
 endif
@@ -632,17 +546,39 @@ function! plug#(repo, ...)
     let g:plugs[name] = spec
     let s:loaded[name] = get(s:loaded, name, 0)
   catch
-    return s:err(v:exception)
+    return s:err(repo . ' ' . v:exception)
   endtry
 endfunction
 
 function! s:parse_options(arg)
   let opts = copy(s:base_spec)
   let type = type(a:arg)
+  let opt_errfmt = 'Invalid argument for "%s" option of :Plug (expected: %s)'
   if type == s:TYPE.string
+    if empty(a:arg)
+      throw printf(opt_errfmt, 'tag', 'string')
+    endif
     let opts.tag = a:arg
   elseif type == s:TYPE.dict
     call extend(opts, a:arg)
+    for opt in ['branch', 'tag', 'commit', 'rtp', 'dir', 'as']
+      if has_key(opts, opt)
+      \ && (type(opts[opt]) != s:TYPE.string || empty(opts[opt]))
+        throw printf(opt_errfmt, opt, 'string')
+      endif
+    endfor
+    for opt in ['on', 'for']
+      if has_key(opts, opt)
+      \ && type(opts[opt]) != s:TYPE.list
+      \ && (type(opts[opt]) != s:TYPE.string || empty(opts[opt]))
+        throw printf(opt_errfmt, opt, 'string or list')
+      endif
+    endfor
+    if has_key(opts, 'do')
+      \ && type(opts.do) != s:TYPE.funcref
+      \ && (type(opts.do) != s:TYPE.string || empty(opts.do))
+        throw printf(opt_errfmt, 'do', 'string or funcref')
+    endif
     if has_key(opts, 'dir')
       let opts.dir = s:dirpath(s:plug_expand(opts.dir))
     endif
@@ -2249,7 +2185,7 @@ endfunction
 
 function! s:rm_rf(dir)
   if isdirectory(a:dir)
-    call s:system(s:is_win
+    return s:system(s:is_win
     \ ? 'rmdir /S /Q '.plug#shellescape(a:dir)
     \ : ['rm', '-rf', a:dir])
   endif
@@ -2333,6 +2269,7 @@ endfunction
 function! s:delete(range, force)
   let [l1, l2] = a:range
   let force = a:force
+  let err_count = 0
   while l1 <= l2
     let line = getline(l1)
     if line =~ '^- ' && isdirectory(line[2:])
@@ -2341,11 +2278,22 @@ function! s:delete(range, force)
       let answer = force ? 1 : s:ask('Delete '.line[2:].'?', 1)
       let force = force || answer > 1
       if answer
-        call s:rm_rf(line[2:])
+        let err = s:rm_rf(line[2:])
         setlocal modifiable
-        call setline(l1, '~'.line[1:])
-        let s:clean_count += 1
-        call setline(4, printf('Removed %d directories.', s:clean_count))
+        if empty(err)
+          call setline(l1, '~'.line[1:])
+          let s:clean_count += 1
+        else
+          delete _
+          call append(l1 - 1, s:format_message('x', line[1:], err))
+          let l2 += len(s:lines(err))
+          let err_count += 1
+        endif
+        let msg = printf('Removed %d directories.', s:clean_count)
+        if err_count > 0
+          let msg .= printf(' Failed to remove %d directories.', err_count)
+        endif
+        call setline(4, msg)
         setlocal nomodifiable
       endif
     endif

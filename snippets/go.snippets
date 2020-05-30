@@ -1,0 +1,66 @@
+snippet head "new go"
+	package main
+
+	import (
+		"fmt"
+	)
+
+	func main() {
+		${1}
+	}
+
+snippet ap "append"
+	append(${1:slice}, ${0:value})
+
+snippet br "break"
+	break
+
+snippet ch "channel"
+	chan ${0:int}
+
+snippet df "defer"
+	defer ${0:func}()
+
+snippet in "interface"
+	interface{}
+
+snippet int "full interface "
+	interface ${1:name} {
+		${2:/* methods */}
+	}
+
+snippet if "if condition"
+	if ${1:/* condition */} {
+		${2:${VISUAL}}
+	}
+
+snippet el "else"
+	else {
+		${0:${VISUAL}}
+	}
+
+snippet for "for loop"
+	for ${1}{
+		${0:${VISUAL}}
+	}
+
+snippet fun "function"
+	func ${1:funcName}(${2}) ${3:error} {
+		${4}
+	}
+	${0}
+
+snippet make "make"
+	make(${1:[]string}, ${0:0})
+
+snippet map "map"
+	map[${1:string}]${0:int}
+
+snippet main "func main()"
+	func main() {
+		${1}
+	}
+	${0}
+
+snippet pa "package"
+	package ${1:main}

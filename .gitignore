@@ -1,0 +1,10 @@
+.netrwhist
+.idea/
+.vscode/
+file_logs/
+plugged/
+logs/
+log/
+*.log
+**/dump.rdb
+**/.DS_Store
