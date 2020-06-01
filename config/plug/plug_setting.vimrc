@@ -39,7 +39,7 @@
 	" coc-translator 显示翻译
 		nmap <silent><Leader>m <Plug>(coc-translator-p)
 		vmap <silent><Leader>m <Plug>(coc-translator-pv)
-		smap <silent><Leader>m <c-v>v<Plug>(coc-translator-pv)
+		smap <silent><Leader>m <c-g><Plug>(coc-translator-pv)
 
 " NERDTree
 	" tt打开
@@ -61,7 +61,7 @@
 
 " js-beautify
 	" v模式 s模式 = 美化选中行
-		snoremap <silent>= <c-v>v:!js-beautify<CR>
+		snoremap <silent>= <c-g>:!js-beautify<CR>
 		vnoremap <silent>= :!js-beautify<CR>
 	" n模式 == 美化当前行
 		nnoremap <silent>== :.!js-beautify<CR>

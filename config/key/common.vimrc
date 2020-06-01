@@ -1,8 +1,10 @@
-" 设置s t 无效
+" 设置s t 无效 ;=: ,重复上一次宏操作
     map s <nop>
     map t <nop>
+	map ; :
+    nnoremap , @@
 
-" S保存 Q退出 R重载vim配置 jj esc
+" S保存 Q退出 R重载vim配置 jj=esc
     nnoremap S :w<CR>
     nnoremap Q :q!<CR>
     nnoremap R :source ~/.config/nvim/init.vim<CR>
@@ -20,15 +22,12 @@
     vnoremap < <gv
     vnoremap > >gv
     snoremap < <c-g><gv
-    snoremap > <c-g>>gv"
+	snoremap > <c-g>>gv"
 
     vnoremap <s-tab> <gv
-    vnoremap <tab> >gv
+	vnoremap <tab> >gv
     snoremap <s-tab> <c-g><gv
-    snoremap <tab> <c-g>>gv
-
-" ,重复上一次宏操作
-    nnoremap , @@
+	snoremap <tab> <c-g>>gv
 
 " SHIFT + 方向 选择文本
 	inoremap <silent><s-up> <esc>vk
@@ -99,26 +98,13 @@
     " r 修改当前词
         nnoremap ® ciw
 
-" alt + c v x 复制粘贴剪切
-    " alt c 复制
-        snoremap ç <c-g>y
-    " alt x 剪切
-        snoremap ≈ <c-g>d
-    " alt v 粘贴
-        snoremap √ <c-g>Pa
-    " alt v 粘贴
-        inoremap √ <esc>pa
-    " alt v 粘贴
-        nnoremap √ p
-    " alt c 复制当前词
-        nnoremap ç yiw
 
 " select visual模式下 /  注释
 " normal 模式下		  ?? 注释
 " 实现原理: 光标所在行的第一位是/则代表	  当前已注释 则将 ^// 替换为空
 "			光标所在行的第一位不是/则代表 当前为注释 则将 ^   替换为//
     snoremap <silent><expr>/ (getline('.')[0]=='/')?'<c-g>:s/^\/\//<CR>:set nohlsearch<CR>':'<c-g>:s/^/\/\//<CR>:set nohlsearch<CR>'
-    vnoremap <silent><expr>/ (getline('.')[0]=='/')?'<c-g>:s/^\/\//<CR>:set nohlsearch<CR>':'<c-g>:s/^/\/\//<CR>:set nohlsearch<CR>'
+    vnoremap <silent><expr>/ (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
     nnoremap <silent><expr>?? (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
 
 " 光标在{}上时折叠{}，否则切换折叠
