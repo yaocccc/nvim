@@ -9,22 +9,23 @@
     inoremap jj <Esc>
 
 " SELECT模式快捷键
-    snoremap y <c-v>vy
-    snoremap d <c-v>vd
-    snoremap c <c-v>vc
-    snoremap x <c-v>vx
-    snoremap p <c-v>vp
+    snoremap y <c-g>y
+    snoremap d <c-g>d
+    snoremap c <c-g>c
+    snoremap x <c-g>x
+    snoremap p <c-g>"_dP
+    vnoremap p "_dP
 
 " VISUAL SELECT模式 s-tab tab左右缩进"
     vnoremap < <gv
     vnoremap > >gv
-    snoremap < <c-v>v<gv
-    snoremap > <c-v>v>gv"
+    snoremap < <c-g><gv
+    snoremap > <c-g>>gv"
 
     vnoremap <s-tab> <gv
     vnoremap <tab> >gv
-    snoremap <s-tab> <c-v>v<gv
-    snoremap <tab> <c-v>v>gv
+    snoremap <s-tab> <c-g><gv
+    snoremap <tab> <c-g>>gv
 
 " ,重复上一次宏操作
     nnoremap , @@
@@ -66,8 +67,8 @@
     inoremap <silent>˚ <Esc>:m .-2<CR>i
     vnoremap <silent>∆ :m '>+1<CR>gv
     vnoremap <silent>˚ :m '<-2<CR>gv
-    snoremap <silent>∆ <c-v>v:m '>+1<CR>gv
-    snoremap <silent>˚ <c-v>v:m '<-2<CR>gv
+    snoremap <silent>∆ <c-g>:m '>+1<CR>gv
+    snoremap <silent>˚ <c-g>:m '<-2<CR>gv
 
 " alt + key 跳转
     " H 跳转到 句首
@@ -100,11 +101,11 @@
 
 " alt + c v x 复制粘贴剪切
     " alt c 复制
-        snoremap ç <c-v>vy
+        snoremap ç <c-g>y
     " alt x 剪切
-        snoremap ≈ <c-v>vd
+        snoremap ≈ <c-g>d
     " alt v 粘贴
-        snoremap √ <c-v>vPa
+        snoremap √ <c-g>Pa
     " alt v 粘贴
         inoremap √ <esc>pa
     " alt v 粘贴
@@ -116,8 +117,8 @@
 " normal 模式下		  ?? 注释
 " 实现原理: 光标所在行的第一位是/则代表	  当前已注释 则将 ^// 替换为空
 "			光标所在行的第一位不是/则代表 当前为注释 则将 ^   替换为//
-    snoremap <silent><expr>/ (getline('.')[0]=='/')?'<c-v>v:s/^\/\//<CR>:set nohlsearch<CR>':'<c-v>v:s/^/\/\//<CR>:set nohlsearch<CR>'
-    vnoremap <silent><expr>/ (getline('.')[0]=='/')?'<c-v>v:s/^\/\//<CR>:set nohlsearch<CR>':'<c-v>v:s/^/\/\//<CR>:set nohlsearch<CR>'
+    snoremap <silent><expr>/ (getline('.')[0]=='/')?'<c-g>:s/^\/\//<CR>:set nohlsearch<CR>':'<c-g>:s/^/\/\//<CR>:set nohlsearch<CR>'
+    vnoremap <silent><expr>/ (getline('.')[0]=='/')?'<c-g>:s/^\/\//<CR>:set nohlsearch<CR>':'<c-g>:s/^/\/\//<CR>:set nohlsearch<CR>'
     nnoremap <silent><expr>?? (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
 
 " 光标在{}上时折叠{}，否则切换折叠
@@ -132,14 +133,14 @@
     nnoremap <silent>-/ :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>:set foldmethod=manual<CR><CR>
 
 " 快速添加pairs
-	snoremap ' <c-v>vdi''<esc>P
-	snoremap " <c-v>vdi""<esc>P
-	snoremap { <c-v>vdi{}<esc>P
-	snoremap } <c-v>vdi{}<esc>P
-	snoremap [ <c-v>vdi[]<esc>P
-	snoremap ] <c-v>vdi[]<esc>P
-	snoremap ( <c-v>vdi()<esc>P
-	snoremap ) <c-v>vdi()<esc>P
+	snoremap ' <c-g>di''<esc>P
+	snoremap " <c-g>di""<esc>P
+	snoremap { <c-g>di{}<esc>P
+	snoremap } <c-g>di{}<esc>P
+	snoremap [ <c-g>di[]<esc>P
+	snoremap ] <c-g>di[]<esc>P
+	snoremap ( <c-g>di()<esc>P
+	snoremap ) <c-g>di()<esc>P
 	vnoremap ' di''<esc>P
 	vnoremap " di""<esc>P
 	vnoremap { di{}<esc>P

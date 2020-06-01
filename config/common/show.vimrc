@@ -1,5 +1,4 @@
 " 开启256颜色 暗色背景
-    " set term=xterm-256color
     set background=dark
     let g:solarized_termcolors = 256
     let g:solarized_termtrans = 1
@@ -34,14 +33,9 @@
 		while i <= bufnr('$')
 			if bufexists(i) && buflisted(i)
 				let name = fnamemodify(bufname(i), ':t') . (getbufvar(i, '&mod')?'+':'')
-				if i == bufnr('%')
-					let str .= '[' . name . ']'
-				else
-					let str .= ' ' . name . ' '
-				endif
+				let str .= i == bufnr('%') ? ('[' . name . ']') : (' ' . name . ' ')
 			endif
 			let i += 1
 		endwhile
 		return ' ' . str
 	endfunction
-

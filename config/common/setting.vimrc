@@ -17,8 +17,9 @@
     set ignorecase
     set smartcase
 
-" 设置正常删除
+" 设置正常删除 光标穿越行
     set backspace=indent,eol,start
+	set whichwrap+=<,>,h,
 
 " 设置鼠标移动
     set mouse=a

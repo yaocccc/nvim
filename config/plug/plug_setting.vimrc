@@ -1,21 +1,3 @@
-" lightline & bufferline
-	let g:lightline									= {}
-	let g:lightline.colorscheme						= 'deus'
-	let g:lightline.component_expand				= {'buffers': 'lightline#bufferline#buffers'}
-	let g:lightline.component_type					= {'buffers': 'tabsel'}
-	let g:lightline.active							= {'left': [['mode', 'gitbranch'], ['empty', 'buffers']], 'right': [['P', 'L', 'l'], ['filename']]}
-	let g:lightline.component_function				= {'filename': 'LightlineFilename', 'gitbranch': 'FugitiveHead'}
-	let g:lightline.component						= {'P': '%P', 'L': '%L', 'l': '%l', 'empty': '-->'}
-	let g:lightline#bufferline#unnamed				= '[new]'
-	let g:lightline#bufferline#filename_modifier	= ':t'
-	let g:lightline.mode_map						= {'n': 'N', 'i': 'I', 'R': 'R', 'v': 'V', 'V': 'VL', '\<C-v>': 'VB', 'c': 'C', 's': 'S', 'S': 'SL', '\<C-s>': 'SB', 't': 'T'}
-	function! LightlineFilename()
-		let path = expand('%F')
-		let filename = expand('%:t') !=# '' ? expand('%') : '[new]'
-		let modified = &modified ? ' +' : ''
-		return filename . modified
-	endfunction
-
 " vim-expand-region 快速选择
 	" v扩大选择 V缩小选择
 	vmap v <Plug>(expand_region_expand)
@@ -114,5 +96,5 @@
 		nnoremap <C-b> :Buffers<CR>
 
 " 平滑翻页
-	nnoremap <silent> <BS> :call smooth_scroll#up(&scroll*2, 0, 5)<CR>
-	nnoremap <silent> <space> :call smooth_scroll#down(&scroll*2, 0, 5)<CR>
+	nnoremap <silent> <BS> :call smooth_scroll#up(&scroll*2, 0, 3)<CR>
+	nnoremap <silent> <space> :call smooth_scroll#down(&scroll*2, 0, 3)<CR>
