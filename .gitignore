@@ -1,6 +1,6 @@
 .idea/
 .vscode/
-file_logs/
+.file_logs/
 logs/
 log/
 *.log
