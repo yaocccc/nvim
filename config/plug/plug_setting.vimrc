@@ -97,13 +97,6 @@
 		nnoremap <silent> n :call WordNavigation('forward')<CR>
 		nnoremap <silent> N :call WordNavigation('backward')<CR>
 
-" incsearch
-	nmap /  <Plug>(incsearch-forward)
-	nmap ?  <Plug>(incsearch-backward)
-	nmap ss  <Plug>(incsearch-stay)
-	nmap s/  <Plug>(incsearch-fuzzyspell-/)
-	nmap s?  <Plug>(incsearch-fuzzyspell-?)
-
 " markdown
 	" F7开始浏览器预览 F8关闭
 		nmap <silent> <F7> <Plug>MarkdownPreview

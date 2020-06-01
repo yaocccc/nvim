@@ -121,22 +121,22 @@ if s:t_Co >= 256
       hi DiffText ctermfg=32 ctermbg=236 cterm=NONE
     endif
     if get(g:, 'solarized_statusline', '') ==# 'low'
-      hi StatusLine ctermfg=243 ctermbg=230 cterm=reverse
-      hi StatusLineNC ctermfg=243 ctermbg=236 cterm=reverse
+      hi StatusLine ctermfg=NONE ctermbg=NONE cterm=NONE
+      hi StatusLineNC ctermfg=NONE ctermbg=NONE cterm=NONE
       hi TabLine ctermfg=243 ctermbg=236 cterm=reverse
       hi TabLineFill ctermfg=243 ctermbg=236 cterm=reverse
       hi TabLineSel ctermfg=247 ctermbg=230 cterm=reverse
       hi VertSplit ctermfg=236 ctermbg=243 cterm=NONE
     elseif get(g:, 'solarized_statusline', '') ==# 'flat'
-      hi StatusLine ctermfg=236 ctermbg=230 cterm=reverse
-      hi StatusLineNC ctermfg=236 ctermbg=254 cterm=reverse
+      hi StatusLine ctermfg=NONE ctermbg=NONE cterm=NONE
+      hi StatusLineNC ctermfg=NONE ctermbg=NONE cterm=NONE
       hi TabLineSel ctermfg=230 ctermbg=236 cterm=NONE
       hi TabLine ctermfg=243 ctermbg=236 cterm=NONE
       hi TabLineFill ctermfg=243 ctermbg=236 cterm=NONE
       hi VertSplit ctermfg=243 ctermbg=236 cterm=NONE
     else
-      hi StatusLine ctermfg=247 ctermbg=236 cterm=reverse
-      hi StatusLineNC ctermfg=243 ctermbg=236 cterm=reverse
+      hi StatusLine ctermfg=NONE ctermbg=NONE cterm=NONE
+      hi StatusLineNC ctermfg=NONE ctermbg=NONE cterm=NONE
       hi TabLine ctermfg=243 ctermbg=236 cterm=reverse
       hi TabLineFill ctermfg=243 ctermbg=236 cterm=reverse
       hi TabLineSel ctermfg=247 ctermbg=236 cterm=reverse
@@ -498,24 +498,24 @@ if s:t_Co >= 256
     hi DiffText ctermfg=32 ctermbg=254 cterm=NONE
   endif
   if get(g:, 'solarized_statusline', '') ==# 'low'
-    hi StatusLine ctermfg=247 ctermbg=230 cterm=reverse
-    hi StatusLineNC ctermfg=247 ctermbg=236 cterm=reverse
+    hi StatusLine ctermfg=NONE ctermbg=NONE cterm=NONE
+    hi StatusLineNC ctermfg=NONE ctermbg=NONE cterm=NONE
     hi TabLine ctermfg=247 ctermbg=236 cterm=reverse
     hi TabLineFill ctermfg=247 ctermbg=236 cterm=reverse
     hi TabLineSel ctermfg=236 ctermbg=230 cterm=reverse
     hi VertSplit ctermfg=236 ctermbg=247 cterm=NONE
     hi WildMenu ctermfg=236 ctermbg=230 cterm=reverse
   elseif get(g:, 'solarized_statusline', '') ==# 'flat'
-    hi StatusLine ctermfg=254 ctermbg=235 cterm=reverse
-    hi StatusLineNC ctermfg=254 ctermbg=236 cterm=reverse
+    hi StatusLine ctermfg=NONE ctermbg=NONE cterm=NONE
+    hi StatusLineNC ctermfg=NONE ctermbg=NONE cterm=NONE
     hi TabLineSel ctermfg=235 ctermbg=254 cterm=NONE
     hi TabLine ctermfg=247 ctermbg=254 cterm=NONE
     hi TabLineFill ctermfg=247 ctermbg=254 cterm=NONE
     hi VertSplit ctermfg=247 ctermbg=254 cterm=NONE
     hi WildMenu ctermfg=242 ctermbg=230 cterm=reverse
   else
-    hi StatusLine ctermfg=236 ctermbg=254 cterm=reverse
-    hi StatusLineNC ctermfg=66 ctermbg=254 cterm=reverse
+    hi StatusLine ctermfg=NONE ctermbg=NONE cterm=NONE
+    hi StatusLineNC ctermfg=NONE ctermbg=NONE cterm=NONE
     hi TabLine ctermfg=66 ctermbg=254 cterm=reverse
     hi TabLineFill ctermfg=66 ctermbg=254 cterm=reverse
     hi TabLineSel ctermfg=236 ctermbg=254 cterm=reverse

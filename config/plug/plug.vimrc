@@ -2,8 +2,6 @@ call plug#begin('~/.config/nvim/plugged')
 	" 中文文档
 		Plug 'yianwillis/vimcdoc'
 	" 状态栏和主题
-		Plug 'itchyny/lightline.vim'
-		Plug 'mengelbrecht/lightline-bufferline'
 		Plug 'junegunn/goyo.vim'
 	" git
 		Plug 'tpope/vim-fugitive'
@@ -12,14 +10,10 @@ call plug#begin('~/.config/nvim/plugged')
 		Plug 'terryma/vim-smooth-scroll'
 	" marks
 		Plug 'kshenoy/vim-signature'
-	" 重复操作
-		Plug 'tpope/vim-repeat'
 	" 快速选择
 		Plug 'terryma/vim-expand-region'
 	" 快速跳转
 		Plug 'lfv89/vim-interestingwords'
-		Plug 'haya14busa/incsearch.vim'
-		Plug 'haya14busa/incsearch-fuzzy.vim'
 	" nerdtree
 		Plug 'scrooloose/nerdtree'
 		Plug 'Xuyuanp/nerdtree-git-plugin'
