@@ -1,8 +1,8 @@
 " 跳转到下个
-    nnoremap <silent> bn :bn<CR>
+    nnoremap <silent> sn :bn<CR>
 " 跳转到上个
-    nnoremap <silent> bp :bp<CR>
+    nnoremap <silent> sp :bp<CR>
 " 和上一个切换
-    nnoremap <silent> bb :b#<CR>
+    nnoremap <silent> ss :b#<CR>
 " 删除当前buffer
-    nnoremap <silent> bd :bd<CR>
+    nnoremap <silent> sd :bd<CR>

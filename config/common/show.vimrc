@@ -23,16 +23,17 @@
     set fillchars=stlnc:/
 
 " statusline
-	set statusline=[%{mode()}]%{Buf_Names()}%=%f%{len(fugitive#head())?'['.fugitive#head().']':''}[E:%{Err_num()}][%P:%L:%l]
+	set statusline=[%{mode()}]%<%{Buf_Names()}%=%f%{len(fugitive#head())?'['.fugitive#head().']':''}[%{Err_num()}][%P:%L:%l]
 	function! Err_num()
-		return get(get(b:, 'coc_diagnostic_info', {}), 'error', 0)
+		let info = get(b:, 'coc_diagnostic_info', {})
+		return 'W:' . get(info, 'information', 0) . ' E:' . get(info, 'error', 0)
 	endfunction
 	function! Buf_Names()
 		let str = ''
 		let i = 1
 		while i <= bufnr('$')
 			if bufexists(i) && buflisted(i)
-				let name = fnamemodify(bufname(i), ':t') . (getbufvar(i, '&mod')?'+':'')
+				let name = (len(fnamemodify(bufname(i), ':t')) ? fnamemodify(bufname(i), ':t') : 'new') . (getbufvar(i, '&mod')?'+':'')
 				let str .= i == bufnr('%') ? ('[' . name . ']') : (' ' . name . ' ')
 			endif
 			let i += 1
