@@ -3,6 +3,10 @@
     map t <nop>
 	map ; :
     nnoremap , @@
+	nnoremap + <c-a>
+
+" x 只删除 不复制
+	nnoremap x "_x
 
 " S保存 Q退出 R重载vim配置 jj=esc
     nnoremap S :w<CR>

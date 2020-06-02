@@ -23,10 +23,15 @@
     set fillchars=stlnc:/
 
 " statusline
-	set statusline=[%{mode()}]%<%{Buf_Names()}%=%f%{len(fugitive#head())?'['.fugitive#head().']':''}[%{Err_num()}][%P:%L:%l]
+	set statusline=[%{mode()}]
+	set statusline+=%{len(fugitive#head())?'['.fugitive#head().']':''}
+	set statusline+=%{len(fugitive#head())?'['.GitStatus().']':''}
+	set statusline+=[%{Err_num()}][%P\ %L\ %l]
+	set statusline+=%=%f
+	set tabline=[b]%{Buf_Names()}
 	function! Err_num()
 		let info = get(b:, 'coc_diagnostic_info', {})
-		return 'W:' . get(info, 'information', 0) . ' E:' . get(info, 'error', 0)
+		return 'W' . get(info, 'information', 0) . ' E' . get(info, 'error', 0)
 	endfunction
 	function! Buf_Names()
 		let str = ''
@@ -38,5 +43,9 @@
 			endif
 			let i += 1
 		endwhile
-		return ' ' . str
+		return str
+	endfunction
+	function! GitStatus()
+		let [a, m, r] = GitGutterGetHunkSummary()
+		return printf('+%d ~%d -%d', a, m, r)
 	endfunction

@@ -35,10 +35,13 @@
     set nu
 	set signcolumn=yes
 
+" 不换行
+	set nowrap
+
 " 显示
     set cmdheight=1
     set updatetime=300
-    set shortmess+=c
+    " set shortmess+=c
 
 " 缩进对齐匹配等
     set autoindent
@@ -47,7 +50,7 @@
     set tabstop=4
     set softtabstop=4
     set laststatus=2
-    set showtabline=1
+    set showtabline=2
     set shiftwidth=4
 
 " 折叠

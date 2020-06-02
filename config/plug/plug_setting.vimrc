@@ -59,6 +59,10 @@
 	" gl 打开 git status列表
 		nnoremap <silent>gl :Gstatus<CR>
 
+" git gitgutter
+	" leader + g 切换git修改高亮
+		nmap <c-g> :GitGutterLineHighlightsToggle<CR>
+
 " js-beautify
 	" v模式 s模式 = 美化选中行
 		snoremap <silent>= <c-g>:!js-beautify<CR>

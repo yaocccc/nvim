@@ -124,21 +124,21 @@ if s:t_Co >= 256
       hi StatusLine ctermfg=NONE ctermbg=NONE cterm=NONE
       hi StatusLineNC ctermfg=NONE ctermbg=NONE cterm=NONE
       hi TabLine ctermfg=243 ctermbg=NONE cterm=NONE
-      hi TabLineFill ctermfg=243 ctermbg=NONE cterm=NONE
+      hi TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
       hi TabLineSel ctermfg=247 ctermbg=NONE cterm=BOLD
       hi VertSplit ctermfg=236 ctermbg=243 cterm=NONE
     elseif get(g:, 'solarized_statusline', '') ==# 'flat'
       hi StatusLine ctermfg=NONE ctermbg=NONE cterm=NONE
       hi StatusLineNC ctermfg=NONE ctermbg=NONE cterm=NONE
       hi TabLine ctermfg=243 ctermbg=NONE cterm=NONE
-      hi TabLineFill ctermfg=243 ctermbg=NONE cterm=NONE
+      hi TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
       hi TabLineSel ctermfg=247 ctermbg=NONE cterm=BOLD
       hi VertSplit ctermfg=243 ctermbg=236 cterm=NONE
     else
       hi StatusLine ctermfg=NONE ctermbg=NONE cterm=NONE
       hi StatusLineNC ctermfg=NONE ctermbg=NONE cterm=NONE
       hi TabLine ctermfg=243 ctermbg=NONE cterm=NONE
-      hi TabLineFill ctermfg=243 ctermbg=NONE cterm=NONE
+      hi TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
       hi TabLineSel ctermfg=247 ctermbg=NONE cterm=BOLD
       hi VertSplit ctermfg=236 ctermbg=243 cterm=NONE
     endif
@@ -501,7 +501,7 @@ if s:t_Co >= 256
     hi StatusLine ctermfg=NONE ctermbg=NONE cterm=NONE
     hi StatusLineNC ctermfg=NONE ctermbg=NONE cterm=NONE
     hi TabLine ctermfg=243 ctermbg=NONE cterm=NONE
-    hi TabLineFill ctermfg=243 ctermbg=NONE cterm=NONE
+    hi TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
     hi TabLineSel ctermfg=247 ctermbg=NONE cterm=BOLD
     hi VertSplit ctermfg=236 ctermbg=247 cterm=NONE
     hi WildMenu ctermfg=236 ctermbg=230 cterm=reverse
@@ -509,7 +509,7 @@ if s:t_Co >= 256
     hi StatusLine ctermfg=NONE ctermbg=NONE cterm=NONE
     hi StatusLineNC ctermfg=NONE ctermbg=NONE cterm=NONE
     hi TabLine ctermfg=243 ctermbg=NONE cterm=NONE
-    hi TabLineFill ctermfg=243 ctermbg=NONE cterm=NONE
+    hi TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
     hi TabLineSel ctermfg=247 ctermbg=NONE cterm=BOLD
     hi VertSplit ctermfg=247 ctermbg=254 cterm=NONE
     hi WildMenu ctermfg=242 ctermbg=230 cterm=reverse
@@ -517,7 +517,7 @@ if s:t_Co >= 256
     hi StatusLine ctermfg=NONE ctermbg=NONE cterm=NONE
     hi StatusLineNC ctermfg=NONE ctermbg=NONE cterm=NONE
     hi TabLine ctermfg=243 ctermbg=NONE cterm=NONE
-    hi TabLineFill ctermfg=243 ctermbg=NONE cterm=NONE
+    hi TabLineFill ctermfg=NONE ctermbg=NONE cterm=NONE
     hi TabLineSel ctermfg=247 ctermbg=NONE cterm=BOLD
     hi VertSplit ctermfg=236 ctermbg=247 cterm=NONE
     hi WildMenu ctermfg=66 ctermbg=230 cterm=reverse

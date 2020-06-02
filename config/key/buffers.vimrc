@@ -1,5 +1,6 @@
 " 跳转到下个
     nnoremap <silent> sn :bn<CR>
+	nnoremap <silent>T :bn<CR>
 " 跳转到上个
     nnoremap <silent> sp :bp<CR>
 " 和上一个切换
