@@ -41,7 +41,7 @@
 " 显示
     set cmdheight=1
     set updatetime=300
-    " set shortmess+=c
+    set shortmess=c
 
 " 缩进对齐匹配等
     set autoindent

@@ -34,26 +34,26 @@
 	snoremap <tab> <c-g>>gv
 
 " SHIFT + 方向 选择文本
-	inoremap <silent><s-up> <esc>vk
-	inoremap <silent><s-down> <esc>vj
-	nnoremap <silent><s-left> vh
-	nnoremap <silent><s-right> vl
-	nnoremap <silent><s-up> Vk
-	nnoremap <silent><s-down> Vj
-	vnoremap <silent><s-up> k
-	vnoremap <silent><s-down> j
-	snoremap <silent><s-up> <esc>Vk
-	snoremap <silent><s-down> <esc>Vj
+	inoremap <s-up> <esc>vk
+	inoremap <s-down> <esc>vj
+	nnoremap <s-left> vh
+	nnoremap <s-right> vl
+	nnoremap <s-up> Vk
+	nnoremap <s-down> Vj
+	vnoremap <s-up> k
+	vnoremap <s-down> j
+	snoremap <s-up> <esc>Vk
+	snoremap <s-down> <esc>Vj
 
 " 快速跳转
-    noremap <silent><leader>h 8h
-    noremap <silent><leader>l 8l
-    noremap <silent><leader>j :+15<CR>
-    noremap <silent><leader>k :-16<CR>
-    noremap <silent><leader><Left> 8h
-    noremap <silent><leader><Right> 8l
-    noremap <silent><leader><Down> :+15<CR>
-    noremap <silent><leader><Up> :-16<CR>
+    noremap <leader>h 8h
+    noremap <leader>l 8l
+    noremap <leader>j :+15<CR>
+    noremap <leader>k :-16<CR>
+    noremap <leader><Left> 8h
+    noremap <leader><Right> 8l
+    noremap <leader><Down> :+15<CR>
+    noremap <leader><Up> :-16<CR>
 
 " 0和tab 在 () 和 行首行尾切换
     nnoremap <expr><tab> len(getline('.')) == col('.') ? '^': '$'
@@ -64,14 +64,14 @@
     inoremap <c-u> <Esc>cc
 
 " alt kj 上下移动行
-    nnoremap <silent>∆ :m .+1<CR>
-    nnoremap <silent>˚ :m .-2<CR>
-    inoremap <silent>∆ <Esc>:m .+1<CR>i
-    inoremap <silent>˚ <Esc>:m .-2<CR>i
-    vnoremap <silent>∆ :m '>+1<CR>gv
-    vnoremap <silent>˚ :m '<-2<CR>gv
-    snoremap <silent>∆ <c-g>:m '>+1<CR>gv
-    snoremap <silent>˚ <c-g>:m '<-2<CR>gv
+    nnoremap ∆ :m .+1<CR>
+    nnoremap ˚ :m .-2<CR>
+    inoremap ∆ <Esc>:m .+1<CR>i
+    inoremap ˚ <Esc>:m .-2<CR>i
+    vnoremap ∆ :m '>+1<CR>gv
+    vnoremap ˚ :m '<-2<CR>gv
+    snoremap ∆ <c-g>:m '>+1<CR>gv
+    snoremap ˚ <c-g>:m '<-2<CR>gv
 
 " alt + key 跳转
     " H 跳转到 句首
@@ -107,20 +107,20 @@
 " normal 模式下		  ?? 注释
 " 实现原理: 光标所在行的第一位是/则代表	  当前已注释 则将 ^// 替换为空
 "			光标所在行的第一位不是/则代表 当前为注释 则将 ^   替换为//
-    snoremap <silent><expr>/ (getline('.')[0]=='/')?'<c-g>:s/^\/\//<CR>:set nohlsearch<CR>':'<c-g>:s/^/\/\//<CR>:set nohlsearch<CR>'
-    vnoremap <silent><expr>/ (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
-    nnoremap <silent><expr>?? (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
+    snoremap <expr>/ (getline('.')[0]=='/')?'<c-g>:s/^\/\//<CR>:set nohlsearch<CR>':'<c-g>:s/^/\/\//<CR>:set nohlsearch<CR>'
+    vnoremap <expr>/ (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
+    nnoremap <expr>?? (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
 
 " 光标在{}上时折叠{}，否则切换折叠
 " 实现原理: 光标所在位如果为{ 则折叠 {}，如果所在位为折叠，则展开
-    nnoremap <silent><expr>-- foldclosed(line('.'))*((getline('.')[col('.')-1]=='{')+(getline('.')[col('.')-1]=='}'))<0?'zfa{':'za'
+    nnoremap <expr>-- foldclosed(line('.'))*((getline('.')[col('.')-1]=='{')+(getline('.')[col('.')-1]=='}'))<0?'zfa{':'za'
 
 " VISUAL SELECT模式下 -折叠
-	vnoremap <silent>- zf 
-	snoremap <silent>- <c-v>zf
+	vnoremap - zf 
+	snoremap - <c-v>zf
 
 " 折叠非匹配内容
-    nnoremap <silent>-/ :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>:set foldmethod=manual<CR><CR>
+    nnoremap -/ :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>:set foldmethod=manual<CR><CR>
 
 " 快速添加pairs
 	snoremap ' <c-g>di''<esc>P
@@ -139,3 +139,6 @@
 	vnoremap ] di[]<esc>P
 	vnoremap ( di()<esc>P
 	vnoremap ) di()<esc>P
+
+" F5 一键运行js ts代码
+	nmap <F5> :w<cr>:w !ts-node %<cr>
