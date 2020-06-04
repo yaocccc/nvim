@@ -104,10 +104,10 @@
             nnoremap ® ciw
 
 
-    " select visual模式下 /  注释
-    " normal 模式下		  ?? 注释
-    " 实现原理: 光标所在行的第一位是/则代表	  当前已注释 则将 ^// 替换为空
-    "			光标所在行的第一位不是/则代表 当前为注释 则将 ^   替换为//
+    " s v模式下  /注释
+    " n  模式下 ?? 注释
+    " 实现原理: 光标所在行的第一位  是/则代表 当前已注释 则将 ^// 替换为空
+    "           光标所在行的第一位不是/则代表 当前为注释 则将 ^   替换为//
         snoremap <expr>/ (getline('.')[0]=='/')?'<c-g>:s/^\/\//<CR>:set nohlsearch<CR>':'<c-g>:s/^/\/\//<CR>:set nohlsearch<CR>'
         vnoremap <expr>/ (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
         nnoremap <expr>?? (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
