@@ -37,27 +37,25 @@
 " Plug Setting
     " vim-expand-region 快速选择
         " v扩大选择 V缩小选择
-        vmap v <Plug>(expand_region_expand)
-        vmap V <Plug>(expand_region_shrink)
+            vmap v <Plug>(expand_region_expand)
+            vmap V <Plug>(expand_region_shrink)
 
     " coc-vim
         " com-rename
             nmap <F2> <Plug>(coc-rename)
         " coc-snippets便携自定义补全文件
             " F9 :CocCommand snippets.editSnippets 编写自定义的代码片段
-                nnoremap <F9> :CocCommand snippets.editSnippets<CR>
-        " 使用tab补全 c-j c-k 左右不同的修改 默认以tab键切换补全选项
-            inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
-        " shift + tab 倒序选择
-            inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+            nnoremap <F9> :CocCommand snippets.editSnippets<CR>
+        " 使用tab补全
+            inoremap <expr> <TAB>     pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
+            inoremap <expr> <S-TAB>   pumvisible() ? "\<C-p>" : "\<C-h>"
+            inoremap <expr> <c-space> coc#refresh()
+            inoremap <expr> <CR>      pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
         " 退格时也检查补全
             function! s:check_back_space() abort
                 let col = col('.') - 1
                 return !col || getline('.')[col - 1] =~# '\s'
             endfunction
-        " 空格刷新补全 回车选择补全
-            inoremap <expr> <c-space> coc#refresh()
-            inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
         " Use `[g` and `]g` to navigate diagnostics
             nmap [g <Plug>(coc-diagnostic-prev)
             nmap ]g <Plug>(coc-diagnostic-next)
@@ -101,14 +99,12 @@
             nmap <c-g> :GitGutterLineHighlightsToggle<CR>
 
     " js-beautify
-        " v模式 s模式 = 美化选中行
-            snoremap = <c-g>:!js-beautify<CR>
-            vnoremap = :!js-beautify<CR>
-        " n模式 == 美化当前行
+            snoremap =  <c-g>:!js-beautify<CR>
+            vnoremap =  :!js-beautify<CR>
             nnoremap == :.!js-beautify<CR>
 
     " rainbow
-        let g:rainbow_active = 1
+            let g:rainbow_active = 1
 
     " 快速跳转 vim-interestingwords
         " 设置不同匹配词颜色不同
@@ -117,8 +113,8 @@
             nnoremap ff :call InterestingWords('n')<CR>
             nnoremap FF :call UncolorAllWords()<CR>
         " n跳转到下个 N跳转到上个
-            nnoremap n :call WordNavigation('forward')<CR>
-            nnoremap N :call WordNavigation('backward')<CR>
+            nnoremap n  :call WordNavigation('forward')<CR>
+            nnoremap N  :call WordNavigation('backward')<CR>
 
     " markdown
         " F7开始浏览器预览 F8关闭
@@ -137,5 +133,5 @@
             nnoremap <C-b> :Buffers<CR>
 
     " 平滑翻页
-        nnoremap <BS> :call smooth_scroll#up(&scroll*2, 0, 3)<CR>
-        nnoremap <space> :call smooth_scroll#down(&scroll*2, 0, 3)<CR>
+            nnoremap <BS>    :call smooth_scroll#up(&scroll*2, 0, 3)<CR>
+            nnoremap <space> :call smooth_scroll#down(&scroll*2, 0, 3)<CR>
