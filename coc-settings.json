@@ -5,5 +5,8 @@
         "default": true,
         "line_length": false
     },
-    "translator.engines": ["google", "youdao", "haici"] 
+    "translator.engines": ["google", "youdao", "haici"],
+    "tsserver.trace.server": "messages",
+    "tsserver.enableJavascript": true,
+    "javascript.showUnused": false
 }

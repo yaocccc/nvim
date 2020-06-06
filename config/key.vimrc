@@ -6,8 +6,10 @@
         nnoremap , @@
         nnoremap + <c-a>
 
-    " x 只删除 不复制
+    " 只删除 不复制
         nnoremap x "_x
+        vnoremap <BS> "_d
+        snoremap <BS> <c-g>"_dd
 
     " S保存 Q退出 R重载vim配置 jj=esc
         nnoremap S :w<CR>
@@ -189,10 +191,10 @@
 " buffers
     " 跳转到下个
         nnoremap sn :bn<CR>
-        nnoremap T :bn<CR>
+        nnoremap T  :b#<CR>
     " 跳转到上个
         nnoremap sp :bp<CR>
     " 和上一个切换
-        nnoremap ss :b#<CR>
+        nnoremap ss :bn<CR>
     " 删除当前buffer
         nnoremap sd :bd<CR>
