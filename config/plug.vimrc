@@ -19,7 +19,7 @@
         " 快速操作包围符号
             Plug 'tpope/vim-surround'
         " coc
-        " CocInstall coc-html coc-snippets coc-css coc-tsserver coc-vetur coc-json coc-pairs coc-translator coc-markdownlint coc-word
+        " CocInstall coc-html coc-snippets coc-css coc-tsserver coc-tabnine coc-vetur coc-json coc-pairs coc-translator coc-markdownlint coc-word
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
         " 括号高亮
             Plug 'luochen1990/rainbow'

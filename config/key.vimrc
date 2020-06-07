@@ -5,6 +5,7 @@
         map ; :
         nnoremap , @@
         nnoremap + <c-a>
+        nnoremap _ <c-x>
 
     " 只删除 不复制
         nnoremap x "_x
