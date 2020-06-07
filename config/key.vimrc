@@ -39,8 +39,6 @@
     " SHIFT + 方向 选择文本
         inoremap <s-up> <esc>vk
         inoremap <s-down> <esc>vj
-        nnoremap <s-left> vh
-        nnoremap <s-right> vl
         nnoremap <s-up> Vk
         nnoremap <s-down> Vj
         vnoremap <s-up> k

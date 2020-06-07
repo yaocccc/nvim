@@ -32,6 +32,10 @@
         " brew install fzf
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'
+        " 显示缩进
+            Plug 'Yggdroot/indentLine'
+        " 多游标
+            Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     call plug#end()
 
 " Plug Setting
@@ -130,8 +134,14 @@
             nnoremap <c-p> :Files<CR>
             nnoremap <c-h> :History<CR>
             nnoremap <c-l> :Lines<CR>
-            nnoremap <C-b> :Buffers<CR>
 
     " 平滑翻页
             nnoremap <BS>    :call smooth_scroll#up(&scroll*2, 0, 3)<CR>
             nnoremap <space> :call smooth_scroll#down(&scroll*2, 0, 3)<CR>
+
+    " 显示缩进线
+        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+    " 多游标
+        map <m-up> <c-up>
+        map <m-down> <c-down>
