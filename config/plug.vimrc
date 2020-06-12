@@ -137,8 +137,8 @@
 
     " 平滑翻页
             nnoremap <space> :call smooth_scroll#down(&scroll*2, 0, 3)<CR>
-            nnoremap <c-b>    :call smooth_scroll#up(&scroll*2, 0, 3)<CR>
-            nnoremap <c-f> :call smooth_scroll#down(&scroll*2, 0, 3)<CR>
+            nnoremap <c-b>   :call smooth_scroll#up(&scroll*2, 0, 3)<CR>
+            nnoremap <c-f>   :call smooth_scroll#down(&scroll*2, 0, 3)<CR>
 
     " 显示缩进线
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
