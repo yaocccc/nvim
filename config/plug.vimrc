@@ -13,13 +13,9 @@
             Plug 'terryma/vim-expand-region'
         " 快速跳转
             Plug 'lfv89/vim-interestingwords'
-        " nerdtree
-            Plug 'scrooloose/nerdtree'
-            Plug 'Xuyuanp/nerdtree-git-plugin'
         " 快速操作包围符号
             Plug 'tpope/vim-surround'
         " coc
-        " CocInstall coc-html coc-snippets coc-css coc-tsserver coc-tabnine coc-vetur coc-json coc-pairs coc-translator coc-markdownlint coc-word
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
         " 括号高亮
             Plug 'luochen1990/rainbow'
@@ -45,6 +41,8 @@
             vmap V <Plug>(expand_region_shrink)
 
     " coc-vim
+        " 全局插件
+            let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-python', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator', 'coc-json']
         " com-rename
             nmap <F2> <Plug>(coc-rename)
         " coc-snippets便携自定义补全文件
@@ -79,20 +77,8 @@
             nmap <Leader>m <Plug>(coc-translator-p)
             vmap <Leader>m <Plug>(coc-translator-pv)
             smap <Leader>m <c-g><Plug>(coc-translator-pv)
-
-    " NERDTree
-        " tt打开
-            nnoremap tt :NERDTreeToggle<CR>
-        " 未指定文件时自动打开
-            " autocmd StdinReadPre * let s:std_in=1
-            " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-        " 关闭所有文件时自动关闭
-            autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-        " 改变箭头样式 右箭头 下箭头
-            let g:NERDTreeDirArrowExpandable = '+'
-            let g:NERDTreeDirArrowCollapsible = '-'
-            let g:NERDTreeIgnore = ['^node_modules$']
-            let g:NERDTreeIndicatorMapCustom = {"Modified" : "✹", "Staged" : "✚", "Untracked" : "✭", "Renamed" : "➜", "Unmerged" : "═", "Deleted" : "✖", "Dirty" : "✹", "Clean" : "✔︎", 'Ignored' : '☒', "Unknown" : "?" }
+        " coc-explorer
+            nmap tt :CocCommand explorer --preset floating<CR>
 
     " git vim-fugitive
         " gl 打开 git status列表
@@ -102,7 +88,7 @@
         " leader + g 切换git修改高亮
             nmap <c-g> :GitGutterLineHighlightsToggle<CR>
 
-    " js-beautify
+    " js-beautify  npm i js-beautify -g
             snoremap =  <c-g>:!js-beautify<CR>
             vnoremap =  :!js-beautify<CR>
             nnoremap == :.!js-beautify<CR>
@@ -141,8 +127,10 @@
             nnoremap <c-f>   :call smooth_scroll#down(&scroll*2, 0, 3)<CR>
 
     " 显示缩进线
-        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+            let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
     " 多游标
-        map <m-up> <c-up>
-        map <m-down> <c-down>
+            map <m-up>    <c-up>
+            map <m-down>  <c-down>
+            map <m-left>  <s-left>
+            map <m-right> <s-right>

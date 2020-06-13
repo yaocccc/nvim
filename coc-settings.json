@@ -1,12 +1,89 @@
 {
-    "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
-    "pairs.enableBackspace": true,
-    "markdownlint.config": {
-        "default": true,
-        "line_length": false
+    "pairs": {
+        "enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+        "enableBackspace": true
     },
-    "translator.engines": ["google", "youdao", "haici"],
-    "tsserver.trace.server": "messages",
-    "tsserver.enableJavascript": true,
-    "javascript.showUnused": false
+    "markdownlint": {
+        "config": {
+            "default": true,
+            "line_length": false
+        }
+    },
+    "translator": {
+        "engines": ["google", "youdao", "haici"]
+    },
+    "tsserver": {
+        "trace": {
+            "server": "messages"
+        },
+        "enableJavascript": true
+    },
+    "explorer": {
+        "floating.border.title": "",
+        "presets": {
+            "floating": {
+                "position": "floating",
+                "floating-width": 80,
+                "floating-position": "center",
+            },
+            "simplify": {
+                "file-child-template": "[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]"
+            }
+        },
+        "keyMappings": {
+            "i": false,
+            "<tab>": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
+            "<2-LeftMouse>": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
+            "<cr>": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
+            "<right>": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
+            "<left>": "collapse",
+            "gk": "expandablePrev",
+            "gj": "expandableNext",
+            "*": "toggleSelection",
+            "m": "actionMenu",
+            "h": "collapse",
+            "l": ["expandable?", "expand", "open"],
+            "J": ["toggleSelection", "nodeNext"],
+            "K": ["toggleSelection", "nodePrev"],
+            "gl": "expandRecursive",
+            "gh": "collapseRecursive",
+            "o": ["expandable?", "cd", "open"],
+            "e": "open",
+            "s": "open:vsplit",
+            "S": "open:split",
+            "E": "open:vsplit",
+            "t": "open:tab",
+            "<bs>": "gotoParent",
+            "gp": "preview:labeling",
+            "y": "copyFilepath",
+            "Y": "copyFilename",
+            "c": "copyFile",
+            "x": "cutFile",
+            "p": "pasteFile",
+            "d": "delete",
+            "D": "deleteForever",
+            "a": "addFile",
+            "A": "addDirectory",
+            "r": "rename",
+            ".": "toggleHidden",
+            "R": "refresh",
+            "?": "help",
+            "q": "quit",
+            "<esc>": "esc",
+            "X": "systemExecute",
+            "gd": "listDrive",
+            "f": "search",
+            "F": "searchRecursive",
+            "gf": "gotoSource:file",
+            "gb": "gotoSource:buffer",
+            "[[": "sourcePrev",
+            "]]": "sourceNext",
+            "[d": "diagnosticPrev",
+            "]d": "diagnosticNext",
+            "[c": "gitPrev",
+            "]c": "gitNext",
+            "<<": "gitStage",
+            ">>": "gitUnstage"
+        }
+    }
 }
