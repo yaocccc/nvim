@@ -17,7 +17,7 @@
     " 命令行高度始终为1 屏幕刷新间隔300
         set cmdheight=1
         set updatetime=300
-        set shortmess=c
+        set shortmess+=c
     " 屏幕顶部底部总是保留5行
         set scrolloff=5
     " 不显示模式

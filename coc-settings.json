@@ -19,12 +19,13 @@
         "enableJavascript": true
     },
     "explorer": {
+        "icon.enableNerdfont": true,
         "floating.border.title": "",
         "presets": {
             "floating": {
                 "position": "floating",
                 "floating-width": 80,
-                "floating-position": "center",
+                "floating-position": "center"
             },
             "simplify": {
                 "file-child-template": "[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]"
@@ -69,6 +70,7 @@
             "R": "refresh",
             "?": "help",
             "q": "quit",
+            "Q": "quit",
             "<esc>": "esc",
             "X": "systemExecute",
             "gd": "listDrive",

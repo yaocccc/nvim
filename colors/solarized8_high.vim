@@ -66,7 +66,7 @@ hi VertSplit ctermfg=240 ctermbg=NONE cterm=NONE
 hi ColorColumn ctermfg=NONE ctermbg=236 cterm=NONE
 hi Conceal ctermfg=32 ctermbg=NONE cterm=NONE
 hi CursorColumn ctermfg=NONE ctermbg=236 cterm=NONE
-hi CursorLine term = bold cterm = bold ctermfg = NONE ctermbg = NONE
+hi CursorLine cterm=bold ctermfg=NONE ctermbg=NONE
 hi Directory ctermfg=32 ctermbg=NONE cterm=NONE
 hi EndOfBuffer ctermfg=NONE ctermbg=NONE cterm=NONE
 hi ErrorMsg ctermfg=160 ctermbg=230 cterm=reverse

@@ -3,6 +3,7 @@
         map s <nop>
         map t <nop>
         map ; :
+        map ! :!
         nnoremap , @@
         nnoremap + <c-a>
         nnoremap _ <c-x>
@@ -16,6 +17,7 @@
         nnoremap S :w<CR>
         nnoremap Q :q!<CR>
         nnoremap R :source ~/.config/nvim/init.vim<CR>
+        nnoremap Y y$
         inoremap jj <Esc>
 
     " SELECT模式快捷键
@@ -46,6 +48,8 @@
         vnoremap <s-down> j
         snoremap <s-up> <esc>Vk
         snoremap <s-down> <esc>Vj
+        nnoremap <s-left> vh
+        nnoremap <s-right> vl
 
     " 快速跳转
         noremap <leader>h 8h
@@ -118,7 +122,7 @@
         nnoremap <expr>-- foldclosed(line('.'))*((getline('.')[col('.')-1]=='{')+(getline('.')[col('.')-1]=='}'))<0?'zfa{':'za'
 
     " VISUAL SELECT模式下 -折叠
-        vnoremap - zf 
+        vnoremap - zf
         snoremap - <c-v>zf
 
     " 折叠非匹配内容
@@ -143,7 +147,19 @@
         vnoremap ) di()<esc>P
 
     " F5 一键运行js ts代码
-        nmap <F5> :w<cr>:w !ts-node %<cr>
+        map <F5> :call RunFile()<CR>
+        func!RunFile()
+            exec "w"
+            if &filetype == 'javascript'
+                exec 'w !node %'
+            elseif &filetype == 'typescript'
+                exec 'w !ts-node %'
+            elseif &filetype == 'python'
+                exec 'w !python %'
+            elseif &filetype == 'go'
+                exec 'w !go run %'
+            endif
+        endfunc
 
 " windows
     " su 新左右窗口 SU新上下窗口 sc关闭当前 so关闭其他 s方向切换

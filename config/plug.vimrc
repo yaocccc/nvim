@@ -5,16 +5,12 @@
         " git
             Plug 'tpope/vim-fugitive'
             Plug 'airblade/vim-gitgutter'
-        " 平滑翻页
-            Plug 'terryma/vim-smooth-scroll'
         " marks
             Plug 'kshenoy/vim-signature'
         " 快速选择
             Plug 'terryma/vim-expand-region'
         " 快速跳转
             Plug 'lfv89/vim-interestingwords'
-        " 快速操作包围符号
-            Plug 'tpope/vim-surround'
         " coc
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
         " 括号高亮
@@ -42,7 +38,7 @@
 
     " coc-vim
         " 全局插件
-            let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-python', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator', 'coc-json']
+            let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-python', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator', 'coc-json', 'coc-go']
         " com-rename
             nmap <F2> <Plug>(coc-rename)
         " coc-snippets便携自定义补全文件
@@ -78,7 +74,7 @@
             vmap <Leader>m <Plug>(coc-translator-pv)
             smap <Leader>m <c-g><Plug>(coc-translator-pv)
         " coc-explorer
-            nmap tt :CocCommand explorer --preset floating<CR>
+            nmap <silent>tt :CocCommand explorer --preset floating<CR>
 
     " git vim-fugitive
         " gl 打开 git status列表
@@ -120,11 +116,6 @@
             nnoremap <c-t> :Files<CR>
             nnoremap <c-h> :History<CR>
             nnoremap <c-l> :Lines<CR>
-
-    " 平滑翻页
-            nnoremap <space> :call smooth_scroll#down(&scroll*2, 0, 3)<CR>
-            nnoremap <c-b>   :call smooth_scroll#up(&scroll*2, 0, 3)<CR>
-            nnoremap <c-f>   :call smooth_scroll#down(&scroll*2, 0, 3)<CR>
 
     " 显示缩进线
             let g:indentLine_char_list = ['|', '¦', '┆', '┊']
