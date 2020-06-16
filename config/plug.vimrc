@@ -28,6 +28,8 @@
             Plug 'Yggdroot/indentLine'
         " 多游标
             Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+        " golang
+            Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     call plug#end()
 
 " Plug Setting
@@ -121,7 +123,17 @@
             let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
     " 多游标
-            map <m-up>    <c-up>
-            map <m-down>  <c-down>
-            map <m-left>  <s-left>
-            map <m-right> <s-right>
+            let g:VM_theme                      = 'iceblue'
+            let g:VM_highlight_matches          = 'underline'
+            let g:VM_maps                       = {}
+            let g:VM_maps['Find Under']         = '<C-n>'
+            let g:VM_maps['Find Subword Under'] = '<C-n>'
+            let g:VM_maps['Select All']         = '<c-d>'
+            let g:VM_maps['Visual All']         = '<c-d>'
+            let g:VM_maps["Select Cursor Down"] = '<M-Down>'
+            let g:VM_maps["Select Cursor Up"]   = '<M-Up>'
+            let g:VM_maps["Select l"]           = '<M-Right>'
+            let g:VM_maps["Select h"]           = '<M-Left>'
+            let g:VM_maps['Skip Region']        = '≈'
+            let g:VM_maps['Increase']           = '+'
+            let g:VM_maps['Decrease']           = '-'
