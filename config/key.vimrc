@@ -33,7 +33,6 @@
         vnoremap > >gv
         snoremap < <c-g><gv
         snoremap > <c-g>>gv"
-
         vnoremap <s-tab> <gv
         vnoremap <tab> >gv
         snoremap <s-tab> <c-g><gv
@@ -60,6 +59,9 @@
         noremap <leader><Right> 8l
         noremap <leader><Down> :+15<CR>
         noremap <leader><Up> :-16<CR>
+
+    " 复制全文
+        nnoremap <leader>y :%yank<CR>
 
     " 0和tab 在 () 和 行首行尾切换
         nnoremap <expr><tab> len(getline('.')) == col('.') ? '^': '$'
