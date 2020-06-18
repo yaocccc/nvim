@@ -101,9 +101,9 @@
         set smarttab
         set expandtab
     " markdown 专用缩进
-        au BufEnter *.md setlocal shiftwidth=2
-        au BufEnter *.md setlocal softtabstop=2
-        au BufEnter *.md setlocal tabstop=2
+        au BufEnter *.md,*.yml setlocal shiftwidth=2
+        au BufEnter *.md,*.yml setlocal softtabstop=2
+        au BufEnter *.md,*.yml setlocal tabstop=2
  
     " 不自动备份
         set nobackup
@@ -116,3 +116,14 @@
     " 折叠
         set foldenable
         set foldmethod=manual
+
+" command
+        command -nargs=0 FMT :call FmtFile()
+        func!FmtFile()
+            if &filetype == 'go'
+                exec 'GoFmt'
+            else
+                exec '% !js-beautify'
+            endif
+        endfunc
+

@@ -30,6 +30,8 @@
             Plug 'mg979/vim-visual-multi', {'branch': 'master'}
         " golang
             Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+        " javascript
+            Plug 'pangloss/vim-javascript'
     call plug#end()
 
 " Plug Setting
@@ -90,6 +92,9 @@
             snoremap =  <c-g>:!js-beautify<CR>
             vnoremap =  :!js-beautify<CR>
             nnoremap == :.!js-beautify<CR>
+
+    " js highlight
+            let g:javascript_plugin_jsdoc = 1
 
     " rainbow
             let g:rainbow_active = 1
