@@ -116,14 +116,3 @@
     " 折叠
         set foldenable
         set foldmethod=manual
-
-" command
-        command -nargs=0 FMT :call FmtFile()
-        func!FmtFile()
-            if &filetype == 'go'
-                exec 'GoFmt'
-            else
-                exec '% !js-beautify'
-            endif
-        endfunc
-
