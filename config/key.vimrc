@@ -10,7 +10,7 @@
 
     " 只删除 不复制
         nnoremap x "_x
-        vnoremap <BS> "_d
+        xnoremap <BS> "_d
         snoremap <BS> <c-g>"_dd
 
     " S保存 Q退出 R重载vim配置 jj=esc
@@ -26,15 +26,15 @@
         snoremap c <c-g>c
         snoremap x <c-g>x
         snoremap p <c-g>"_dP
-        vnoremap p "_dP
+        xnoremap p "_dP
 
     " VISUAL SELECT模式 s-tab tab左右缩进"
-        vnoremap < <gv
-        vnoremap > >gv
+        xnoremap < <gv
+        xnoremap > >gv
         snoremap < <c-g><gv
         snoremap > <c-g>>gv"
-        vnoremap <s-tab> <gv
-        vnoremap <tab> >gv
+        xnoremap <s-tab> <gv
+        xnoremap <tab> >gv
         snoremap <s-tab> <c-g><gv
         snoremap <tab> <c-g>>gv
 
@@ -43,8 +43,8 @@
         inoremap <s-down> <esc>vj
         nnoremap <s-up> Vk
         nnoremap <s-down> Vj
-        vnoremap <s-up> k
-        vnoremap <s-down> j
+        xnoremap <s-up> k
+        xnoremap <s-down> j
         snoremap <s-up> <esc>Vk
         snoremap <s-down> <esc>Vj
         nnoremap <s-left> vh
@@ -76,8 +76,8 @@
         nnoremap ˚ :m .-2<CR>
         inoremap ∆ <Esc>:m .+1<CR>i
         inoremap ˚ <Esc>:m .-2<CR>i
-        vnoremap ∆ :m '>+1<CR>gv
-        vnoremap ˚ :m '<-2<CR>gv
+        xnoremap ∆ :m '>+1<CR>gv
+        xnoremap ˚ :m '<-2<CR>gv
         snoremap ∆ <c-g>:m '>+1<CR>gv
         snoremap ˚ <c-g>:m '<-2<CR>gv
 
@@ -116,7 +116,7 @@
     " 实现原理: 光标所在行的第一位  是/则代表 当前已注释 则将 ^// 替换为空
     "           光标所在行的第一位不是/则代表 当前为注释 则将 ^   替换为//
         snoremap <expr>/ (getline('.')[0]=='/')?'<c-g>:s/^\/\//<CR>:set nohlsearch<CR>':'<c-g>:s/^/\/\//<CR>:set nohlsearch<CR>'
-        vnoremap <expr>/ (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
+        xnoremap <expr>/ (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
         nnoremap <expr>?? (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
 
     " 光标在{}上时折叠{}，否则切换折叠
@@ -124,7 +124,7 @@
         nnoremap <expr>-- foldclosed(line('.'))*((getline('.')[col('.')-1]=='{')+(getline('.')[col('.')-1]=='}'))<0?'zfa{':'za'
 
     " VISUAL SELECT模式下 -折叠
-        vnoremap - zf
+        xnoremap - zf
         snoremap - <c-v>zf
 
     " 折叠非匹配内容
@@ -139,14 +139,14 @@
         snoremap ] <c-g>di[]<esc>P
         snoremap ( <c-g>di()<esc>P
         snoremap ) <c-g>di()<esc>P
-        vnoremap ' di''<esc>P
-        vnoremap " di""<esc>P
-        vnoremap { di{}<esc>P
-        vnoremap } di{}<esc>P
-        vnoremap [ di[]<esc>P
-        vnoremap ] di[]<esc>P
-        vnoremap ( di()<esc>P
-        vnoremap ) di()<esc>P
+        xnoremap ' di''<esc>P
+        xnoremap " di""<esc>P
+        xnoremap { di{}<esc>P
+        xnoremap } di{}<esc>P
+        xnoremap [ di[]<esc>P
+        xnoremap ] di[]<esc>P
+        xnoremap ( di()<esc>P
+        xnoremap ) di()<esc>P
 
     " F5 一键运行js ts代码
         map <F5> :call RunFile()<CR>

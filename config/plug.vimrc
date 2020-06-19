@@ -39,8 +39,8 @@
 " Plug Setting
     " vim-expand-region 快速选择
         " v扩大选择 V缩小选择
-            vmap v <Plug>(expand_region_expand)
-            vmap V <Plug>(expand_region_shrink)
+            xmap v <Plug>(expand_region_expand)
+            xmap V <Plug>(expand_region_shrink)
 
     " coc-vim
         " 全局插件
@@ -77,7 +77,7 @@
             endfunction
         " coc-translator 显示翻译
             nmap <Leader>m <Plug>(coc-translator-p)
-            vmap <Leader>m <Plug>(coc-translator-pv)
+            xmap <Leader>m <Plug>(coc-translator-pv)
             smap <Leader>m <c-g><Plug>(coc-translator-pv)
         " coc-explorer
             nmap <silent>tt :CocCommand explorer --preset floating<CR>
@@ -92,7 +92,7 @@
 
     " js-beautify  npm i js-beautify -g
             snoremap =  <c-g>:!js-beautify<CR>
-            vnoremap =  :!js-beautify<CR>
+            xnoremap =  :!js-beautify<CR>
             nnoremap == :.!js-beautify<CR>
 
     " js highlight
