@@ -11,8 +11,6 @@
             Plug 'terryma/vim-expand-region'
         " 快速跳转
             Plug 'lfv89/vim-interestingwords'
-        " 快速对齐
-            Plug 'junegunn/vim-easy-align'
         " coc
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
         " 括号高亮
@@ -41,6 +39,8 @@
         " v扩大选择 V缩小选择
             xmap v <Plug>(expand_region_expand)
             xmap V <Plug>(expand_region_shrink)
+            smap v <c-g><Plug>(expand_region_expand)
+            smap V <c-g><Plug>(expand_region_shrink)
 
     " coc-vim
         " 全局插件
@@ -144,7 +144,3 @@
             let g:VM_maps['Skip Region']        = '≈'
             let g:VM_maps['Increase']           = '+'
             let g:VM_maps['Decrease']           = '-'
-
-    " vim-easy-align
-            xmap ga <Plug>(EasyAlign)
-            nmap ga <Plug>(EasyAlign)

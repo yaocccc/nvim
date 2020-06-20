@@ -20,6 +20,10 @@
         nnoremap Y y$
         inoremap jj <Esc>
 
+    " 重写Shift + 左右
+        xnoremap <s-right> e
+        imap <s-right> <esc>ea
+
     " SELECT模式快捷键
         snoremap y <c-g>y
         snoremap d <c-g>d
