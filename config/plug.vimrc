@@ -37,19 +37,19 @@
 " Plug Setting
     " vim-expand-region 快速选择
         " v扩大选择 V缩小选择
-            xmap v <Plug>(expand_region_expand)
-            xmap V <Plug>(expand_region_shrink)
-            smap v <c-g><Plug>(expand_region_expand)
-            smap V <c-g><Plug>(expand_region_shrink)
+            xmap <silent> v <Plug>(expand_region_expand)
+            xmap <silent> V <Plug>(expand_region_shrink)
+            smap <silent> v <c-g><Plug>(expand_region_expand)
+            smap <silent> V <c-g><Plug>(expand_region_shrink)
 
     " coc-vim
         " 全局插件
             let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-python', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator', 'coc-json', 'coc-go']
         " com-rename
-            nmap <F2> <Plug>(coc-rename)
+            nmap <silent> <F2> <Plug>(coc-rename)
         " coc-snippets便携自定义补全文件
             " F9 :CocCommand snippets.editSnippets 编写自定义的代码片段
-            nnoremap <F9> :CocCommand snippets.editSnippets<CR>
+            nnoremap <silent> <F9> :CocCommand snippets.editSnippets<CR>
         " 使用tab补全
             inoremap <expr> <TAB>     pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
             inoremap <expr> <S-TAB>   pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -61,13 +61,13 @@
                 return !col || getline('.')[col - 1] =~# '\s'
             endfunction
         " Use `[g` and `]g` to navigate diagnostics
-            nmap [g <Plug>(coc-diagnostic-prev)
-            nmap ]g <Plug>(coc-diagnostic-next)
+            nmap <silent> [g <Plug>(coc-diagnostic-prev)
+            nmap <silent> ]g <Plug>(coc-diagnostic-next)
         " gd gy 跳转到定义
-            nmap gd <Plug>(coc-definition)
-            nmap gy <Plug>(coc-type-definition)
+            nmap <silent> gd <Plug>(coc-definition)
+            nmap <silent> gy <Plug>(coc-type-definition)
         " K 显示文档
-            nnoremap K :call <SID>show_documentation()<CR>
+            nnoremap <silent> K :call <SID>show_documentation()<CR>
             function! s:show_documentation()
                 if (index(['vim','help'], &filetype) >= 0)
                     execute 'h '.expand('<cword>')
@@ -76,24 +76,24 @@
                 endif
             endfunction
         " coc-translator 显示翻译
-            nmap <Leader>m <Plug>(coc-translator-p)
-            xmap <Leader>m <Plug>(coc-translator-pv)
-            smap <Leader>m <c-g><Plug>(coc-translator-pv)
+            nmap <silent> <Leader>m <Plug>(coc-translator-p)
+            xmap <silent> <Leader>m <Plug>(coc-translator-pv)
+            smap <silent> <Leader>m <c-g><Plug>(coc-translator-pv)
         " coc-explorer
             nmap <silent>tt :CocCommand explorer --preset floating<CR>
 
     " git vim-fugitive
         " gl 打开 git status列表
-            nnoremap gl :Gstatus<CR>
+            nnoremap <silent> gl :Gstatus<CR>
 
     " git gitgutter
         " leader + g 切换git修改高亮
-            nmap <c-g> :GitGutterLineHighlightsToggle<CR>
+            nmap <silent> <c-g> :GitGutterLineHighlightsToggle<CR>
 
     " js-beautify  npm i js-beautify -g
-            snoremap =  <c-g>:!js-beautify<CR>
-            xnoremap =  :!js-beautify<CR>
-            nnoremap == :.!js-beautify<CR>
+            snoremap <silent> =  <c-g>:!js-beautify<CR>
+            xnoremap <silent> =  :!js-beautify<CR>
+            nnoremap <silent> == :.!js-beautify<CR>
 
     " js highlight
             let g:javascript_plugin_jsdoc = 1
@@ -105,26 +105,26 @@
         " 设置不同匹配词颜色不同
             let g:interestingWordsRandomiseColors = 1
         " ff 匹配/取消 当前词  FF取消匹配所有
-            nnoremap ff :call InterestingWords('n')<CR>
-            nnoremap FF :call UncolorAllWords()<CR>
+            nnoremap <silent> ff :call InterestingWords('n')<CR>
+            nnoremap <silent> FF :call UncolorAllWords()<CR>
         " n跳转到下个 N跳转到上个
-            nnoremap n  :call WordNavigation('forward')<CR>
-            nnoremap N  :call WordNavigation('backward')<CR>
+            nnoremap <silent> n  :call WordNavigation('forward')<CR>
+            nnoremap <silent> N  :call WordNavigation('backward')<CR>
 
     " markdown
         " F7开始浏览器预览 F8关闭
-            nmap <F7> <Plug>MarkdownPreview
-            imap <F7> <Plug>MarkdownPreview
-            nmap <F8> <Plug>StopMarkdownPreview
-            imap <F8> <Plug>StopMarkdownPreview
+            nmap <silent> <F7> <Plug>MarkdownPreview
+            imap <silent> <F7> <Plug>MarkdownPreview
+            nmap <silent> <F8> <Plug>StopMarkdownPreview
+            imap <silent> <F8> <Plug>StopMarkdownPreview
 
     " fzf
         " maps
             command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, <bang>0 ? fzf#vim#with_preview('right:50%') : fzf#vim#with_preview('right:50%'), <bang>0)
-            nnoremap <c-a> :Ag<CR>
-            nnoremap <c-t> :Files<CR>
-            nnoremap <c-h> :History<CR>
-            nnoremap <c-l> :Lines<CR>
+            nnoremap <silent> <c-a> :Ag<CR>
+            nnoremap <silent> <c-t> :Files<CR>
+            nnoremap <silent> <c-h> :History<CR>
+            nnoremap <silent> <c-l> :Lines<CR>
 
     " 显示缩进线
             let g:indentLine_char_list = ['|', '¦', '┆', '┊']
