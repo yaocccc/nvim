@@ -124,10 +124,11 @@
             nnoremap <silent> <c-a> :Ag<CR>
             nnoremap <silent> <c-t> :Files<CR>
             nnoremap <silent> <c-h> :History<CR>
-            nnoremap <silent> <c-l> :Lines<CR>
+            nnoremap <c-l> :Lines<CR>
+            au FileType fzf cmap Q <esc>Q
 
     " 显示缩进线
-            let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+            let g:indentLine_char_list = ['|', '¦']
 
     " 多游标
             let g:VM_theme                      = 'iceblue'

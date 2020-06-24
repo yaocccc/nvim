@@ -89,11 +89,8 @@
     " statusline & tabline
         set laststatus=2
         set showtabline=2
-        set statusline=[%{mode()}]
-        set statusline+=%{len(fugitive#head())?'['.fugitive#head().GitStatus().']':''}
-        set statusline+=[%{Err_num()}][%P\ %L\ %l]
-        set statusline+=%=%f
-        set tabline=F:\ %{Buf_Names()}
+        set statusline=[%{mode()}]%{len(fugitive#head())?'['.fugitive#head().GitStatus().']':''}[%{Err_num()}][%P\ %L\ %l]%=%f
+        set tabline=F:%{Buf_Names()}
         function! Err_num()
             let info = get(b:, 'coc_diagnostic_info', {})
             return 'E' . get(info, 'error', 0)
