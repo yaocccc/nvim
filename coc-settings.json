@@ -19,7 +19,7 @@
         "enableJavascript": true
     },
     "explorer": {
-        "icon.enableNerdfont": true,
+        "icon.enableNerdfont": false,
         "floating.border.title": "",
         "presets": {
             "floating": {

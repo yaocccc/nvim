@@ -9,7 +9,7 @@
 
 " setting
     " python3支持
-        let g:python3_host_prog = '/usr/local/bin/python3.7'
+        let g:python3_host_prog = '/usr/local/bin/python3'
     " 设置命令提示 唯一标识 共享剪贴板
         set showcmd
         set encoding=utf-8
@@ -36,7 +36,7 @@
         set t_vb=""
         set hidden
     " 不换行
-        set nowrap
+    "   set nowrap
     " 缩进对齐
         set autoindent
         set smartindent

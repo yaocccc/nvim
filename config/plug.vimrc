@@ -28,9 +28,8 @@
             Plug 'Yggdroot/indentLine'
         " 多游标
             Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-        " golang
+        " lsp + hl
             Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-        " javascript
             Plug 'pangloss/vim-javascript'
     call plug#end()
 
