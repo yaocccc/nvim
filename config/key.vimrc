@@ -171,10 +171,6 @@
     " su 新左右窗口 SU新上下窗口 sc关闭当前 so关闭其他 s方向切换
         " 新左右分窗
         nnoremap su :vsp<CR>
-        " 新上下分窗
-        nnoremap SU :sp<CR>
-        " 新上下分窗
-        nnoremap Su :sp<CR>
         " 关闭当前window
         nnoremap sc :close<CR>
         " 仅保留当前window
@@ -201,10 +197,6 @@
         nnoremap s. <c-w>10>
         " 窗口大小左右变小
         nnoremap s, <c-w>10<
-        " 窗口大小上下变大
-        nnoremap S> <c-w>10+
-        " 窗口大小上下变小
-        nnoremap S< <c-w>10-
     " sv sh窗口横竖切换
         nnoremap sh <c-w>t<c-w>H
         nnoremap sv <c-w>t<c-w>K

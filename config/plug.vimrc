@@ -16,6 +16,7 @@
         " 括号高亮
             Plug 'luochen1990/rainbow'
         " markdown
+        " npm install -g markdown-pdf
             Plug 'iamcco/mathjax-support-for-mkdp'
             Plug 'iamcco/markdown-preview.vim'
         " fzf
@@ -29,6 +30,7 @@
         " 多游标
             Plug 'mg979/vim-visual-multi', {'branch': 'master'}
         " lsp + hl
+        " npm i js-beautify -g
             Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
             Plug 'pangloss/vim-javascript'
     call plug#end()
@@ -90,12 +92,10 @@
             nmap <silent> <c-g> :GitGutterLineHighlightsToggle<CR>
 
     " js-beautify  npm i js-beautify -g
+            let g:javascript_plugin_jsdoc = 1
             snoremap <silent> =  <c-g>:!js-beautify<CR>
             xnoremap <silent> =  :!js-beautify<CR>
             nnoremap <silent> == :.!js-beautify<CR>
-
-    " js highlight
-            let g:javascript_plugin_jsdoc = 1
 
     " rainbow
             let g:rainbow_active = 1
@@ -111,11 +111,12 @@
             nnoremap <silent> N  :call WordNavigation('backward')<CR>
 
     " markdown
-        " F7开始浏览器预览 F8关闭
+        " F7开始浏览器预览 F8关闭 c-p 导出为pdf
             nmap <silent> <F7> <Plug>MarkdownPreview
             imap <silent> <F7> <Plug>MarkdownPreview
             nmap <silent> <F8> <Plug>StopMarkdownPreview
             imap <silent> <F8> <Plug>StopMarkdownPreview
+            nmap <c-p> :!markdown-pdf %
 
     " fzf
         " maps
@@ -124,7 +125,6 @@
             nnoremap <silent> <c-t> :Files<CR>
             nnoremap <silent> <c-h> :History<CR>
             nnoremap <c-l> :Lines<CR>
-            au FileType fzf cmap Q <esc>Q
 
     " 显示缩进线
             let g:indentLine_char_list = ['|', '¦']
