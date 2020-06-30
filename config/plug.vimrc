@@ -31,7 +31,8 @@
             Plug 'mg979/vim-visual-multi', {'branch': 'master'}
         " lsp + hl
         " npm i js-beautify -g
-            Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+        " GoUpdateBinaries
+            Plug 'fatih/vim-go'
             Plug 'pangloss/vim-javascript'
     call plug#end()
 
@@ -82,6 +83,10 @@
             smap <silent> <Leader>m <c-g><Plug>(coc-translator-pv)
         " coc-explorer
             nmap <silent>tt :CocCommand explorer --preset floating<CR>
+            au User CocExplorerOpenPre  hi Pmenu ctermbg=NONE
+            au User CocExplorerOpenPre  hi Cursorline ctermbg=238
+            au User CocExplorerQuitPost hi Pmenu ctermbg=238
+            au User CocExplorerQuitPost hi Cursorline ctermbg=NONE
 
     " git vim-fugitive
         " gl 打开 git status列表
