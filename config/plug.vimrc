@@ -84,9 +84,7 @@
         " coc-explorer
             nmap <silent>tt :CocCommand explorer --preset floating<CR>
             au User CocExplorerOpenPre  hi Pmenu ctermbg=NONE
-            au User CocExplorerOpenPre  hi Cursorline ctermbg=238
             au User CocExplorerQuitPost hi Pmenu ctermbg=238
-            au User CocExplorerQuitPost hi Cursorline ctermbg=NONE
 
     " git vim-fugitive
         " gl 打开 git status列表

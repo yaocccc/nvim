@@ -14,9 +14,9 @@
         snoremap <BS> <c-g>"_dd
 
     " S保存 Q退出 R重载vim配置 jj=esc
-        nnoremap S :w<CR>
-        nnoremap Q :q!<CR>
-        nnoremap R :source ~/.config/nvim/init.vim<CR>
+        nnoremap <silent> S :w<CR>
+        nnoremap <silent> Q :q!<CR>
+        nnoremap <silent> R :source ~/.config/nvim/init.vim<CR>
         nnoremap Y y$
         inoremap jj <Esc>
 
@@ -55,14 +55,14 @@
         nnoremap <s-right> vl
 
     " 快速跳转
-        noremap <leader>h 8h
-        noremap <leader>l 8l
-        noremap <leader>j :+15<CR>
-        noremap <leader>k :-16<CR>
-        noremap <leader><Left> 8h
-        noremap <leader><Right> 8l
-        noremap <leader><Down> :+15<CR>
-        noremap <leader><Up> :-16<CR>
+        noremap <silent> <leader>h 8h
+        noremap <silent> <leader>l 8l
+        noremap <silent> <leader>j :+15<CR>
+        noremap <silent> <leader>k :-16<CR>
+        noremap <silent> <leader><Left> 8h
+        noremap <silent> <leader><Right> 8l
+        noremap <silent> <leader><Down> :+15<CR>
+        noremap <silent> <leader><Up> :-16<CR>
 
     " 复制全文
         nnoremap <leader>y :%yank<CR>
@@ -76,14 +76,14 @@
         inoremap <c-u> <Esc>cc
 
     " alt kj 上下移动行
-        nnoremap ∆ :m .+1<CR>
-        nnoremap ˚ :m .-2<CR>
-        inoremap ∆ <Esc>:m .+1<CR>i
-        inoremap ˚ <Esc>:m .-2<CR>i
-        xnoremap ∆ :m '>+1<CR>gv
-        xnoremap ˚ :m '<-2<CR>gv
-        snoremap ∆ <c-g>:m '>+1<CR>gv
-        snoremap ˚ <c-g>:m '<-2<CR>gv
+        nnoremap <silent> ∆ :m .+1<CR>
+        nnoremap <silent> ˚ :m .-2<CR>
+        inoremap <silent> ∆ <Esc>:m .+1<CR>i
+        inoremap <silent> ˚ <Esc>:m .-2<CR>i
+        xnoremap <silent> ∆ :m '>+1<CR>gv
+        xnoremap <silent> ˚ :m '<-2<CR>gv
+        snoremap <silent> ∆ <c-g>:m '>+1<CR>gv
+        snoremap <silent> ˚ <c-g>:m '<-2<CR>gv
 
     " alt + key 跳转
         " H 跳转到 句首
@@ -203,11 +203,27 @@
 
 " buffers
     " 跳转到下个
-        nnoremap sn :bn<CR>
-        nnoremap T  :b#<CR>
+        nnoremap <silent> sn :bn<CR>
+        nnoremap <silent> T  :b#<CR>
     " 跳转到上个
-        nnoremap sp :bp<CR>
+        nnoremap <silent> sp :bp<CR>
     " 和上一个切换
-        nnoremap ss :bn<CR>
+        nnoremap <silent> ss :bn<CR>
     " 删除当前buffer
-        nnoremap sd :bd<CR>
+        nnoremap <silent> sd :bd<CR>
+
+    " 一键切换tab
+        nnoremap <silent> <F12> :call Swithtab()<CR>
+        function! Swithtab()
+            if &shiftwidth == 4
+                set shiftwidth=2
+                set softtabstop=2
+                set tabstop=2
+            else
+                set shiftwidth=4
+                set softtabstop=4
+                set tabstop=4
+            endif
+            echo printf('&shiftwidth: %d', &shiftwidth)
+        endfunction
+

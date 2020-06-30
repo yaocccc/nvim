@@ -89,26 +89,3 @@
     " statusline & tabline
         set laststatus=2
         set showtabline=2
-        set statusline=[%{mode()}]%{len(fugitive#head())?'['.fugitive#head().GitStatus().']':''}[%{Err_num()}][%P\ %L\ %l]%=%f
-        set tabline=F:%{Buf_Names()}
-        function! Err_num()
-            let info = get(b:, 'coc_diagnostic_info', {})
-            return 'E' . get(info, 'error', 0)
-        endfunction
-        function! Buf_Names()
-            let str = ''
-            let i = 1
-            while i <= bufnr('$')
-                if bufexists(i) && buflisted(i)
-                    let name = (len(fnamemodify(bufname(i), ':t')) ? fnamemodify(bufname(i), ':t') : 'new') . (getbufvar(i, '&mod')?'+':'')
-                    let str .= i == bufnr('%') ? ('[' . name . ']') : (' ' . name . ' ')
-                endif
-                let i += 1
-            endwhile
-            return str
-        endfunction
-        function! GitStatus()
-            let [a, m, r] = GitGutterGetHunkSummary()
-            return printf(' +%d ~%d -%d', a, m, r)
-        endfunction
-
