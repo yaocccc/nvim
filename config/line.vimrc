@@ -23,7 +23,7 @@ func! SetTabline()
     let i = 1
     while i <= bufnr('$')
         if bufexists(i) && buflisted(i)
-            let name = (len(fnamemodify(bufname(i), ':t')) ? fnamemodify(bufname(i), ':t') : '未命名') . (getbufvar(i, '&mod')?'+':'')
+            let name = (len(fnamemodify(bufname(i), ':t')) ? fnamemodify(bufname(i), ':t') : '[未命名]') . (getbufvar(i, '&mod')?'+':'')
             let &tabline .= i == bufnr('%') ? (' %3* ' . name . ' %*') : (' %2* ' . name . ' %*')
         endif
         let i += 1

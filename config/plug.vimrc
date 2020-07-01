@@ -119,7 +119,7 @@
             imap <silent> <F7> <Plug>MarkdownPreview
             nmap <silent> <F8> <Plug>StopMarkdownPreview
             imap <silent> <F8> <Plug>StopMarkdownPreview
-            nmap <c-p> :!markdown-pdf %
+            nmap <c-p> :!markdown-pdf -s ~/.config/nvim/package/css/gitlab.css %
 
     " fzf
         " maps
