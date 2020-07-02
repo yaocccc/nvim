@@ -1,4 +1,4 @@
-let g:currentmode={ "n": "NORMAL", "v": "VISUAL", "V": "V-LINE", "\<c-v>": "V-BLOCK", "i": "INSERT", "R": "R", "r": "R", "Rv": "V·REPLACE", "c": "COMMAND", "s": "SELECT", "t": "TERMINAL"}
+let g:currentmode={ "n": "NORMAL", "v": "VISUAL", "V": "V-LINE", "\<c-v>": "V-CODE", "i": "INSERT", "R": "R", "r": "R", "Rv": "V-REPLACE", "c": "CMD-IN", "s": "SELECT", "S": "SELECT", "t": "TERMINAL"}
 
 au BufEnter,BufWritePost,TextChanged,TextChangedI * call SetTabline()
 set statusline=%1*\ %{g:currentmode[mode()]}\ %*\ %2*\ %{Err_num()}\ %*\ %2*%{GitStatus()}%*%=\ %1*\ %P\ %L\ %l\ %*
@@ -28,5 +28,8 @@ func! SetTabline()
         endif
         let i += 1
     endwhile
-    let &tabline .= '%=%1* %f %*'
+    let path = substitute(expand('%'), $PWD . '/', '', '')
+    let path = substitute(path, '/Users/chenyc', '~', '')
+    let path = len(path) ? path : '[未命名]'
+    let &tabline .= ' %<%=%1* ' . path .' %*'
 endf

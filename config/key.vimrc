@@ -4,10 +4,14 @@
         map t <nop>
         map ; :
         map ! :!
-        nnoremap , @@
         nnoremap + <c-a>
         nnoremap _ <c-x>
+        nnoremap , @@
 
+    " <F5> 粘贴 q 寄存器中的内容 || <F6> 保存 内容到 q 寄存器
+        nnoremap <F5> o<c-r>q
+        nnoremap <F6> ^"qy$dd
+        
     " 只删除 不复制
         nnoremap x "_x
         xnoremap <BS> "_d
@@ -54,15 +58,19 @@
         nnoremap <s-left> vh
         nnoremap <s-right> vl
 
-    " 快速跳转
-        noremap <silent> <leader>h 8h
-        noremap <silent> <leader>l 8l
-        noremap <silent> <leader>j :+15<CR>
-        noremap <silent> <leader>k :-16<CR>
-        noremap <silent> <leader><Left> 8h
-        noremap <silent> <leader><Right> 8l
-        noremap <silent> <leader><Down> :+15<CR>
-        noremap <silent> <leader><Up> :-16<CR>
+    " CTRL SHIFT + 方向 快速跳转
+        nnoremap <c-s-up>    10k
+        nnoremap <c-s-down>  10j
+        nnoremap <c-s-left>  ^
+        nnoremap <c-s-right> $
+        inoremap <c-s-up>    <c-r>=Exec('norm! k')<CR>
+        inoremap <c-s-down>  <c-r>=Exec('norm! j')<CR>
+        inoremap <c-s-left>  <c-r>=Exec('norm! ^')<CR>
+        inoremap <c-s-right> <c-r>=Exec('norm! $')<CR>
+        vnoremap <c-s-up>    10k
+        vnoremap <c-s-down>  10j
+        vnoremap <c-s-left>  ^
+        vnoremap <c-s-right> $
 
     " 复制全文
         nnoremap <leader>y :%yank<CR>

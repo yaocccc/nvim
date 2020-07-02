@@ -45,6 +45,15 @@
             smap <silent> V <c-g><Plug>(expand_region_shrink)
 
     " coc-vim
+        " CocToggle
+            nnoremap <F4> :call Coc_toggle()<cr>
+            func! Coc_toggle()
+                if g:coc_enabled == 1
+                    :CocDisable
+                else
+                    :CocEnable
+                endif
+            endf
         " 全局插件
             let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-python', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator', 'coc-json', 'coc-go']
         " com-rename
@@ -144,6 +153,6 @@
             let g:VM_maps["Select Cursor Up"]   = '<M-Up>'
             let g:VM_maps["Select l"]           = '<M-Right>'
             let g:VM_maps["Select h"]           = '<M-Left>'
-            let g:VM_maps['Skip Region']        = '≈'
+            let g:VM_maps['Remove Region']      = 'q'
             let g:VM_maps['Increase']           = '+'
             let g:VM_maps['Decrease']           = '-'

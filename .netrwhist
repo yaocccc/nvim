@@ -1,3 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/chenyc/infoloop/tianting/model/models'
+let g:netrw_dirhist_5='/Users/chenyc/infoloop/tianting/model'
+let g:netrw_dirhist_4='/Users/chenyc/infoloop/tianting/model/models/Sku'
+let g:netrw_dirhist_3='/Users/chenyc/infoloop/tianting/model/models'
+let g:netrw_dirhist_2='/Users/chenyc/infoloop/tianting/model'
 let g:netrw_dirhist_1='/Users/chenyc/infoloop/tianting/client-service'
