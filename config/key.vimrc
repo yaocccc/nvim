@@ -7,10 +7,6 @@
         nnoremap + <c-a>
         nnoremap _ <c-x>
         nnoremap , @@
-
-    " <F5> 粘贴 q 寄存器中的内容 || <F6> 保存 内容到 q 寄存器
-        nnoremap <F5> o<c-r>q
-        nnoremap <F6> ^"qy$dd
         
     " 只删除 不复制
         nnoremap x "_x
@@ -122,7 +118,6 @@
         " r 修改当前词
         nnoremap ® ciw
 
-
     " s v模式下  /注释
     " n  模式下 ?? 注释
     " 实现原理: 光标所在行的第一位  是/则代表 当前已注释 则将 ^// 替换为空
@@ -159,21 +154,6 @@
         xnoremap ] di[]<esc>P
         xnoremap ( di()<esc>P
         xnoremap ) di()<esc>P
-
-    " F5 一键运行js ts代码
-        map <F5> :call RunFile()<CR>
-        func!RunFile()
-            exec "w"
-            if &filetype == 'javascript'
-                exec 'w !node %'
-            elseif &filetype == 'typescript'
-                exec 'w !ts-node %'
-            elseif &filetype == 'python'
-                exec 'w !python %'
-            elseif &filetype == 'go'
-                exec 'w !go run %'
-            endif
-        endfunc
 
 " windows
     " su 新左右窗口 SU新上下窗口 sc关闭当前 so关闭其他 s方向切换
@@ -219,19 +199,3 @@
         nnoremap <silent> ss :bn<CR>
     " 删除当前buffer
         nnoremap <silent> sd :bd<CR>
-
-    " 一键切换tab
-        nnoremap <silent> <F12> :call Swithtab()<CR>
-        function! Swithtab()
-            if &shiftwidth == 4
-                set shiftwidth=2
-                set softtabstop=2
-                set tabstop=2
-            else
-                set shiftwidth=4
-                set softtabstop=4
-                set tabstop=4
-            endif
-            echo printf('&shiftwidth: %d', &shiftwidth)
-        endfunction
-
