@@ -118,14 +118,6 @@
         " r 修改当前词
         nnoremap ® ciw
 
-    " s v模式下  /注释
-    " n  模式下 ?? 注释
-    " 实现原理: 光标所在行的第一位  是/则代表 当前已注释 则将 ^// 替换为空
-    "           光标所在行的第一位不是/则代表 当前为注释 则将 ^   替换为//
-        snoremap <expr>/ (getline('.')[0]=='/')?'<c-g>:s/^\/\//<CR>:set nohlsearch<CR>':'<c-g>:s/^/\/\//<CR>:set nohlsearch<CR>'
-        xnoremap <expr>/ (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
-        nnoremap <expr>?? (getline('.')[0]=='/')?':s/^\/\//<CR>:set nohlsearch<CR>':':s/^/\/\//<CR>:set nohlsearch<CR>'
-
     " 光标在{}上时折叠{}，否则切换折叠
     " 实现原理: 光标所在位如果为{ 则折叠 {}，如果所在位为折叠，则展开
         nnoremap <expr>-- foldclosed(line('.'))*((getline('.')[col('.')-1]=='{')+(getline('.')[col('.')-1]=='}'))<0?'zfa{':'za'
