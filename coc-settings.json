@@ -24,7 +24,7 @@
         "presets": {
             "floating": {
                 "position": "floating",
-                "floating-width": 80,
+                "floating-width": 60,
                 "floating-position": "center"
             },
             "simplify": {

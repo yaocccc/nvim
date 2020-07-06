@@ -1,4 +1,4 @@
-let g:currentmode={ "n": "NORMAL", "v": "VISUAL", "V": "V-LINE", "\<c-v>": "V-CODE", "i": "INSERT", "R": "R", "r": "R", "Rv": "V-REPLACE", "c": "CMD-IN", "s": "SELECT", "S": "SELECT", "t": "TERMINAL"}
+let g:currentmode={ "n": "NORMAL", "v": "VISUAL", "V": "V-LINE", "\<c-v>": "V-CODE", "i": "INSERT", "R": "R", "r": "R", "Rv": "V-REPLACE", "c": "CMD-IN", "s": "SELECT", "S": "SELECT", "\<c-s>": "SELECT", "t": "TERMINAL"}
 
 au BufEnter,BufWritePost,TextChanged,TextChangedI * call SetTabline()
 set statusline=%1*\ %{g:currentmode[mode()]}\ %*\ %2*\ %{Err_num()}\ %*\ %2*%{GitStatus()}%*%=\ %1*\ %P\ %L\ %l\ %*

@@ -16,7 +16,6 @@
         " 括号高亮
             Plug 'luochen1990/rainbow'
         " markdown
-        " npm install -g markdown-pdf
             Plug 'iamcco/mathjax-support-for-mkdp'
             Plug 'iamcco/markdown-preview.vim'
         " fzf
@@ -67,10 +66,10 @@
             inoremap <expr> <c-space> coc#refresh()
             inoremap <expr> <CR>      pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
         " 退格时也检查补全
-            function! s:check_back_space() abort
+            func! s:check_back_space() abort
                 let col = col('.') - 1
                 return !col || getline('.')[col - 1] =~# '\s'
-            endfunction
+            endf
         " Use `[g` and `]g` to navigate diagnostics
             nmap <silent> [g <Plug>(coc-diagnostic-prev)
             nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -79,13 +78,13 @@
             nmap <silent> gy <Plug>(coc-type-definition)
         " K 显示文档
             nnoremap <silent> K :call <SID>show_documentation()<CR>
-            function! s:show_documentation()
+            func! s:show_documentation()
                 if (index(['vim','help'], &filetype) >= 0)
                     execute 'h '.expand('<cword>')
                 else
                     call CocAction('doHover')
                 endif
-            endfunction
+            endf
         " coc-translator 显示翻译
             nmap <silent> <Leader>m <Plug>(coc-translator-p)
             xmap <silent> <Leader>m <Plug>(coc-translator-pv)
@@ -128,7 +127,6 @@
             imap <silent> <F7> <Plug>MarkdownPreview
             nmap <silent> <F8> <Plug>StopMarkdownPreview
             imap <silent> <F8> <Plug>StopMarkdownPreview
-            nmap <c-p> :!markdown-pdf -s ~/.config/nvim/package/css/gitlab.css %
 
     " fzf
         " maps
