@@ -45,10 +45,6 @@
         set shiftwidth=4
         set smarttab
         set expandtab
-    " markdown 专用缩进
-        au BufEnter *.md,*.yml setlocal shiftwidth=2
-        au BufEnter *.md,*.yml setlocal softtabstop=2
-        au BufEnter *.md,*.yml setlocal tabstop=2
     " 不自动备份
         set nobackup
         set noswapfile

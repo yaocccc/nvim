@@ -1,4 +1,7 @@
 {
+    "snippets": {
+        "userSnippetsDirectory": "$NVIM/snippets"
+    },
     "pairs": {
         "enableCharacters": ["(", "[", "{", "'", "\"", "`"],
         "enableBackspace": true
@@ -24,7 +27,7 @@
         "presets": {
             "floating": {
                 "position": "floating",
-                "floating-width": 60,
+                "floating-width": 80,
                 "floating-position": "center"
             },
             "simplify": {

@@ -1,7 +1,6 @@
 " common
     " 设置s t 无效 ;=: ,重复上一次宏操作
         map s <nop>
-        map t <nop>
         map ; :
         map ! :!
         nnoremap + <c-a>
@@ -68,8 +67,8 @@
         vnoremap <c-s-left>  ^
         vnoremap <c-s-right> $
 
-    " 复制全文
-        nnoremap <leader>y :%yank<CR>
+    " 选中全文
+        nnoremap å ggVG
 
     " 0和tab 在 () 和 行首行尾切换
         nnoremap <expr><tab> len(getline('.')) == col('.') ? '^': '$'
@@ -184,10 +183,21 @@
 " buffers
     " 跳转到下个
         nnoremap <silent> sn :bn<CR>
-        nnoremap <silent> T  :b#<CR>
     " 跳转到上个
         nnoremap <silent> sp :bp<CR>
     " 和上一个切换
         nnoremap <silent> ss :bn<CR>
     " 删除当前buffer
-        nnoremap <silent> sd :bd<CR>
+        nnoremap <silent> sd :call <SID>delbuf()<CR>
+
+        func s:delbuf()
+            let count = 0
+            for i in range(1, bufnr('$'))
+                let count += bufexists(i) && buflisted(i) ? 1 : 0
+                if count > 1
+                    :bd
+                    return
+                endif
+            endfor
+            :q
+        endf
