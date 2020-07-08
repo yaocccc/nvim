@@ -44,7 +44,23 @@ func! SetTabline()
 endf
 
 func! Clicktab(minwid, clicks, button, modifiers) abort
+    let timerID = get(s:, 'clickTabTimer', 0)
     if a:clicks == 1 && a:button is# 'l'
-        silent execute 'buffer' a:minwid
+        if timerID == 0
+            let s:clickTabTimer = timer_start(200, 'SwitchTab')
+            let timerID = s:clickTabTimer
+        endif
+    elseif a:clicks == 2 && a:button is# 'l'
+        silent execute 'bd' a:minwid
+        let s:clickTabTimer = 0
+        call timer_stop(timerID)
+        call SetTabline()
     endif
+    let s:minwid = a:minwid
+    let s:timerID = timerID
+    func! SwitchTab(id)
+        silent execute 'buffer' s:minwid
+        let s:clickTabTimer = 0
+        call timer_stop(s:timerID)
+    endf
 endf

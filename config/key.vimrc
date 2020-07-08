@@ -191,13 +191,6 @@
         nnoremap <silent> sd :call <SID>delbuf()<CR>
 
         func s:delbuf()
-            let count = 0
-            for i in range(1, bufnr('$'))
-                let count += bufexists(i) && buflisted(i) ? 1 : 0
-                if count > 1
-                    :bd
-                    return
-                endif
-            endfor
-            :q
+            :bd
+            call SetTabline()
         endf
