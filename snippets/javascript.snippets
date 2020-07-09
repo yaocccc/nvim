@@ -383,3 +383,12 @@ snippet ${
 
 snippet aw "await"
 	await ${0:${VISUAL}}
+
+snippet router "tianting router V2"
+	router.${1}('${2}', async function(next) {
+		await next;
+		const { enterpriseId } = this.token;
+		${3}
+	});
+
+

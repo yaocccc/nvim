@@ -1,6 +1,6 @@
 " 一键运行文件
     command! Run call <SID>runFile()
-    func s:runFile()
+    func! s:runFile()
         exec "w"
         if &filetype == 'javascript'
             exec 'w !node %'
@@ -16,7 +16,7 @@
 
 " 重设tab长度
     command! -nargs=* SetTab call <SID>switchTab(<q-args>)
-    func s:switchTab(tab_len)
+    func! s:switchTab(tab_len)
         if !empty(a:tab_len)
             let &shiftwidth = a:tab_len
             let &softtabstop= a:tab_len
@@ -40,7 +40,7 @@
     nnoremap <silent> ?? :<c-u>call <SID>COM(line("."), line("."))<CR>
     xnoremap <silent> /  :<c-u>call <SID>COM(line("'<"), line("'>"))<CR>
     snoremap <silent> /  <c-g>:<c-u>call <SID>COM(line("'<"), line("'>"))<CR>
-    func s:COM(num1, num2)
+    func! s:COM(num1, num2)
         let com = s:getCom()
         let firstC = getline(a:num1)[0]
         for num in range(a:num1, a:num2)
@@ -49,7 +49,7 @@
         endfor
     endf
 
-    func s:getCom()
+    func! s:getCom()
         if expand('%:e') == 'vim' || expand('%:e') == 'vimrc'
             return '"'
         elseif expand('%:e') == 'zsh' || expand('%:e') == 'zshrc'
@@ -64,7 +64,7 @@
     nmap cs  <Plug>Csurround
     nnoremap <silent> <Plug>Dsurround  :<C-U>call <SID>dosurround(<SID>inputtarget())<CR>
     nnoremap <silent> <Plug>Csurround  :<C-U>call <SID>changesurround()<CR>
-    func s:getchar()
+    func! s:getchar()
         let c = getchar()
         if c =~ '^\d\+$'
             let c = nr2char(c)
@@ -72,7 +72,7 @@
         return c
     endf
 
-    func s:inputtarget()
+    func! s:inputtarget()
         let c = s:getchar()
         while c =~ '^\d\+$'
             let c .= s:getchar()
@@ -87,7 +87,7 @@
         endif
     endf
 
-    func s:inputreplacement()
+    func! s:inputreplacement()
         let c = s:getchar()
         if c == " "
             let c .= s:getchar()
@@ -99,25 +99,25 @@
         endif
     endf
 
-    func s:beep()
+    func! s:beep()
         exe "norm! \<Esc>"
         return ""
     endf
 
-    func s:reindent()
+    func! s:reindent()
         if exists("b:surround_indent") ? b:surround_indent : (!exists("g:surround_indent") || g:surround_indent)
             silent norm! '[=']
         endif
     endf
 
-    func s:wrapreg(reg,char,removed,special)
+    func! s:wrapreg(reg,char,removed,special)
         let orig = getreg(a:reg)
         let type = substitute(getregtype(a:reg),'\d\+$','','')
         let new = s:wrap(orig,a:char,type,a:removed,a:special)
         call setreg(a:reg,new,type)
     endf
 
-    func s:wrap(string,char,type,removed,special)
+    func! s:wrap(string,char,type,removed,special)
         let keeper = a:string
         let newchar = a:char
         let s:input = ""
@@ -290,7 +290,7 @@
         return keeper
     endf
 
-    func s:dosurround(...)
+    func! s:dosurround(...)
         let scount = v:count1
         let char = (a:0 ? a:1 : s:inputtarget())
         let spc = ""
@@ -389,7 +389,7 @@
             silent norm! cc
         endif
     endf
-    func s:changesurround(...)
+    func! s:changesurround(...)
         let a = s:inputtarget()
         if a == ""
             return s:beep()

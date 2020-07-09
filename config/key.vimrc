@@ -190,7 +190,7 @@
     " 删除当前buffer
         nnoremap <silent> sd :call <SID>delbuf()<CR>
 
-        func s:delbuf()
+        func! s:delbuf()
             :bd
             call SetTabline()
         endf
