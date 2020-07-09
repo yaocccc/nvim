@@ -36,7 +36,7 @@
         set t_vb=""
         set hidden
     " 不换行
-        set nowrap
+    "    set nowrap
     " 缩进对齐
         set autoindent
         set smartindent

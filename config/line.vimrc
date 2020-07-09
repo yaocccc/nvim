@@ -1,7 +1,7 @@
 augroup lines
     au!
     au VimEnter * call SetStatusline()
-    au VimEnter * call <SID>setEveryMinuteTimer()
+    au VimEnter * call SetTablineTimer()
     au BufEnter,BufWritePost,TextChanged,TextChangedI * call SetTabline()
 augroup END
 
@@ -11,7 +11,7 @@ hi User2 ctermbg=238
 hi User3 ctermbg=25
 
 func! SetStatusline(...)
-    let &statusline = '%1* %{g:currentmode[mode()]} %* %2* %{Err_num()} %* %2*%{GitStatus()}%*%=%1* %{GetPathName()} %* %1* %P %L %l %*'
+    let &statusline = '%1* %{g:currentmode[mode()]} %* %2* %{Err_num()} %* %2*%{GitStatus()}%*%=%1* %{GetPathName()} %* %1* %P %L %v %l %*'
     func! Err_num()
         let info = get(b:, 'coc_diagnostic_info', {})
         return 'E' . get(info, 'error', 0)
@@ -23,7 +23,7 @@ func! SetStatusline(...)
     endf
     func! GetPathName()
         let name = substitute(expand('%'), $PWD . '/', '', '')
-        let name = substitute(name, '/Users/chenyc', '~', '')
+        let name = substitute(name, $HOME, '~', '')
         let name = len(name) ? name : '[未命名]'
         return name
     endf
@@ -42,7 +42,6 @@ func! SetTabline(...)
         let i += 1
     endwhile
     let &tabline .= ' %<%=%1* %{strftime("周%a %p%I:%M")} %*'
-    return ''
 endf
 
 func! Clicktab(minwid, clicks, button, modifiers) abort
@@ -67,7 +66,7 @@ func! Clicktab(minwid, clicks, button, modifiers) abort
     endf
 endf
 
-func! s:setEveryMinuteTimer()
+func! SetTablineTimer()
     let remain_second = 60 - strftime("%S")
     call timer_start(remain_second * 1000, 'SetTablineTimerAndSetTabline')
     func! SetTablineTimerAndSetTabline(...)
