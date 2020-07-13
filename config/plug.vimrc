@@ -34,8 +34,6 @@
         " GoUpdateBinaries
             Plug 'fatih/vim-go'
             Plug 'pangloss/vim-javascript'
-
-            Plug 'brooth/far.vim'
     call plug#end()
 
 " Plug Setting
