@@ -22,7 +22,7 @@
         "enableJavascript": true
     },
     "explorer": {
-        "icon.enableNerdfont": false,
+        "icon.enableNerdfont": true,
         "floating.border.title": "",
         "presets": {
             "floating": {

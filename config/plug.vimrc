@@ -21,18 +21,21 @@
         " fzf
         " brew install the_silver_searcher
         " brew install fd
+        " brew install bat
         " brew install fzf
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'
         " 显示缩进
             Plug 'Yggdroot/indentLine'
-        " 多游标
+        " 多光标
             Plug 'mg979/vim-visual-multi', {'branch': 'master'}
         " lsp + hl
         " npm i js-beautify -g
         " GoUpdateBinaries
             Plug 'fatih/vim-go'
             Plug 'pangloss/vim-javascript'
+
+            Plug 'brooth/far.vim'
     call plug#end()
 
 " Plug Setting
@@ -134,7 +137,7 @@
             nnoremap <silent> <c-a> :Ag<CR>
             nnoremap <silent> <c-t> :Files<CR>
             nnoremap <silent> <c-h> :History<CR>
-            nnoremap <c-l> :Lines<CR>
+            nnoremap <silent> <c-l> :Lines<CR>
 
     " 显示缩进线
             let g:indentLine_char_list = ['|', '¦']

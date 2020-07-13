@@ -69,6 +69,7 @@
 
     " 选中全文
         nnoremap å ggVG
+        nnoremap <leader>y :%yank<CR>
 
     " 0和tab 在 () 和 行首行尾切换
         nnoremap <expr><tab> len(getline('.')) == col('.') ? '^': '$'
@@ -89,14 +90,6 @@
         snoremap <silent> ˚ <c-g>:m '<-2<CR>gv
 
     " alt + key 跳转
-        " H 跳转到 句首
-        inoremap ˙ <c-r>=Exec('norm! 0')<CR>
-        " L 跳转到 句尾
-        inoremap ¬ <Esc>A
-        " w 跳转到 上个词首
-        inoremap ∑ <c-r>=Exec('norm! w')<CR>
-        " b 跳转到 下个词首
-        inoremap ∫ <c-r>=Exec('norm! b')<CR>
         " d 修改当前词
         inoremap ∂ <Esc>ciw
         inoremap ® <Esc>ciw
@@ -104,14 +97,6 @@
         inoremap ø <Esc>o
         " O 往上新增行
         inoremap Ø <Esc>O
-        " H 跳转到 句首
-        nnoremap ˙ I
-        " L 跳转到 句尾
-        nnoremap ¬ A
-        " w 跳转到 上个词首
-        nnoremap ∑ <Right>wi
-        " b 跳转到 下个词首
-        nnoremap ∫ bi
         " d 删除当前词
         nnoremap ∂ diw
         " r 修改当前词
@@ -189,7 +174,6 @@
         nnoremap <silent> ss :bn<CR>
     " 删除当前buffer
         nnoremap <silent> sd :call <SID>delbuf()<CR>
-
         func! s:delbuf()
             :bd
             call SetTabline()

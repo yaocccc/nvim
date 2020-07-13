@@ -1,5 +1,21 @@
-snippet un "undefined" e
-undefined
+snippet un "undefined"
+	undefined
+
+snippet terr "err~"
+	this.status = ${1:404};
+	this.body = {
+		message: '${2}'
+	};
+	return;
+
+snippet tbody "body~"
+	this.status = ${1:201};
+	this.body = {
+		code: 0,
+		data: ${2},
+		desc: 'ok',
+		detail: []
+	};
 
 snippet proto
 	${1:class_name}.prototype.${2:method_name} = function(${3}) {
