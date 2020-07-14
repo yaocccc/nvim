@@ -17,6 +17,9 @@ func! SetStatusline(...)
         return 'E' . get(info, 'error', 0)
     endf
     func! GitStatus()
+        if get(g:, 'gitgutter_enabled', 0) == 0
+            return ''
+        endif
         let head = fugitive#head()
         let [a, m, r] = GitGutterGetHunkSummary()
         return len(head) ? printf(' %s +%d ~%d -%d ', head, a, m, r) : ''
