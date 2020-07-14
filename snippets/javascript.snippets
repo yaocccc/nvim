@@ -1,6 +1,13 @@
 snippet un "undefined"
 	undefined
 
+snippet trouter "router~"
+	router.${1}('${2}', async function(next) {
+		await next;
+		const { enterpriseId } = this.token;
+		${3}
+	});
+
 snippet terr "err~"
 	this.status = ${1:404};
 	this.body = {
@@ -400,11 +407,5 @@ snippet ${
 snippet aw "await"
 	await ${0:${VISUAL}}
 
-snippet router "tianting router V2"
-	router.${1}('${2}', async function(next) {
-		await next;
-		const { enterpriseId } = this.token;
-		${3}
-	});
 
 

@@ -1,6 +1,6 @@
 " common
     " 空格作为leader
-        let mapleader="z"
+        let mapleader=" "
     " 不退出执行cmd
         fun! Exec(cmd)
             exe a:cmd
@@ -24,6 +24,8 @@
         set incsearch
         set ignorecase
         set smartcase
+    " 按键延迟
+        set timeoutlen=400
     " 设置正常删除 光标穿越行
         set backspace=indent,eol,start
         set whichwrap+=<,>,h,

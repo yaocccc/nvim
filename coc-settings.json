@@ -24,6 +24,7 @@
     "explorer": {
         "icon.enableNerdfont": true,
         "floating.border.title": "",
+        "openAction.strategy": "sourceWindow",
         "presets": {
             "floating": {
                 "position": "floating",

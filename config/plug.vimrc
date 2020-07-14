@@ -16,7 +16,6 @@
         " 括号高亮
             Plug 'luochen1990/rainbow'
         " markdown
-            Plug 'iamcco/mathjax-support-for-mkdp'
             Plug 'iamcco/markdown-preview.vim'
         " fzf
         " brew install the_silver_searcher

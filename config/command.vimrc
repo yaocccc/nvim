@@ -1,5 +1,8 @@
 " 一键运行文件
     command! Run call <SID>runFile()
+    noremap <F5> :Run<CR>
+    inoremap <F5> <ESC>:Run<CR>
+
     func! s:runFile()
         exec "w"
         if &filetype == 'javascript'
@@ -37,9 +40,10 @@
 
 
 " 快速注释
-    nnoremap <silent> ?? :<c-u>call <SID>COM(line("."), line("."))<CR>
+    nnoremap <silent> // :<c-u>call <SID>COM(line("."), line("."))<CR>
     xnoremap <silent> /  :<c-u>call <SID>COM(line("'<"), line("'>"))<CR>
     snoremap <silent> /  <c-g>:<c-u>call <SID>COM(line("'<"), line("'>"))<CR>
+
     func! s:COM(num1, num2)
         let com = s:getCom()
         let firstC = getline(a:num1)[0]
@@ -64,6 +68,7 @@
     nmap cs  <Plug>Csurround
     nnoremap <silent> <Plug>Dsurround  :<C-U>call <SID>dosurround(<SID>inputtarget())<CR>
     nnoremap <silent> <Plug>Csurround  :<C-U>call <SID>changesurround()<CR>
+
     func! s:getchar()
         let c = getchar()
         if c =~ '^\d\+$'
@@ -389,6 +394,7 @@
             silent norm! cc
         endif
     endf
+
     func! s:changesurround(...)
         let a = s:inputtarget()
         if a == ""

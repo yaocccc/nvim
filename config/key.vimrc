@@ -17,11 +17,11 @@
         nnoremap <silent> Q :q!<CR>
         nnoremap <silent> R :source ~/.config/nvim/init.vim<CR>
         nnoremap Y y$
-        inoremap jj <Esc>
+        inoremap jj <Esc>l
 
     " 重写Shift + 左右
         xnoremap <s-right> e
-        imap <s-right> <esc>ea
+        inoremap <s-right> <esc>ea
 
     " SELECT模式快捷键
         snoremap y <c-g>y
@@ -68,7 +68,7 @@
         vnoremap <c-s-right> $
 
     " 选中全文
-        nnoremap å ggVG
+        nnoremap <m-a> ggVG
         nnoremap <leader>y :%yank<CR>
 
     " 0和tab 在 () 和 行首行尾切换
@@ -80,27 +80,22 @@
         inoremap <c-u> <Esc>cc
 
     " alt kj 上下移动行
-        nnoremap <silent> ∆ :m .+1<CR>
-        nnoremap <silent> ˚ :m .-2<CR>
-        inoremap <silent> ∆ <Esc>:m .+1<CR>i
-        inoremap <silent> ˚ <Esc>:m .-2<CR>i
-        xnoremap <silent> ∆ :m '>+1<CR>gv
-        xnoremap <silent> ˚ :m '<-2<CR>gv
-        snoremap <silent> ∆ <c-g>:m '>+1<CR>gv
-        snoremap <silent> ˚ <c-g>:m '<-2<CR>gv
+        nnoremap <silent> <m-j> :m .+1<CR>
+        nnoremap <silent> <m-k> :m .-2<CR>
+        inoremap <silent> <m-j> <Esc>:m .+1<CR>i
+        inoremap <silent> <m-k> <Esc>:m .-2<CR>i
+        xnoremap <silent> <m-j> :m '>+1<CR>gv
+        xnoremap <silent> <m-k> :m '<-2<CR>gv
+        snoremap <silent> <m-j> <c-g>:m '>+1<CR>gv
+        snoremap <silent> <m-k> <c-g>:m '<-2<CR>gv
 
-    " alt + key 跳转
-        " d 修改当前词
-        inoremap ∂ <Esc>ciw
-        inoremap ® <Esc>ciw
-        " o 新增行
-        inoremap ø <Esc>o
-        " O 往上新增行
-        inoremap Ø <Esc>O
-        " d 删除当前词
-        nnoremap ∂ diw
-        " r 修改当前词
-        nnoremap ® ciw
+    " alt + key 操作
+        inoremap <m-d> <Esc>ciw
+        inoremap <m-r> <Esc>ciw
+        inoremap <m-o> <Esc>o
+        inoremap <m-O> <Esc>O
+        nnoremap <m-d> diw
+        nnoremap <m-r> ciw
 
     " 光标在{}上时折叠{}，否则切换折叠
     " 实现原理: 光标所在位如果为{ 则折叠 {}，如果所在位为折叠，则展开
