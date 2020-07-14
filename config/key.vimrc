@@ -10,7 +10,7 @@
     " 只删除 不复制
         nnoremap x "_x
         xnoremap <BS> "_d
-        snoremap <BS> <c-g>"_dd
+        snoremap <BS> <c-g>"_d
 
     " S保存 Q退出 R重载vim配置 jj=esc
         nnoremap <silent> S :w<CR>
