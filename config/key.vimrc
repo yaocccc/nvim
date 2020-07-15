@@ -7,6 +7,9 @@
         nnoremap _ <c-x>
         nnoremap , @@
         
+    " c-f = :%s/
+        nnoremap <c-f> :<c-u>%s/
+
     " 只删除 不复制
         nnoremap x "_x
         xnoremap <BS> "_d

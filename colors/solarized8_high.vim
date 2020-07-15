@@ -104,6 +104,9 @@ hi InsertMode ctermfg=37 ctermbg=230 cterm=reverse
 hi ReplaceMode ctermfg=166 ctermbg=230 cterm=reverse
 hi VisualMode ctermfg=162 ctermbg=230 cterm=reverse
 hi CommandMode ctermfg=162 ctermbg=230 cterm=reverse
+hi GitGutterAdd    ctermfg=106
+hi GitGutterChange ctermfg=136
+hi GitGutterDelete ctermfg=160
 if !s:italics
   hi Comment cterm=NONE
 endif

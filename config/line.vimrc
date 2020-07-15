@@ -17,7 +17,7 @@ func! SetStatusline(...)
         return 'E' . get(info, 'error', 0)
     endf
     func! GitStatus()
-        if get(g:, 'gitgutter_enabled', 0) == 0 || get(g:, 'autoloaded_fugitive', 0) == 0
+        if get(g:, 'gitgutter_enabled', 0) == 0 || get(g:, 'loaded_fugitive', 0) == 0
             return ''
         endif
         let head = fugitive#head()
