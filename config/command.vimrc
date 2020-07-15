@@ -461,7 +461,7 @@
             return
         else
             let author    = join(split(lines[5], ' ')[1:], ' ')
-            let timestamp = join(split(lines[7], ' ')[1:], ' ') 
+            let timestamp = join(split(lines[7], ' ')[1:], ' ')
             let commit    = join(split(lines[9], ' ')[1:], ' ')
             let time      = system('date -j -f "%s" "'. timestamp .'" "+%Y-%m-%d %H:%M"')[:15]
             let content   = printf('%s %s ~ %s', author, time, commit)
