@@ -424,7 +424,7 @@
     endf
 
     func! GitLensEnable() abort
-        if g:gitlineEnabled == 1 || !has('nvim-0.3.2') || &filetype is# '' || index(['help', 'nerdtree', 'quickfix', 'tags'], &filetype) is# '-1' || &buftype is# 'terminal' || expand('%:t') is# '.'
+        if g:gitlineEnabled == 1 || &filetype is# '' || index(['help', 'nerdtree', 'quickfix', 'tags'], &filetype) is# '-1' || &buftype is# 'terminal' || expand('%:t') is# '.'
             return
         endif
         call s:setGitLens() 
@@ -466,11 +466,17 @@
             let time      = system('date -j -f "%s" "'. timestamp .'" "+%Y-%m-%d %H:%M"')[:15]
             let content   = printf('%s %s ~ %s', author, time, commit)
         endif
-        call nvim_buf_set_virtual_text(bufnr(''), 1000, line('.') - 1, [['    ' . content, 'GitBlame']], {})
+        if has('nvim-0.3.2')
+            call nvim_buf_set_virtual_text(bufnr(''), 1000, line('.') - 1, [['    ' . content, 'GitBlame']], {})
+        else
+            echo content
+        endif
     endf
 
     func! s:clearGitLens() abort
-        call nvim_buf_clear_highlight(bufnr(''), 1000, 0, -1)
+        if has('nvim-0.3.2')
+            call nvim_buf_clear_highlight(bufnr(''), 1000, 0, -1)
+        endif
     endf
 
     func! s:callSetGitLens() abort
