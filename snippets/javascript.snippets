@@ -9,7 +9,7 @@ snippet trouter "router~"
 	});
 
 snippet terr "err~"
-	this.status = ${1:404};
+	this.status = ${1:406};
 	this.body = {
 		message: '${2}'
 	};
@@ -118,9 +118,6 @@ snippet tryf "try { ... } catch(e) { ... } finally { ... }"
 	} finally {
 		${3:/* be executed regardless of the try / catch result*/}
 	}
-
-snippet terr
-	throw new Error('${1:error message}')
 
 snippet ret
 	return ${0:result};

@@ -11,13 +11,13 @@ hi User2 ctermbg=238
 hi User3 ctermbg=25
 
 func! SetStatusline(...)
-    let &statusline = '%1* %{g:currentmode[mode()]} %* %2* %{Err_num()} %* %2*%{GitStatus()}%*%=%1* %{GetPathName()} %* %1* %P %L %v %l %*'
+    let &statusline = '%1* %{g:currentmode[mode()]} %* %2* %{Err_num()} %* %2*%{GitStatus()}%*%=%1* %{GetPathName()} %* %1* %4P %L %3l %*'
     func! Err_num()
         let info = get(b:, 'coc_diagnostic_info', {})
         return 'E' . get(info, 'error', 0)
     endf
     func! GitStatus()
-        if get(g:, 'gitgutter_enabled', 0) == 0
+        if get(g:, 'gitgutter_enabled', 0) == 0 || get(g:, 'autoloaded_fugitive', 0) == 0
             return ''
         endif
         let head = fugitive#head()
@@ -36,7 +36,7 @@ func! SetTabline(...)
     let &tabline = '%1* BUFFER %*'
     let i = 1
     while i <= bufnr('$')
-        if bufexists(i) && buflisted(i) 
+        if bufexists(i) && buflisted(i)
             let &tabline .= '%' . i . '@Clicktab@'
             let &tabline .= i == bufnr('%') ? ' %3* ' : ' %2* '
             let name = (len(fnamemodify(bufname(i), ':t')) ? fnamemodify(bufname(i), ':t') : '[未命名]') . (getbufvar(i, '&mod')?'+':'')

@@ -30,8 +30,6 @@
             Plug 'mg979/vim-visual-multi', {'branch': 'master'}
         " lsp + hl
         " npm i js-beautify -g
-        " GoUpdateBinaries
-            Plug 'fatih/vim-go'
             Plug 'pangloss/vim-javascript'
     call plug#end()
 
@@ -99,8 +97,8 @@
             nnoremap <silent> gl :Gstatus<CR>
 
     " git gitgutter
-        " leader + g 切换git修改高亮
-            nmap <silent> <c-g> :GitGutterLineHighlightsToggle<CR>
+        " leader + g 切换git修改高亮 && 开启gitlens
+            nmap <silent> <c-g> :GitGutterLineHighlightsToggle<CR>:GitlineToggle<CR>
 
     " js-beautify  npm i js-beautify -g
             let g:javascript_plugin_jsdoc = 1

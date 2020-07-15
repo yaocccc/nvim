@@ -16,7 +16,7 @@
         nnoremap <silent> S :w<CR>
         nnoremap <silent> Q :q!<CR>
         nnoremap <silent> R :source ~/.config/nvim/init.vim<CR>
-        nnoremap Y y$
+        nnoremap Y  y$
         inoremap jj <Esc>l
 
     " 重写Shift + 左右
@@ -32,25 +32,25 @@
         xnoremap p "_dP
 
     " VISUAL SELECT模式 s-tab tab左右缩进"
-        xnoremap < <gv
-        xnoremap > >gv
-        snoremap < <c-g><gv
-        snoremap > <c-g>>gv"
+        xnoremap <       <gv
+        xnoremap >       >gv
+        snoremap <       <c-g><gv
+        snoremap >       <c-g>>gv"
         xnoremap <s-tab> <gv
-        xnoremap <tab> >gv
+        xnoremap <tab>   >gv
         snoremap <s-tab> <c-g><gv
-        snoremap <tab> <c-g>>gv
+        snoremap <tab>   <c-g>>gv
 
     " SHIFT + 方向 选择文本
-        inoremap <s-up> <esc>vk
-        inoremap <s-down> <esc>vj
-        nnoremap <s-up> Vk
-        nnoremap <s-down> Vj
-        xnoremap <s-up> k
-        xnoremap <s-down> j
-        snoremap <s-up> <esc>Vk
-        snoremap <s-down> <esc>Vj
-        nnoremap <s-left> vh
+        inoremap <s-up>    <esc>vk
+        inoremap <s-down>  <esc>vj
+        nnoremap <s-up>    Vk
+        nnoremap <s-down>  Vj
+        xnoremap <s-up>    k
+        xnoremap <s-down>  j
+        snoremap <s-up>    <esc>Vk
+        snoremap <s-down>  <esc>Vj
+        nnoremap <s-left>  vh
         nnoremap <s-right> vl
 
     " CTRL SHIFT + 方向 快速跳转
@@ -134,39 +134,28 @@
         nnoremap sc :close<CR>
         " 仅保留当前window
         nnoremap so :only<CR>
-        " 切换到左
-        nnoremap s<Left> <c-w>h
-        " 切换到右
-        nnoremap s<Right> <c-w>l
-        " 切换到上
+        " 切换到上下左右
         nnoremap s<Up> <c-w>k
-        " 切换到下
         nnoremap s<Down> <c-w>j
-        " 切换到左
-        nnoremap sh <c-w>h
-        " 切换到右
-        nnoremap sl <c-w>l
-        " 切换到上
+        nnoremap s<Left> <c-w>h
+        nnoremap s<Right> <c-w>l
         nnoremap sk <c-w>k
-        " 切换到下
         nnoremap sj <c-w>j
+        nnoremap sh <c-w>h
+        nnoremap sl <c-w>l
         " 窗口大小一致
         nnoremap s= <c-w>=
         " 窗口大小左右变大
         nnoremap s. <c-w>10>
         " 窗口大小左右变小
         nnoremap s, <c-w>10<
-    " sv sh窗口横竖切换
-        nnoremap sh <c-w>t<c-w>H
-        nnoremap sv <c-w>t<c-w>K
 
 " buffers
     " 跳转到下个
+        nnoremap <silent> ss :bn<CR>
         nnoremap <silent> sn :bn<CR>
     " 跳转到上个
         nnoremap <silent> sp :bp<CR>
-    " 和上一个切换
-        nnoremap <silent> ss :bn<CR>
     " 删除当前buffer
         nnoremap <silent> sd :call <SID>delbuf()<CR>
         func! s:delbuf()

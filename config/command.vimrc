@@ -406,3 +406,77 @@
         endif
         call s:dosurround(a,b,a:0 && a:1)
     endf
+
+" Gitline
+    command! GitlineEnable  call GitlineEnable()
+    command! GitlineDisable call GitlineDisable()
+    command! GitlineToggle call GitlineToggle()
+    hi GitBlame ctermfg=8
+    let s:gitlineTimer   = -1
+    let g:gitlineEnabled = 0
+
+    func! GitlineToggle() abort
+        if g:gitlineEnabled == 0
+            call GitlineEnable()
+        else
+            call GitlineDisable()
+        endif
+    endf
+
+    func! GitlineEnable() abort
+        if g:gitlineEnabled == 1 || !has('nvim-0.3.2') || &filetype is# '' || index(['help', 'nerdtree', 'quickfix', 'tags'], &filetype) is# '-1' || &buftype is# 'terminal' || expand('%:t') is# '.'
+            return
+        endif
+        call s:setGitline() 
+        augroup Gitline
+            au!
+            au CursorMoved * call s:callSetGitline()  
+            au InsertEnter * call s:clearGitline()
+            au TermEnter * call s:clearGitline()
+        augroup END
+        let g:gitlineEnabled = 1
+    endf
+
+    func! GitlineDisable()
+        call s:clearGitline()
+        augroup Gitline
+            au!
+        augroup END
+        let g:gitlineEnabled = 0
+    endf
+
+    func! s:setGitline(...) abort
+        call s:clearGitline()
+        call timer_stop(s:gitlineTimer)
+        let s:gitlineTimer = -1
+        let content = ''
+        let cmd     = printf("git --no-pager blame --relative-date -p -L %d,%d -- '%s'", line('.'), line('.'), expand('%:p'))
+        let lines   = split(system(cmd), '\n')
+        let commit_hash = split(lines[0], ' ')[0][:7]
+        if  commit_hash ==# '00000000'
+            let content = 'not commited yet'
+        elseif commit_hash ==# 'fatal:'
+            call GitlineDisable()
+            return
+        else
+            let author    = join(split(lines[5], ' ')[1:], ' ')
+            let timestamp = join(split(lines[7], ' ')[1:], ' ') 
+            let commit    = join(split(lines[9], ' ')[1:], ' ')
+            let time      = system('date -j -f "%s" "'. timestamp .'" "+%Y-%m-%d %H:%M"')[:15]
+            let content   = printf('%s %s ~ %s', author, time, commit)
+        endif
+        call nvim_buf_set_virtual_text(bufnr(''), 1000, line('.') - 1, [['    ' . content, 'GitBlame']], {})
+    endf
+
+    func! s:clearGitline() abort
+        call nvim_buf_clear_highlight(bufnr(''), 1000, 0, -1)
+    endf
+
+    func! s:callSetGitline() abort
+        if s:gitlineTimer == -1
+            let s:gitlineTimer = timer_start(500, function('s:setGitline'), {})
+        else
+            call timer_stop(s:gitlineTimer)
+            let s:gitlineTimer = timer_start(500, function('s:setGitline'), {})
+        endif
+    endf
