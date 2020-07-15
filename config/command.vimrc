@@ -451,7 +451,7 @@
         call timer_stop(s:gitlineTimer)
         let s:gitlineTimer = -1
         let content = ''
-        let cmd     = printf("cd %s && git --no-pager blame --relative-date -p -L %d,%d -- '%s'", expand('%:h'), line('.'), line('.'), expand('%:p'))
+        let cmd     = printf("cd %s && git --no-pager blame --relative-date -p -L %d,%d -- '%s'", expand('%:h'), line('.'), line('.'), expand('%:t'))
         let lines   = split(system(cmd), '\n')
         let commit_hash = split(lines[0], ' ')[0][:7]
         if  commit_hash ==# '00000000'
