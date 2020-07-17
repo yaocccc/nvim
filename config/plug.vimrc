@@ -16,7 +16,7 @@
         " 括号高亮
             Plug 'luochen1990/rainbow'
         " markdown
-            Plug 'iamcco/markdown-preview.vim'
+            Plug 'iamcco/markdown-preview.vim', {'for': ['markdown', 'vim-plug']}
         " fzf
         " brew install the_silver_searcher
         " brew install fd
@@ -30,7 +30,7 @@
             Plug 'mg979/vim-visual-multi', {'branch': 'master'}
         " lsp + hl
         " npm i js-beautify -g
-            Plug 'pangloss/vim-javascript'
+            Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vim-plug']}
     call plug#end()
 
 " Plug Setting

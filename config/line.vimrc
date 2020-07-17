@@ -1,5 +1,6 @@
 augroup lines
     au!
+    au FileType * call s:getGit()
     au VimEnter * call SetStatusline()
     au VimEnter * call SetTablineTimer()
     au BufEnter,BufWritePost,TextChanged,TextChangedI * call SetTabline()
@@ -10,19 +11,27 @@ hi User1 ctermbg=24
 hi User2 ctermbg=238
 hi User3 ctermbg=25
 
+let s:git_head = ''
+func! s:getGit()
+    let head = system(printf('cd %s && git branch', expand('%:h')))
+    let s:git_head = head[0] ==# '*' ? head[2:len(head)-2] : ''
+endf
+
 func! SetStatusline(...)
-    let &statusline = '%1* %{g:currentmode[mode()]} %* %2* %{Err_num()} %* %2*%{GitStatus()}%*%=%1* %{GetPathName()} %* %1* %4P %L %3l %*'
-    func! Err_num()
+    let &statusline = '%1* %{g:currentmode[mode()]} %* %2* %{Err_count()} %* %2*%{GitStatus()}%*%=%1* %{GetPathName()} %* %1* %4P %L %l %*'
+    func! Err_count()
         let info = get(b:, 'coc_diagnostic_info', {})
         return 'E' . get(info, 'error', 0)
     endf
     func! GitStatus()
-        if get(g:, 'gitgutter_enabled', 0) == 0 || get(g:, 'loaded_fugitive', 0) == 0
+        if len(s:git_head) == 0
             return ''
         endif
-        let head = fugitive#head()
+        if get(g:, 'gitgutter_enabled', 0) == 0
+            return printf(' %s ', s:git_head)
+        endif
         let [a, m, r] = GitGutterGetHunkSummary()
-        return len(head) ? printf(' %s +%d ~%d -%d ', head, a, m, r) : ''
+        return printf(' %s +%d ~%d -%d ', s:git_head, a, m, r)
     endf
     func! GetPathName()
         let name = substitute(expand('%'), $PWD . '/', '', '')

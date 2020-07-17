@@ -40,7 +40,7 @@
 
 
 " 快速注释
-    nnoremap <silent> // :<c-u>call <SID>COM(line("."), line("."))<CR>
+    nnoremap <silent> ?? :<c-u>call <SID>COM(line("."), line("."))<CR>
     xnoremap <silent> /  :<c-u>call <SID>COM(line("'<"), line("'>"))<CR>
     snoremap <silent> /  <c-g>:<c-u>call <SID>COM(line("'<"), line("'>"))<CR>
 
