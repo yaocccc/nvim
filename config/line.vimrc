@@ -13,25 +13,26 @@ hi User3 ctermbg=25
 
 let s:git_head = ''
 func! s:getGit()
-    let head = system(printf('cd %s && git branch', expand('%:h')))
+    let head = system(printf('cd %s && git branch | grep "*"', expand('%:h')))
     let s:git_head = head[0] ==# '*' ? head[2:len(head)-2] : ''
 endf
 
 func! SetStatusline(...)
-    let &statusline = '%1* %{g:currentmode[mode()]} %* %2* %{Err_count()} %* %2*%{GitStatus()}%*%=%1* %{GetPathName()} %* %1* %4P %L %l %*'
-    func! Err_count()
+    let &statusline = '%1* %{g:currentmode[mode()]} %* %2* %{GetErrCount()} %* %2*%{GetGitStatus()}%*%=%1* %{GetPathName()} %* %1* %4P %L %l %*'
+    func! GetErrCount()
         let info = get(b:, 'coc_diagnostic_info', {})
         return 'E' . get(info, 'error', 0)
     endf
-    func! GitStatus()
+    func! GetGitStatus()
         if len(s:git_head) == 0
             return ''
         endif
         if get(g:, 'gitgutter_enabled', 0) == 0
             return printf(' %s ', s:git_head)
+        else
+            let [a, m, r] = GitGutterGetHunkSummary()
+            return printf(' %s +%d ~%d -%d ', s:git_head, a, m, r)
         endif
-        let [a, m, r] = GitGutterGetHunkSummary()
-        return printf(' %s +%d ~%d -%d ', s:git_head, a, m, r)
     endf
     func! GetPathName()
         let name = substitute(expand('%'), $PWD . '/', '', '')

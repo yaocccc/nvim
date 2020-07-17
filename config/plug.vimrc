@@ -16,6 +16,7 @@
         " 括号高亮
             Plug 'luochen1990/rainbow'
         " markdown
+            Plug 'tpope/vim-markdown', {'for': ['markdown', 'vim-plug']}
             Plug 'iamcco/markdown-preview.vim', {'for': ['markdown', 'vim-plug']}
         " fzf
         " brew install the_silver_searcher
@@ -52,7 +53,7 @@
                 endif
             endf
         " 全局插件
-            let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-python', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator', 'coc-json', 'coc-go']
+            let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator']
         " com-rename
             nmap <silent> <F2> <Plug>(coc-rename)
         " coc-snippets便携自定义补全文件
@@ -77,7 +78,7 @@
         " K 显示文档
             nnoremap <silent> K :call <SID>show_documentation()<CR>
             func! s:show_documentation()
-                if (index(['vim','help'], &filetype) >= 0)
+                if index(['vim','help'], &filetype) >= 0
                     execute 'h '.expand('<cword>')
                 else
                     call CocAction('doHover')
@@ -121,6 +122,7 @@
 
     " markdown
         " F7开始浏览器预览 F8关闭 c-p 导出为pdf
+            let g:markdown_fenced_languages = ['css', 'js=javascript']
             nmap <silent> <F7> <Plug>MarkdownPreview
             imap <silent> <F7> <Plug>MarkdownPreview
             nmap <silent> <F8> <Plug>StopMarkdownPreview
