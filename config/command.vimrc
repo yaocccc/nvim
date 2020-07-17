@@ -83,11 +83,13 @@
     func! s:changePairs()
         let [left, right] = s:getLR()
         let [left2, right2] = s:getLR()
+        redraw!
         if [left, right] != [0, 0] && [left2, right2] != [0, 0]
             exe 'norm! F' . left . 'r' . left2 . 'f' . right . 'r' . right2
         endif
     endf
     func! s:getLR()
+        echo '-- '
         let c = getchar()
         let c = c =~ '^\d\+$' ? nr2char(c) : ''
         let leftlist = ['(', '[', '{', '<', '"', "\'", '`']
