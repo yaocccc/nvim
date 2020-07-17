@@ -111,9 +111,10 @@
     " 折叠非匹配内容
         nnoremap -/ :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>:set foldmethod=manual<CR><CR>
 
-    " 快速添加pairs
+    " select模式下快速添加pairs
         snoremap ' <c-g>di''<esc>P
         snoremap " <c-g>di""<esc>P
+        snoremap ` <c-g>di``<esc>P
         snoremap { <c-g>di{}<esc>P
         snoremap } <c-g>di{}<esc>P
         snoremap [ <c-g>di[]<esc>P
@@ -122,6 +123,7 @@
         snoremap ) <c-g>di()<esc>P
         xnoremap ' di''<esc>P
         xnoremap " di""<esc>P
+        xnoremap ` di``<esc>P
         xnoremap { di{}<esc>P
         xnoremap } di{}<esc>P
         xnoremap [ di[]<esc>P

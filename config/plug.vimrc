@@ -32,6 +32,10 @@
         " lsp + hl
         " npm i js-beautify -g
             Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vim-plug']}
+
+        " :）
+            Plug 'yaocccc/vim-gitlens'
+            Plug 'yaocccc/vim-lines'
     call plug#end()
 
 " Plug Setting
@@ -97,9 +101,10 @@
         " gl 打开 git status列表
             nnoremap <silent> gl :Gstatus<CR>
 
-    " git gitgutter
-        " leader + g 切换git修改高亮 && 开启gitlens
-            nmap <silent> <c-g> :GitGutterLineHighlightsToggle<CR>:GitLensToggle<CR>
+    " git
+        " c + g 切换git修改高亮 && 开启gitlens
+            " nmap <silent> <c-g> :GitGutterLineHighlightsToggle<CR>
+            nmap <silent> <c-g> :GitLensToggle<CR>
 
     " js-beautify  npm i js-beautify -g
             let g:javascript_plugin_jsdoc = 1
