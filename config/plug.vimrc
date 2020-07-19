@@ -103,8 +103,7 @@
 
     " git
         " c + g 切换git修改高亮 && 开启gitlens
-            nmap <silent> <c-G> :GitGutterLineHighlightsToggle<CR>
-            nmap <silent> <c-g> :GitLensToggle<CR>
+            nmap <silent> <c-g> :GitLensToggle<CR>:GitGutterLineHighlightsToggle<CR>
 
     " js-beautify  npm i js-beautify -g
             let g:javascript_plugin_jsdoc = 1
