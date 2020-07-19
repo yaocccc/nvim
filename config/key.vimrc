@@ -7,8 +7,8 @@
         nnoremap _ <c-x>
         nnoremap , @@
         
-    " c-f = :%s/
-        nnoremap <c-f> :<c-u>%s/
+    " c-s = :%s/
+        nnoremap <c-s> :<c-u>%s///gc<left><left><left><left>
 
     " 只删除 不复制
         nnoremap x "_x
@@ -107,29 +107,6 @@
     " VISUAL SELECT模式下 -折叠
         xnoremap - zf
         snoremap - <c-v>zf
-
-    " 折叠非匹配内容
-        nnoremap -/ :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>:set foldmethod=manual<CR><CR>
-
-    " select模式下快速添加pairs
-        snoremap ' <c-g>di''<esc>P
-        snoremap " <c-g>di""<esc>P
-        snoremap ` <c-g>di``<esc>P
-        snoremap { <c-g>di{}<esc>P
-        snoremap } <c-g>di{}<esc>P
-        snoremap [ <c-g>di[]<esc>P
-        snoremap ] <c-g>di[]<esc>P
-        snoremap ( <c-g>di()<esc>P
-        snoremap ) <c-g>di()<esc>P
-        xnoremap ' di''<esc>P
-        xnoremap " di""<esc>P
-        xnoremap ` di``<esc>P
-        xnoremap { di{}<esc>P
-        xnoremap } di{}<esc>P
-        xnoremap [ di[]<esc>P
-        xnoremap ] di[]<esc>P
-        xnoremap ( di()<esc>P
-        xnoremap ) di()<esc>P
 
 " windows
     " su 新左右窗口 SU新上下窗口 sc关闭当前 so关闭其他 s方向切换

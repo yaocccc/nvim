@@ -16,7 +16,6 @@
         " 括号高亮
             Plug 'luochen1990/rainbow'
         " markdown
-            Plug 'tpope/vim-markdown', {'for': ['markdown', 'vim-plug']}
             Plug 'iamcco/markdown-preview.vim', {'for': ['markdown', 'vim-plug']}
         " fzf
         " brew install the_silver_searcher
@@ -32,10 +31,11 @@
         " lsp + hl
         " npm i js-beautify -g
             Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vim-plug']}
-
         " :）
             Plug 'yaocccc/vim-gitlens'
             Plug 'yaocccc/vim-lines'
+            Plug 'yaocccc/vim-surround'
+            Plug 'yaocccc/vim-comment'
     call plug#end()
 
 " Plug Setting
@@ -103,7 +103,7 @@
 
     " git
         " c + g 切换git修改高亮 && 开启gitlens
-            " nmap <silent> <c-g> :GitGutterLineHighlightsToggle<CR>
+            nmap <silent> <c-G> :GitGutterLineHighlightsToggle<CR>
             nmap <silent> <c-g> :GitLensToggle<CR>
 
     " js-beautify  npm i js-beautify -g
@@ -127,7 +127,6 @@
 
     " markdown
         " F7开始浏览器预览 F8关闭 c-p 导出为pdf
-            let g:markdown_fenced_languages = ['css', 'js=javascript']
             nmap <silent> <F7> <Plug>MarkdownPreview
             imap <silent> <F7> <Plug>MarkdownPreview
             nmap <silent> <F8> <Plug>StopMarkdownPreview
@@ -140,6 +139,15 @@
             nnoremap <silent> <c-t> :Files<CR>
             nnoremap <silent> <c-h> :History<CR>
             nnoremap <silent> <c-l> :Lines<CR>
+            " 开着coc-explorer时无法打开fzf
+            au User CocExplorerOpenPost nnoremap <c-a> <nop>
+            au User CocExplorerOpenPost nnoremap <c-t> <nop>
+            au User CocExplorerOpenPost nnoremap <c-h> <nop>
+            au User CocExplorerOpenPost nnoremap <c-l> <nop>
+            au User CocExplorerQuitPost nnoremap <silent> <c-a> :Ag<CR>
+            au User CocExplorerQuitPost nnoremap <silent> <c-t> :Files<CR>
+            au User CocExplorerQuitPost nnoremap <silent> <c-h> :History<CR>
+            au User CocExplorerQuitPost nnoremap <silent> <c-l> :Lines<CR>
 
     " 显示缩进线
             let g:indentLine_char_list = ['|', '¦']
