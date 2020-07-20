@@ -39,16 +39,11 @@
     call plug#end()
 
 " Plug Setting
-    " vim-expand-region 快速选择
-        " v扩大选择 V缩小选择
-            xmap <silent> v <Plug>(expand_region_expand)
-            xmap <silent> V <Plug>(expand_region_shrink)
-            smap <silent> v <c-g><Plug>(expand_region_expand)
-            smap <silent> V <c-g><Plug>(expand_region_shrink)
-
     " coc-vim
         " CocToggle
             nnoremap <F4> :call Coc_toggle()<cr>
+            inoremap <F4> <esc>:call Coc_toggle()<cr>
+            vnoremap <F4> :call Coc_toggle()<cr>
             func! Coc_toggle()
                 if g:coc_enabled == 1
                     :CocDisable
@@ -96,6 +91,13 @@
             nmap <silent>tt :CocCommand explorer --preset floating<CR>
             au User CocExplorerOpenPre  hi Pmenu ctermbg=NONE
             au User CocExplorerQuitPost hi Pmenu ctermbg=238
+
+    " vim-expand-region 快速选择
+        " v扩大选择 V缩小选择
+            xmap <silent> v <Plug>(expand_region_expand)
+            xmap <silent> V <Plug>(expand_region_shrink)
+            smap <silent> v <c-g><Plug>(expand_region_expand)
+            smap <silent> V <c-g><Plug>(expand_region_shrink)
 
     " git vim-fugitive
         " gl 打开 git status列表
@@ -166,3 +168,9 @@
             let g:VM_maps['Remove Region']      = 'q'
             let g:VM_maps['Increase']           = '+'
             let g:VM_maps['Decrease']           = '-'
+
+    " yaocccc
+        " comment
+            nmap <silent> ?? :NSetComment<CR>
+            xmap <silent> /  :<c-u>VSetComment<CR>
+            smap <silent> /  <c-g>:<c-u>VSetComment<CR>
