@@ -123,7 +123,7 @@ snippet ret
 	return ${0:result};
 
 snippet for "for (...) {...}"
-	for (var ${1:i} = 0, ${2:len} = ${3:Things.length}; $1 < $2; $1++) {
+	for (let ${1:i} = 0; $1 < ${2:arr}.length; $1++) {
 		${0:${VISUAL}}
 	}
 
