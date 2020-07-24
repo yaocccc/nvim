@@ -154,7 +154,7 @@
             let g:indentLine_char_list = ['|', '¦']
 
     " 多游标
-            let g:VM_theme                      = 'iceblue'
+            let g:VM_theme                      = 'ocean'
             let g:VM_highlight_matches          = 'underline'
             let g:VM_maps                       = {}
             let g:VM_maps['Find Under']         = '<C-n>'

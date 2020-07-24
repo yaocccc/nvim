@@ -22,6 +22,7 @@
         "enableJavascript": true
     },
     "explorer": {
+        "quitOnOpen": true,
         "icon.enableNerdfont": true,
         "floating.border.title": "",
         "openAction.strategy": "sourceWindow",
@@ -32,12 +33,23 @@
                 "floating-position": "center"
             },
             "simplify": {
-                "file-child-template": "[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]"
+                "width": 30,
+                "file-child-template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [filename growRight 1 omitCenter 5]",
+                "file-child-labeling-template": ""
             }
         },
+        "file.column.git.icon.mixed": "*",
+        "file.column.git.icon.modified": "~",
+        "file.column.git.icon.added": "+",
+        "file.column.git.icon.deleted": "-",
+        "file.column.git.icon.renamed": "+",
+        "file.column.git.icon.copied": "+",
+        "file.column.git.icon.unmerged": "!",
+        "file.column.git.icon.untracked": "?",
+        "file.column.git.icon.ignored": "#",
         "keyMappings": {
             "i": false,
-            "<tab>": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
+            "<tab>": "toggleSelection",
             "<2-LeftMouse>": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
             "<cr>": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
             "<right>": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
