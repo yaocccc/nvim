@@ -8,7 +8,7 @@
         nnoremap , @@
         
     " c-s = :%s/
-        nnoremap <c-s> :<c-u>%s///gc<left><left><left><left>
+        nnoremap <c-s> :<c-u>%s/\v//gc<left><left><left><left>
 
     " 只删除 不复制
         nnoremap x "_x

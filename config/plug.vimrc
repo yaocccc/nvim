@@ -170,6 +170,8 @@
             let g:VM_maps['Decrease']           = '-'
 
     " yaocccc
+        " gitlens
+            let g:gitlens_interval = 100
         " comment
             nmap <silent> ?? :NSetComment<CR>
             xmap <silent> /  :<c-u>VSetComment<CR>
