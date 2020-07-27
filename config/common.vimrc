@@ -24,7 +24,7 @@
         set incsearch
         set ignorecase
         set smartcase
-    " 按键延迟
+    " 延迟
         set timeoutlen=400
     " 设置正常删除 光标穿越行
         set backspace=indent,eol,start
@@ -38,7 +38,7 @@
         set t_vb=""
         set hidden
     " 不换行
-    "    set nowrap
+        set nowrap
     " 缩进对齐
         set autoindent
         set smartindent
