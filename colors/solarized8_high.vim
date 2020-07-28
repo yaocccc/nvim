@@ -1,3 +1,8 @@
+if exists('s:loaded')
+    finish
+endif
+let s:loaded = 1
+
 hi clear
 if exists('syntax_on')
   syntax reset

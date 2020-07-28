@@ -3,10 +3,7 @@
         " 中文文档
             Plug 'yianwillis/vimcdoc'
         " git
-            Plug 'tpope/vim-fugitive'
             Plug 'airblade/vim-gitgutter'
-        " marks
-            Plug 'kshenoy/vim-signature'
         " 快速选择
             Plug 'terryma/vim-expand-region'
         " 快速跳转
@@ -18,10 +15,10 @@
         " markdown
             Plug 'iamcco/markdown-preview.vim', {'for': ['markdown', 'vim-plug']}
         " fzf
+        " brew install fzf
         " brew install the_silver_searcher
         " brew install fd
         " brew install bat
-        " brew install fzf
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'
         " 显示缩进
@@ -99,13 +96,9 @@
             smap <silent> v <c-g><Plug>(expand_region_expand)
             smap <silent> V <c-g><Plug>(expand_region_shrink)
 
-    " git vim-fugitive
-        " gl 打开 git status列表
-            nnoremap <silent> gl :Gstatus<CR>
-
     " git
         " c + g 切换git修改高亮 && 开启gitlens
-            nmap <silent> <c-g> :GitLensToggle<CR>:GitGutterLineHighlightsToggle<CR>
+            nmap <silent> <leader>g :GitLensToggle<CR>
 
     " js-beautify  npm i js-beautify -g
             let g:javascript_plugin_jsdoc = 1
@@ -135,20 +128,33 @@
 
     " fzf
         " maps
-            command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, <bang>0 ? fzf#vim#with_preview('right:50%') : fzf#vim#with_preview('right:50%'), <bang>0)
+            command! GStatus call s:git_status()
+            command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right:50%'), <bang>0)
             nnoremap <silent> <c-a> :Ag<CR>
             nnoremap <silent> <c-t> :Files<CR>
             nnoremap <silent> <c-h> :History<CR>
-            nnoremap <silent> <c-l> :Lines<CR>
+            nnoremap <silent> <c-l> :BLines<CR>
+            nnoremap <silent> <c-g> :GStatus<CR>
             " 开着coc-explorer时无法打开fzf
             au User CocExplorerOpenPost nnoremap <c-a> <nop>
             au User CocExplorerOpenPost nnoremap <c-t> <nop>
             au User CocExplorerOpenPost nnoremap <c-h> <nop>
             au User CocExplorerOpenPost nnoremap <c-l> <nop>
+            au User CocExplorerOpenPost nnoremap <c-g> <nop>
             au User CocExplorerQuitPost nnoremap <silent> <c-a> :Ag<CR>
             au User CocExplorerQuitPost nnoremap <silent> <c-t> :Files<CR>
             au User CocExplorerQuitPost nnoremap <silent> <c-h> :History<CR>
-            au User CocExplorerQuitPost nnoremap <silent> <c-l> :Lines<CR>
+            au User CocExplorerQuitPost nnoremap <silent> <c-l> :BLines<CR>
+            au User CocExplorerQuitPost nnoremap <silent> <c-g> :GStatus<CR>
+            function! s:git_status()
+                let l:options = ['--ansi', '--multi', '--nth', '2..,..', '--tiebreak=index', '--prompt', 'GStatus> ', '--preview', 'sh -c "(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500"']
+                let l:dir = split(system('git rev-parse --show-toplevel'), '\n')[0]
+                let l:dir = v:shell_error ? '' : l:dir
+                if empty(dir)
+                    let l:dir = expand('%:h')
+                endif
+                call fzf#run({'source': 'git -c color.status=always status --short --untracked-files=all', 'sink': 'e', 'dir': l:dir, 'options': l:options, 'down': '40%'})
+            endfunction
 
     " 显示缩进线
             let g:indentLine_char_list = ['|', '¦']

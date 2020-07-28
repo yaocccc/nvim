@@ -88,6 +88,7 @@
             "q": "quit",
             "Q": "quit",
             "<esc>": "esc",
+            "<c-c>": "esc",
             "X": "systemExecute",
             "gd": "listDrive",
             "f": "search",
@@ -103,5 +104,6 @@
             "<<": "gitStage",
             ">>": "gitUnstage"
         }
-    }
+    },
+    "git.enableGutters": true
 }

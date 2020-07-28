@@ -18,7 +18,7 @@
     " S保存 Q退出 R重载vim配置 jj=esc
         nnoremap <silent> S :w<CR>
         nnoremap <silent> Q :q!<CR>
-        nnoremap <silent> R :source ~/.config/nvim/init.vim<CR>
+        nnoremap <silent> R :source ~/.config/nvim/init.vim<CR>:echo 'ok'<CR>
         nnoremap Y  y$
         inoremap jj <Esc>l
 
@@ -31,8 +31,8 @@
         snoremap d <c-g>d
         snoremap c <c-g>c
         snoremap x <c-g>x
-        snoremap p <c-g>"_dP
-        xnoremap p "_dP
+        snoremap <expr> p col("'>") == col("$") - 1 ? '<c-g>"_dp' : '<c-g>"_dP'
+        xnoremap <expr> p col("'>") == col("$") - 1 ? '"_dp' : '"_dP'
 
     " VISUAL SELECT模式 s-tab tab左右缩进"
         xnoremap <       <gv
@@ -61,10 +61,10 @@
         nnoremap <c-s-down>  10j
         nnoremap <c-s-left>  ^
         nnoremap <c-s-right> $
-        inoremap <c-s-up>    <c-r>=Exec('norm! k')<CR>
-        inoremap <c-s-down>  <c-r>=Exec('norm! j')<CR>
-        inoremap <c-s-left>  <c-r>=Exec('norm! ^')<CR>
-        inoremap <c-s-right> <c-r>=Exec('norm! $')<CR>
+        inoremap <silent> <c-s-up>    <c-r>=Exec('norm! 10k')<CR>
+        inoremap <silent> <c-s-down>  <c-r>=Exec('norm! 10j')<CR>
+        inoremap <silent> <c-s-left>  <c-r>=Exec('norm! ^')<CR>
+        inoremap <silent> <c-s-right> <c-r>=Exec('norm! $')<CR><right>
         vnoremap <c-s-up>    10k
         vnoremap <c-s-down>  10j
         vnoremap <c-s-left>  ^
@@ -75,7 +75,7 @@
         nnoremap <leader>y :%yank<CR>
 
     " 0和tab 在 () 和 行首行尾切换
-        nnoremap <expr><tab> len(getline('.')) == col('.') ? '^': '$'
+        nnoremap <expr><tab> col('$') - 1 == col('.') ? '^': '$'
         nnoremap 0 %
 
     " ctrl u 清空一行
