@@ -782,7 +782,7 @@ if get(g:, 'yats_host_keyword', 1)
   hi def link typescriptIntlMethod Keyword
 
   "runtime syntax/yats/node.vim
-  syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName global process
+  syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName global process config
   syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName console Buffer
   syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName module exports
   syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName setTimeout
@@ -1174,8 +1174,8 @@ if get(g:, 'yats_host_keyword', 1)
   hi def link typescriptServiceWorkerMethod Keyword
 
   "runtime syntax/yats/web-location.vim
-  syntax keyword typescriptBOMLocationProp contained href protocol host hostname port
-  syntax keyword typescriptBOMLocationProp contained pathname search hash username password
+  syntax keyword typescriptBOMLocationProp contained href protocol host hostname port db database
+  syntax keyword typescriptBOMLocationProp contained pathname search hash username user password pass
   syntax keyword typescriptBOMLocationProp contained origin
   syntax cluster props add=typescriptBOMLocationProp
   hi def link typescriptBOMLocationProp Keyword
@@ -1291,7 +1291,7 @@ if get(g:, 'yats_host_keyword', 1)
   syntax cluster props add=typescriptServiceWorkerMethod
   hi def link typescriptServiceWorkerMethod Keyword
   syntax keyword typescriptGlobal containedin=typescriptIdentifierName Cache
-  syntax keyword typescriptCacheMethod contained match matchAll add addAll put delete nextgroup=typescriptFuncCallArg
+  syntax keyword typescriptCacheMethod contained match matchAll add addAll put patch post delete nextgroup=typescriptFuncCallArg
   syntax keyword typescriptCacheMethod contained keys nextgroup=typescriptFuncCallArg
   syntax cluster props add=typescriptCacheMethod
   hi def link typescriptCacheMethod Keyword

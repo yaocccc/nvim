@@ -120,7 +120,7 @@
             nnoremap <silent> N  :call WordNavigation('backward')<CR>
 
     " markdown
-        " F7开始浏览器预览 F8关闭 c-p 导出为pdf
+        " F7开始浏览器预览 F8关闭
             nmap <silent> <F7> <Plug>MarkdownPreview
             imap <silent> <F7> <Plug>MarkdownPreview
             nmap <silent> <F8> <Plug>StopMarkdownPreview
@@ -128,13 +128,12 @@
 
     " fzf
         " maps
-            command! GStatus call s:git_status()
             command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right:50%'), <bang>0)
             nnoremap <silent> <c-a> :Ag<CR>
             nnoremap <silent> <c-t> :Files<CR>
             nnoremap <silent> <c-h> :History<CR>
             nnoremap <silent> <c-l> :BLines<CR>
-            nnoremap <silent> <c-g> :GStatus<CR>
+            nnoremap <silent> <c-g> :GFiles?<CR>
             " 开着coc-explorer时无法打开fzf
             au User CocExplorerOpenPost nnoremap <c-a> <nop>
             au User CocExplorerOpenPost nnoremap <c-t> <nop>
@@ -145,16 +144,7 @@
             au User CocExplorerQuitPost nnoremap <silent> <c-t> :Files<CR>
             au User CocExplorerQuitPost nnoremap <silent> <c-h> :History<CR>
             au User CocExplorerQuitPost nnoremap <silent> <c-l> :BLines<CR>
-            au User CocExplorerQuitPost nnoremap <silent> <c-g> :GStatus<CR>
-            function! s:git_status()
-                let l:options = ['--ansi', '--multi', '--nth', '2..,..', '--tiebreak=index', '--prompt', 'GStatus> ', '--preview', 'sh -c "(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500"']
-                let l:dir = split(system('git rev-parse --show-toplevel'), '\n')[0]
-                let l:dir = v:shell_error ? '' : l:dir
-                if empty(dir)
-                    let l:dir = expand('%:h')
-                endif
-                call fzf#run({'source': 'git -c color.status=always status --short --untracked-files=all', 'sink': 'e', 'dir': l:dir, 'options': l:options, 'down': '40%'})
-            endfunction
+            au User CocExplorerQuitPost nnoremap <silent> <c-g> :GFiles?<CR>
 
     " 显示缩进线
             let g:indentLine_char_list = ['|', '¦']

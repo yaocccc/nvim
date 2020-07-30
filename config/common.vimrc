@@ -4,7 +4,6 @@
     " 不退出执行cmd
         fun! Exec(cmd)
             exe a:cmd
-            return ''
         endf
 
 " setting

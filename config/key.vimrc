@@ -31,10 +31,13 @@
         snoremap d <c-g>d
         snoremap c <c-g>c
         snoremap x <c-g>x
-        snoremap <expr> p col("'>") == col("$") - 1 ? '<c-g>"_dp' : '<c-g>"_dP'
-        xnoremap <expr> p col("'>") == col("$") - 1 ? '"_dp' : '"_dP'
+        snoremap <silent> p <c-g>"_d:<c-u>call Paste()<cr>
+        xnoremap <silent> p      "_d:<c-u>call Paste()<cr>
+        func! Paste()
+            exe col('$') - 1 == col('.') ? 'norm! p' : 'norm! P'
+        endf
 
-    " VISUAL SELECT模式 s-tab tab左右缩进"
+    " VISUAL SELECT模式 s-tab tab左右缩进
         xnoremap <       <gv
         xnoremap >       >gv
         snoremap <       <c-g><gv
@@ -77,6 +80,7 @@
     " 0和tab 在 () 和 行首行尾切换
         nnoremap <expr><tab> col('$') - 1 == col('.') ? '^': '$'
         nnoremap 0 %
+        vnoremap 0 %
 
     " ctrl u 清空一行
         nnoremap <c-u> cc<Esc>
