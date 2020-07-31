@@ -8,19 +8,21 @@
         nnoremap , @@
         
     " c-s = :%s/
-        nnoremap <c-s> :<c-u>%s/\v//gc<left><left><left><left>
+        nnoremap <c-s>    :<c-u>%s/\v//gc<left><left><left><left>
 
-    " 只删除 不复制
-        nnoremap x "_x
-        xnoremap <BS> "_d
-        snoremap <BS> <c-g>"_d
+    " 只删除
+        xnoremap          <BS>       "_d
+        snoremap          <BS>  <c-g>"_d
+        nnoremap          x          "_x
+        xnoremap <silent> p          :<c-u>exe col("'>") == col("$") ? 'norm! gv"_dp' : 'norm! gv"_dP'<cr>
+        snoremap <silent> p     <c-g>:<c-u>exe col("'>") == col("$") ? 'norm! gv"_dp' : 'norm! gv"_dP'<cr>
 
     " S保存 Q退出 R重载vim配置 jj=esc
-        nnoremap <silent> S :w<CR>
-        nnoremap <silent> Q :q!<CR>
-        nnoremap <silent> R :source ~/.config/nvim/init.vim<CR>:echo 'ok'<CR>
-        nnoremap Y  y$
-        inoremap jj <Esc>l
+        nnoremap <silent> S  :w<CR>
+        nnoremap <silent> Q  :q!<CR>
+        nnoremap <silent> R  :source ~/.config/nvim/init.vim<CR>:echo 'config reloaded'<CR>
+        nnoremap          Y  y$
+        inoremap          jj <Esc>l
 
     " 重写Shift + 左右
         xnoremap <s-right> e
@@ -31,11 +33,6 @@
         snoremap d <c-g>d
         snoremap c <c-g>c
         snoremap x <c-g>x
-        snoremap <silent> p <c-g>"_d:<c-u>call Paste()<cr>
-        xnoremap <silent> p      "_d:<c-u>call Paste()<cr>
-        func! Paste()
-            exe col('$') - 1 == col('.') ? 'norm! p' : 'norm! P'
-        endf
 
     " VISUAL SELECT模式 s-tab tab左右缩进
         xnoremap <       <gv
@@ -60,21 +57,21 @@
         nnoremap <s-right> vl
 
     " CTRL SHIFT + 方向 快速跳转
-        nnoremap <c-s-up>    10k
-        nnoremap <c-s-down>  10j
-        nnoremap <c-s-left>  ^
-        nnoremap <c-s-right> $
-        inoremap <silent> <c-s-up>    <c-r>=Exec('norm! 10k')<CR>
-        inoremap <silent> <c-s-down>  <c-r>=Exec('norm! 10j')<CR>
-        inoremap <silent> <c-s-left>  <c-r>=Exec('norm! ^')<CR>
-        inoremap <silent> <c-s-right> <c-r>=Exec('norm! $')<CR><right>
-        vnoremap <c-s-up>    10k
-        vnoremap <c-s-down>  10j
-        vnoremap <c-s-left>  ^
-        vnoremap <c-s-right> $
+        inoremap <silent> <c-s-up>    <up><up><up><up><up><up><up><up><up><up>
+        inoremap <silent> <c-s-down>  <down><down><down><down><down><down><down><down><down><down>
+        inoremap <silent> <c-s-left>  <home>
+        inoremap <silent> <c-s-right> <end>
+        nnoremap          <c-s-up>    10k
+        nnoremap          <c-s-down>  10j
+        nnoremap          <c-s-left>  ^
+        nnoremap          <c-s-right> $
+        vnoremap          <c-s-up>    10k
+        vnoremap          <c-s-down>  10j
+        vnoremap          <c-s-left>  ^
+        vnoremap          <c-s-right> $
 
     " 选中全文
-        nnoremap <m-a> ggVG
+        nnoremap <m-a>     ggVG
         nnoremap <leader>y :%yank<CR>
 
     " 0和tab 在 () 和 行首行尾切换
@@ -104,31 +101,19 @@
         nnoremap <m-d> diw
         nnoremap <m-r> ciw
 
-    " 光标在{}上时折叠{}，否则切换折叠
-    " 实现原理: 光标所在位如果为{ 则折叠 {}，如果所在位为折叠，则展开
-        nnoremap <expr>-- foldclosed(line('.'))*((getline('.')[col('.')-1]=='{')+(getline('.')[col('.')-1]=='}'))<0?'zfa{':'za'
-
-    " VISUAL SELECT模式下 -折叠
-        xnoremap - zf
-        snoremap - <c-v>zf
-
 " windows
-    " su 新左右窗口 SU新上下窗口 sc关闭当前 so关闭其他 s方向切换
-        " 新左右分窗
-        nnoremap su :vsp<CR>
-        " 关闭当前window
-        nnoremap sc :close<CR>
-        " 仅保留当前window
-        nnoremap so :only<CR>
-        " 切换到上下左右
-        nnoremap s<Up> <c-w>k
-        nnoremap s<Down> <c-w>j
-        nnoremap s<Left> <c-w>h
+    " su 新左右窗口 sc关闭当前 so关闭其他 s方向切换
+        nnoremap su       :vsp<CR>
+        nnoremap sc       :close<CR>
+        nnoremap so       :only<CR>
+        nnoremap s<Up>    <c-w>k
+        nnoremap s<Down>  <c-w>j
+        nnoremap s<Left>  <c-w>h
         nnoremap s<Right> <c-w>l
-        nnoremap sk <c-w>k
-        nnoremap sj <c-w>j
-        nnoremap sh <c-w>h
-        nnoremap sl <c-w>l
+        nnoremap sk       <c-w>k
+        nnoremap sj       <c-w>j
+        nnoremap sh       <c-w>h
+        nnoremap sl       <c-w>l
         " 窗口大小一致
         nnoremap s= <c-w>=
         " 窗口大小左右变大
@@ -137,12 +122,9 @@
         nnoremap s, <c-w>10<
 
 " buffers
-    " 跳转到下个
         nnoremap <silent> ss :bn<CR>
         nnoremap <silent> sn :bn<CR>
-    " 跳转到上个
         nnoremap <silent> sp :bp<CR>
-    " 删除当前buffer
         nnoremap <silent> sd :call <SID>delbuf()<CR>
         func! s:delbuf()
             :bd
@@ -150,10 +132,9 @@
         endf
 
 " 一键运行文件
-    command! Run call <SID>runFile()
-    noremap <F5> :Run<CR>
+    command! Run  call <SID>runFile()
+    noremap  <F5> :Run<CR>
     inoremap <F5> <ESC>:Run<CR>
-
     func! s:runFile()
         exec "w"
         if &filetype == 'javascript'
@@ -171,19 +152,44 @@
     command! -nargs=* SetTab call <SID>switchTab(<q-args>)
     func! s:switchTab(tab_len)
         if !empty(a:tab_len)
-            let &shiftwidth = a:tab_len
-            let &softtabstop= a:tab_len
-            let &tabstop = a:tab_len
+            let [&shiftwidth, &softtabstop, &tabstop] = [a:tab_len, a:tab_len, a:tab_len]
         else
             let tab_len = input('input shiftwidth: ')
             if empty(tab_len)
                 redraw!
                 return
             endif
-            let &shiftwidth = tab_len
-            let &softtabstop= tab_len
-            let &tabstop = tab_len
+            let [&shiftwidth, &softtabstop, &tabstop] = [tab_len, tab_len, tab_len]
             redraw!
         endif
         echo printf('shiftwidth: %d', &shiftwidth)
+    endf
+
+" 折叠
+    nnoremap <silent> <expr> -- foldclosed(line('.')) == -1 ? ':call <SID>fold()<cr>' : 'za'
+    xnoremap - zf
+    snoremap - <c-v>zf
+    func! s:fold()
+        let line = trim(getline('.'))
+        if line == ''
+            return
+        endif
+        let [up, down] = [0, 0]
+        if line[0] == '}'
+            exe 'norm! ^%'
+            let up = line('.')
+            exe 'norm! %'
+        endif
+        if line[len(line) - 1] == '{'
+            exe 'norm! $%'
+            let down = line('.')
+            exe 'norm! %'
+        endif
+        if up != 0 && down != 0
+            exe 'norm! ' . up . 'GV' . down . 'Gzf'
+        elseif up != 0
+            exe 'norm! V' . up . 'Gzf'
+        elseif down != 0
+            exe 'norm! V' . down . 'Gzf'
+        endif
     endf

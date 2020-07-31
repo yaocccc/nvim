@@ -28,7 +28,7 @@
         " lsp + hl
         " npm i js-beautify -g
             Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vim-plug']}
-        " :）
+        " :)
             Plug 'yaocccc/vim-gitlens'
             Plug 'yaocccc/vim-lines'
             Plug 'yaocccc/vim-surround'
@@ -38,9 +38,9 @@
 " Plug Setting
     " coc-vim
         " CocToggle
-            nnoremap <F4> :call Coc_toggle()<cr>
+            nnoremap <F4>      :call Coc_toggle()<cr>
             inoremap <F4> <esc>:call Coc_toggle()<cr>
-            vnoremap <F4> :call Coc_toggle()<cr>
+            vnoremap <F4>      :call Coc_toggle()<cr>
             func! Coc_toggle()
                 if g:coc_enabled == 1
                     :CocDisable
@@ -88,6 +88,7 @@
             nmap <silent>tt :CocCommand explorer --preset floating<CR>
             au User CocExplorerOpenPre  hi Pmenu ctermbg=NONE
             au User CocExplorerQuitPost hi Pmenu ctermbg=238
+            au User CocExplorerQuitPost echo
 
     " vim-expand-region 快速选择
         " v扩大选择 V缩小选择
@@ -106,25 +107,20 @@
             xnoremap <silent> =  :!js-beautify<CR>
             nnoremap <silent> == :.!js-beautify<CR>
 
-    " rainbow
-            let g:rainbow_active = 1
-
     " 快速跳转 vim-interestingwords
         " 设置不同匹配词颜色不同
             let g:interestingWordsRandomiseColors = 1
-        " ff 匹配/取消 当前词  FF取消匹配所有
-            nnoremap <silent> ff :call InterestingWords('n')<CR>
-            nnoremap <silent> FF :call UncolorAllWords()<CR>
-        " n跳转到下个 N跳转到上个
-            nnoremap <silent> n  :call WordNavigation('forward')<CR>
-            nnoremap <silent> N  :call WordNavigation('backward')<CR>
+            nnoremap <silent> ff    :call InterestingWords('n')<CR>
+            nnoremap <silent> FF    :call UncolorAllWords()<CR>
+            nnoremap <silent> n     :call WordNavigation('forward')<CR>
+            nnoremap <silent> N     :call WordNavigation('backward')<CR>
 
     " markdown
         " F7开始浏览器预览 F8关闭
-            nmap <silent> <F7> <Plug>MarkdownPreview
-            imap <silent> <F7> <Plug>MarkdownPreview
-            nmap <silent> <F8> <Plug>StopMarkdownPreview
-            imap <silent> <F8> <Plug>StopMarkdownPreview
+            nnoremap <silent> <F7>  <Plug>MarkdownPreview
+            inoremap <silent> <F7>  <Plug>MarkdownPreview
+            nnoremap <silent> <F8>  <Plug>StopMarkdownPreview
+            inoremap <silent> <F8>  <Plug>StopMarkdownPreview
 
     " fzf
         " maps
@@ -145,6 +141,9 @@
             au User CocExplorerQuitPost nnoremap <silent> <c-h> :History<CR>
             au User CocExplorerQuitPost nnoremap <silent> <c-l> :BLines<CR>
             au User CocExplorerQuitPost nnoremap <silent> <c-g> :GFiles?<CR>
+
+    " rainbow
+            let g:rainbow_active = 1
 
     " 显示缩进线
             let g:indentLine_char_list = ['|', '¦']
@@ -169,6 +168,6 @@
         " gitlens
             let g:gitlens_interval = 100
         " comment
-            nmap <silent> ?? :NSetComment<CR>
-            xmap <silent> /  :<c-u>VSetComment<CR>
+            nmap <silent> ??           :NSetComment<CR>
+            xmap <silent> /       :<c-u>VSetComment<CR>
             smap <silent> /  <c-g>:<c-u>VSetComment<CR>
