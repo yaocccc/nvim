@@ -73,12 +73,12 @@
         set cul
         set signcolumn=yes
     " 设置插入模式时光标变成竖线
-        let &t_SI.="\e[5 q" "SI = INSERT mode
-        let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+        let &t_SI.="\e[5 q"
+        let &t_EI.="\e[1 q"
     " 修改分隔符样式
-        set fillchars=vert:/
-        set fillchars=stl:/
-        set fillchars=stlnc:/
+        set fillchars=vert:\|
+        set fillchars=stl:\|
+        set fillchars=stlnc:\|
     " statusline & tabline
         set laststatus=2
         set showtabline=2

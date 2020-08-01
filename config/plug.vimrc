@@ -2,16 +2,17 @@
     call plug#begin('~/.config/nvim/plugged')
         " 中文文档
             Plug 'yianwillis/vimcdoc'
-        " git
-            Plug 'airblade/vim-gitgutter'
         " 快速选择
             Plug 'terryma/vim-expand-region'
         " 快速跳转
             Plug 'lfv89/vim-interestingwords'
+        " 多光标
+            Plug 'mg979/vim-visual-multi', {'branch': 'master'}
         " coc
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
         " 括号高亮
             Plug 'luochen1990/rainbow'
+            Plug 'Yggdroot/indentLine'
         " markdown
             Plug 'iamcco/markdown-preview.vim', {'for': ['markdown', 'vim-plug']}
         " fzf
@@ -21,15 +22,9 @@
         " brew install bat
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'
-        " 显示缩进
-            Plug 'Yggdroot/indentLine'
-        " 多光标
-            Plug 'mg979/vim-visual-multi', {'branch': 'master'}
         " lsp + hl
-        " npm i js-beautify -g
             Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vim-plug']}
         " :)
-            Plug 'yaocccc/vim-gitlens'
             Plug 'yaocccc/vim-lines'
             Plug 'yaocccc/vim-surround'
             Plug 'yaocccc/vim-comment'
@@ -38,54 +33,39 @@
 " Plug Setting
     " coc-vim
         " CocToggle
-            nnoremap <F4>      :call Coc_toggle()<cr>
-            inoremap <F4> <esc>:call Coc_toggle()<cr>
-            vnoremap <F4>      :call Coc_toggle()<cr>
-            func! Coc_toggle()
-                if g:coc_enabled == 1
-                    :CocDisable
-                else
-                    :CocEnable
-                endif
-            endf
+            nnoremap <expr> <F4> get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'
         " 全局插件
-            let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator']
+            let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator', 'coc-git']
         " com-rename
-            nmap <silent> <F2> <Plug>(coc-rename)
-        " coc-snippets便携自定义补全文件
-            " F9 :CocCommand snippets.editSnippets 编写自定义的代码片段
-            nnoremap <silent> <F9> :CocCommand snippets.editSnippets<CR>
-        " 使用tab补全
-            inoremap <expr> <TAB>     pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
-            inoremap <expr> <S-TAB>   pumvisible() ? "\<C-p>" : "\<C-h>"
-            inoremap <expr> <c-space> coc#refresh()
-            inoremap <expr> <CR>      pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-        " 退格时也检查补全
+            nmap <silent>       <F2>     <Plug>(coc-rename)
+            nmap <silent>       <F9>     :CocCommand snippets.editSnippets<CR>
+            imap <silent><expr> <TAB>     pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
+            imap <silent><expr> <S-TAB>   pumvisible() ? "\<C-p>" : "\<C-h>"
+            imap <silent><expr> <c-space> coc#refresh()
+            imap <silent><expr> <CR>      pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
             func! s:check_back_space() abort
-                let col = col('.') - 1
-                return !col || getline('.')[col - 1] =~# '\s'
+                let l:col = col('.') - 1
+                return !l:col || getline('.')[l:col - 1] =~# '\s'
             endf
         " Use `[g` and `]g` to navigate diagnostics
-            nmap <silent> [g <Plug>(coc-diagnostic-prev)
-            nmap <silent> ]g <Plug>(coc-diagnostic-next)
-        " gd gy 跳转到定义
             nmap <silent> gd <Plug>(coc-definition)
             nmap <silent> gy <Plug>(coc-type-definition)
-        " K 显示文档
-            nnoremap <silent> K :call <SID>show_documentation()<CR>
-            func! s:show_documentation()
-                if index(['vim','help'], &filetype) >= 0
-                    execute 'h '.expand('<cword>')
-                else
-                    call CocAction('doHover')
-                endif
-            endf
+            nmap <silent> [g <Plug>(coc-diagnostic-prev)
+            nmap <silent> ]g <Plug>(coc-diagnostic-next)
+            nmap <silent> K :call CocAction("doHover")<cr>
         " coc-translator 显示翻译
-            nmap <silent> <Leader>m <Plug>(coc-translator-p)
-            xmap <silent> <Leader>m <Plug>(coc-translator-pv)
-            smap <silent> <Leader>m <c-g><Plug>(coc-translator-pv)
+            nmap <silent> mm <Plug>(coc-translator-p)
+            xmap <silent> mm <Plug>(coc-translator-pv)
+            smap <silent> mm <c-g><Plug>(coc-translator-pv)
+        " coc-git
+            nmap <silent> C         <Plug>(coc-git-commit)
+            nmap <silent> (         <Plug>(coc-git-prevchunk)
+            nmap <silent> )         <Plug>(coc-git-nextchunk)
+            nmap <silent> <leader>g <Plug>(coc-git-chunkinfo)
+            xmap <silent> ig        <Plug>(coc-git-chunk-inner)
+            xmap <silent> ag        <Plug>(coc-git-chunk-outer)
         " coc-explorer
-            nmap <silent>tt :CocCommand explorer --preset floating<CR>
+            nnoremap <silent> tt :CocCommand explorer --preset floating<CR>
             au User CocExplorerOpenPre  hi Pmenu ctermbg=NONE
             au User CocExplorerQuitPost hi Pmenu ctermbg=238
             au User CocExplorerQuitPost echo
@@ -97,15 +77,15 @@
             smap <silent> v <c-g><Plug>(expand_region_expand)
             smap <silent> V <c-g><Plug>(expand_region_shrink)
 
-    " git
-        " c + g 切换git修改高亮 && 开启gitlens
-            nmap <silent> <leader>g :GitLensToggle<CR>
-
     " js-beautify  npm i js-beautify -g
             let g:javascript_plugin_jsdoc = 1
-            snoremap <silent> =  <c-g>:!js-beautify<CR>
-            xnoremap <silent> =  :!js-beautify<CR>
-            nnoremap <silent> == :.!js-beautify<CR>
+            smap <silent> = <c-g>:!js-beautify<CR>
+            xmap <silent> = :!js-beautify<CR>
+            nmap <silent> = :.!js-beautify<CR>
+
+    " rainbow & indentline
+            let g:rainbow_active = 1
+            let g:indentLine_char_list = ['|', '¦']
 
     " 快速跳转 vim-interestingwords
         " 设置不同匹配词颜色不同
@@ -142,12 +122,6 @@
             au User CocExplorerQuitPost nnoremap <silent> <c-l> :BLines<CR>
             au User CocExplorerQuitPost nnoremap <silent> <c-g> :GFiles?<CR>
 
-    " rainbow
-            let g:rainbow_active = 1
-
-    " 显示缩进线
-            let g:indentLine_char_list = ['|', '¦']
-
     " 多游标
             let g:VM_theme                      = 'ocean'
             let g:VM_highlight_matches          = 'underline'
@@ -166,7 +140,7 @@
 
     " yaocccc
         " gitlens
-            let g:gitlens_interval = 100
+            "  let g:gitlens_interval = 100
         " comment
             nmap <silent> ??           :NSetComment<CR>
             xmap <silent> /       :<c-u>VSetComment<CR>
