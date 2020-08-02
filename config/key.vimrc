@@ -154,14 +154,12 @@
         if !empty(a:tab_len)
             let [&shiftwidth, &softtabstop, &tabstop] = [a:tab_len, a:tab_len, a:tab_len]
         else
-            let tab_len = input('input shiftwidth: ')
-            if empty(tab_len)
-                redraw!
-                return
+            let l:tab_len = input('input shiftwidth: ')
+            if !empty(l:tab_len)
+                let [&shiftwidth, &softtabstop, &tabstop] = [l:tab_len, l:tab_len, l:tab_len]
             endif
-            let [&shiftwidth, &softtabstop, &tabstop] = [tab_len, tab_len, tab_len]
-            redraw!
         endif
+        redraw!
         echo printf('shiftwidth: %d', &shiftwidth)
     endf
 
@@ -170,26 +168,26 @@
     xnoremap - zf
     snoremap - <c-v>zf
     func! s:fold()
-        let line = trim(getline('.'))
-        if line == ''
+        let l:line = trim(getline('.'))
+        if l:line == ''
             return
         endif
-        let [up, down] = [0, 0]
-        if line[0] == '}'
+        let [l:up, l:down] = [0, 0]
+        if l:line[0] == '}'
             exe 'norm! ^%'
-            let up = line('.')
+            let l:up = line('.')
             exe 'norm! %'
         endif
-        if line[len(line) - 1] == '{'
+        if l:line[len(l:line) - 1] == '{'
             exe 'norm! $%'
-            let down = line('.')
+            let l:down = line('.')
             exe 'norm! %'
         endif
-        if up != 0 && down != 0
-            exe 'norm! ' . up . 'GV' . down . 'Gzf'
-        elseif up != 0
-            exe 'norm! V' . up . 'Gzf'
-        elseif down != 0
-            exe 'norm! V' . down . 'Gzf'
+        if l:up != 0 && l:down != 0
+            exe 'norm! ' . l:up . 'GV' . l:down . 'Gzf'
+        elseif l:up != 0
+            exe 'norm! V' . l:up . 'Gzf'
+        elseif l:down != 0
+            exe 'norm! V' . l:down . 'Gzf'
         endif
     endf

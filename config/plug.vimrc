@@ -1,30 +1,16 @@
 " Plug
     call plug#begin('~/.config/nvim/plugged')
-        " 中文文档
             Plug 'yianwillis/vimcdoc'
-        " 快速选择
             Plug 'terryma/vim-expand-region'
-        " 快速跳转
             Plug 'lfv89/vim-interestingwords'
-        " 多光标
             Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-        " coc
-            Plug 'neoclide/coc.nvim', {'branch': 'release'}
-        " 括号高亮
             Plug 'luochen1990/rainbow'
             Plug 'Yggdroot/indentLine'
-        " markdown
             Plug 'iamcco/markdown-preview.vim', {'for': ['markdown', 'vim-plug']}
-        " fzf
-        " brew install fzf
-        " brew install the_silver_searcher
-        " brew install fd
-        " brew install bat
-            Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-            Plug 'junegunn/fzf.vim'
-        " lsp + hl
             Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vim-plug']}
-        " :)
+            Plug 'neoclide/coc.nvim', {'branch': 'release'}
+            Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all && brew install the_silver_searcher fd bat' }
+            Plug 'junegunn/fzf.vim'
             Plug 'yaocccc/vim-lines'
             Plug 'yaocccc/vim-surround'
             Plug 'yaocccc/vim-comment'
@@ -37,12 +23,12 @@
         " 全局插件
             let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator', 'coc-git']
         " com-rename
-            nmap <silent>       <F2>     <Plug>(coc-rename)
-            nmap <silent>       <F9>     :CocCommand snippets.editSnippets<CR>
-            imap <silent><expr> <TAB>     pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
-            imap <silent><expr> <S-TAB>   pumvisible() ? "\<C-p>" : "\<C-h>"
-            imap <silent><expr> <c-space> coc#refresh()
-            imap <silent><expr> <CR>      pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+            nnoremap <silent>       <F2>     <Plug>(coc-rename)
+            nnoremap <silent>       <F9>     :CocCommand snippets.editSnippets<CR>
+            inoremap <silent><expr> <TAB>     pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
+            inoremap <silent><expr> <S-TAB>   pumvisible() ? "\<C-p>" : "\<C-h>"
+            inoremap <silent><expr> <c-space> coc#refresh()
+            inoremap <silent><expr> <CR>      pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
             func! s:check_back_space() abort
                 let l:col = col('.') - 1
                 return !l:col || getline('.')[l:col - 1] =~# '\s'
@@ -139,8 +125,6 @@
             let g:VM_maps['Decrease']           = '-'
 
     " yaocccc
-        " gitlens
-            "  let g:gitlens_interval = 100
         " comment
             nmap <silent> ??           :NSetComment<CR>
             xmap <silent> /       :<c-u>VSetComment<CR>
