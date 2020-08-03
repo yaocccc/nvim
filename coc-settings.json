@@ -1,5 +1,6 @@
 {
     "snippets.userSnippetsDirectory": "$NVIM/snippets",
+    "tabnine.priority": 90,
     "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
     "pairs.enableBackspace": true,
     "markdownlint.config.default": true,

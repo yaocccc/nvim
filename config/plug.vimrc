@@ -23,7 +23,7 @@
         " 全局插件
             let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator', 'coc-git']
         " com-rename
-            nnoremap <silent>       <F2>     <Plug>(coc-rename)
+            nnoremap <silent>       <F2>      <Plug>(coc-rename)
             nnoremap <silent>       <F9>     :CocCommand snippets.editSnippets<CR>
             inoremap <silent><expr> <TAB>     pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
             inoremap <silent><expr> <S-TAB>   pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -38,7 +38,7 @@
             nmap <silent> gy <Plug>(coc-type-definition)
             nmap <silent> [g <Plug>(coc-diagnostic-prev)
             nmap <silent> ]g <Plug>(coc-diagnostic-next)
-            nmap <silent> K :call CocAction("doHover")<cr>
+            nmap <silent> K  :call CocAction("doHover")<cr>
         " coc-translator 显示翻译
             nmap <silent> mm <Plug>(coc-translator-p)
             xmap <silent> mm <Plug>(coc-translator-pv)
@@ -66,8 +66,8 @@
     " js-beautify  npm i js-beautify -g
             let g:javascript_plugin_jsdoc = 1
             smap <silent> = <c-g>:!js-beautify<CR>
-            xmap <silent> = :!js-beautify<CR>
-            nmap <silent> = :.!js-beautify<CR>
+            xmap <silent> =      :!js-beautify<CR>
+            nmap <silent> =      :.!js-beautify<CR>
 
     " rainbow & indentline
             let g:rainbow_active = 1
@@ -90,7 +90,7 @@
 
     " fzf
         " maps
-            command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right:50%'), <bang>0)
+            command! -bang -nargs=*  Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right:50%'), <bang>0)
             nnoremap <silent> <c-a> :Ag<CR>
             nnoremap <silent> <c-t> :Files<CR>
             nnoremap <silent> <c-h> :History<CR>
@@ -125,6 +125,10 @@
             let g:VM_maps['Decrease']           = '-'
 
     " yaocccc
+        " line
+            let g:line_statuline_enable = 1
+            let g:line_tabline_enable = 1
+            let g:line_tabline_time_enable = 0
         " comment
             nmap <silent> ??           :NSetComment<CR>
             xmap <silent> /       :<c-u>VSetComment<CR>
