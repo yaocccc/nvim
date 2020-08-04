@@ -23,7 +23,7 @@
         " 全局插件
             let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator', 'coc-git']
         " com-rename
-            nnoremap <silent>       <F2>      <Plug>(coc-rename)
+            nmap     <silent>       <F2>      <Plug>(coc-rename)
             nnoremap <silent>       <F9>     :CocCommand snippets.editSnippets<CR>
             inoremap <silent><expr> <TAB>     pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
             inoremap <silent><expr> <S-TAB>   pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -81,13 +81,6 @@
             nnoremap <silent> n     :call WordNavigation('forward')<CR>
             nnoremap <silent> N     :call WordNavigation('backward')<CR>
 
-    " markdown
-        " F7开始浏览器预览 F8关闭
-            nnoremap <silent> <F7>  <Plug>MarkdownPreview
-            inoremap <silent> <F7>  <Plug>MarkdownPreview
-            nnoremap <silent> <F8>  <Plug>StopMarkdownPreview
-            inoremap <silent> <F8>  <Plug>StopMarkdownPreview
-
     " fzf
         " maps
             command! -bang -nargs=*  Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right:50%'), <bang>0)
@@ -112,8 +105,8 @@
             let g:VM_theme                      = 'ocean'
             let g:VM_highlight_matches          = 'underline'
             let g:VM_maps                       = {}
-            let g:VM_maps['Find Under']         = '<C-n>'
-            let g:VM_maps['Find Subword Under'] = '<C-n>'
+            let g:VM_maps['Find Under']         = '<c-n>'
+            let g:VM_maps['Find Subword Under'] = '<c-n>'
             let g:VM_maps['Select All']         = '<c-d>'
             let g:VM_maps['Visual All']         = '<c-d>'
             let g:VM_maps["Select Cursor Down"] = '<M-Down>'

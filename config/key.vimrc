@@ -183,11 +183,17 @@
             let l:down = line('.')
             exe 'norm! %'
         endif
-        if l:up != 0 && l:down != 0
-            exe 'norm! ' . l:up . 'GV' . l:down . 'Gzf'
-        elseif l:up != 0
-            exe 'norm! V' . l:up . 'Gzf'
-        elseif l:down != 0
-            exe 'norm! V' . l:down . 'Gzf'
-        endif
+        try
+            if l:up != 0 && l:down != 0
+                exe 'norm! ' . l:up . 'GV' . l:down . 'Gzf'
+            elseif l:up != 0
+                exe 'norm! V' . l:up . 'Gzf'
+            elseif l:down != 0
+                exe 'norm! V' . l:down . 'Gzf'
+            else
+                exe 'norm! za'
+            endif
+        catch
+            redraw!
+        endtry
     endf
