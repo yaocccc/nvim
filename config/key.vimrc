@@ -164,7 +164,7 @@
     endf
 
 " 折叠
-    nnoremap <silent> <expr> -- foldclosed(line('.')) == -1 ? ':call <SID>fold()<cr>' : 'za'
+    nnoremap <silent><expr> -- foldclosed(line('.')) == -1 ? ':call <SID>fold()<cr>' : 'za'
     xnoremap - zf
     snoremap - <c-v>zf
     func! s:fold()
