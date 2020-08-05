@@ -9,6 +9,8 @@
         
     " c-s = :%s/
         nnoremap <c-s>    :<c-u>%s/\v//gc<left><left><left><left>
+        xnoremap <c-s>          :s/\v//gc<left><left><left><left>
+        snoremap <c-s>     <c-g>:s/\v//gc<left><left><left><left>
 
     " 只删除
         xnoremap          <BS>       "_d
