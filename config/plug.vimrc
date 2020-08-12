@@ -83,6 +83,7 @@
 
     " fzf
         " maps
+        " the_silver_searcher fd bat
             command! -bang -nargs=*  Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right:50%'), <bang>0)
             nnoremap <silent> <c-a> :Ag<CR>
             nnoremap <silent> <c-t> :Files<CR>
