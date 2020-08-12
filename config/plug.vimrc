@@ -9,7 +9,7 @@
             Plug 'iamcco/markdown-preview.vim', {'for': ['markdown', 'vim-plug']}
             Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vim-plug']}
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
-            Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all && brew install the_silver_searcher fd bat' }
+            Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'
             Plug 'yaocccc/vim-lines'
             Plug 'yaocccc/vim-surround'
