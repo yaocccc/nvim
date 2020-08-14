@@ -12,6 +12,7 @@
         set wildmenu
         set nocompatible
         set clipboard=unnamed
+        set clipboard+=unnamedplus
     " 搜索高亮 空格+回车 去除匹配高亮
         set hlsearch
         set showmatch
