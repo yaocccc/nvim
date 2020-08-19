@@ -75,7 +75,7 @@ hi CursorLine cterm=bold ctermfg=NONE ctermbg=NONE
 hi Directory ctermfg=32 ctermbg=NONE cterm=NONE
 hi EndOfBuffer ctermfg=NONE ctermbg=NONE cterm=NONE
 hi ErrorMsg ctermfg=160 ctermbg=230 cterm=reverse
-hi IncSearch ctermfg=7 ctermbg=31 cterm=underline
+hi IncSearch ctermfg=5 ctermbg=7 cterm=reverse
 hi MatchParen ctermfg=230 ctermbg=236 cterm=bold
 hi ModeMsg ctermfg=32 ctermbg=NONE cterm=NONE
 hi MoreMsg ctermfg=32 ctermbg=NONE cterm=NONE
@@ -84,7 +84,7 @@ hi PmenuSbar ctermfg=NONE ctermbg=247 cterm=NONE
 hi PmenuSel ctermfg=230 ctermbg=243 cterm=NONE
 hi PmenuThumb ctermfg=NONE ctermbg=243 cterm=NONE
 hi Question ctermfg=37 ctermbg=NONE cterm=bold
-hi Search ctermfg=7 ctermbg=31 cterm=NONE
+hi Search ctermfg=31 ctermbg=7 cterm=reverse
 hi SignColumn ctermfg=247 ctermbg=NONE cterm=NONE
 hi Visual ctermfg=7 ctermbg=31 cterm=NONE
 hi VisualNOS ctermfg=NONE ctermbg=236 cterm=reverse
