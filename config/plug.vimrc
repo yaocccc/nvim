@@ -21,7 +21,7 @@
         " CocToggle
             nnoremap <expr> <F4> get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'
         " 全局插件
-            let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-word', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator', 'coc-git']
+            let g:coc_global_extensions=['coc-css', 'coc-html', 'coc-tsserver', 'coc-word', 'coc-explorer', 'coc-markdownlint', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-translator', 'coc-git']
         " com-rename
             nmap     <silent>       <F2>      <Plug>(coc-rename)
             nnoremap <silent>       <F9>     :CocCommand snippets.editSnippets<CR>
