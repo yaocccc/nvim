@@ -99,10 +99,10 @@
 
     " fzf
         " maps
-            let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+            let g:fzf_preview_window = ['right:45%', 'ctrl-/']
             let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
             let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5 } }
-            com! -bar -bang Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter=: --nth=4..'}, 'right'), <bang>0)
+            com! -bar -bang Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter=: --nth=4..'}, 'right:45%', 'ctrl-/'), <bang>0)
             nnoremap <silent>       <c-a>     :Ag<cr>
             nnoremap <silent>       <c-p>     :Files<cr>
             nnoremap <silent>       <c-h>     :History<cr>
