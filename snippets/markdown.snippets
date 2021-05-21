@@ -1,0 +1,71 @@
+snippet head "head~"
+	---
+	title: ${0:`substitute(expand("%:t"), "." . expand("%:e"), "", "")`}
+	date: `strftime("%Y-%m-%d %H:%M:%S")`
+	categories: ${1}
+	tags: [${2}]
+	excerpt: ${3}
+	index_img: /img/${4}
+	mermaid: ${5:false}
+	---
+
+snippet mm "month~"
+	# `strftime("%Y %m")`
+
+	## todo
+
+	- [ ] $1
+
+	## event
+
+	## summary
+
+snippet dd "day~"
+	# `strftime("%Y %m %d")`
+
+	## todo
+
+	- [ ] $1
+
+	## event
+
+	## check
+
+
+snippet td "todo list"
+	- [ ] ${1}
+
+snippet ref "ref~"
+	[${1}](${2})
+
+snippet cc "code block~"
+	`b:md_block`${0:plaintext}
+		${1}
+	`b:md_block`
+
+snippet mer "mermaid~"
+	`b:md_block`mermaid
+	graph TB
+		${1:A --> B}
+	`b:md_block`
+
+snippet sub "subgraph~"
+	`b:md_block`subgraph
+	graph TB
+		subgraph ${1:g1}
+		end
+		subgraph g2
+		end
+	`b:md_block`
+
+snippet classDiagram "classDiagram~"
+	`b:md_block`mermaid
+	classDiagram
+		class ${1:c} {
+		}
+	`b:md_block`
+
+snippet class "class~"
+	class ${1:c} {
+		${2}
+	}

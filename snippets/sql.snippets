@@ -1,0 +1,11 @@
+snippet select "select ~"
+	SELECT ${3:*} FROM ${1:tableName} WHERE ${2:where} ORDER BY id DESC LIMIT 100;
+
+snippet update "update ~"
+	UPDATE ${1:tableName} SET ${2:updation} WHERE (id = ${3::id});
+
+snippet insert "insert ~"
+	INSERT INTO ${1:tableName}
+	(${2:fields})
+	VALUES
+	(${3:value});

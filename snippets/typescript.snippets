@@ -1,0 +1,72 @@
+snippet test "import test"
+	import { assert } from './test';
+	console.log(
+		tests.every(test => assert(f1(test.$1), test.result))
+	);
+
+snippet un "undefined"
+	undefined
+
+snippet if "if (condition) { ... }"
+	if (${1:true}) {
+		${0:${VISUAL}}
+	}
+
+snippet switch
+	switch (${1:expression}) {
+		case '${3:case}':
+			${4}
+			break;
+		${0}
+		default:
+			${2}
+	}
+
+snippet case "case 'xyz': ... break"
+	case '${1:case}':
+		${0:${VISUAL}}
+		break;
+
+snippet try "try { ... } catch(e) { ... }"
+	try {
+		${0:${VISUAL}}
+	} catch (${1:e}) {
+		${2:/* handle error */}
+	}
+
+snippet ret
+	return ${0:result};
+
+snippet for "for~"
+	for(let ${1:i}=0; ${1} < ${2:100}; ${1}++) {
+		${0:${VISUAL}}
+	}
+
+snippet wh "(condition) { ... }"
+	while (${1:/* condition */}) {
+		${0:${VISUAL}}
+	}
+
+snippet cl "console.log"
+	console.log(${0});
+
+snippet ct "console.time"
+	console.time("${0}");
+
+snippet cte "console.timeEnd"
+	console.timeEnd("${0}");
+
+snippet const
+	const ${1} = ${0};
+
+snippet let
+	let ${1} = ${0};
+
+snippet im "import xyz from 'xyz'"
+	import ${2} from '${1}';
+
+snippet aw "await"
+	await ${0:${VISUAL}}
+
+snippet de "descriptor"
+	/** ${0} */
