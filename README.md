@@ -1,6 +1,15 @@
 # nvim配置项目
+<!-- markdown-toc GitLab -->
 
-  简单梳理说明一下，按需自取, 相对重要的我会用粗体标出来
+* [如何使用](#如何使用)
+* [配置结构](#配置结构)
+* [common.vimrc 通用基础配置说明](#commonvimrc-通用基础配置说明)
+* [key.vimrc    快捷键相关配置说明](#keyvimrc-快捷键相关配置说明)
+* [plug.vimrc   插件相关的配置说明](#plugvimrc-插件相关的配置说明)
+  * [插件列表](#插件列表)
+  * [插件简单说明以及键位绑定](#插件简单说明以及键位绑定)
+
+<!-- markdown-toc -->
 
 ## 如何使用
 
@@ -98,7 +107,9 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   Plug 'mg979/vim-visual-multi'         -- 虚拟多光标插件
   Plug 'pangloss/vim-javascript'        -- js语法高亮插件
   Plug 'iamcco/markdown-preview.nvim'   -- md 预览插件
+  Plug 'mzlogin/vim-markdown-toc'       -- md 生成目录
   Plug 'neoclide/coc.nvim'              -- coc
+  Plug 'nvim-treesitter/nvim-treesitter'-- treesitter
   Plug 'voldikss/vim-floaterm'          -- 悬浮终端插件
   Plug 'tpope/vim-dadbod'               -- 数据库可视化工具
   Plug 'kristijanhusak/vim-dadbod-ui'   -- 数据库可视化工具
@@ -106,6 +117,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   Plug 'yaocccc/vim-lines'              -- 自己写的状态栏/标签栏插件
   Plug 'yaocccc/vim-surround'           -- 自己写的快速操作({["'`等的插件
   Plug 'yaocccc/vim-comment'            -- 自己写的快速注释插件
+  Plug 'yaocccc/vim-hlchunk'            -- 朋友那拿的高亮代码块行号插件
 ```
 
 ### 插件简单说明以及键位绑定
@@ -131,6 +143,9 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 - [iamcco/markdown-preview.vim](https://github.com/iamcco/markdown-preview.vim)
   - F5 在浏览器预览markdown
 
+- [mzlogin/vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)
+  - :GenTocGFM
+
 - [**neoclide/coc.nvim**](https://github.com/neoclide/coc.nvim)
   - 建议到对应的仓库看一下
   - 全局的插件列表 let g:coc_global_extensions=[...] 按需添加
@@ -147,7 +162,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
     - ( or ) 跳转到上下 git 修改
     - C 展示 git commit or change info
     - leader - g 开启临时 git blame 显示
-    - tt 打开 coc-expoler 文件管理器
+    - T 打开 coc-expoler 文件管理器
 
 - [voldikss/vim-floaterm](https://github.com/voldikss/vim-floaterm)
   - ctrl - t 打开关闭 浮动终端
@@ -167,7 +182,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   - ctrl - g git变更文件搜索
   - ctrl - / 关闭/开启preview
 
-- **yaocccc/...  自己写的三个插件的使用说明**
+- **yaocccc/...**
   - 建议到对应的仓库看一下
   - [yaocccc/vim-lines](https://github.com/yaocccc/vim-lines)
     - 采用默认配置即可
@@ -181,3 +196,6 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
     - normal模式下 ?? 行注释/反注释当前行
     - visual模式下 /  行注释/反注释当前块
     - visual模式下 ?  块注释/反注释当前块
+  - [yaocccc/vim-hlchunk](https://github.com/yaocccc/vim-hlchunk)
+    - 用类似以下的au添加你需要添加signcolumn提示的文件类型
+      autocmd CursorMoved,CursorMovedI,TextChanged,TextChangedI,TextChangedP *.ts,*.js,*.go,*.c,*.json call HlChunk()

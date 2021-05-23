@@ -38,7 +38,8 @@
 
     " S保存 Q退出 R重载vim配置
         command! W w !sudo tee > /dev/null %
-        nnoremap <silent> S     :w<cr>
+        au BufEnter * if &buftype == '' && &readonly == 1 | set buftype=acwrite | set noreadonly | endif
+        nnoremap <silent><expr> S &buftype == 'acwrite' ? ':W<CR>' : ':w<CR>'
         nnoremap <silent> Q     :q!<cr>
         nnoremap <silent> R     :source ~/.config/nvim/init.vim \| echo "reloaded"<cr>
 
@@ -76,8 +77,9 @@
         vnoremap          <c-s-left>  ^
         vnoremap          <c-s-right> $
 
-    " 选中全文
+    " 选中全文 选中{ 复制全文
         nnoremap <m-a>     ggVG
+        nnoremap <m-s>     vi{
         nnoremap <leader>y :%yank<cr>
 
     " ctrl u 清空一行
@@ -115,6 +117,7 @@
         nnoremap s,       <c-w>10<
 
 " buffers
+        nnoremap <silent> W         :bd<cr>
         nnoremap <silent> ss        :bn<cr>
         nnoremap <silent> sp        :bp<cr>
         nnoremap <silent> <m-left>  :bp<cr>
@@ -123,26 +126,26 @@
         vnoremap <silent> <m-right> <esc>:bn<cr>
         inoremap <silent> <m-left>  <esc>:bp<cr>
         inoremap <silent> <m-right> <esc>:bn<cr>
-        nnoremap <silent><expr> W   ":bd \|call SetTabline()<cr>"
 
 
 " T快速向下打开一个终端
-        nnoremap T :below 10sp +term<cr>a
+        nnoremap <expr> tt ':below 10sp \| term<cr>a'
+        func! TERM(cmd)
+            exec 'below 10sp | term ' . a:cmd
+            startinsert
+        endf
 
 " 一键运行文件
         command! Run  call <SID>runFile()
         noremap  <F5> :Run<cr>
         inoremap <F5> <ESC>:Run<cr>
+        let s:run_cmd = { 'javascript': 'node', 'typescript': 'ts-node', 'html': 'google-chrome-stable', 'python': 'python', 'go': 'go run', 'sh': 'bash' }
         fun! s:runFile()
             exec "w"
-            if     &filetype == 'javascript' | exec 'w !node %'
-            elseif &filetype == 'typescript' | exec 'w !ts-node %'
-            elseif &filetype == 'python' | exec 'w !python %'
-            elseif &filetype == 'go' | exec 'w !go run %'
-            elseif &filetype == 'java' | exec 'w !javac %' | exec 'w !java %<'
+            if     exists('s:run_cmd.' . &filetype) | call TERM(s:run_cmd[&filetype] . ' %')
             elseif &filetype == 'markdown' | exec 'MarkdownPreview'
-            elseif &filetype == 'c' | exec 'w !gcc % -o ' . expand('%:r') . ' && ./' . expand('%:r') . ' && rm ./' . expand('%:r')
-            elseif &filetype == 'sh' | exec 'w !./%'
+            elseif &filetype == 'java' | call TERM('javac %') | call TERM('java %<')
+            elseif &filetype == 'c' | call TERM('gcc % -o %< && ./%< && rm %<')
             endif
         endf
 
@@ -206,4 +209,17 @@
             if l:before == l:after
                 exe 'norm! 0'
             endif
+        endf
+
+" 定位光标位置
+        nnoremap <silent> Z :call HlCursor()<cr>
+        nnoremap <silent><expr> zz 'zz:call HlCursor()<cr>'
+        fun! HlCursor()
+            call timer_start(500, 'ResetHlCursor')
+            set cursorcolumn
+            hi CursorLine ctermfg=NONE ctermbg=240 cterm=bold
+        endf
+        fun! ResetHlCursor(...)
+            set nocursorcolumn
+            hi CursorLine ctermfg=NONE ctermbg=NONE cterm=bold
         endf

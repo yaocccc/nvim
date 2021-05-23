@@ -71,7 +71,7 @@ hi TabLineSel ctermfg=247 ctermbg=NONE cterm=BOLD
 hi VertSplit ctermfg=242 ctermbg=NONE cterm=NONE
 hi ColorColumn ctermfg=NONE ctermbg=236 cterm=NONE
 hi Conceal ctermfg=32 ctermbg=NONE cterm=NONE
-hi CursorColumn ctermfg=NONE ctermbg=236 cterm=NONE
+hi CursorColumn ctermfg=NONE ctermbg=240 cterm=NONE
 hi Directory ctermfg=32 ctermbg=NONE cterm=NONE
 hi EndOfBuffer ctermfg=NONE ctermbg=NONE cterm=NONE
 hi ErrorMsg ctermfg=160 ctermbg=230 cterm=reverse
@@ -204,6 +204,7 @@ hi! link hsModuleStartLabel hsStructure
 hi! link hsModuleWhereLabel hsModuleStartLabel
 hi hsNiceOperator ctermfg=37 ctermbg=NONE cterm=NONE
 hi hsniceoperator ctermfg=37 ctermbg=NONE cterm=NONE
+hi NormalFloat ctermbg=NONE
 if !s:italics
   hi gitcommitComment cterm=NONE
   hi htmlSpecialTagName cterm=NONE

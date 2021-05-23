@@ -8,6 +8,7 @@
             Plug 'tpope/vim-dadbod'
             Plug 'kristijanhusak/vim-dadbod-ui', { 'on': ['DBUI'] }
             Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm i'  }
+            Plug 'mzlogin/vim-markdown-toc', { 'on': ['GenTocGitlab'] }
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
             Plug 'voldikss/vim-floaterm'
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -15,6 +16,7 @@
             Plug 'yaocccc/vim-lines'
             Plug 'yaocccc/vim-surround'
             Plug 'yaocccc/vim-comment'
+            Plug 'yaocccc/vim-hlchunk'
     call plug#end()
 
 " Plug Setting
@@ -30,6 +32,7 @@
                 \ 'coc-java',
                 \ 'coc-json',
                 \ 'coc-db',
+                \ 'coc-prettier', 'coc-gist',
                 \ 'coc-pairs', 'coc-snippets', 'coc-tabnine',
                 \ 'coc-word',  'coc-markdownlint',
                 \ 'coc-translator', 'coc-explorer', 'coc-git'
@@ -57,12 +60,13 @@
             vmap     <silent>       ig        <Plug>(coc-git-chunk-inner)
             vmap     <silent>       ag        <Plug>(coc-git-chunk-outer)
             nmap     <silent><expr> C         get(b:, 'coc_git_blame', '') ==# 'Not committed yet' ? "<Plug>(coc-git-chunkinfo)" : "<Plug>(coc-git-commit)"
-            nmap     <silent>       <leader>g :call coc#config('git.addGBlameToVirtualText',  !get(g:coc_user_config, 'git.addGBlameToVirtualText', 0))<cr>
+            nmap     <silent>       <leader>g :call coc#config('git.addGBlameToVirtualText',  !get(g:coc_user_config, 'git.addGBlameToVirtualText', 0)) \| call nvim_buf_clear_namespace(bufnr(), 1, 0, -1)<cr>
         " coc-explorer
-            nnoremap <silent>       tt        :CocCommand explorer --preset floating<cr>
-            au User CocExplorerOpenPre  hi Pmenu ctermbg=NONE
-            au User CocExplorerQuitPost hi Pmenu ctermbg=238
-            au User CocExplorerQuitPost echo
+            nnoremap <silent>       T         :CocCommand explorer --preset floating<cr>
+            hi CocExplorerNormalFloat ctermbg=none guibg=none
+        " coc-prettier
+            autocmd FileType javascript,typescript,json vmap <buffer> = <Plug>(coc-format-selected)
+            autocmd FileType javascript,typescript,json nmap <buffer> = <Plug>(coc-format-selected)
 
     " vim-expand-region 快速选择
         " v扩大选择 V缩小选择
@@ -100,7 +104,7 @@
             let g:db_ui_force_echo_notifications = 1
             let g:db_ui_table_helpers = {
             \   'mysql': {
-            \     'List': 'SELECT * from `{schema}`.`{table}` order by id desc LIMIT 100;',
+            \     'List': 'SELECT * from `{schema}`.`{table}` LIMIT 100;',
             \     'Indexes': 'SHOW INDEXES FROM `{schema}`.`{table}`;',
             \     'Table Fields': 'DESCRIBE `{schema}`.`{table}`;',
             \     'Alter Table': 'ALTER TABLE `{schema}`.`{table}` ADD '
@@ -122,10 +126,16 @@
             endf
             nnoremap <silent><expr> <c-b> g:db_ui_locked ? "" : ":call DBUIToggle()<CR>"
             tnoremap <silent><expr> <c-b> &ft == "floaterm" ? "<c-\><c-n>:call DBUIToggle()<CR>" : "<c-b>"
-    
+
     " markdown-preview-nvim
         " 使用surf浏览器预览
             let g:mkdp_browser = 'surf'
+            let g:mkdp_markdown_css = '/home/chenyc/.config/nvim/colors/markdown.css'
+            let g:mkdp_page_title = '${name}'
+            let g:mkdp_preview_options = { 'hide_yaml_meta': 1, 'disable_filename': 1 }
+
+    " markdown-toc-gen
+            let g:vmt_fence_text = 'markdown-toc'
 
     " fzf
         " maps
@@ -162,30 +172,27 @@
 
     " yaocccc
         " line
-            let g:line_statusline_enable = 1
-            let g:line_tabline_enable = 1
-            let g:line_tabline_show_pwd = 1
-            let g:line_tabline_show_time = 0
-            let g:line_modi_mark = '+'
-            let g:line_pwd_suffix = '/'
+            let g:line_powerline_enable = 1
+            let g:line_nerdfont_enable = 1
             let g:line_unnamed_filename='~'
-            let g:line_statusline_getters = ['CocErrCount', 'GitInfo']
-            let g:CocErrCount = { -> printf(' E%d ', get(get(b:, 'coc_diagnostic_info', {}), 'error', 0)) }
-            let g:GitInfo = { -> substitute(substitute(printf(' %s %s ', get(g:, 'coc_git_status', ''), get(b:, 'coc_git_status', '')), '\v\s{2,}', ' ', 'g'), '^\s*$', '', '') }
+            let g:line_statusline_getters = ['GitInfo', 'CocErrCount', 'GetFt']
+
+            func! GitInfo()
+                let [branch, diff] = [get(g:, 'coc_git_status', ''), get(b:, 'coc_git_status', '')]
+                return (len(branch) ? printf(' %s ', branch) : ' none ') . (len(diff) ? printf('%s ', trim(diff)) : '')
+            endf
+            let CocErrCount = { -> printf(' E%d ', get(get(b:, 'coc_diagnostic_info', {}), 'error', 0)) }
+            let GetFt = { -> printf(' %s ', len(&ft) ? &ft : '~') }
+
         " comment
-            let g:vim_line_comments = { 'vim': '"', 'vimrc': '"',
-                                     \  'js': '//', 'ts': '//',
-                                     \  'java': '//', 'class': '//',
-                                     \  'c': '//', 'h': '//',
-                                     \  'go': '//' }
-            let g:vim_counk_comments = {'js': ['/**', ' *', ' */'], 'ts': ['/**', ' *', ' */'], 'sh': [':<<!', '', '!'], 'md': ['```', '', '```']}
+            let g:vim_line_comments = { 'vim': '"', 'vimrc': '"', 'js': '//', 'ts': '//', 'java': '//', 'class': '//', 'c': '//', 'h': '//', 'go': '//', 'lua': '--' }
+            let g:vim_chunk_comments = { 'js': ['/**', ' *', ' */'], 'ts': ['/**', ' *', ' */'], 'sh': [':<<!', '', '!'], 'md': ['```', ' ', '```'] }
             nnoremap <silent> ??           :NToggleComment<cr>
             vnoremap <silent> /       :<c-u>VToggleComment<cr>
             vnoremap <silent> ?       :<c-u>CToggleComment<cr>
 
+        " hlchunk
+            autocmd CursorMoved,CursorMovedI,TextChanged,TextChangedI,TextChangedP *.ts,*.js,*.go,*.c,*.json call HlChunk()
 
 " some hook
-" cd ~/.config/coc/extensions/node_modules/coc-ccls
-" ln -s node_modules/ws/lib lib
 " sudo pacman -S the_silver_searcher fd bat
-" npm i js-beautify -g

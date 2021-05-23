@@ -67,6 +67,8 @@
         set cmdheight=1
         set updatetime=300
         set shortmess+=cI
+    " 高亮第80列
+        set cc=160
     " 屏幕顶部底部总是保留5行
         set scrolloff=5
     " 不显示模式
