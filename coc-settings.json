@@ -9,8 +9,12 @@
     "tabnine.priority": 90,
     "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
     "pairs.enableBackspace": true,
-    "markdownlint.config.default": true,
-    "markdownlint.config.line_length": false,
+    "markdownlint.config" : {
+        "default": true,
+        "line_length": false,
+        "MD012": false, /* 允许连续的空行 */
+        "MD041": false  /* 首行允许为非H1 */
+    },
     "translator.engines": ["youdao"],
     "tsserver.trace.server": "messages",
     "tsserver.enableJavascript": true,

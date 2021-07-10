@@ -115,6 +115,8 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   Plug 'tpope/vim-dadbod'               -- 数据库可视化工具
   Plug 'kristijanhusak/vim-dadbod-ui'   -- 数据库可视化工具
   Plug 'junegunn/fzf.vim'               -- 文本/文件搜索插件
+  Plug 'nvim-treesitter/nvim-treesitter'-- 文本分析插件
+  Plug 'kyazdani42/nvim-tree.lua'       -- 文件管理器
   Plug 'yaocccc/vim-lines'              -- 自己写的状态栏/标签栏插件
   Plug 'yaocccc/vim-surround'           -- 自己写的快速操作({["'`等的插件
   Plug 'yaocccc/vim-comment'            -- 自己写的快速注释插件

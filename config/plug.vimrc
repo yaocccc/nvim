@@ -14,6 +14,8 @@
             Plug 'junegunn/fzf.vim'
             Plug 'nvim-treesitter/nvim-treesitter'
             Plug 'nvim-treesitter/playground'
+            Plug 'kyazdani42/nvim-web-devicons'
+            Plug 'kyazdani42/nvim-tree.lua'
             Plug 'yaocccc/vim-lines'
             Plug 'yaocccc/vim-surround'
             Plug 'yaocccc/vim-comment'
@@ -23,22 +25,7 @@
 " Plug Setting
     " coc-vim
         " 插件列表
-            let g:coc_global_extensions=[
-                \ 'coc-tsserver',
-                \ 'coc-html', 'coc-css',
-                \ 'coc-clangd',
-                \ 'coc-go',
-                \ 'coc-lua',
-                \ 'coc-vimlsp',
-                \ 'coc-sh',
-                \ 'coc-java',
-                \ 'coc-json',
-                \ 'coc-db',
-                \ 'coc-prettier', 'coc-gist',
-                \ 'coc-pairs', 'coc-snippets', 'coc-tabnine',
-                \ 'coc-word',  'coc-markdownlint',
-                \ 'coc-translator', 'coc-git'
-                \ ]
+            let g:coc_global_extensions=[ 'coc-tsserver', 'coc-html', 'coc-css', 'coc-clangd', 'coc-go', 'coc-lua', 'coc-vimlsp', 'coc-sh', 'coc-java', 'coc-json', 'coc-db', 'coc-prettier', 'coc-gist', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-word',  'coc-markdownlint', 'coc-translator', 'coc-git' ]
         " maps
             nmap     <silent>       <F2>      <Plug>(coc-rename)
             nmap     <silent>       gd        <Plug>(coc-definition)
@@ -46,21 +33,20 @@
             nmap     <silent>       gi        <Plug>(coc-implementation)
             nmap     <silent>       gr        <Plug>(coc-references)
             nmap     <silent>       K         :call CocAction("doHover")<cr>
-            nnoremap <silent>       <F3>      :silent CocRestart<cr>
             inoremap <silent><expr> <TAB>     pumvisible() ? "\<C-n>" : col('.') == 1 \|\| getline('.')[col('.') - 2] =~# '\s' ? "\<TAB>" : coc#refresh()
             inoremap <silent><expr> <s-tab>   pumvisible() ? "\<c-p>" : "\<s-tab>"
             inoremap <silent><expr> <cr>      pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
-            nnoremap <silent>       <F9>      :CocCommand snippets.editSnippets<cr>
+            nnoremap <silent>       <F3>      :silent CocRestart<cr>
             nnoremap <silent><expr> <F4>      get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'
             nmap     <silent>       <c-e>     :CocList diagnostics<cr>
+        " coc-snippets
+            nnoremap <silent>       <F9>      :CocCommand snippets.editSnippets<cr>
         " coc-translator
             nmap     <silent>       mm        <Plug>(coc-translator-p)
             vmap     <silent>       mm        <Plug>(coc-translator-pv)
         " coc-git
             nmap     <silent>       (         <Plug>(coc-git-prevchunk)
             nmap     <silent>       )         <Plug>(coc-git-nextchunk)
-            vmap     <silent>       ig        <Plug>(coc-git-chunk-inner)
-            vmap     <silent>       ag        <Plug>(coc-git-chunk-outer)
             nmap     <silent><expr> C         get(b:, 'coc_git_blame', '') ==# 'Not committed yet' ? "<Plug>(coc-git-chunkinfo)" : "<Plug>(coc-git-commit)"
             nmap     <silent>       <leader>g :call coc#config('git.addGBlameToVirtualText',  !get(g:coc_user_config, 'git.addGBlameToVirtualText', 0)) \| call nvim_buf_clear_namespace(bufnr(), 1, 0, -1)<cr>
         " coc-prettier
@@ -169,6 +155,18 @@
     " treesitter
             lua require('TS')
             nnoremap <silent> H :TSHighlightCapturesUnderCursor<CR>:call lines#refresh_statusline()<cr>
+
+    " nvim tree
+            highlight NvimTreeFolderIcon ctermfg=32
+            let g:nvim_tree_auto_open = 1
+            let g:nvim_tree_auto_close = 1
+            let g:nvim_tree_quit_on_open = 1
+            let g:nvim_tree_update_cwd = 1
+            let g:nvim_tree_icon_padding = ' '
+            let g:nvim_tree_git_hl = 1
+            let g:nvim_tree_add_trailing = 1
+            let g:nvim_tree_icons = { 'git': { 'unstaged': "~", 'staged': "+", 'unmerged': "!", 'renamed': "+", 'untracked': "?", 'deleted': "-", 'ignored': "…" } }
+            nnoremap T :NvimTreeToggle<CR>
 
     " yaocccc
         " line
