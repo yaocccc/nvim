@@ -45,8 +45,8 @@ hi! link Typedef Type
 hi! link lCursor Cursor
 
 hi Cursor ctermfg=230 ctermbg=32 cterm=NONE
-hi CursorLineNr ctermfg=80 ctermbg=NONE cterm=bold
-hi CursorLine ctermfg=NONE ctermbg=NONE cterm=bold
+hi CursorLineNr ctermfg=80 ctermbg=237 cterm=bold
+hi CursorLine ctermfg=NONE ctermbg=237 cterm=bold
 hi NonText ctermfg=246 ctermbg=NONE cterm=bold
 hi SpecialKey ctermfg=246 ctermbg=236 cterm=bold
 hi SpellBad ctermfg=61 ctermbg=NONE cterm=underline

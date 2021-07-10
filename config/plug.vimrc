@@ -46,13 +46,13 @@
             nmap     <silent>       gi        <Plug>(coc-implementation)
             nmap     <silent>       gr        <Plug>(coc-references)
             nmap     <silent>       K         :call CocAction("doHover")<cr>
-            nmap     <silent>       <c-e>     :<c-u>CocList diagnostics<cr>
-            nnoremap <silent>       <F9>      :CocCommand snippets.editSnippets<cr>
             nnoremap <silent>       <F3>      :silent CocRestart<cr>
-            nnoremap <silent><expr> <F4>      get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'
             inoremap <silent><expr> <TAB>     pumvisible() ? "\<C-n>" : col('.') == 1 \|\| getline('.')[col('.') - 2] =~# '\s' ? "\<TAB>" : coc#refresh()
             inoremap <silent><expr> <s-tab>   pumvisible() ? "\<c-p>" : "\<s-tab>"
             inoremap <silent><expr> <cr>      pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
+            nnoremap <silent>       <F9>      :CocCommand snippets.editSnippets<cr>
+            nnoremap <silent><expr> <F4>      get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'
+            nmap     <silent>       <c-e>     :CocList diagnostics<cr>
         " coc-translator
             nmap     <silent>       mm        <Plug>(coc-translator-p)
             vmap     <silent>       mm        <Plug>(coc-translator-pv)

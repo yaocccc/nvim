@@ -6,31 +6,32 @@ require'nvim-treesitter.configs'.setup {
 }
 
 local hls = {
-    TSVariable = {fg=152};
-    TSFunction = {fg=32};
+    Variable = {fg="NONE"};
+    Function = {fg=32};
+    Operator = {fg=166};
+    KeywordOperator = {fg=166};
 
-    TSProperty = {fg=166};
-    TSMethod = {fg=148};
-    TSField= {fg=150};
+    Property = {fg=166};
+    Method = {fg=166};
+    Field= {fg=150};
 
-    TSKeywordFunction = {fg=32};
-    TSOperator = {fg=166};
-    TSKeywordOperator = {fg=166};
+    Keyword = {fg=166};
+    KeywordFunction = {fg=32};
+    Exception = {fg=32};
 
-    TSException = {fg=118};
-    TSKeyword = {fg=118};
+    Statement = {fg=166};
+    Special = {fg=172};
+    Comment= {fg=71,sp='italic'};
+    Include = {fg=32};
+    Type = {fg=172};
+    PunctBracket = {fg=151};
 
-    TSPunctBracket = {fg=151};
+    Constructor = {fg=172};
+    Namespace = {fg=172};
 
-    TSInclude = {fg=32};
-    TSComment= {fg=71,sp='italic'};
-    TSType = {fg=172};
-
-    TSConstructor = {fg=172};
-    TSNamespace = {fg=172};
-
-    TSString = {fg=37};
-    TSNumber = {fg=37}
+    String = {fg=37};
+    Number = {fg=37};
+    Boolean = {fg=37};
 }
 
 function highlight(group, color)
@@ -38,6 +39,7 @@ function highlight(group, color)
     local bg = color.bg and ' ctermbg=' .. color.bg or ' ctermbg=NONE'
     local sp = color.sp and ' cterm=' .. color.sp or ''
     vim.api.nvim_command('highlight ' .. group .. fg .. bg .. sp)
+    vim.api.nvim_command('highlight ' .. 'TS' .. group .. fg .. bg .. sp)
 end
 
 for group,colors in pairs(hls) do
