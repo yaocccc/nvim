@@ -5,7 +5,7 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 
-local hls = {
+require'common'.set_highlights({
     Variable = {fg="NONE"};
     Function = {fg=32};
     Operator = {fg=166};
@@ -32,16 +32,6 @@ local hls = {
     String = {fg=37};
     Number = {fg=37};
     Boolean = {fg=37};
-}
+})
 
-function highlight(group, color)
-    local fg = color.fg and ' ctermfg=' .. color.fg or ' ctermfg=NONE'
-    local bg = color.bg and ' ctermbg=' .. color.bg or ' ctermbg=NONE'
-    local sp = color.sp and ' cterm=' .. color.sp or ''
-    vim.api.nvim_command('highlight ' .. group .. fg .. bg .. sp)
-    vim.api.nvim_command('highlight ' .. 'TS' .. group .. fg .. bg .. sp)
-end
-
-for group,colors in pairs(hls) do
-    highlight(group, colors)
-end
+require'common'.set_maps({ { 'n', 'H', ':TSHighlightCapturesUnderCursor<CR>:lua require"nvim-lines.statusline".refresh_statusline()<cr>', {silent = true, noremap = true}} })

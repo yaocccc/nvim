@@ -212,7 +212,6 @@
         endf
 
 " 定位光标位置
-        nnoremap <silent> Z :call HlCursor()<cr>
         nnoremap <silent><expr> zz 'zz:call HlCursor()<cr>'
         fun! HlCursor()
             call timer_start(500, 'ResetHlCursor')
