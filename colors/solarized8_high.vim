@@ -86,7 +86,7 @@ hi PmenuThumb ctermfg=NONE ctermbg=243 cterm=NONE
 hi Question ctermfg=37 ctermbg=NONE cterm=bold
 hi Search ctermfg=31 ctermbg=7 cterm=reverse
 hi SignColumn ctermfg=247 ctermbg=NONE cterm=NONE
-hi Visual ctermfg=7 ctermbg=31 cterm=NONE
+hi Visual cterm=reverse
 hi VisualNOS ctermfg=NONE ctermbg=236 cterm=reverse
 hi WarningMsg ctermfg=166 ctermbg=NONE cterm=bold
 hi WildMenu ctermfg=230 ctermbg=236 cterm=reverse

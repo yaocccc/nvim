@@ -1,7 +1,6 @@
 vim.g.line_powerline_enable = 1
 vim.g.line_nerdfont_enable = 1
 vim.g.line_unnamed_filename='~'
-vim.g.line_hl = { none = '236', light = '24', dark = '240', ['break'] = '244' }
 vim.g.line_statusline_getters = {'v:lua.GitInfo', 'v:lua.CocErrCount', 'v:lua.GetFt'}
 function GitInfo()
     local branch = vim.g.coc_git_status or ''
