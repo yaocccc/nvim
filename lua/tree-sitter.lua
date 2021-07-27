@@ -22,7 +22,7 @@ require'common'.set_highlights({
     Statement = {fg=166};
     Special = {fg=172};
     Comment= {fg=71,sp='italic'};
-    Include = {fg=32};
+    Include = {fg=1};
     Type = {fg=172};
     PunctBracket = {fg=151};
 
