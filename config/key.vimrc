@@ -82,9 +82,11 @@
         nnoremap <m-s>     vi{
         nnoremap <leader>y :%yank<cr>
 
-    " ctrl u 清空一行
+    " emacs风格快捷键 清空一行
         nnoremap <c-u> cc<Esc>
         inoremap <c-u> <Esc>cc
+        inoremap <c-a> <Esc>I
+        inoremap <c-e> <Esc>A
 
     " alt + 上 下移动行
         nnoremap <silent> <m-up>   :m .-2<cr>
@@ -128,7 +130,7 @@
         inoremap <silent> <m-right> <esc>:bn<cr>
 
 
-" T快速向下打开一个终端
+" tt快速向下打开一个终端
         nnoremap <expr> tt ':below 10sp \| term<cr>a'
         func! TERM(cmd)
             exec 'below 10sp | term ' . a:cmd
@@ -144,7 +146,7 @@
             exec "w"
             if     exists('s:run_cmd.' . &filetype) | call TERM(s:run_cmd[&filetype] . ' %')
             elseif &filetype == 'markdown' | exec 'MarkdownPreview'
-            elseif &filetype == 'java' | call TERM('javac %') | call TERM('java %<')
+            elseif &filetype == 'java' | call TERM('javac % && java %<')
             elseif &filetype == 'c' | call TERM('gcc % -o %< && ./%< && rm %<')
             endif
         endf
