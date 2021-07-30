@@ -13,8 +13,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'nvim-treesitter/playground'
-    Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'kyazdani42/nvim-tree.lua'
     Plug 'yaocccc/nvim-lines.lua'
     Plug 'yaocccc/vim-surround'
     Plug 'yaocccc/vim-comment'
