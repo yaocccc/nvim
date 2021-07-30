@@ -28,8 +28,6 @@
 │   └── ...                  -- 高亮主题文件
 ├── lua
 │   └── ...                  -- 部分lua配置项(treesitter)
-├── syntax
-│   └── ...                  -- 语法解析文件
 ├── autoload
 │   └── plug.vim             -- vim-plug 插件管理工具
 ├── ftplugin
@@ -116,8 +114,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   Plug 'kristijanhusak/vim-dadbod-ui'   -- 数据库可视化工具
   Plug 'junegunn/fzf.vim'               -- 文本/文件搜索插件
   Plug 'nvim-treesitter/nvim-treesitter'-- 文本分析插件
-  Plug 'kyazdani42/nvim-tree.lua'       -- 文件管理器
-  Plug 'yaocccc/vim-lines'              -- 自己写的状态栏/标签栏插件
+  Plug 'yaocccc/nvim-lines.lua'         -- 自己写的状态栏/标签栏插件
   Plug 'yaocccc/vim-surround'           -- 自己写的快速操作({["'`等的插件
   Plug 'yaocccc/vim-comment'            -- 自己写的快速注释插件
   Plug 'yaocccc/vim-hlchunk'            -- 朋友那拿的高亮代码块行号插件
@@ -163,6 +160,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 >>
 >> 部分自用的插件的快捷键  
 >>> mm 翻译当前词  
+>>> T 开始coc-explorer文件管理器窗口
 >>> ( or ) 跳转到上下 git 修改  
 >>> C 展示 git commit or change info  
 >>> leader - g 开启临时 git blame 显示  
@@ -190,7 +188,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 > **yaocccc/...**  
 >> 建议到对应的仓库看一下  
 >>
->> [yaocccc/vim-lines](https://github.com/yaocccc/vim-lines)  
+>> [yaocccc/nvim-lines.lua](https://github.com/yaocccc/nvim-lines.lua)  
 >>> 采用默认配置即可  
 >>
 >> [yaocccc/vim-surround](https://github.com/yaocccc/vim-surround)  

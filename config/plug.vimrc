@@ -31,7 +31,6 @@ lua require'vim-floaterm'
 lua require'fzf-vim'
 lua require'coc-nvim'
 lua require'tree-sitter'
-lua require'tree-nvim'
 lua require'nvim-lines'
 lua require'yaocccc'
 
