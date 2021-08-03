@@ -16,7 +16,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'yaocccc/nvim-lines.lua'
     Plug 'yaocccc/vim-surround'
     Plug 'yaocccc/vim-comment'
-    Plug 'yaocccc/vim-hlchunk'
 call plug#end()
 
 lua require'vim-expand-region'
@@ -30,7 +29,7 @@ lua require'fzf-vim'
 lua require'coc-nvim'
 lua require'tree-sitter'
 lua require'nvim-lines'
-lua require'yaocccc'
+lua require'vim-comment'
 
 " some hook
 " sudo pacman -S the_silver_searcher fd bat
