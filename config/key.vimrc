@@ -129,25 +129,19 @@
         inoremap <silent> <m-left>  <esc>:bp<cr>
         inoremap <silent> <m-right> <esc>:bn<cr>
 
+" 一键运行文件(依赖vim-floaterm插件及lua/vim-floaterm.lua中的FTToggle方法)
+        command!    Run  call <SID>runFile()
+        noremap     <F5> :Run<cr>
+        inoremap    <F5> <ESC>:Run<cr>
+        tmap <expr> <F5> &ft == 'floaterm' ? printf('<c-\><c-n>:FloatermHide<cr>%s', floaterm#terminal#get_bufnr('RUN') == bufnr('%') ? '' : '<F5>') : '<F5>'
 
-" tt快速向下打开一个终端
-        nnoremap <expr> tt ':below 10sp \| term<cr>a'
-        func! TERM(cmd)
-            exec 'below 10sp | term ' . a:cmd
-            startinsert
-        endf
-
-" 一键运行文件
-        command! Run  call <SID>runFile()
-        noremap  <F5> :Run<cr>
-        inoremap <F5> <ESC>:Run<cr>
         let s:run_cmd = { 'javascript': 'node', 'typescript': 'ts-node', 'html': 'google-chrome-stable', 'python': 'python', 'go': 'go run', 'sh': 'bash' }
         fun! s:runFile()
             exec "w"
-            if     exists('s:run_cmd.' . &filetype) | call TERM(s:run_cmd[&filetype] . ' %')
+            if     exists('s:run_cmd.' . &filetype) | call v:lua.FTToggle('RUN', s:run_cmd[&filetype] . ' %', '')
             elseif &filetype == 'markdown' | exec 'MarkdownPreview'
-            elseif &filetype == 'java' | call TERM('javac % && java %<')
-            elseif &filetype == 'c' | call TERM('gcc % -o %< && ./%< && rm %<')
+            elseif &filetype == 'java' | call v:lua.FTToggle('RUN', 'javac % && java %<', '')
+            elseif &filetype == 'c' | call v:lua.FTToggle('RUN', 'gcc % -o %< && ./%< && rm %<', '')
             endif
         endf
 

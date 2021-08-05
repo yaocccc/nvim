@@ -11,15 +11,27 @@ function FTToggle(name, cmd, pre_cmd)
         vim.api.nvim_command(string.format('exec "FloatermToggle %s"', name))
     else
         vim.api.nvim_command(string.format('exec "%s"', pre_cmd))
-        vim.api.nvim_command(string.format('FloatermNew --name=%s %s', name, cmd))
+        vim.api.nvim_command(string.format('FloatermNew --autoclose=0 --name=%s %s', name, cmd))
     end
 end
 
-require'common'.set_maps({
-    { 'n', '<c-f>', ":call v:lua.FTToggle('FILE', 'ranger', '')<cr>", {silent = true, noremap = true}},
-    { 'n', '<c-b>', ":call v:lua.FTToggle('DBUI', 'nvim +CALLDB', '')<cr>", {silent = true, noremap = true}},
-    { 'n', '<c-t>', ":call v:lua.FTToggle('TERM', '', \"try \\| call system('~/scripts/edit-profile.sh VIM_TEM_DIR \" . $PWD . \"') \\| endtry\")<cr>", {silent = true, noremap = true}},
-    { 't', '<c-f>', "&ft == \"floaterm\" ? printf('<c-\\><c-n>:FloatermHide<cr>%s', floaterm#terminal#get_bufnr('FILE') == bufnr('%') ? '' : '<c-f>') : \"<c-f>\"", {silent = true, expr = true}},
-    { 't', '<c-b>', "&ft == \"floaterm\" ? printf('<c-\\><c-n>:FloatermHide<cr>%s', floaterm#terminal#get_bufnr('DBUI') == bufnr('%') ? '' : '<c-b>') : \"<c-b>\"", {silent = true, expr = true}},
-    { 't', '<c-t>', "&ft == \"floaterm\" ? printf('<c-\\><c-n>:FloatermHide<cr>%s', floaterm#terminal#get_bufnr('TERM') == bufnr('%') ? '' : '<c-t>') : \"<c-t>\"", {silent = true, expr = true}},
-})
+function SetFTToggleMap(key, name, cmd, pre_cmd)
+    require'common'.set_maps({
+        { 'n', key, string.format(":call v:lua.FTToggle('%s', '%s', '%s')<cr>", name, cmd, pre_cmd), {silent = true, noremap = true}},
+        { 't', key, "&ft == \"floaterm\" ? printf('<c-\\><c-n>:FloatermHide<cr>%s', floaterm#terminal#get_bufnr('" .. name .. "') == bufnr('%') ? '' : '" .. key.. "') : '" .. key.. "'", {silent = true, expr = true}},
+    })
+end
+
+vim.api.nvim_exec(
+[[
+    func! SetVimDir()
+        try
+            call system('~/scripts/edit-profile.sh VIM_TEM_DIR ' . $PWD)
+        endtry
+    endf
+]], false)
+
+
+SetFTToggleMap('<c-f>', 'FILE', 'ranger', '')
+SetFTToggleMap('<c-b>', 'DBUI', 'nvim +CALLDB', '')
+SetFTToggleMap('<c-t>', 'TERM', '', "call SetVimDir()")
