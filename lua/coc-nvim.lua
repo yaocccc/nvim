@@ -1,4 +1,4 @@
-vim.g.coc_global_extensions = { 'coc-tsserver', 'coc-html', 'coc-css', 'coc-clangd', 'coc-go', 'coc-lua', 'coc-vimlsp', 'coc-sh', 'coc-java', 'coc-json', 'coc-db', 'coc-prettier', 'coc-gist', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-word',  'coc-markdownlint', 'coc-translator', 'coc-git', 'coc-explorer' }
+vim.g.coc_global_extensions = { 'coc-tsserver', 'coc-html', 'coc-css', 'coc-clangd', 'coc-go', 'coc-lua', 'coc-vimlsp', 'coc-sh', 'coc-java', 'coc-json', 'coc-db', 'coc-prettier', 'coc-pairs', 'coc-snippets', 'coc-tabnine', 'coc-word',  'coc-markdownlint', 'coc-translator', 'coc-git', 'coc-explorer' }
 vim.api.nvim_command('autocmd FileType javascript,typescript,json vmap <buffer> = <Plug>(coc-format-selected)')
 vim.api.nvim_command('autocmd FileType javascript,typescript,json nmap <buffer> = <Plug>(coc-format-selected)')
 vim.api.nvim_command("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
