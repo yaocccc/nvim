@@ -115,8 +115,8 @@
         nnoremap s<Down>  <c-w>j
         nnoremap <m-w>    <c-w>w
         nnoremap s=       <c-w>=
-        nnoremap s.       <c-w>10>
-        nnoremap s,       <c-w>10<
+        nnoremap <expr> <m-.> winnr() <= winnr('$') - winnr() ? '<c-w>10>' : '<c-w>10<'
+        nnoremap <expr> <m-,> winnr() <= winnr('$') - winnr() ? '<c-w>10<' : '<c-w>10>'
 
 " buffers
         nnoremap <silent> W         :bd<cr>
