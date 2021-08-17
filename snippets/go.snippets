@@ -73,3 +73,9 @@ snippet main "func main()"
 
 snippet pa "package"
 	package ${1:main}
+
+snippet ids "MapToId"
+	${1}Ids := []int{}
+	for _, ${1} := range ${1}s {
+		${1}Ids = append(${1}Ids, ${1}.Id)
+	}
