@@ -31,6 +31,8 @@ snippet dd "day~"
 
 	## check
 
+snippet date "date~"
+	`strftime("%Y/%m/%d")`
 
 snippet td "todo list"
 	> - [ ] ${1}
@@ -72,3 +74,23 @@ snippet class "class~"
 
 snippet de "descriptor"
 	/** ${0} */
+
+snippet t2 "table 2"
+	| ${1:head} | ${2:head} |
+	| ---- | ---- |
+	|      |      |
+
+snippet t3 "table 3"
+	| ${1:head} | ${2:head} | ${3:head} |
+	| ---- | ---- | ---- |
+	|      |      |      |
+
+snippet t4 "table 4"
+	| ${1:head} | ${2:head} | ${3:head} | ${4:head} |
+	| ---- | ---- | ---- | ---- |
+	|      |      |      |      |
+
+snippet t5 "table 5"
+	| ${1:head} | ${2:head} | ${3:head} | ${4:head} | ${5:head} |
+	| ---- | ---- | ---- | ---- | ---- |
+	|      |      |      |      |      |

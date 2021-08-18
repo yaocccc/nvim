@@ -1,3 +1,5 @@
+au FileType markdown syn match markdownError "\w\@<=\w\@="
+
 let b:md_block = '```'
 setlocal shiftwidth=2
 setlocal softtabstop=2
