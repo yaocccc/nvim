@@ -17,6 +17,7 @@
         set showmatch
         noremap <leader> :nohlsearch<CR>
         set incsearch
+        set inccommand=
         set ignorecase
         set smartcase
     " 延迟
