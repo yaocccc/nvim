@@ -54,7 +54,7 @@ require'common'.set_highlights({
     Comment= {fg=71,sp='italic'};
     Include = {fg=1};
     Type = {fg=179};
-    TypeBuiltin = {fg=41};
+    TypeBuiltin = {fg=150};
     PunctBracket = {fg=151};
 
     Constructor = {fg=172};
