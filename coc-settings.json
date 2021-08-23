@@ -55,9 +55,10 @@
     "markdownlint.config": {
         "default": true,
         "line_length": false,
-        "MD004": false /* 允许无序号风格 */,
-        "MD012": false /* 允许连续的空行 */,
-        "MD041": false /* 首行允许为非H1 */
+        "MD004": false /* 允许无序号风格   */,
+        "MD012": false /* 允许连续的空行   */,
+        "MD032": false /* 允许列表前后非空 */,
+        "MD041": false /* 首行允许为非H1   */
     },
     "translator.engines": ["youdao"],
     "tsserver.trace.server": "messages",
