@@ -19,3 +19,16 @@ fun! s:toggleTodoStatus()
     endif
     exe "norm! j^"
 endf
+
+nnoremap <silent><buffer> <F6> :call <SID>toggleMPTheme()<CR>
+inoremap <silent><buffer> <F6> <ESC>:call <SID>toggleMPTheme()<CR>
+fun! s:toggleMPTheme()
+    if g:mkdp_preview_options.theme == 'dark'
+        let g:mkdp_preview_options.theme = 'light'
+    else
+        let g:mkdp_preview_options.theme = 'dark'
+    endif
+
+    exec 'MarkdownPreviewStop'
+    exec 'MarkdownPreview'
+endf
