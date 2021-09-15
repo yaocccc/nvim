@@ -17,6 +17,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'yaocccc/nvim-lines.lua'
     Plug 'yaocccc/vim-surround'
     Plug 'yaocccc/vim-comment'
+    Plug 'yaocccc/nvim-hlchunk'
 call plug#end()
 
 lua require'vim-expand-region'

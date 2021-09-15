@@ -27,7 +27,7 @@
 ├── colors
 │   └── ...                  -- 高亮主题文件
 ├── lua
-│   └── ...                  -- 部分lua配置项(treesitter)
+│   └── ...                  -- 部分lua配置项(目前是所有的plug配置)
 ├── autoload
 │   └── plug.vim             -- vim-plug 插件管理工具
 ├── ftplugin
@@ -114,10 +114,10 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   Plug 'kristijanhusak/vim-dadbod-ui'   -- 数据库可视化工具
   Plug 'junegunn/fzf.vim'               -- 文本/文件搜索插件
   Plug 'nvim-treesitter/nvim-treesitter'-- 文本分析插件
-  Plug 'yaocccc/nvim-lines.lua'         -- 自己写的状态栏/标签栏插件
-  Plug 'yaocccc/vim-surround'           -- 自己写的快速操作({["'`等的插件
-  Plug 'yaocccc/vim-comment'            -- 自己写的快速注释插件
-  Plug 'yaocccc/vim-hlchunk'            -- 朋友那拿的高亮代码块行号插件
+  Plug 'yaocccc/nvim-lines.lua'         -- 状态栏/标签栏插件
+  Plug 'yaocccc/nvim-hlchunk'           -- {}区间高亮插件
+  Plug 'yaocccc/vim-surround'           -- 快速操作({["'`等的插件
+  Plug 'yaocccc/vim-comment'            -- 快速注释插件
 ```
 
 ### 插件简单说明以及键位绑定
@@ -203,6 +203,4 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 >>> visual模式下 /  行注释/反注释当前块  
 >>> visual模式下 ?  块注释/反注释当前块  
 >>
->> [yaocccc/vim-hlchunk](https://github.com/yaocccc/vim-hlchunk)  
->>> 用类似以下的au添加你需要添加signcolumn提示的文件类型  
->>> autocmd CursorMoved,CursorMovedI,TextChanged,TextChangedI,TextChangedP *.ts,*.js,*.go,*.c,*.json call HlChunk()  
+>> [yaocccc/nvim-hlchunk](https://github.com/yaocccc/nvim-hlchunk)  
