@@ -62,7 +62,8 @@
         "MD031": false /* 允许代码块前后非空 */,
         "MD032": false /* 允许列表前后非空   */,
         "MD041": false /* 首行允许为非H1     */,
-        "MD042": false /* 首行空链接         */
+        "MD042": false /* 首行空链接         */,
+        "MD046": false /* unknown            */
     },
     "translator.engines": ["youdao"],
     "tsserver.trace.server": "messages",
