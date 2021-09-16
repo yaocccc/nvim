@@ -33,5 +33,7 @@ lua require'tree-sitter'
 lua require'nvim-lines'
 lua require'vim-comment'
 
+let g:hlchunk_chars=['─', '─', '╭', '│', '╰', '─', '>']
+
 " some hook
 " sudo pacman -S the_silver_searcher fd bat
