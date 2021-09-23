@@ -5,8 +5,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'tpope/vim-dadbod'
     Plug 'kristijanhusak/vim-dadbod-ui', { 'on': ['DBUI'] }
-    " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm i'  }
-    Plug 'yaocccc/markdown-preview.nvim', { 'do': 'cd app && npm i'  }
     Plug 'mzlogin/vim-markdown-toc', { 'on': ['GenTocGitlab'] }
     Plug 'voldikss/vim-floaterm'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -14,6 +12,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'nvim-treesitter/playground'
+    Plug 'yaocccc/markdown-preview.nvim', { 'do': 'cd app && npm i'  }
     Plug 'yaocccc/nvim-lines.lua'
     Plug 'yaocccc/vim-surround'
     Plug 'yaocccc/vim-comment'
@@ -32,8 +31,6 @@ lua require'coc-nvim'
 lua require'tree-sitter'
 lua require'nvim-lines'
 lua require'vim-comment'
-
-let g:hlchunk_chars=['─', '─', '╭', '│', '╰', '─', '>']
 
 " some hook
 " sudo pacman -S the_silver_searcher fd bat

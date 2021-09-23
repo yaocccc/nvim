@@ -4,7 +4,7 @@ let b:md_block = '```'
 setlocal shiftwidth=2
 setlocal softtabstop=2
 setlocal tabstop=2
-nnoremap <silent><buffer> <CR> :call <SID>toggleTodoStatus()<CR>
+nnoremap <silent><buffer> <CR>   :call <SID>toggleTodoStatus()<CR>
 vnoremap <silent><buffer> B      :<c-u>call SurroundVaddPairs("**", "**")<cr>
 vnoremap <silent><buffer> I      :<c-u>call SurroundVaddPairs("*", "*")<cr>
 vnoremap <silent><buffer> T      :<c-u>call SurroundVaddPairs("- [ ] ", "")<cr>
