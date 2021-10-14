@@ -119,7 +119,7 @@
         nnoremap <expr> <m-,> winnr() <= winnr('$') - winnr() ? '<c-w>10<' : '<c-w>10>'
 
 " buffers
-        nnoremap <silent> W         :bd<cr>
+        nnoremap <silent> W         :bw<cr>
         nnoremap <silent> ss        :bn<cr>
         nnoremap <silent> sp        :bp<cr>
         nnoremap <silent> <m-left>  :bp<cr>
