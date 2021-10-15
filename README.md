@@ -66,9 +66,8 @@
 | normal | W                    | close                             |
 | normal | Q                    | quit                              |
 | normal | R                    | 重载配置                          |
-| insert | jj                   | esc                               |
 | normal | >>                   | 将代码块右移                      |
-| visual | <<                   | 将代码块左移                      |
+| normal | <<                   | 将代码块左移                      |
 | visual | > or tab             | 将代码块右移                      |
 | visual | < or shift-tab       | 将代码块左移                      |
 | all    | shift - 方向         | 选中文本(类似于在其他编辑器的体验)|
@@ -78,14 +77,15 @@
 | all    | alt - o              | 下方新起一行                      |
 | all    | alt - O              | 上方新起一行                      |
 | normal | su                   | 左右分屏                          |
+| normal | sp                   | 上下分屏                          |
 | normal | sc                   | 关闭当前窗口                      |
 | normal | so                   | 关闭其他所有窗口                  |
-| normal | s - left or right    | 聚焦到对应窗口                    |
+| normal | s + 方向             | 聚焦到对应窗口                    |
+| normal | ctrl - space         | 切换窗口                          |
 | normal | s=                   | 将窗口大小置为相同                |
 | normal | s,                   | 窗口减小                          |
 | normal | s.                   | 窗口增大                          |
 | normal | ss                   | 切换到下个buffer                  |
-| normal | sp                   | 切换到上个buffer                  |
 | all    | alt  - left or right | 左右跳转buffer                    |
 | all    | F5                   | 一键运行当前文件                  |
 | normal | --                   | 折叠/反折叠                       |

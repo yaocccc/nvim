@@ -32,6 +32,6 @@ vim.api.nvim_exec(
 ]], false)
 
 
-SetFTToggleMap('<c-f>', 'FILE', 'ranger', '')
 SetFTToggleMap('<c-b>', 'DBUI', 'nvim +CALLDB', '')
 SetFTToggleMap('<c-t>', 'TERM', '', "call SetVimDir()")
+SetFTToggleMap('<c-f>', 'FILE', 'ranger', '')

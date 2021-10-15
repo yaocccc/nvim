@@ -7,12 +7,14 @@ vim.g.coc_global_extensions = {
     'coc-vimlsp',
     'coc-sh', 'coc-db',
     'coc-java',
+    'coc-toml',
     'coc-prettier',
     'coc-snippets', 'coc-pairs', 'coc-tabnine', 'coc-word',
     'coc-markdownlint',
     'coc-translator',
     'coc-git',
     'coc-explorer',
+    'coc-highlight',
 }
 vim.api.nvim_command('autocmd FileType javascript,typescript,json vmap <buffer> = <Plug>(coc-format-selected)')
 vim.api.nvim_command('autocmd FileType javascript,typescript,json nmap <buffer> = <Plug>(coc-format-selected)')
@@ -26,8 +28,6 @@ require'common'.set_maps({
     { 'n', 'gi', '<Plug>(coc-implementation)', {silent = true} },
     { 'n', 'gr', '<Plug>(coc-references)', {silent = true} },
     { 'n', 'K', ':call CocAction("doHover")<cr>', {silent = true} },
-    { 'i', '<TAB>', "pumvisible() ? \"\\<C-n>\" : col('.') == 1 || getline('.')[col('.') - 2] =~# '\\s' ? \"\\<TAB>\" : coc#refresh()", {silent = true, noremap = true, expr = true} },
-    { 'i', '<s-tab>', "pumvisible() ? \"\\<c-p>\" : \"\\<s-tab>\"", {silent = true, noremap = true, expr = true} },
     { 'i', '<cr>', "pumvisible() ? \"\\<c-y>\" : \"\\<c-g>u\\<cr>\"", {silent = true, noremap = true, expr = true} },
     { 'n', '<F3>', ":silent CocRestart<cr>", {silent = true, noremap = true} },
     { 'n', '<F4>', "get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'", {silent = true, noremap = true, expr = true} },

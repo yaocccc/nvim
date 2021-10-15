@@ -5,35 +5,6 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 
--- require'common'.set_highlights({
---     Variable = {fg="NONE"};
---     Function = {fg=32};
---     Operator = {fg=166};
---     KeywordOperator = {fg=166};
-
---     Property = {fg=166};
---     Method = {fg=166};
---     Field= {fg=150};
-
---     Keyword = {fg=166};
---     KeywordFunction = {fg=32};
---     Exception = {fg=32};
-
---     Statement = {fg=166};
---     Special = {fg=172};
---     Comment= {fg=71,sp='italic'};
---     Include = {fg=1};
---     Type = {fg=172};
---     PunctBracket = {fg=151};
-
---     Constructor = {fg=172};
---     Namespace = {fg=172};
-
---     String = {fg=37};
---     Number = {fg=37};
---     Boolean = {fg=37};
--- })
-
 require'common'.set_highlights({
     Variable = {fg="NONE"};
     Function = {fg=32};

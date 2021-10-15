@@ -96,5 +96,9 @@
         "printWidth": 160,
         "singleQuote": true,
         "disableSuccessMessage": true
+    },
+    "go.goplsOptions": {
+        "completeUnimported": true,
+        "staticcheck": true
     }
 }

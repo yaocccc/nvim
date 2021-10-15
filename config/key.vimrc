@@ -106,14 +106,15 @@
 
 " windows
     " su 新左右窗口 sc关闭当前 so关闭其他 s方向切换
-        nnoremap su       :vsp<cr>
+        nnoremap su       :vsp<cr><c-w>w
+        nnoremap sp       :sp<cr><c-w>w
         nnoremap sc       :close<cr>
         nnoremap so       :only<cr>
         nnoremap s<Left>  <c-w>h
         nnoremap s<Right> <c-w>l
         nnoremap s<Up>    <c-w>k
         nnoremap s<Down>  <c-w>j
-        nnoremap <m-w>    <c-w>w
+        nnoremap <c-Space> <c-w>w
         nnoremap s=       <c-w>=
         nnoremap <expr> <m-.> winnr() <= winnr('$') - winnr() ? '<c-w>10>' : '<c-w>10<'
         nnoremap <expr> <m-,> winnr() <= winnr('$') - winnr() ? '<c-w>10<' : '<c-w>10>'
@@ -121,13 +122,15 @@
 " buffers
         nnoremap <silent> W         :bw<cr>
         nnoremap <silent> ss        :bn<cr>
-        nnoremap <silent> sp        :bp<cr>
         nnoremap <silent> <m-left>  :bp<cr>
         nnoremap <silent> <m-right> :bn<cr>
         vnoremap <silent> <m-left>  <esc>:bp<cr>
         vnoremap <silent> <m-right> <esc>:bn<cr>
         inoremap <silent> <m-left>  <esc>:bp<cr>
         inoremap <silent> <m-right> <esc>:bn<cr>
+
+" tt 打开一个10行大小的终端
+        nnoremap <expr> tt ':below 10sp \| term<cr>a'
 
 " 一键运行文件(依赖vim-floaterm插件及lua/vim-floaterm.lua中的FTToggle方法)
         command!    Run  call <SID>runFile()
