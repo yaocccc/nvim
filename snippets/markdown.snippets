@@ -31,20 +31,17 @@ snippet dd "day~"
 
 	## check
 
-snippet date "date~"
-	`strftime("%Y/%m/%d")`
-
-snippet time "time~"
-	`strftime("%H:%M:%S")`
-
 snippet pic "picture~"
 	![${2:avatar}](${1})
 
 snippet td "todo list"
 	> - [ ] ${1}
 
-snippet td2 "todo list"
+snippet tdd "todo list"
 	> > - [ ] ${1}
+
+snippet tddd "todo list"
+	> > > - [ ] ${1}
 
 snippet ref "ref~"
 	[${1}](${2})
@@ -103,3 +100,6 @@ snippet t5 "table 5"
 	| ${1:head} | ${2:head} | ${3:head} | ${4:head} | ${5:head} |
 	| ---- | ---- | ---- | ---- | ---- |
 	|      |      |      |      |      |
+
+snippet date "date~"
+	`strftime("%Y-%m-%d %H:%M")`

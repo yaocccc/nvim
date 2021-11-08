@@ -20,6 +20,6 @@ vim.g.line_statusline_getters = {'v:lua.GitInfo', 'v:lua.CocErrCount', 'v:lua.Ge
 vim.g.line_hl = { none = 'NONE', light = 'NONE', dark = 'NONE', ['break'] = '244', space = 238 }
 vim.api.nvim_command('au VimEnter * hi VimLine_Dark ctermfg=245')
 vim.api.nvim_command('au VimEnter * hi VimLine_Buf_Dark ctermfg=245')
-vim.api.nvim_command('au VimEnter * hi CursorLine ctermbg=NONE')
-vim.api.nvim_command('au VimEnter * hi CursorLineNr ctermbg=NONE')
+-- vim.api.nvim_command('au VimEnter * hi CursorLine ctermbg=NONE')
+-- vim.api.nvim_command('au VimEnter * hi CursorLineNr ctermbg=NONE')
 vim.api.nvim_command('au VimEnter * hi VimLine_Other ctermfg=245')

@@ -50,10 +50,11 @@
         au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
     " 持久化撤销
         set undofile
-        set undodir=~/.config/nvim/file_logs
+        set undodir=~/.config/nvim/cache/undodir
     " 折叠
         set foldenable
         set foldmethod=manual
+        set viewdir=~/.config/nvim/cache/viewdir
 
 " show
     " 开启256颜色 暗色背景

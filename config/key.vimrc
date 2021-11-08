@@ -5,7 +5,7 @@
         map      ! :!
         nnoremap + <c-a>
         nnoremap _ <c-x>
-        nnoremap , @@
+        nnoremap , @q
         inoremap <c-z> <esc>u
         inoremap <c-v> <esc>pa
 
@@ -43,15 +43,15 @@
         nnoremap <silent> Q     :q!<cr>
         nnoremap <silent> R     :source ~/.config/nvim/init.vim \| echo "reloaded"<cr>
 
-    " 重写Shift + 左右
-        vnoremap <s-right>      e
-        inoremap <s-right> <esc>ea
-
     " VISUAL SELECT模式 s-tab tab左右缩进
         vnoremap <            <gv
         vnoremap >            >gv
         vnoremap <s-tab>      <gv
         vnoremap <tab>        >gv
+
+    " 重写Shift + 左右
+        vnoremap <s-right>      e
+        inoremap <s-right> <esc>ea
 
     " SHIFT + 方向 选择文本
         inoremap <s-up>    <esc>vk
@@ -219,7 +219,8 @@
         endf
         fun! ResetHlCursor(...)
             set nocursorcolumn
-            hi CursorLine ctermfg=NONE ctermbg=NONE cterm=bold
+            " hi CursorLine ctermfg=NONE ctermbg=NONE cterm=bold
+            hi CursorLine ctermfg=NONE ctermbg=237 cterm=bold
         endf
 
 " 驼峰转换
