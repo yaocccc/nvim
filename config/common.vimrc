@@ -55,6 +55,16 @@
         set foldenable
         set foldmethod=manual
         set viewdir=~/.config/nvim/cache/viewdir
+        au BufWritePost * mkview
+        au BufWinEnter * call s:ldview()
+        func s:ldview()
+            let file = expand("%:p")
+            if file == "" | return | endif
+            let file = substitute(file, $HOME, "~", "g")
+            let file = substitute(file, "/", "=+", "g")
+            let file = printf("%s/%s=", &viewdir, file)
+            if filereadable(file) | loadview | endif
+        endf
 
 " show
     " 开启256颜色 暗色背景

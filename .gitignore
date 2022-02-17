@@ -1,8 +1,7 @@
 .netrwhist
 .idea/
 .vscode/
-file_logs/
-view/
+cache/
 plugged/
 logs/
 log/
