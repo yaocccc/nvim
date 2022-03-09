@@ -138,7 +138,7 @@
         inoremap    <F5> <ESC>:Run<cr>
         tmap <expr> <F5> &ft == 'floaterm' ? printf('<c-\><c-n>:FloatermHide<cr>%s', floaterm#terminal#get_bufnr('RUN') == bufnr('%') ? '' : '<F5>') : '<F5>'
 
-        let s:run_cmd = { 'javascript': 'node', 'typescript': 'ts-node', 'html': 'google-chrome-stable', 'python': 'python', 'go': 'go run', 'sh': 'bash' }
+        let s:run_cmd = { 'javascript': 'node', 'typescript': 'ts-node', 'html': 'google-chrome-stable', 'python': 'python', 'go': 'go run', 'sh': 'bash', 'lua': 'lua' }
         fun! s:runFile()
             exec "w"
             if     exists('s:run_cmd.' . &filetype) | call v:lua.FTToggle('RUN', s:run_cmd[&filetype] . ' %', '')

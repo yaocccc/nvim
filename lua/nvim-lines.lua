@@ -13,13 +13,13 @@ function GetFt()
     return string.format(' %s ', string.len(ft) > 0 and ft or '~')
 end
 
-vim.g.line_powerline_enable = 0
+--            
+vim.g.powerline_symbols = { light_right = '', dark_right = '', light_left = '', dark_left = '' }
+vim.g.line_powerline_enable = 1
 vim.g.line_nerdfont_enable = 1
 vim.g.line_unnamed_filename='~'
 vim.g.line_statusline_getters = {'v:lua.GitInfo', 'v:lua.CocErrCount', 'v:lua.GetFt'}
 vim.g.line_hl = { none = 'NONE', light = 'NONE', dark = 'NONE', ['break'] = '244', space = 238 }
 vim.api.nvim_command('au VimEnter * hi VimLine_Dark ctermfg=245')
 vim.api.nvim_command('au VimEnter * hi VimLine_Buf_Dark ctermfg=245')
--- vim.api.nvim_command('au VimEnter * hi CursorLine ctermbg=NONE')
--- vim.api.nvim_command('au VimEnter * hi CursorLineNr ctermbg=NONE')
 vim.api.nvim_command('au VimEnter * hi VimLine_Other ctermfg=245')
