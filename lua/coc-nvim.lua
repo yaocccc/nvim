@@ -7,7 +7,7 @@ vim.g.coc_global_extensions = {
     'coc-vimlsp',
     'coc-sh', 'coc-db',
     'coc-java', 'coc-pyright',
-    'coc-toml',
+    'coc-toml', 'coc-solidity',
     'coc-prettier',
     'coc-snippets', 'coc-pairs', 'coc-tabnine', 'coc-word',
     'coc-markdownlint',
