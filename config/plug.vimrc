@@ -11,10 +11,11 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'junegunn/fzf.vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'github/copilot.vim', {'branch': 'release'}
-    Plug 'nvim-treesitter/nvim-treesitter'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
     Plug 'yaocccc/markdown-preview.nvim', { 'do': 'cd app && npm i'  }
     Plug 'yaocccc/nvim-lines.lua'
+    Plug 'yaocccc/vim-fcitx2en'
     Plug 'yaocccc/vim-surround'
     Plug 'yaocccc/vim-comment'
     Plug 'yaocccc/nvim-hlchunk'

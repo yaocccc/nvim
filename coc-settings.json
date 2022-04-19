@@ -101,5 +101,6 @@
     "go.goplsOptions": {
         "completeUnimported": true,
         "staticcheck": true
-    }
+    },
+    "git.enableGutters": true
 }
