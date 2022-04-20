@@ -95,5 +95,5 @@
     " 修改分隔符样式
         set fillchars=stlnc:#
     " 总是开启 statusline & tabline
-        set laststatus=2
+        set laststatus=3
         set showtabline=2
