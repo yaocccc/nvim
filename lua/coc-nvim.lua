@@ -1,6 +1,8 @@
 vim.g.coc_global_extensions = {
     'coc-tsserver', 'coc-json',
-    'coc-vetur', 'coc-html', 'coc-css',
+    -- 'coc-vetur',
+    '@yaegassy/coc-volar',
+    'coc-html', 'coc-css',
     'coc-clangd',
     'coc-go',
     'coc-lua',
@@ -15,6 +17,7 @@ vim.g.coc_global_extensions = {
     'coc-git',
     'coc-explorer',
     'coc-highlight',
+    'coc-ci'
 }
 vim.api.nvim_command('autocmd FileType javascript,typescript,json vmap <buffer> = <Plug>(coc-format-selected)')
 vim.api.nvim_command('autocmd FileType javascript,typescript,json nmap <buffer> = <Plug>(coc-format-selected)')
@@ -41,5 +44,7 @@ require'common'.set_maps({
     { 'n', ')', "<Plug>(coc-git-nextchunk)", {silent = true} },
     { 'n', 'C', "get(b:, 'coc_git_blame', '') ==# 'Not committed yet' ? \"<Plug>(coc-git-chunkinfo)\" : \"<Plug>(coc-git-commit)\"", {silent = true, expr = true} },
     { 'n', '<leader>g', ":call coc#config('git.addGBlameToVirtualText',  !get(g:coc_user_config, 'git.addGBlameToVirtualText', 0)) \\| call nvim_buf_clear_namespace(bufnr(), 1, 0, -1)<cr>", {silent = true} },
-    { 'n', 'T', ':CocCommand explorer --preset floating<cr>', {silent = true, noremap = true} }
+    { 'n', 'T', ':CocCommand explorer --preset floating<cr>', {silent = true, noremap = true} },
+    { 'n', 'w', '<Plug>(coc-ci-w)', {silent = true} },
+    { 'n', 'b', '<Plug>(coc-ci-b)', {silent = true} }
 })

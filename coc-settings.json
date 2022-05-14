@@ -102,5 +102,7 @@
         "completeUnimported": true,
         "staticcheck": true
     },
-    "git.enableGutters": true
+    "git.enableGutters": true,
+    "volar.takeOverMode.enabled": true,
+    "tsserver.enable": true
 }
