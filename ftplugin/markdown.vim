@@ -23,12 +23,13 @@ endf
 nnoremap <silent><buffer> <F6> :call <SID>toggleMPTheme()<CR>
 inoremap <silent><buffer> <F6> <ESC>:call <SID>toggleMPTheme()<CR>
 fun! s:toggleMPTheme()
-    if g:mkdp_preview_options.theme == 'dark'
-        let g:mkdp_preview_options.theme = 'light'
+    if g:mkdp_theme == 'dark'
+        let g:mkdp_theme = 'light'
     else
-        let g:mkdp_preview_options.theme = 'dark'
+        let g:mkdp_theme = 'dark'
     endif
 
     exec 'MarkdownPreviewStop'
+    sleep 1
     exec 'MarkdownPreview'
 endf

@@ -16,7 +16,6 @@ vim.g.coc_global_extensions = {
     'coc-translator',
     'coc-git',
     'coc-explorer',
-    'coc-highlight',
     'coc-ci'
 }
 vim.api.nvim_command('autocmd FileType javascript,typescript,json vmap <buffer> = <Plug>(coc-format-selected)')
