@@ -51,6 +51,8 @@
     " 持久化撤销
         set undofile
         set undodir=~/.config/nvim/cache/undodir
+    " vim保存1000条文件记录
+        set viminfo=!,'10000,<50,s10,h
     " 折叠
         set foldenable
         set foldmethod=manual

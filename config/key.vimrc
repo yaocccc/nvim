@@ -219,8 +219,7 @@
         endf
         fun! ResetHlCursor(...)
             set nocursorcolumn
-            " hi CursorLine ctermfg=NONE ctermbg=NONE cterm=bold
-            hi CursorLine ctermfg=NONE ctermbg=237 cterm=bold
+            hi CursorLine ctermfg=NONE ctermbg=NONE cterm=bold
         endf
 
 " 驼峰转换
@@ -241,3 +240,15 @@
                 \ )
             call cursor(l, c1)
         endf
+
+" 显示当前行
+nnoremap <silent> <s-l> :call <SID>showLine()<CR>
+
+func! s:showLine()
+let ft = &ft
+lua << EOF
+lines = { tostring(vim.api.nvim_get_current_line()) }
+ft = tostring(vim.fn.eval("&ft"))
+vim.lsp.util.open_floating_preview(lines, ft, { border = "single", pad_left = 4, pad_right = 4 })
+EOF
+endf

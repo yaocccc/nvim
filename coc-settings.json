@@ -5,6 +5,7 @@
     "diagnostic.infoSign": "┃",
     "diagnostic.hintSign": "┃",
     "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
+    "snippets.ultisnips.directories": ["~/.config/nvim/snippets/ultisnips"],
     "snippets.extends.javascript": ["typescript"],
     "tabnine.priority": 90,
     "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
