@@ -58,7 +58,7 @@
         set foldmethod=manual
         set viewdir=~/.config/nvim/cache/viewdir
         au BufWritePost * mkview
-        au BufWinEnter * call s:ldview()
+        au BufReadPost * call s:ldview()
         func s:ldview()
             let file = expand("%:p")
             if file == "" | return | endif
