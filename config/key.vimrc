@@ -6,7 +6,6 @@
         nnoremap + <c-a>
         nnoremap _ <c-x>
         nnoremap , @q
-        inoremap <c-z> <esc>u
         inoremap <c-v> <esc>pa
 
     " 快速删除
@@ -34,7 +33,7 @@
         nnoremap          Y           y$
         vnoremap          c          "_c
         vnoremap          p          pgvy
-        vnoremap          p          Pgvy
+        vnoremap          P          Pgvy
 
     " S保存 Q退出 R重载vim配置
         command! W w !sudo tee > /dev/null %

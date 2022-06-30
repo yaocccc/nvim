@@ -74,15 +74,10 @@
         let g:solarized_termcolors = 256
         let g:solarized_termtrans = 1
         colorscheme solarized8_high
-    " 提示多余空格
-        hi ErrSpace ctermbg=238
-        autocmd BufWinEnter * match ErrSpace /\s\+$\| \+\ze\t\+\|\t\+\zs \+/
     " 命令行高度始终为1 屏幕刷新间隔300
         set cmdheight=1
         set updatetime=300
         set shortmess+=cI
-    " 高亮第160列
-        set cc=160
     " 屏幕顶部底部总是保留5行
         set scrolloff=5
     " 不显示模式
@@ -99,3 +94,7 @@
     " 总是开启 statusline & tabline
         set laststatus=3
         set showtabline=2
+    " 提示多余空格和TODO
+        hi ErrSpace ctermbg=238
+        autocmd BufWinEnter * syn match ErrSpace /\s\+$\| \+\ze\t\+\|\t\+\zs \+/
+        autocmd BufWinEnter * syn match Todo /TODO\(:.*\)*/

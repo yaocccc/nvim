@@ -15,6 +15,7 @@
     --color-border-tertiary: #d1d5da;
     --color-kbd-foreground: #444d56;
     --color-markdown-blockquote-border: #99CC33;
+    --color-markdown-blockquote-bg: #fafafa;
     --color-markdown-table-border: #dfe2e5;
     --color-markdown-table-tr-border: #c6cbd1;
     --color-markdown-code-bg: #1b1f230d;
@@ -31,6 +32,7 @@
     --color-border-tertiary: #6e7681;
     --color-kbd-foreground: #b1bac4;
     --color-markdown-blockquote-border: #3b434b;
+    --color-markdown-blockquote-bg: #201D21;
     --color-markdown-table-border: #3b434b;
     --color-markdown-table-tr-border: #272c32;
     --color-markdown-code-bg: #f0f6fc26;
@@ -182,8 +184,9 @@
 .markdown-body blockquote {
   margin-left: 0;
   margin-right: 0;
-  padding: 0 15px;
+  padding: 5px 15px 5px 15px;
   color: var(--color-text-tertiary);
+  background-color: var(--color-markdown-blockquote-bg);
   border-left: 4px solid var(--color-markdown-blockquote-border);
 }
 .markdown-body table {

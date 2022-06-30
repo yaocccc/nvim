@@ -1,6 +1,6 @@
 vim.g.coc_global_extensions = {
-    'coc-tsserver', 'coc-json',
     '@yaegassy/coc-volar',
+    'coc-json',
     'coc-html', 'coc-css',
     'coc-clangd',
     'coc-go',
@@ -15,12 +15,11 @@ vim.g.coc_global_extensions = {
     'coc-translator',
     'coc-git',
     'coc-explorer',
-    'coc-ci'
 }
 vim.api.nvim_command('autocmd FileType javascript,typescript,json vmap <buffer> = <Plug>(coc-format-selected)')
 vim.api.nvim_command('autocmd FileType javascript,typescript,json nmap <buffer> = <Plug>(coc-format-selected)')
 vim.api.nvim_command("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
-vim.api.nvim_command("hi CocExplorerNormalFloat ctermbg=none guibg=none")
+vim.api.nvim_command("hi CocExplorerNormalFloat ctermfg=fg")
 
 require'common'.set_maps({
     { 'n', '<F2>', '<Plug>(coc-rename)', {silent = true} },
@@ -43,6 +42,4 @@ require'common'.set_maps({
     { 'n', 'C', "get(b:, 'coc_git_blame', '') ==# 'Not committed yet' ? \"<Plug>(coc-git-chunkinfo)\" : \"<Plug>(coc-git-commit)\"", {silent = true, expr = true} },
     { 'n', '<leader>g', ":call coc#config('git.addGBlameToVirtualText',  !get(g:coc_user_config, 'git.addGBlameToVirtualText', 0)) | call nvim_buf_clear_namespace(bufnr(), -1, line('.') - 1, line('.'))<cr>", {silent = true} },
     { 'n', 'T', ':CocCommand explorer --preset floating<cr>', {silent = true, noremap = true} },
-    { 'n', 'w', '<Plug>(coc-ci-w)', {silent = true} },
-    { 'n', 'b', '<Plug>(coc-ci-b)', {silent = true} }
 })

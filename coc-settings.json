@@ -7,7 +7,7 @@
     "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
     "snippets.ultisnips.directories": ["~/.config/nvim/snippets/ultisnips"],
     "snippets.extends.javascript": ["typescript"],
-    "tabnine.priority": 90,
+    "tabnine.priority": 95,
     "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
     "pairs.enableBackspace": true,
     "explorer.quitOnOpen": true,
@@ -70,6 +70,7 @@
     "translator.engines": ["youdao"],
     "tsserver.trace.server": "messages",
     "tsserver.enableJavascript": true,
+    "tsserver.enable": false,
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
@@ -105,5 +106,5 @@
     },
     "git.enableGutters": true,
     "volar.takeOverMode.enabled": true,
-    "tsserver.enable": true
+    "volar.progressOnInitialization.enable": false
 }
