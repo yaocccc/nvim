@@ -9,11 +9,6 @@ if exists('syntax_on')
 endif
 
 let g:colors_name = 'solarized8_high'
-let s:t_Co = exists('&t_Co') && !empty(&t_Co) && &t_Co > 1 ? &t_Co : 2
-let s:italics = (((&t_ZH != '' && &t_ZH != '[7m')) && !has('iOS')) || has('nvim')
-let s:t_Co = get(g:, 'solarized_use16', 0) ? 16 : s:t_Co
-let s:italics = s:italics && get(g:, 'solarized_italics', 1)
-let s:termtrans = get(g:, 'solarized_termtrans', 0)
 
 hi! link Boolean Constant
 hi! link Character Constant
@@ -112,16 +107,9 @@ hi CommandMode ctermfg=162 ctermbg=230 cterm=reverse
 hi GitGutterAdd    ctermfg=106
 hi GitGutterChange ctermfg=136
 hi GitGutterDelete ctermfg=160
-if !s:italics
-  hi Comment cterm=NONE
-endif
 if has('nvim')
-  hi! link TermCursor Cursor
+  " hi! link TermCursor Cursor
   hi TermCursorNC ctermfg=235 ctermbg=243 cterm=NONE
-endif
-if !get(g:, 'solarized_extra_hi_groups', 0)
-  unlet s:t_Co s:italics s:termtrans
-  finish
 endif
 hi! link vimVar Identifier
 hi! link vimFunc Function
@@ -205,10 +193,4 @@ hi! link hsModuleWhereLabel hsModuleStartLabel
 hi hsNiceOperator ctermfg=37 ctermbg=NONE cterm=NONE
 hi hsniceoperator ctermfg=37 ctermbg=NONE cterm=NONE
 hi NormalFloat ctermbg=NONE
-if !s:italics
-  hi gitcommitComment cterm=NONE
-  hi htmlSpecialTagName cterm=NONE
-endif
-unlet s:termtrans
-unlet s:t_Co s:italics
 finish

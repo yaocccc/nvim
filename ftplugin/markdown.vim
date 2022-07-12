@@ -1,4 +1,6 @@
+hi CompletedTodo cterm=strikethrough
 au FileType markdown syn match markdownError "\w\@<=\w\@="
+au FileType markdown syn match CompletedTodo /- \[x\] \zs.*/
 
 let b:md_block = '```'
 setlocal shiftwidth=2
@@ -8,7 +10,7 @@ nnoremap <silent><buffer> <CR>   :call <SID>toggleTodoStatus()<CR>
 vnoremap <silent><buffer> B      :<c-u>call SurroundVaddPairs("**", "**")<cr>
 vnoremap <silent><buffer> I      :<c-u>call SurroundVaddPairs("*", "*")<cr>
 vnoremap <silent><buffer> T      :<c-u>call SurroundVaddPairs("- [ ] ", "")<cr>
-vnoremap <silent><buffer> `      :<c-u>call SurroundVaddPairs("```plaintext", "```")<cr>
+vnoremap <silent><buffer> `      :<c-u>call SurroundVaddPairs("`", "`")<cr>
 
 fun! s:toggleTodoStatus()
     let line = getline('.')
