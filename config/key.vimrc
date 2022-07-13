@@ -6,7 +6,7 @@
         nnoremap + <c-a>
         nnoremap _ <c-x>
         nnoremap , @q
-        inoremap <c-v> <esc>pa
+        " inoremap <c-v> <esc>pa
 
     " 快速删除
         nnoremap <bs>  "_ciw
