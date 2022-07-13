@@ -1,14 +1,8 @@
-if exists('s:loaded')
-    finish
-endif
+if exists('s:loaded') | finish | endif
+
 let s:loaded = 1
-
 hi clear
-if exists('syntax_on')
-  syntax reset
-endif
-
-let g:colors_name = 'solarized8_high'
+syntax reset
 
 hi! link Boolean Constant
 hi! link Character Constant
@@ -105,93 +99,7 @@ hi InsertMode ctermfg=37 ctermbg=230 cterm=reverse
 hi ReplaceMode ctermfg=166 ctermbg=230 cterm=reverse
 hi VisualMode ctermfg=162 ctermbg=230 cterm=reverse
 hi CommandMode ctermfg=162 ctermbg=230 cterm=reverse
+hi TermCursorNC ctermfg=235 ctermbg=243 cterm=NONE
 hi GitGutterAdd    ctermfg=106
 hi GitGutterChange ctermfg=136
 hi GitGutterDelete ctermfg=160
-if has('nvim')
-  " hi! link TermCursor Cursor
-  hi TermCursorNC ctermfg=235 ctermbg=243 cterm=NONE
-endif
-hi! link vimVar Identifier
-hi! link vimFunc Function
-hi! link vimUserFunc Function
-hi! link helpSpecial Special
-hi! link vimSet Normal
-hi! link vimSetEqual Normal
-hi vimCommentString ctermfg=61 ctermbg=NONE cterm=NONE
-hi vimCommand ctermfg=136 ctermbg=NONE cterm=NONE
-hi vimCmdSep ctermfg=32 ctermbg=NONE cterm=bold
-hi helpExample ctermfg=254 ctermbg=NONE cterm=NONE
-hi helpOption ctermfg=37 ctermbg=NONE cterm=NONE
-hi helpNote ctermfg=162 ctermbg=NONE cterm=NONE
-hi helpVim ctermfg=162 ctermbg=NONE cterm=NONE
-hi helpHyperTextJump ctermfg=32 ctermbg=NONE cterm=NONE
-hi helpHyperTextEntry ctermfg=106 ctermbg=NONE cterm=NONE
-hi vimIsCommand ctermfg=246 ctermbg=NONE cterm=NONE
-hi vimSynMtchOpt ctermfg=136 ctermbg=NONE cterm=NONE
-hi vimSynType ctermfg=37 ctermbg=NONE cterm=NONE
-hi vimHiLink ctermfg=32 ctermbg=NONE cterm=NONE
-hi vimHiGroup ctermfg=32 ctermbg=NONE cterm=NONE
-hi vimGroup ctermfg=32 ctermbg=NONE cterm=bold
-hi! link diffAdded Statement
-hi! link diffLine Identifier
-hi gitcommitComment ctermfg=243 ctermbg=NONE cterm=italic
-hi! link gitcommitUntracked gitcommitComment
-hi! link gitcommitDiscarded gitcommitComment
-hi! link gitcommitSelected gitcommitComment
-hi gitcommitUnmerged ctermfg=106 ctermbg=NONE cterm=bold
-hi gitcommitOnBranch ctermfg=243 ctermbg=NONE cterm=bold
-hi gitcommitBranch ctermfg=162 ctermbg=NONE cterm=bold
-hi! link gitcommitNoBranch gitcommitBranch
-hi gitcommitdiscardedtype ctermfg=160 ctermbg=NONE cterm=NONE
-hi gitcommitselectedtype ctermfg=106 ctermbg=NONE cterm=NONE
-hi gitcommitHeader ctermfg=243 ctermbg=NONE cterm=NONE
-hi gitcommitUntrackedFile ctermfg=37 ctermbg=NONE cterm=bold
-hi gitcommitDiscardedFile ctermfg=160 ctermbg=NONE cterm=bold
-hi gitcommitSelectedFile ctermfg=106 ctermbg=NONE cterm=bold
-hi gitcommitUnmergedFile ctermfg=136 ctermbg=NONE cterm=bold
-hi gitcommitFile ctermfg=247 ctermbg=NONE cterm=bold
-hi! link gitcommitDiscardedArrow gitcommitDiscardedFile
-hi! link gitcommitSelectedArrow gitcommitSelectedFile
-hi! link gitcommitUnmergedArrow gitcommitUnmergedFile
-hi htmlTag ctermfg=243 ctermbg=NONE cterm=NONE
-hi htmlEndTag ctermfg=243 ctermbg=NONE cterm=NONE
-hi htmlTagN ctermfg=254 ctermbg=NONE cterm=bold
-hi htmlTagName ctermfg=32 ctermbg=NONE cterm=bold
-hi htmlSpecialTagName ctermfg=32 ctermbg=NONE cterm=italic
-hi htmlArg ctermfg=246 ctermbg=NONE cterm=NONE
-hi javaScript ctermfg=136 ctermbg=NONE cterm=NONE
-hi! link jsFuncCall Function
-hi perlHereDoc ctermfg=254 ctermbg=235 cterm=NONE
-hi perlVarPlain ctermfg=136 ctermbg=235 cterm=NONE
-hi perlStatementFileDesc ctermfg=37 ctermbg=235 cterm=NONE
-hi texstatement ctermfg=37 ctermbg=235 cterm=NONE
-hi texmathzonex ctermfg=136 ctermbg=235 cterm=NONE
-hi texmathmatcher ctermfg=136 ctermbg=235 cterm=NONE
-hi texreflabel ctermfg=136 ctermbg=235 cterm=NONE
-hi rubyDefine ctermfg=254 ctermbg=235 cterm=bold
-hi! link rubySymbol Type
-hi rubyBoolean ctermfg=162 ctermbg=235 cterm=NONE
-hi cPreCondit ctermfg=166 ctermbg=NONE cterm=NONE
-hi VarId ctermfg=32 ctermbg=NONE cterm=NONE
-hi ConId ctermfg=136 ctermbg=NONE cterm=NONE
-hi hsImport ctermfg=162 ctermbg=NONE cterm=NONE
-hi hsString ctermfg=246 ctermbg=NONE cterm=NONE
-hi hsStructure ctermfg=37 ctermbg=NONE cterm=NONE
-hi hs_hlFunctionName ctermfg=32 ctermbg=NONE cterm=NONE
-hi hsStatement ctermfg=37 ctermbg=NONE cterm=NONE
-hi hsImportLabel ctermfg=37 ctermbg=NONE cterm=NONE
-hi hs_OpFunctionName ctermfg=136 ctermbg=NONE cterm=NONE
-hi hs_DeclareFunction ctermfg=166 ctermbg=NONE cterm=NONE
-hi hsVarSym ctermfg=37 ctermbg=NONE cterm=NONE
-hi hsType ctermfg=136 ctermbg=NONE cterm=NONE
-hi hsTypedef ctermfg=37 ctermbg=NONE cterm=NONE
-hi hsModuleName ctermfg=106 ctermbg=NONE cterm=NONE
-hi! link hsImportParams Delimiter
-hi! link hsDelimTypeExport Delimiter
-hi! link hsModuleStartLabel hsStructure
-hi! link hsModuleWhereLabel hsModuleStartLabel
-hi hsNiceOperator ctermfg=37 ctermbg=NONE cterm=NONE
-hi hsniceoperator ctermfg=37 ctermbg=NONE cterm=NONE
-hi NormalFloat ctermbg=NONE
-finish

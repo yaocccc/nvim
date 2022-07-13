@@ -69,10 +69,7 @@
         endf
 
 " show
-    " 开启256颜色 暗色背景
-        set background=dark
-        let g:solarized_termcolors = 256
-        let g:solarized_termtrans = 1
+    " colorscheme
         colorscheme solarized8_high
     " 命令行高度始终为1 屏幕刷新间隔300
         set cmdheight=1
