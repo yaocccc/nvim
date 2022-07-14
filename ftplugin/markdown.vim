@@ -1,6 +1,14 @@
-hi CompletedTodo cterm=strikethrough
+hi MDTask ctermfg=1
+hi MDDoneText cterm=italic,strikethrough
+hi MDTodoText cterm=NONE
+hi MDDoneDate cterm=italic,strikethrough ctermfg=71
+hi MDTodoDate ctermfg=71
 au FileType markdown syn match markdownError "\w\@<=\w\@="
-au FileType markdown syn match CompletedTodo /- \[x\] \zs.*/
+au FileType markdown syn match MDDoneDate /\s*[SD]:\d\{4\}\([\/-]\d\d\)\{2\}\s*/ contained
+au FileType markdown syn match MDTodoDate /\s*[SD]:\d\{4\}\([\/-]\d\d\)\{2\}\s*/ contained
+au FileType markdown syn match MDDoneText /- \[x\] \zs.*/ contains=MDDoneDate contained
+au FileType markdown syn match MDTodoText /- \[ \] \zs.*/ contains=MDTodoDate contained
+au FileType markdown syn match MDTask     /- \[\(x\| \)\] .*/ contains=MDDoneText,MDTodoText
 
 let b:md_block = '```'
 setlocal shiftwidth=2

@@ -12,14 +12,14 @@ snippet head "head~"
 snippet pic "picture~"
 	![${2:avatar}](${1})
 
-snippet td "todo list"
-	> - [ ] ${1}
+snippet td "task"
+	- [ ] ${1}
 
-snippet tdd "todo list"
-	> > - [ ] ${1}
+snippet ss "task start:"
+	S:${0:`strftime("%Y-%m-%d")`}
 
-snippet tddd "todo list"
-	> > > - [ ] ${1}
+snippet dd "task deadline:"
+	D:${3:`strftime("%Y")`}-${2:`strftime("%m")`}-${1:`strftime("%d")`}
 
 snippet ref "ref~"
 	[${1}](${2})
