@@ -18,6 +18,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'yaocccc/vim-fcitx2en'
     Plug 'yaocccc/vim-surround'
     Plug 'yaocccc/vim-comment'
+    Plug 'yaocccc/vim-showmarks'
 call plug#end()
 
 lua require'vim-expand-region'
