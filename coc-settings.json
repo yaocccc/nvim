@@ -1,4 +1,5 @@
 {
+    "notification.disabledProgressSources": ["*"],
     "diagnostic.signOffset": 1,
     "diagnostic.errorSign": "┃",
     "diagnostic.warningSign": "┃",
@@ -7,7 +8,7 @@
     "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
     "snippets.ultisnips.directories": ["~/.config/nvim/snippets/ultisnips"],
     "snippets.extends.javascript": ["typescript"],
-    "tabnine.priority": 95,
+    "tabnine.priority": 80,
     "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
     "pairs.enableBackspace": true,
     "explorer.quitOnOpen": true,
@@ -105,6 +106,5 @@
         "staticcheck": true
     },
     "git.enableGutters": true,
-    "volar.takeOverMode.enabled": true,
-    "volar.progressOnInitialization.enable": false
+    "volar.takeOverMode.enabled": true
 }
