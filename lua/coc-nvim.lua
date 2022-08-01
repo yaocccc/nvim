@@ -20,6 +20,8 @@ vim.api.nvim_command('autocmd FileType javascript,typescript,json vmap <buffer> 
 vim.api.nvim_command('autocmd FileType javascript,typescript,json nmap <buffer> = <Plug>(coc-format-selected)')
 vim.api.nvim_command("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
 vim.api.nvim_command("hi CocExplorerNormalFloat ctermfg=fg")
+vim.api.nvim_command("hi! link CocPum Pmenu")
+vim.api.nvim_command("hi! link CocMenuSel PmenuSel")
 
 require'common'.set_maps({
     { 'n', '<F2>', '<Plug>(coc-rename)', {silent = true} },
@@ -28,9 +30,9 @@ require'common'.set_maps({
     { 'n', 'gi', '<Plug>(coc-implementation)', {silent = true} },
     { 'n', 'gr', '<Plug>(coc-references)', {silent = true} },
     { 'n', 'K', ':call CocAction("doHover")<cr>', {silent = true} },
-    { 'i', '<TAB>', "pumvisible() ? \"\\<C-n>\" : col('.') == 1 || getline('.')[col('.') - 2] =~# '\\s' ? \"\\<TAB>\" : coc#refresh()", {silent = true, noremap = true, expr = true} },
-    { 'i', '<s-tab>', "pumvisible() ? \"\\<c-p>\" : \"\\<s-tab>\"", {silent = true, noremap = true, expr = true} },
-    { 'i', '<cr>', "pumvisible() ? \"\\<c-y>\" : \"\\<c-g>u\\<cr>\"", {silent = true, noremap = true, expr = true} },
+    { 'i', '<TAB>', "coc#pum#visible() ? coc#pum#next(1) : col('.') == 1 || getline('.')[col('.') - 2] =~# '\\s' ? \"\\<TAB>\" : coc#refresh()", {silent = true, noremap = true, expr = true} },
+    { 'i', '<s-tab>', "coc#pum#visible() ? coc#pum#prev(1) : \"\\<s-tab>\"", {silent = true, noremap = true, expr = true} },
+    { 'i', '<cr>', "coc#pum#visible() ? coc#_select_confirm() : \"\\<c-g>u\\<cr>\"", {silent = true, noremap = true, expr = true} },
     { 'n', '<F3>', ":silent CocRestart<cr>", {silent = true, noremap = true} },
     { 'n', '<F4>', "get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'", {silent = true, noremap = true, expr = true} },
     { 'n', '<F9>', ":CocCommand snippets.editSnippets<cr>", {silent = true, noremap = true} },

@@ -20,6 +20,7 @@ vnoremap <silent><buffer> B      :<c-u>call SurroundVaddPairs("**", "**")<cr>
 vnoremap <silent><buffer> I      :<c-u>call SurroundVaddPairs("*", "*")<cr>
 vnoremap <silent><buffer> T      :<c-u>call SurroundVaddPairs("- [ ] ", "")<cr>
 vnoremap <silent><buffer> `      :<c-u>call SurroundVaddPairs("`", "`")<cr>
+vnoremap <silent><buffer> C      :<c-u>call SurroundVaddPairs("```plaintext", "```")<cr>
 
 fun! s:toggleTodoStatus()
     let line = getline('.')
