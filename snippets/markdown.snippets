@@ -15,6 +15,15 @@ snippet pic "picture~"
 snippet td "task"
 	- [ ] ${1}
 
+snippet td "> task"
+	> - [ ] ${1}
+
+snippet tdd "> > task"
+	>> - [ ] ${1}
+
+snippet tddd "> > > task"
+	>>> - [ ] ${1}
+
 snippet ss "task start:"
 	S:${0:`strftime("%Y-%m-%d")`}
 

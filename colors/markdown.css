@@ -183,10 +183,14 @@
 }
 .markdown-body blockquote {
   margin-left: 0;
-  margin-right: 0;
   color: var(--color-text-tertiary);
   background-color: var(--color-markdown-blockquote-bg);
-  border-left: 4px solid var(--color-markdown-blockquote-border);
+  border-left: 5px solid var(--color-markdown-blockquote-border);
+}
+.markdown-body blockquote blockquote {
+  margin-left: 5px;
+  margin-top: -0.3em;
+  margin-bottom: -0.3em;
 }
 .markdown-body table {
   display: block;
