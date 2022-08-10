@@ -15,6 +15,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-treesitter/playground'
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
     Plug 'yaocccc/nvim-lines.lua'
+    Plug 'yaocccc/nvim-hlchunk'
     Plug 'yaocccc/vim-fcitx2en'
     Plug 'yaocccc/vim-surround'
     Plug 'yaocccc/vim-comment'

@@ -183,6 +183,7 @@
 }
 .markdown-body blockquote {
   margin-left: 0;
+  padding-left: 5px;
   color: var(--color-text-tertiary);
   background-color: var(--color-markdown-blockquote-bg);
   border-left: 5px solid var(--color-markdown-blockquote-border);
