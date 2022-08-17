@@ -1,21 +1,13 @@
-require("nvim-treesitter.install").prefer_git = true
-local parsers = require("nvim-treesitter.parsers").get_parser_configs()
-for _, p in pairs(parsers) do
-    p.install_info.url = p.install_info.url:gsub(
-    "https://github.com/",
-    "git@github.com:"
-    )
-end
-
-require'nvim-treesitter.configs'.setup {
+local G = require('G')
+local nvim_treesitter_config = require('nvim-treesitter.configs')
+nvim_treesitter_config.setup {
     ensure_installed = "all",
-    ignore_install = { "swift" },
+    ignore_install = { "swift", "phpdoc" },
     highlight = {
         enable = true
     },
 }
-
-require'common'.set_highlights({
+G.hi({
     Variable = {fg="NONE"};
     Function = {fg=32};
     Operator = {fg=166};
@@ -45,5 +37,4 @@ require'common'.set_highlights({
     Number = {fg=37};
     Boolean = {fg=37};
 })
-
-require'common'.set_maps({ { 'n', 'H', ':TSHighlightCapturesUnderCursor<CR>', {silent = true, noremap = true}} })
+G.map({ { 'n', 'H', ':TSHighlightCapturesUnderCursor<CR>', {silent = true, noremap = true}} })

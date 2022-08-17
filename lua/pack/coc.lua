@@ -1,4 +1,5 @@
-vim.g.coc_global_extensions = {
+local G = require('G')
+G.g.coc_global_extensions = {
     '@yaegassy/coc-volar',
     'coc-json',
     'coc-html', 'coc-css',
@@ -11,19 +12,15 @@ vim.g.coc_global_extensions = {
     'coc-toml', 'coc-solidity',
     'coc-prettier',
     'coc-snippets', 'coc-pairs', 'coc-word',
-    'coc-markdownlint',
     'coc-translator',
     'coc-git',
-    'coc-explorer',
 }
-vim.api.nvim_command('autocmd FileType javascript,typescript,json vmap <buffer> = <Plug>(coc-format-selected)')
-vim.api.nvim_command('autocmd FileType javascript,typescript,json nmap <buffer> = <Plug>(coc-format-selected)')
-vim.api.nvim_command("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
-vim.api.nvim_command("hi CocExplorerNormalFloat ctermfg=fg")
-vim.api.nvim_command("hi! link CocPum Pmenu")
-vim.api.nvim_command("hi! link CocMenuSel PmenuSel")
-
-require'common'.set_maps({
+G.cmd('autocmd FileType javascript,typescript,json vmap <buffer> = <Plug>(coc-format-selected)')
+G.cmd('autocmd FileType javascript,typescript,json nmap <buffer> = <Plug>(coc-format-selected)')
+G.cmd("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
+G.cmd("hi! link CocPum Pmenu")
+G.cmd("hi! link CocMenuSel PmenuSel")
+G.map({
     { 'n', '<F2>', '<Plug>(coc-rename)', {silent = true} },
     { 'n', 'gd', '<Plug>(coc-definition)', {silent = true} },
     { 'n', 'gy', '<Plug>(coc-type-definition)', {silent = true} },
@@ -39,9 +36,6 @@ require'common'.set_maps({
     { 'n', '<c-e>', ":CocList diagnostics<cr>", {silent = true} },
     { 'n', 'mm', "<Plug>(coc-translator-p)", {silent = true} },
     { 'v', 'mm', "<Plug>(coc-translator-pv)", {silent = true} },
-    { 'n', '(', "<Plug>(coc-git-prevchunk)", {silent = true} },
-    { 'n', ')', "<Plug>(coc-git-nextchunk)", {silent = true} },
     { 'n', 'C', "get(b:, 'coc_git_blame', '') ==# 'Not committed yet' ? \"<Plug>(coc-git-chunkinfo)\" : \"<Plug>(coc-git-commit)\"", {silent = true, expr = true} },
     { 'n', '<leader>g', ":call coc#config('git.addGBlameToVirtualText',  !get(g:coc_user_config, 'git.addGBlameToVirtualText', 0)) | call nvim_buf_clear_namespace(bufnr(), -1, line('.') - 1, line('.'))<cr>", {silent = true} },
-    { 'n', 'T', ':CocCommand explorer --preset floating<cr>', {silent = true, noremap = true} },
 })
