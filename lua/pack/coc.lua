@@ -36,6 +36,8 @@ G.map({
     { 'n', '<c-e>', ":CocList diagnostics<cr>", {silent = true} },
     { 'n', 'mm', "<Plug>(coc-translator-p)", {silent = true} },
     { 'v', 'mm', "<Plug>(coc-translator-pv)", {silent = true} },
+    { 'n', '(', "<Plug>(coc-git-prevchunk)", {silent = true} },
+    { 'n', ')', "<Plug>(coc-git-nextchunk)", {silent = true} },
     { 'n', 'C', "get(b:, 'coc_git_blame', '') ==# 'Not committed yet' ? \"<Plug>(coc-git-chunkinfo)\" : \"<Plug>(coc-git-commit)\"", {silent = true, expr = true} },
     { 'n', '<leader>g', ":call coc#config('git.addGBlameToVirtualText',  !get(g:coc_user_config, 'git.addGBlameToVirtualText', 0)) | call nvim_buf_clear_namespace(bufnr(), -1, line('.') - 1, line('.'))<cr>", {silent = true} },
 })

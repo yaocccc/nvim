@@ -10,5 +10,5 @@ func s:console()
     let l = line('.')
     let space = substitute(getline(l), '\v(^\s*).*', '\1', '')
 
-    call appendbufline('%', line('.'), printf(space . 'fmt.Printf("[logger-%s]: %%+v\n", %s)', tag, tag))
+    call appendbufline('%', line('.'), printf(space . 'console.log(%s)', tag))
 endf

@@ -6,7 +6,7 @@ G.g.floaterm_height = 0.8
 G.g.floaterm_autoclose = 1
 G.g.floaterm_opener = 'edit'
 G.cmd("au BufEnter * if &buftype == 'terminal' | :call timer_start(50, { -> execute('startinsert!') }, { 'repeat': 3 }) | endif")
-G.cmd("hi! link FloatermBorder NONE")
+G.cmd("hi FloatermBorder ctermfg=fg ctermbg=none")
 function FTToggle(name, cmd, pre_cmd)
     if G.fn['floaterm#terminal#get_bufnr'](name) ~= -1 then
         G.cmd(string.format('exec "FloatermToggle %s"', name))

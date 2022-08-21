@@ -1,4 +1,9 @@
-local G = vim
+local G = {}
+
+G.g = vim.g
+G.b = vim.b
+G.fn = vim.fn
+G.api = vim.api
 
 function G.map(maps)
     for _,map in pairs(maps) do
