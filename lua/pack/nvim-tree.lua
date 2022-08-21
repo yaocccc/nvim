@@ -20,6 +20,11 @@ nvim_tree.setup({
         },
         float = { enable = true, open_win_config = { border = "rounded", width = 10, height = 20, row = 0, col = 999 } }
     },
+    update_focused_file = {
+        enable = true,
+        update_root = false,
+        ignore_list = {},
+    },
     renderer = {
         group_empty = true,
         indent_markers = { enable = true },
