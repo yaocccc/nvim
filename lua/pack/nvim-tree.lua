@@ -18,7 +18,7 @@ nvim_tree.setup({
                 { key = "A", action = "create" },
             },
         },
-        float = { enable = true, open_win_config = { border = "rounded", width = 10, height = 20, row = 0, col = 999 } }
+        float = { enable = true, open_win_config = { border = "rounded", width = 20, height = 20, row = 0, col = 999 } }
     },
     update_focused_file = {
         enable = true,

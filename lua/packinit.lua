@@ -7,6 +7,7 @@ require('packer').startup({function(use)
     use { 'tpope/vim-dadbod' }; require('pack/vim-dadbod')
     use { 'kristijanhusak/vim-dadbod-ui' }
     use { 'neoclide/coc.nvim', branch = 'release' }; require('pack/coc')
+    use { 'github/copilot.vim' }; require('pack/copilot')
     use { 'voldikss/vim-floaterm' }; require('pack/vim-floaterm')
     use { 'junegunn/fzf', run = 'cd ~/.fzf && ./install --all', 'junegunn/fzf.vim' }; require('pack/fzf')
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', 'nvim-treesitter/playground' }; require('pack/tree-sitter')

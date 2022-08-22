@@ -14,6 +14,7 @@ G.g.coc_global_extensions = {
     'coc-snippets', 'coc-pairs', 'coc-word',
     'coc-translator',
     'coc-git',
+    'coc-tabnine'
 }
 G.cmd('autocmd FileType javascript,typescript,json vmap <buffer> = <Plug>(coc-format-selected)')
 G.cmd('autocmd FileType javascript,typescript,json nmap <buffer> = <Plug>(coc-format-selected)')

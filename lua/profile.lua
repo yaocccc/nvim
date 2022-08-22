@@ -83,8 +83,8 @@ G.cmd([[
     set foldmethod=manual
     set viewdir=~/.config/nvim/cache/viewdir
     au BufWritePost * mkview
-    au BufReadPost * call s:ldview()
-    func s:ldview()
+    au BufReadPost * call Ldview()
+    func Ldview()
         let file = expand("%:p")
         if file == "" | return | endif
         let file = substitute(file, $HOME, "~", "g")
