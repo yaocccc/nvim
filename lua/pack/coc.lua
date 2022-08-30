@@ -1,6 +1,7 @@
 local G = require('G')
 G.g.coc_global_extensions = {
     '@yaegassy/coc-volar',
+    'coc-tsserver',
     'coc-json',
     'coc-html', 'coc-css',
     'coc-clangd',
@@ -14,7 +15,7 @@ G.g.coc_global_extensions = {
     'coc-snippets', 'coc-pairs', 'coc-word',
     'coc-translator',
     'coc-git',
-    'coc-tabnine'
+    -- 'coc-tabnine'
 }
 G.cmd('autocmd FileType javascript,typescript,json vmap <buffer> = <Plug>(coc-format-selected)')
 G.cmd('autocmd FileType javascript,typescript,json nmap <buffer> = <Plug>(coc-format-selected)')

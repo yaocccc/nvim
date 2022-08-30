@@ -2,8 +2,8 @@ local G = require('G')
 local nvim_tree = require("nvim-tree")
 nvim_tree.setup({
     sort_by = "case_sensitive",
-    actions = { open_file = { quit_on_open = false } },
     view = {
+        adaptive_size = true,
         mappings = {
             list = {
                 { key = "P", action = "cd" },
@@ -18,7 +18,7 @@ nvim_tree.setup({
                 { key = "A", action = "create" },
             },
         },
-        float = { enable = true, open_win_config = { border = "rounded", width = 20, height = 20, row = 0, col = 999 } }
+        float = { enable = true, open_win_config = { border = "rounded", width = 30, height = 20, row = 0, col = 999 } }
     },
     update_focused_file = {
         enable = true,

@@ -82,16 +82,6 @@ G.cmd([[
     set foldenable
     set foldmethod=manual
     set viewdir=~/.config/nvim/cache/viewdir
-    au BufWritePost * mkview
-    au BufReadPost * call Ldview()
-    func Ldview()
-        let file = expand("%:p")
-        if file == "" | return | endif
-        let file = substitute(file, $HOME, "~", "g")
-        let file = substitute(file, "/", "=+", "g")
-        let file = printf("%s/%s=", &viewdir, file)
-        if filereadable(file) | loadview | endif
-    endf
 ]])
 
 -- show
@@ -115,6 +105,6 @@ G.cmd([[
 -- 提示多余空格和TODO
 G.cmd([[
     hi ErrSpace ctermbg=238
-    autocmd BufWinEnter * syn match ErrSpace /\s\+$\| \+\ze\t\+\|\t\+\zs \+/
+    " autocmd BufWinEnter * syn match ErrSpace /\s\+$\| \+\ze\t\+\|\t\+\zs \+/
     autocmd BufWinEnter * syn match Todo /TODO\(:.*\)*/
 ]])
