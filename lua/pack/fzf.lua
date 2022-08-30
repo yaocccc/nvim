@@ -1,5 +1,5 @@
 local G = require('G')
-G.g.fzf_preview_window = {'right:45%', 'ctrl-/'}
+G.g.fzf_preview_window = {'right:40%', 'ctrl-/'}
 G.g.fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 G.g.fzf_layout = {
     window={
@@ -7,7 +7,7 @@ G.g.fzf_layout = {
         height=0.6
     }
 }
-G.cmd("com! -bar -bang Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter=: --nth=4..'}, 'right:45%', 'ctrl-/'), <bang>0)")
+G.cmd("com! -bar -bang Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter=: --nth=4..'}), <bang>0)")
 G.cmd([[
 func! CHistory()
   call filter(v:oldfiles, "v:val =~ '^' . $PWD . '.*$'")
