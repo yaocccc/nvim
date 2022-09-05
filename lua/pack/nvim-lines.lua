@@ -1,4 +1,5 @@
 local G = require('G')
+
 function GitInfo()
     local branch = G.g.coc_git_status or ''
     local diff = G.b.coc_git_status or ''
@@ -10,13 +11,15 @@ function CocErrCount()
     return string.format(' E%d ', coc_diagnostic_info.error)
 end
 function GetFt()
+    local name = G.eval("expand('%:p')")
     local ft = G.eval('&ft')
-    return string.format(' %s ', string.len(ft) > 0 and ft or '~')
+    local icon = require('nvim-lines.common').get_fileicon(ft, name)
+    return string.format(' %s ', string.len(ft) > 0 and icon .. ft or '~')
 end
 G.g.powerline_symbols = { light_right = '', dark_right = '', light_left = '', dark_left = '' }
 G.g.line_powerline_enable = 1
 G.g.line_nerdfont_enable = 1
-G.g.line_unnamed_filename='~'
+G.g.line_unnamed_filename= '~'
 G.g.line_statusline_getters = {'v:lua.GitInfo', 'v:lua.CocErrCount', 'v:lua.GetFt'}
 G.g.line_hl = { none = 'NONE', light = 'NONE', dark = 'NONE', ['break'] = '244', space = 238 }
 G.cmd('au VimEnter * hi VimLine_Dark ctermfg=245')
