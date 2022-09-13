@@ -13,6 +13,7 @@ require('packer').startup({function(use)
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', 'nvim-treesitter/playground' }; require('pack/tree-sitter')
     use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview', 'mzlogin/vim-markdown-toc' }; require('pack/markdown')
     use { 'kyazdani42/nvim-web-devicons', 'kyazdani42/nvim-tree.lua' }; require('pack/nvim-tree')
+    use { 'jbyuki/venn.nvim' }; require('pack/venn')
     use { 'yaocccc/vim-comment' }; require('pack/vim-comment')
     use { 'yaocccc/nvim-hlchunk', 'yaocccc/vim-fcitx2en', 'yaocccc/vim-surround', 'yaocccc/vim-showmarks' }
     use { 'yaocccc/nvim-lines.lua' }; require('pack/nvim-lines')

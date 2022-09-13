@@ -13,33 +13,34 @@
 
 ## 如何使用
 
-  1 将项目clone至 ~/.config/nvim 目录中(注意备份好自己的配置)  
-  2 nvim中运行 PlugInstall 命令，然后等待
+1. 将项目clone至 ~/.config/nvim 目录中(注意备份好自己的配置)  
+    ```plaintext
+    cd ~/.config
+    git clone https://github.com/yaocccc/nvim
+    ```
+2. 安装packer插件
+    ```plaintext
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    ```
+3. 启动nvim并 :PackerSync
 
 ## 配置结构
 
 ```dir
 .
-├── config
-│   ├── common.vimrc         -- 通用的基础配置
-│   ├── key.vimrc            -- 快捷键相关配置
-│   └── plug.vimrc           -- 插件相关的配置
-├── colors
-│   └── ...                  -- 高亮主题文件
-├── lua
-│   └── ...                  -- 部分lua配置项(目前是所有的plug配置)
-├── autoload
-│   └── plug.vim             -- vim-plug 插件管理工具
-├── ftplugin
-│   └── ...                  -- 按文件类型的自定义设置
-├── plugged
-│   └── ...                  -- 插件的存放目录
-├── snippets                 -- 自定义的snippets补全存放目录
-├── file_logs
-│   └── ...                  -- 文件修改记录log目录
-├── init.vim                 -- 配置文件的总入口
-├── coc-settings.json        -- coc的相关配置
-└── README.md
+├─ lua/                -- LUA配置目录
+│  ├─ pack/            -- 各插件的配置目录
+│  ├─ G.lua            -- G: Global 封装了lua配置内用到的部分通用方法
+│  ├─ keymap.lua       -- 快捷键配置
+│  ├─ packinit.lua     -- 插件配置入口
+│  └─ profile.lua      -- 环境变量(各种set)
+├─ colors/             -- 样式相关(theme)
+├─ ftplugin/           -- 单独文件类型独有的配置
+├─ snippets/           -- 代码片段
+├─ init.lua            -- 配置入口
+├─ coc-settings.json   -- coc配置
+└─ README.md           -- README
 ```
 
 ## common.vimrc 通用基础配置说明
@@ -76,7 +77,7 @@
 | all    | alt - up/down        | 上下移动当前行/块                 |
 | all    | alt - o              | 下方新起一行                      |
 | all    | alt - O              | 上方新起一行                      |
-| normal | su                   | 左右分屏                          |
+| normal | sv                   | 左右分屏                          |
 | normal | sp                   | 上下分屏                          |
 | normal | sc                   | 关闭当前窗口                      |
 | normal | so                   | 关闭其他所有窗口                  |
@@ -93,6 +94,7 @@
 | normal | space                | 在行首 第一个非空字符 行尾 跳转   |
 | normal | =                    | 格式化当前行                      |
 | visual | =                    | 格式化选中内容                    |
+| visual | t                    | 驼峰和下划线转换                  |
 
 PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 

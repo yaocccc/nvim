@@ -11,7 +11,7 @@ nvim_tree.setup({
                 { key = "<Esc>", action = "close" },
                 { key = "<Tab>", action = "expand" },
                 { key = "<Right>", action = "expand" },
-                { key = "<Left>", action = "collapse" },
+                { key = "<Left>", action = "close_node" },
                 { key = ">", action = "next_git_item" },
                 { key = "<", action = "prev_git_item" },
                 { key = "?", action = "toggle_help" },
