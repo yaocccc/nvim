@@ -70,8 +70,8 @@ hi CurSearch ctermfg=5 ctermbg=7 cterm=reverse
 hi MatchParen ctermfg=230 ctermbg=236 cterm=bold
 hi ModeMsg ctermfg=32 ctermbg=NONE cterm=NONE
 hi MoreMsg ctermfg=32 ctermbg=NONE cterm=NONE
-hi Pmenu ctermfg=250 ctermbg=238 cterm=NONE
-hi PmenuSbar ctermfg=NONE ctermbg=238 cterm=NONE
+hi Pmenu ctermfg=250 ctermbg=NONE cterm=NONE
+hi PmenuSbar ctermfg=NONE ctermbg=NONE cterm=NONE
 hi PmenuSel ctermfg=230 ctermbg=25 cterm=NONE
 hi PmenuThumb ctermfg=NONE ctermbg=243 cterm=NONE
 hi Question ctermfg=37 ctermbg=NONE cterm=bold

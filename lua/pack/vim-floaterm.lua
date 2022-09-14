@@ -40,7 +40,7 @@ G.cmd([[
 ]])
 
 SetFTToggleMap('<c-b>', 'DBUI', 'nvim +CALLDB', '')
-SetFTToggleMap('<c-t>', 'TERM', '', "call SetVimDir()")
+SetFTToggleMap('<c-t>', 'TERM', '', 'call SetVimDir()')
 G.map({
     { 'n', '<F5>', ':call v:lua.RunFile()<cr>', {silent = true, noremap = true}},
     { 'i', '<F5>', '<esc>:call v:lua.RunFile()<cr>', {silent = true, noremap = true}},
