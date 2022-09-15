@@ -72,7 +72,7 @@ hi ModeMsg ctermfg=32 ctermbg=NONE cterm=NONE
 hi MoreMsg ctermfg=32 ctermbg=NONE cterm=NONE
 hi Pmenu ctermfg=250 ctermbg=NONE cterm=NONE
 hi PmenuSbar ctermfg=NONE ctermbg=NONE cterm=NONE
-hi PmenuSel ctermfg=230 ctermbg=25 cterm=NONE
+hi PmenuSel ctermfg=NONE ctermbg=239 cterm=NONE
 hi PmenuThumb ctermfg=NONE ctermbg=243 cterm=NONE
 hi Question ctermfg=37 ctermbg=NONE cterm=bold
 hi SignColumn ctermfg=247 ctermbg=NONE cterm=NONE

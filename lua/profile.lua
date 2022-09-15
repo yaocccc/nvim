@@ -11,6 +11,7 @@ G.cmd([[
     set showcmd
     set encoding=utf-8
     set wildmenu
+    set pumheight=10
     set conceallevel=0
     set clipboard=unnamed
     set clipboard+=unnamedplus
@@ -93,6 +94,8 @@ G.cmd([[
     set scrolloff=5
     set noshowmode
     set nu
+    set rnu
+    set numberwidth=2
     set cul
     set signcolumn=yes
     let &t_SI.="\e[5 q"
