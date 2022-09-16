@@ -3,9 +3,9 @@
 
 * [如何使用](#如何使用)
 * [配置结构](#配置结构)
-* [common.vimrc 通用基础配置说明](#commonvimrc-通用基础配置说明)
-* [key.vimrc    快捷键相关配置说明](#keyvimrc-快捷键相关配置说明)
-* [plug.vimrc   插件相关的配置说明](#plugvimrc-插件相关的配置说明)
+* [lua/profile.lua 通用基础配置说明](#luaprofilelua-通用基础配置说明)
+* [lua/keymap.lua 快捷键相关配置说明](#luakeymaplua-快捷键相关配置说明)
+* [lua/packinit.lua 插件相关的配置说明](#luapackinitlua-插件相关的配置说明)
   * [插件列表](#插件列表)
   * [插件简单说明以及键位绑定](#插件简单说明以及键位绑定)
 
@@ -43,11 +43,11 @@
 └─ README.md           -- README
 ```
 
-## common.vimrc 通用基础配置说明
+## lua/profile.lua 通用基础配置说明
 
-  不额外说明了，有需要直接看 ./config/common.vimrc 的注释
+  不额外说明了，有需要直接看 lua/profile.lua 的注释
 
-## key.vimrc    快捷键相关配置说明
+## lua/keymap.lua 快捷键相关配置说明
 
 | 模式   | 键                   | 说明                              |
 | ------ | --------             | ---------                         |
@@ -98,28 +98,27 @@
 
 PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 
-## plug.vimrc   插件相关的配置说明
+## lua/packinit.lua 插件相关的配置说明
 
 ### 插件列表
 
-```plug
-  Plug 'yianwillis/vimcdoc'             -- 中文vim help文档
-  Plug 'terryma/vim-expand-region'      -- 快速选中文本插件
-  Plug 'lfv89/vim-interestingwords'     -- 高亮关键词插件
-  Plug 'mg979/vim-visual-multi'         -- 虚拟多光标插件
-  Plug 'pangloss/vim-javascript'        -- js语法高亮插件
-  Plug 'iamcco/markdown-preview.nvim'   -- md 预览插件
-  Plug 'mzlogin/vim-markdown-toc'       -- md 生成目录
-  Plug 'neoclide/coc.nvim'              -- coc
-  Plug 'voldikss/vim-floaterm'          -- 悬浮终端插件
-  Plug 'tpope/vim-dadbod'               -- 数据库可视化工具
-  Plug 'kristijanhusak/vim-dadbod-ui'   -- 数据库可视化工具
-  Plug 'junegunn/fzf.vim'               -- 文本/文件搜索插件
-  Plug 'nvim-treesitter/nvim-treesitter'-- 文本分析插件
-  Plug 'yaocccc/nvim-lines.lua'         -- 状态栏/标签栏插件
-  Plug 'yaocccc/nvim-hlchunk'           -- {}区间高亮插件
-  Plug 'yaocccc/vim-surround'           -- 快速操作({["'`等的插件
-  Plug 'yaocccc/vim-comment'            -- 快速注释插件
+```
+  'yianwillis/vimcdoc'             -- 中文vim help文档
+  'terryma/vim-expand-region'      -- 快速选中文本插件
+  'lfv89/vim-interestingwords'     -- 高亮关键词插件
+  'mg979/vim-visual-multi'         -- 虚拟多光标插件
+  'iamcco/markdown-preview.nvim'   -- md 预览插件
+  'mzlogin/vim-markdown-toc'       -- md 生成目录
+  'neoclide/coc.nvim'              -- coc
+  'voldikss/vim-floaterm'          -- 悬浮终端插件
+  'tpope/vim-dadbod'               -- 数据库可视化工具
+  'kristijanhusak/vim-dadbod-ui'   -- 数据库可视化工具
+  'junegunn/fzf.vim'               -- 文本/文件搜索插件
+  'nvim-treesitter/nvim-treesitter'-- 文本分析插件
+  'yaocccc/nvim-lines.lua'         -- 状态栏/标签栏插件
+  'yaocccc/nvim-hlchunk'           -- {}区间高亮插件
+  'yaocccc/vim-surround'           -- 快速操作({["'`等的插件
+  'yaocccc/vim-comment'            -- 快速注释插件
 ```
 
 ### 插件简单说明以及键位绑定
