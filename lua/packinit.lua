@@ -1,4 +1,22 @@
-require('packer').startup({function(use)
+local packer = require('packer')
+
+packer.init({
+    config = {
+        git = { clone_timeout = 120 }
+    },
+    display = {
+        working_sym = '[ ]',
+        error_sym = '[✗]',
+        done_sym = '[✓]',
+        removed_sym = ' - ',
+        moved_sym = ' → ',
+        header_sym = '─',
+        open_fn = function()
+            return require("packer.util").float({ border = "rounded" })
+        end,
+    },
+})
+packer.startup({function(use)
     use { 'wbthomason/packer.nvim' }
     use { 'yianwillis/vimcdoc' }
     use { 'terryma/vim-expand-region' }; require('pack/vim-expand-region')
@@ -17,4 +35,4 @@ require('packer').startup({function(use)
     use { 'yaocccc/vim-comment' }; require('pack/vim-comment')
     use { 'yaocccc/nvim-hlchunk', 'yaocccc/vim-fcitx2en', 'yaocccc/vim-surround', 'yaocccc/vim-showmarks' }
     use { 'yaocccc/nvim-lines.lua' }; require('pack/nvim-lines')
-end, config = { git = { clone_timeout = 120 } }})
+end})
