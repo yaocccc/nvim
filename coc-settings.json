@@ -17,6 +17,7 @@
     "tsserver.trace.server": "messages",
     "tsserver.enableJavascript": true,
     "tsserver.enable": false,
+    "pyright.inlayHints.enable": false,
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
