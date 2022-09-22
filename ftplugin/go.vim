@@ -5,7 +5,7 @@ augroup golang
 augroup END
 
 vnoremap <silent><buffer> C :<c-u>call <SID>console()<cr>
-vnoremap <silent><buffer> F :<c-u>call <SID>gfor()<cr>o
+vnoremap <silent><buffer> F :<c-u>call <SID>gfor()<cr>jo
 vnoremap <silent><buffer> D :<c-u>call SurroundVaddPairs("/** ", " */")<cr>
 
 func s:console()
@@ -21,7 +21,8 @@ func s:gfor()
     let l = line('.')
     let space = substitute(getline(l), '\v(^\s*).*', '\1', '')
 
-    call appendbufline('%', line('.'), printf(space . 'for _, %s := range %s {', tag[:-2], tag))
-    call appendbufline('%', line('.') + 1, space . '}')
+    call appendbufline('%', line('.'), printf(space . 'for idx := range %s {', tag))
+    call appendbufline('%', line('.') + 1, printf(space . '    %s := %s[idx]', tag[:-2], tag))
+    call appendbufline('%', line('.') + 2, space . '}')
     execute 'norm! j'
 endf

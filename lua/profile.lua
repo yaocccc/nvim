@@ -101,8 +101,6 @@ G.cmd([[
     let &t_SI.="\e[5 q"
     let &t_EI.="\e[1 q"
     set fillchars=stlnc:#
-    set laststatus=3
-    set showtabline=2
 ]])
 
 -- 提示多余空格和TODO
