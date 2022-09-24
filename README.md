@@ -18,12 +18,7 @@
     cd ~/.config
     git clone https://github.com/yaocccc/nvim
     ```
-2. 安装packer插件
-    ```plaintext
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-    ```
-3. 启动nvim并 :PackerSync
+2. 启动vim 等待自动安装packer(包管理工具、如果你没有安装的话) 会自动安装所有插件
 
 ## 配置结构
 
