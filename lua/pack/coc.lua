@@ -45,12 +45,12 @@ function M.config()
         { 'n', ')', "<Plug>(coc-git-nextchunk)", {silent = true} },
         { 'n', 'C', "get(b:, 'coc_git_blame', '') ==# 'Not committed yet' ? \"<Plug>(coc-git-chunkinfo)\" : \"<Plug>(coc-git-commit)\"", {silent = true, expr = true} },
         { 'n', '<leader>g', ":call coc#config('git.addGBlameToVirtualText',  !get(g:coc_user_config, 'git.addGBlameToVirtualText', 0)) | call nvim_buf_clear_namespace(bufnr(), -1, line('.') - 1, line('.'))<cr>", {silent = true} },
-        { 'n', '<c-f>', 'coc#float#has_scroll() ? coc#float#scroll(1) : \"\\<C-f>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
-        { 'n', '<c-b>', 'coc#float#has_scroll() ? coc#float#scroll(0) : \"\\<C-b>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
-        { 'v', '<c-f>', 'coc#float#has_scroll() ? coc#float#scroll(1) : \"\\<C-f>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
-        { 'v', '<c-b>', 'coc#float#has_scroll() ? coc#float#scroll(0) : \"\\<C-b>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
-        { 'i', '<c-f>', 'coc#float#has_scroll() ? \"\\<c-r>=coc#float#scroll(1)\\<cr>\" : \"\\<Right>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
-        { 'i', '<c-b>', 'coc#float#has_scroll() ? \"\\<c-r>=coc#float#scroll(0)\\<cr>\" : \"\\<Left>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
+        { 'n', '<s-down>', 'coc#float#has_scroll() ? coc#float#scroll(1) : \"\\<s-down>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
+        { 'n', '<s-up>', 'coc#float#has_scroll() ? coc#float#scroll(0) : \"\\<s-up>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
+        { 'v', '<s-down>', 'coc#float#has_scroll() ? coc#float#scroll(1) : \"\\<s-down>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
+        { 'v', '<s-up>', 'coc#float#has_scroll() ? coc#float#scroll(0) : \"\\<s-up>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
+        { 'i', '<s-down>', 'coc#float#has_scroll() ? \"\\<c-r>=coc#float#scroll(1)\\<cr>\" : \"\\<s-down>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
+        { 'i', '<s-up>', 'coc#float#has_scroll() ? \"\\<c-r>=coc#float#scroll(0)\\<cr>\" : \"\\<s-up>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
     })
 end
 

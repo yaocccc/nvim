@@ -57,14 +57,14 @@ require('packer').startup({
             'neoclide/coc.nvim',
             config = "require('pack/coc').setup()",
             branch = 'release',
-            event = 'BufReadPost',
+            event = 'VimEnter',
         }
 
         -- github copilot
-        require('pack/vim-dadbod').config()
+        require('pack/copilot').config()
         use {
             'github/copilot.vim',
-            config = "require('pack/vim-dadbod').config()",
+            config = "require('pack/copilot').setup()",
             event = 'InsertEnter'
         }
 
