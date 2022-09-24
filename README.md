@@ -20,6 +20,8 @@
     ```
 2. 启动vim 等待自动安装packer(包管理工具、如果你没有安装的话) 会自动安装所有插件
 
+3. 每次修改过lua/packinit.lua 请重启后PackerSync
+
 ## 配置结构
 
 ```dir
