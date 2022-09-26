@@ -44,11 +44,11 @@ require('packer').startup({
 
         -- 数据库可视化UI
         require('pack/vim-dadbod').config()
+        use { 'tpope/vim-dadbod' }
         use {
             'kristijanhusak/vim-dadbod-ui',
             config = "require('pack/vim-dadbod').setup()",
-            cmd = { 'DBUI' },
-            required = { 'tpope/vim-dadbod' }
+            after = { 'vim-dadbod' }
         }
 
         -- coc-nvim
@@ -123,21 +123,21 @@ require('packer').startup({
         }
 
         -- 高亮{}范围
-        use { 'yaocccc/nvim-hlchunk', event = 'BufReadPost' }
+        use { 'yaocccc/nvim-hlchunk', event = 'VimEnter' }
 
         -- 注释插件
         require('pack/vim-comment').config()
         use {
             'yaocccc/vim-comment',
             config = "require('pack/vim-comment').setup()",
-            event = 'BufReadPost'
+            event = 'VimEnter'
         }
 
         -- 操作成对的 ""  {}  [] 等的插件
-        use { 'yaocccc/vim-surround', event = 'BufReadPost' }
+        use { 'yaocccc/vim-surround', event = 'VimEnter' }
 
         -- 显示mark在signcolumn
-        use { 'yaocccc/vim-showmarks', event = 'BufReadPost' }
+        use { 'yaocccc/vim-showmarks', event = 'VimEnter' }
 
         -- 退出输入模式时自动切换到英文
         use { 'yaocccc/vim-fcitx2en', event = 'InsertLeavePre' }
