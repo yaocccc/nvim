@@ -1,8 +1,7 @@
 local G = require('G')
 
--- 设置leader为\ 设置python3对应的目录，你可以手动 export PYTHON=$(which python3) 到你的终端配置中
+-- 设置python3对应的目录，你可以手动 export PYTHON=$(which python3) 到你的终端配置中
 G.cmd([[
-    let mapleader="\\"
     let g:python3_host_prog = $PYTHON
 ]])
 
@@ -21,7 +20,7 @@ G.cmd([[
 G.cmd([[
     set hlsearch
     set showmatch
-    noremap <leader> :nohlsearch<CR>
+    noremap \ :nohlsearch<CR>
     set incsearch
     set inccommand=
     set ignorecase
@@ -94,7 +93,6 @@ G.cmd([[
     set scrolloff=5
     set noshowmode
     set nu
-    set rnu
     set numberwidth=2
     set cul
     set signcolumn=yes

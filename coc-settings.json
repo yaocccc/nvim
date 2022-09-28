@@ -40,7 +40,7 @@
             "default": true
         }
     ],
-    "clangd.path": "/home/chenyc/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.1/clangd_15.0.1/bin/clangd",
     "prettier": {
         "tabWidth": 4,
         "printWidth": 160,
@@ -52,5 +52,6 @@
         "staticcheck": true
     },
     "git.enableGutters": true,
-    "volar.takeOverMode.enabled": true
+    "volar.takeOverMode.enabled": true,
+    "Lua.telemetry.enable": false
 }

@@ -1,7 +1,6 @@
-<a href="#TOP"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&pause=1000&color=000000&vCenter=true&width=435&height=45&lines=NVIM+YES" /></a>
+![nvimyes](https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&pause=1000&color=000000&vCenter=true&width=435&height=45&lines=NVIM+YES)
 
-<a href="#TOP"><img src="https://img.shields.io/github/stars/yaocccc/nvim"/></a>
-<a href="#TOP"><img src="https://visitor-badge.glitch.me/badge?page_id=yaocccc-yaocccc/nvim"/></a>
+---
 
 <!-- markdown-toc GitLab -->
 
@@ -101,6 +100,16 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 ## lua/packinit.lua 插件相关的配置说明
 
 ## 插件说明以及键位绑定
+
+
+<details>
+  <summary style="cursor: pointer; text-decoration:underline; color: #2AD;">dstein64/vim-startuptime -- 启动时间分析</summary>
+  
+  [github: dstein64/vim-startuptime](https://github.com/dstein64/vim-startuptime)  
+
+  :StartupTime
+
+</details>
 
 <details>
   <summary style="cursor: pointer; text-decoration:underline; color: #2AD;">terryma/vim-expand-region -- 快速选中文本</summary>
@@ -272,7 +281,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   mm: 翻译当前词  
   ( or ): 跳转到上/下一个 git 修改处  
   C: 显示当前行提交记录
-  leader g: 开启/关闭 git blame 显示  
+  \g: 开启/关闭 git blame 显示  
 
 </details>
 

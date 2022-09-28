@@ -12,7 +12,6 @@ function M.setup()
     local nvim_tree = require("nvim-tree")
     nvim_tree.setup({
         sort_by = "case_sensitive",
-        actions = { open_file = { window_picker = { enable = false } } },
         view = {
             adaptive_size = true,
             mappings = {

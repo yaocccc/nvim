@@ -3,6 +3,7 @@ local M = {}
 
 function M.config()
     G.g.coc_global_extensions = {
+        'coc-marketplace',
         '@yaegassy/coc-volar',
         'coc-tsserver',
         'coc-json',
@@ -18,7 +19,6 @@ function M.config()
         'coc-snippets', 'coc-pairs', 'coc-word',
         'coc-translator',
         'coc-git',
-        -- 'coc-tabnine'
     }
     G.cmd('autocmd FileType javascript,typescript,json vmap <buffer> = <Plug>(coc-format-selected)')
     G.cmd('autocmd FileType javascript,typescript,json nmap <buffer> = <Plug>(coc-format-selected)')
@@ -44,7 +44,7 @@ function M.config()
         { 'n', '(', "<Plug>(coc-git-prevchunk)", {silent = true} },
         { 'n', ')', "<Plug>(coc-git-nextchunk)", {silent = true} },
         { 'n', 'C', "get(b:, 'coc_git_blame', '') ==# 'Not committed yet' ? \"<Plug>(coc-git-chunkinfo)\" : \"<Plug>(coc-git-commit)\"", {silent = true, expr = true} },
-        { 'n', '<leader>g', ":call coc#config('git.addGBlameToVirtualText',  !get(g:coc_user_config, 'git.addGBlameToVirtualText', 0)) | call nvim_buf_clear_namespace(bufnr(), -1, line('.') - 1, line('.'))<cr>", {silent = true} },
+        { 'n', '\\g', ":call coc#config('git.addGBlameToVirtualText',  !get(g:coc_user_config, 'git.addGBlameToVirtualText', 0)) | call nvim_buf_clear_namespace(bufnr(), -1, line('.') - 1, line('.'))<cr>", {silent = true} },
         { 'n', '<s-down>', 'coc#float#has_scroll() ? coc#float#scroll(1) : \"\\<s-down>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
         { 'n', '<s-up>', 'coc#float#has_scroll() ? coc#float#scroll(0) : \"\\<s-up>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
         { 'v', '<s-down>', 'coc#float#has_scroll() ? coc#float#scroll(1) : \"\\<s-down>\"',  {silent = true, noremap = true, expr = true, nowait = true} },
