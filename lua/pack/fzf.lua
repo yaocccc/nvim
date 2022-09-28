@@ -11,6 +11,7 @@ function M.config()
         }
     }
     G.cmd("com! -bar -bang Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter=: --nth=4..'}), <bang>0)")
+    G.cmd("com! CHistory call CHistory()")
     G.cmd([[
     func! CHistory()
       call filter(v:oldfiles, "v:val =~ '^' . $PWD . '.*$'")
@@ -22,7 +23,7 @@ function M.config()
         { 'n', '<c-p>', ':Files<cr>', {silent = true, noremap = true}},
         { 'n', '<c-l>', ':BLines<cr>', {silent = true, noremap = true}},
         { 'n', '<c-g>', ':GFiles?<cr>', {silent = true, noremap = true}},
-        { 'n', '<c-h>', ':call CHistory()<cr>', {silent = true, noremap = true}},
+        { 'n', '<c-h>', ':CHistory<cr>', {silent = true, noremap = true}},
     })
 end
 

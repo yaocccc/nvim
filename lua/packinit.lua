@@ -23,124 +23,63 @@ require('packer').startup({
 
         -- vv 快速选中内容插件
         require('pack/vim-expand-region').config()
-        use {
-            'terryma/vim-expand-region',
-            config = "require('pack/vim-expand-region').setup()"
-        };
+        use { 'terryma/vim-expand-region', config = "require('pack/vim-expand-region').setup()", event = 'CursorHold' }
 
         -- ff 高亮光标下的word
         require('pack/vim-interestingwords').config()
-        use {
-            'lfv89/vim-interestingwords',
-            config = "require('pack/vim-interestingwords').setup()"
-        }
+        use { 'lfv89/vim-interestingwords', config = "require('pack/vim-interestingwords').setup()", event = 'CursorHold' }
 
         -- 多光标插件
         require('pack/vim-visual-multi').config()
-        use {
-            'mg979/vim-visual-multi',
-            config = "require('pack/vim-visual-multi').setup()"
-        }
+        use { 'mg979/vim-visual-multi', config = "require('pack/vim-visual-multi').setup()", event = 'CursorHold' }
 
         -- 数据库可视化UI
         require('pack/vim-dadbod').config()
         use { 'tpope/vim-dadbod' }
-        use {
-            'kristijanhusak/vim-dadbod-ui',
-            config = "require('pack/vim-dadbod').setup()",
-            after = { 'vim-dadbod' }
-        }
+        use { 'kristijanhusak/vim-dadbod-ui', config = "require('pack/vim-dadbod').setup()", after = { 'vim-dadbod' } }
 
         -- coc-nvim
         require('pack/coc').config()
-        use {
-            'neoclide/coc.nvim',
-            config = "require('pack/coc').setup()",
-            branch = 'release',
-            event = 'VimEnter',
-        }
+        use { 'neoclide/coc.nvim', config = "require('pack/coc').setup()", branch = 'release', event = 'CursorHold' }
 
         -- github copilot
         require('pack/copilot').config()
-        use {
-            'github/copilot.vim',
-            config = "require('pack/copilot').setup()",
-            event = 'InsertEnter'
-        }
+        use { 'github/copilot.vim', config = "require('pack/copilot').setup()", event = 'InsertEnter' }
 
         -- 浮动终端
         require('pack/vim-floaterm').config()
-        use {
-            'voldikss/vim-floaterm',
-            config = "require('pack/vim-floaterm').setup()",
-        }
+        use { 'voldikss/vim-floaterm', config = "require('pack/vim-floaterm').setup()" }
 
         -- fzf
         require('pack/fzf').config()
         use { 'junegunn/fzf' }
-        use {
-            'junegunn/fzf.vim',
-            config = "require('pack/fzf').setup()",
-            run = 'cd ~/.fzf && ./install --all',
-            after = "fzf"
-        }
+        use { 'junegunn/fzf.vim', config = "require('pack/fzf').setup()", run = 'cd ~/.fzf && ./install --all', after = "fzf" }
 
         -- tree-sitter
         require('pack/tree-sitter').config()
-        use {
-            'nvim-treesitter/nvim-treesitter',
-            config = "require('pack/tree-sitter').setup()",
-            run = ':TSUpdate',
-            event = 'BufRead',
-        }
+        use { 'nvim-treesitter/nvim-treesitter', config = "require('pack/tree-sitter').setup()", run = ':TSUpdate', event = 'BufRead' }
         use { 'nvim-treesitter/playground', after = { 'nvim-treesitter' } }
 
         -- markdown预览插件 导航生成插件
         require('pack/markdown').config()
         use { 'mzlogin/vim-markdown-toc', ft = 'markdown' }
-        use {
-            'iamcco/markdown-preview.nvim',
-            config = "require('pack/markdown').setup()",
-            run = 'cd app && yarn install',
-            cmd = 'MarkdownPreview',
-            ft = 'markdown'
-        }
+        use { 'iamcco/markdown-preview.nvim', config = "require('pack/markdown').setup()", run = 'cd app && yarn install', cmd = 'MarkdownPreview', ft = 'markdown' }
 
         -- 文件管理器
         require('pack/nvim-tree').config()
-        use {
-            'kyazdani42/nvim-tree.lua',
-            config = "require('pack/nvim-tree').setup()",
-            cmd = { 'NvimTreeToggle', 'NvimTreeFindFileToggle' },
-            required = { 'kyazdani42/nvim-web-devicons' }
-        }
+        use { 'kyazdani42/nvim-tree.lua', config = "require('pack/nvim-tree').setup()", cmd = { 'NvimTreeToggle', 'NvimTreeFindFileToggle' }, required = { 'kyazdani42/nvim-web-devicons' } }
 
         -- 状态栏 & 标题栏
         require('pack/nvim-lines').config()
-        use {
-            'yaocccc/nvim-lines.lua',
-            config = "require('pack/nvim-lines').setup()",
-        }
+        use { 'yaocccc/nvim-lines.lua', config = "require('pack/nvim-lines').setup()" }
 
-        -- 高亮{}范围
-        use { 'yaocccc/nvim-hlchunk', event = 'VimEnter' }
-
-        -- 注释插件
+        -- 部分个人自写插件
         require('pack/vim-comment').config()
-        use {
-            'yaocccc/vim-comment',
-            config = "require('pack/vim-comment').setup()",
-            event = 'VimEnter'
-        }
-
-        -- 操作成对的 ""  {}  [] 等的插件
-        use { 'yaocccc/vim-surround', event = 'VimEnter' }
-
-        -- 显示mark在signcolumn
-        use { 'yaocccc/vim-showmarks', event = 'VimEnter' }
-
-        -- 退出输入模式时自动切换到英文
-        use { 'yaocccc/vim-fcitx2en', event = 'InsertLeavePre' }
+        use { 'yaocccc/vim-comment', config = "require('pack/vim-comment').setup()" }  -- 注释插件
+        use { 'yaocccc/vim-fcitx2en', event = 'InsertLeavePre' }                       -- 退出输入模式时自动切换到英文
+        use { 'yaocccc/nvim-hlchunk' }                                                 -- 高亮{}范围
+        use { 'yaocccc/vim-surround' }                                                 -- 操作成对的 ""  {}  [] 等的插件
+        use { 'yaocccc/vim-showmarks' }                                                -- 显示mark在signcolumn
     end,
     config = {
         git = { clone_timeout = 120 },
