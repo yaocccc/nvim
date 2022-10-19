@@ -17,7 +17,6 @@ function G.hi(hls)
         local bg = color.bg and ' ctermbg=' .. color.bg or ' ctermbg=NONE'
         local sp = color.sp and ' cterm=' .. color.sp or ''
         G.api.nvim_command('highlight ' .. group .. fg .. bg .. sp)
-        G.api.nvim_command('highlight ' .. 'TS' .. group .. fg .. bg .. sp)
     end
 end
 

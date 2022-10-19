@@ -3,34 +3,38 @@ local M = {}
 
 function M.config()
     G.hi({
-        Variable = {fg="NONE"};
-        Function = {fg=32};
-        Operator = {fg=166};
-        KeywordOperator = {fg=166};
+        ["@variable"] = {fg="NONE"};
+        ["@function"] = {fg=32};
+        ["@function.call"] = {fg=32};
+        ["@operator"] = {fg=166};
+        ["@keyword.operator"] = {fg=166};
 
-        Property = {fg=172};
-        Field= {fg=150};
-        Method = {fg=166};
-        Parameter = {fg=9};
+        ["@property"] = {fg=172};
+        ["@field"]= {fg=150};
+        ["@method"] = {fg=166};
+        ["@method.call"] = {fg=9};
+        ["@parameter"] = {fg=9};
 
-        Keyword = {fg=1};
-        KeywordFunction = {fg=32};
-        Exception = {fg=32};
+        ["@keyword"] = {fg=1};
+        ["@keyword.function"] = {fg=32};
+        ["@exception"] = {fg=32};
 
-        Statement = {fg=166};
-        Special = {fg=172};
-        Comment= {fg=71,sp='italic'};
-        Include = {fg=1};
-        Type = {fg=179};
-        TypeBuiltin = {fg=150};
-        PunctBracket = {fg=151};
+        ["@statement"] = {fg=166};
+        ["@special"] = {fg=172};
+        ["@comment"]= {fg=71,sp='italic'};
+        ["@include"] = {fg=1};
+        ["@type"] = {fg=179};
+        ["@type.builtin"] = {fg=150};
+        ["@punctuation.bracket"] = {fg=151};
 
-        Constructor = {fg=172};
-        Namespace = {fg=172};
+        ["@constructor"] = {fg=172};
+        ["@namespace"] = {fg=172};
 
-        String = {fg=37};
-        Number = {fg=37};
-        Boolean = {fg=37};
+        ["@string"] = {fg=37};
+        ["@number"] = {fg=37};
+        ["@boolean"] = {fg=37};
+
+        ["@tag"] = {fg=172};
     })
     G.map({ { 'n', 'H', ':TSHighlightCapturesUnderCursor<CR>', {silent = true, noremap = true}} })
 end
