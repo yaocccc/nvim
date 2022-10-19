@@ -1,6 +1,8 @@
 {
     "hover.floatConfig": { "border": true, "rounded": true, "focusable": true },
     "suggest.floatConfig": { "border": true, "rounded": true },
+    "diagnostic.floatConfig": { "border": true, "rounded": true },
+    "signature.floatConfig": { "border": true, "rounded": true },
     "notification.disabledProgressSources": ["*"],
     "diagnostic.signOffset": 1,
     "diagnostic.errorSign": "┃",
@@ -29,9 +31,10 @@
     "git.topRemovedSign.text": "▔",
     "git.changeRemovedSign.text": "≃",
     "git.branchCharacter": "",
-    "git.showCommitInFloating": true,
+    "git.showCommitInFloating": false,
     "git.addGBlameToVirtualText": false,
     "git.addGBlameToBufferVar": true,
+    "git.splitWindowCommand": "below 10sp",
     "java.clean.workspace": true,
     "java.configuration.runtimes": [
         {

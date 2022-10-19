@@ -38,7 +38,8 @@ function M.config()
     G.cmd([[
         func! SetVimDir()
             try
-                call system('~/scripts/edit-profile.sh VIM_TEM_DIR ' . $PWD)
+                call system('sed -i "/VIM_TEM_DIR/d" ~/.profile')
+                call system('echo export VIM_TEM_DIR="' . $PWD . '" >> ~/.profile')
             endtry
         endf
     ]])

@@ -56,6 +56,7 @@
 | normal | ,                    | 重复上一次宏操作                  |
 | normal | ctrl + j             | 从, 处打断当前行                  |
 | normal | \                    | 清除当前搜索词高亮                |
+| normal | \w                   | 开启/关闭wrap显示                 |
 | normal | backspace            | 删除当前词并插入                  |
 | insert | ctrl + h(backspace)  | 删除内容置词首                    |
 | insert | ctrl + z             | 撤销最后修改并退出编辑            |
