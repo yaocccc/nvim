@@ -204,6 +204,8 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   :DBUI 来使用 数据库可视化工具  
   添加链接: let g:dbs = [{ 'name': 'connection_name', 'url': 'mysql://user:password@host:port' }]  
   注意 url内的东西需要url_encode  
+
+  也可直接 :CALLDB 呼出界面按界面引导 添加链接 链接格式同上
   
 </details>
 
