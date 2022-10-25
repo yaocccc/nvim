@@ -43,7 +43,7 @@ require('packer').startup({
 
         -- coc-nvim
         require('pack/coc').config()
-        use { 'neoclide/coc.nvim', config = "require('pack/coc').setup()", branch = 'release', event = 'CursorHold' }
+        use { 'neoclide/coc.nvim', config = "require('pack/coc').setup()", branch = 'release', event = {'InsertEnter', 'CursorHold'} }
 
         -- github copilot
         require('pack/copilot').config()
