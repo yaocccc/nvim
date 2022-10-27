@@ -274,17 +274,26 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   
   全局的插件列表 lua/pack/coc.lua -- G.g.coc_global_extensions = {...} 按需添加  
 
-  gd: 跳转到定义  
-  gy: 跳转到类型  
-  K: 查看文档  
-  ctrl+e: 显示错误列表  
-  F2: 重命名  
-  F4: 关闭/开启 coc  
-
-  mm: 翻译当前词  
-  ( or ): 跳转到上/下一个 git 修改处  
-  C: 显示当前行提交记录
-  \g: 开启/关闭 git blame 显示  
+  | 模式   | 键                   | 说明                              | 对应的coc插件  |
+  | ------ | --------             | ---------                         | ----           |
+  | normal | gd                   | 跳转到定义                        | coc            |
+  | normal | gy                   | 跳转到类型                        | coc            |
+  | normal | gr                   | 跳转到实现                        | coc            |
+  | normal | K                    | 查看文档                          | coc            |
+  | normal | c-e                  | 查看诊断列表                      | coc            |
+  | normal | F2                   | 重命名                            | coc            |
+  | normal | F4                   | 关闭/开启coc                      | coc            |
+  | normal | c-e                  | 查看诊断列表                      | coc            |
+  | normal | mm                   | 翻译当前词                        | coc-translator |
+  | normal | F9                   | 编辑当前文件类型的snippet         | coc-snippets   |
+  | normal | (                    | 上一处修改                        | coc-git        |
+  | normal | )                    | 下一处修改                        | coc-git        |
+  | normal | C                    | 显示当前行提交记录                | coc-git        |
+  | normal | \g                   | 开启/关闭 git blame 显示          | coc-git        |
+  | visual | if                   | 选中func内                        | coc            |
+  | visual | af                   | 选中func                          | coc            |
+  | visual | ic                   | 选中class内                       | coc            |
+  | visual | ac                   | 选中class                         | coc            |
 
 </details>
 
@@ -297,7 +306,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   | ------ | --------             | ---------                            |
   | insert | right                | 接受建议                             |
   | insert | ctrl + ]             | 取消建议                             |
-  | insert | alt + [或]            | 上/下个建议                          |
+  | insert | alt + [或]           | 上/下个建议                          |
 
 </details>
 
@@ -348,7 +357,5 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   <summary style="cursor: pointer; text-decoration:underline; color: #2AD;">yaocccc/vim-fcitx2en -- 退出insert模式时 自动切换到英文</summary>
 
   [github: yaocccc/vim-fcitx2en](https://github.com/yaocccc/vim-fcitx2en)  
-
-  没啥好说明的 用就完了
 
 </details>
