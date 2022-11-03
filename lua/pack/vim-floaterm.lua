@@ -38,8 +38,7 @@ function M.config()
     G.cmd([[
         func! SetVimDir()
             try
-                call system('sed -i "/VIM_TEM_DIR/d" ~/.profile')
-                call system('echo export VIM_TEM_DIR="' . $PWD . '" >> ~/.profile')
+                call system('echo "' . $PWD . '" > $ZSH/cache/vimdir')
             endtry
         endf
     ]])

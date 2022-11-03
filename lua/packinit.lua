@@ -19,7 +19,7 @@ require('packer').startup({
         use { 'wbthomason/packer.nvim' }
 
         -- 启动时间分析
-        use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
+        use { "dstein64/vim-startuptime", cmd = "StartupTime" }
 
         -- 中文help doc
         use { 'yianwillis/vimcdoc', event = 'VimEnter' }
@@ -39,7 +39,7 @@ require('packer').startup({
         -- 数据库可视化UI
         require('pack/vim-dadbod').config()
         use { 'tpope/vim-dadbod' }
-        use { 'kristijanhusak/vim-dadbod-ui', config = "require('pack/vim-dadbod').setup()", after = { 'vim-dadbod' } }
+        use { 'kristijanhusak/vim-dadbod-ui', config = "require('pack/vim-dadbod').setup()", after = 'vim-dadbod' }
 
         -- coc-nvim
         require('pack/coc').config()
@@ -61,7 +61,7 @@ require('packer').startup({
         -- tree-sitter
         require('pack/tree-sitter').config()
         use { 'nvim-treesitter/nvim-treesitter', config = "require('pack/tree-sitter').setup()", run = ':TSUpdate', event = 'BufRead' }
-        use { 'nvim-treesitter/playground', after = { 'nvim-treesitter' } }
+        use { 'nvim-treesitter/playground', after = 'nvim-treesitter' }
 
         -- markdown预览插件 导航生成插件
         require('pack/markdown').config()
@@ -70,7 +70,7 @@ require('packer').startup({
 
         -- 文件管理器
         require('pack/nvim-tree').config()
-        use { 'kyazdani42/nvim-tree.lua', config = "require('pack/nvim-tree').setup()", cmd = { 'NvimTreeToggle', 'NvimTreeFindFileToggle' }, required = { 'kyazdani42/nvim-web-devicons' } }
+        use { 'kyazdani42/nvim-tree.lua', config = "require('pack/nvim-tree').setup()", cmd = { 'NvimTreeToggle', 'NvimTreeFindFileToggle' } }
 
         -- 状态栏 & 标题栏
         require('pack/nvim-lines').config()
