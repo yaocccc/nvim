@@ -1,7 +1,20 @@
 local G = require('G')
 
 G.cmd([[au BufEnter * if &buftype == '' && &readonly == 1 | set buftype=acwrite | set noreadonly | endif]])
-G.cmd('command! W w !sudo tee > /dev/null %')
+G.cmd([[
+func MagicSave()
+    " If the directory is not exited, create it
+    if empty(glob(expand("%:p:h")))
+        call system("mkdir -p " . expand("%:p:h"))
+    endif
+    " If the file is not writable, use sudo to write it
+    if &buftype == 'acwrite'
+        w !sudo tee > /dev/null %
+    else
+        w
+    endif
+endf
+]])
 G.map({
     -- 设置s t 无效 ;=: ,重复上一次宏操作
     { 'n', 's',           '<nop>',   {} },
@@ -40,7 +53,7 @@ G.map({
     { 'v', 'P',           'Pgvy',    { noremap = true } },
 
     -- S保存 Q退出
-    { 'n', 'S',           '&buftype == "acwrite" ? ":W<CR>" : ":w!<CR>"', { noremap = true, silent = true, expr = true } },
+    { 'n', 'S',           ':call MagicSave()<cr>', { noremap = true, silent = true } },
     { 'n', 'Q',           ':q!<cr>', { noremap = true, silent = true } },
 
     -- VISUAL SELECT模式 s-tab tab左右缩进

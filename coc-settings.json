@@ -12,6 +12,7 @@
     "diagnostic.hintSign": "┃",
     "inlayHint.enable": false,
     "list.alignColumns": true,
+    "list.floatPreview": true,
     "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
     "snippets.ultisnips.directories": ["~/.config/nvim/snippets/ultisnips"],
     "snippets.extends.javascript": ["typescript"],

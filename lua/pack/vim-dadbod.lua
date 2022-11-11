@@ -7,7 +7,7 @@ function DBUI()
 end
 
 function M.config()
-    G.g.db_ui_save_location = '~/.config/zsh/cache'
+    G.g.db_ui_save_location = '~/.config/zsh/omz/cache'
     G.g.db_ui_use_nerd_fonts = 1
     G.g.db_ui_force_echo_notifications = 1
     G.g.db_ui_table_helpers = {
