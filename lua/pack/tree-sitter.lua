@@ -35,6 +35,8 @@ function M.config()
         ["@boolean"] = {fg=37};
 
         ["@tag"] = {fg=172};
+
+        ["@text.literal"] = {fg=7}
     })
     G.map({ { 'n', 'H', ':TSHighlightCapturesUnderCursor<CR>', {silent = true, noremap = true}} })
 end
