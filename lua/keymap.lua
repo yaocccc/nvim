@@ -224,7 +224,6 @@ G.cmd([[
     fun! ToggleHump()
         let [l, c1, c2] = [line('.'), col("'<"), col("'>")]
         let line = getline(l)
-        echo c1 c2
         let w = line[c1 - 1 : c2 - 2]
         let w = w =~ '_' ? substitute(w, '\v_(.)', '\u\1', 'g') : substitute(substitute(w, '\v^(\u)', '\l\1', 'g'), '\v(\u)', '_\l\1', 'g')
         call setbufline('%', l, printf('%s%s%s', c1 == 1 ? '' : line[:c1-2], w, c2 == 1 ? '' : line[c2-1:]))
