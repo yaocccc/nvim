@@ -359,3 +359,12 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   [github: yaocccc/vim-fcitx2en](https://github.com/yaocccc/vim-fcitx2en)  
 
 </details>
+
+<details>
+  <summary style="cursor: pointer; text-decoration:underline; color: #2AD;">yaocccc/vim-echo -- 根据文件名或文件类型快速echo、print、console.log</summary>
+
+  [github: yaocccc/vim-echo](https://github.com/yaocccc/vim-echo)  
+
+  选中文本后 C: 再下一行添加 console.log(选中的内容) 或 echo $选中的内容 等等等
+
+</details>
