@@ -87,7 +87,7 @@ require('packer').startup({
         use { 'yaocccc/vim-showmarks' }                                                -- 显示mark在signcolumn
     end,
     config = {
-        git = { clone_timeout = 120 },
+        git = { clone_timeout = 120, depth = 1 },
         display = {
             working_sym = '[ ]', error_sym = '[✗]', done_sym = '[✓]', removed_sym = ' - ', moved_sym = ' → ', header_sym = '─',
             open_fn = function() return require("packer.util").float({ border = "rounded" }) end
