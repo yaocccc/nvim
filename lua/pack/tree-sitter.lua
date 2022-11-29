@@ -49,6 +49,9 @@ function M.setup()
             enable = true
         },
     }
+
+    -- some custom highlights
+    G.cmd('match Todo /TODO\\(:.*\\)*/')
 end
 
 return M

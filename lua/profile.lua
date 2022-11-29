@@ -100,10 +100,3 @@ G.cmd([[
     let &t_EI.="\e[1 q"
     set fillchars=stlnc:#
 ]])
-
--- 提示多余空格和TODO
-G.cmd([[
-    hi ErrSpace ctermbg=238
-    " autocmd BufWinEnter * syn match ErrSpace /\s\+$\| \+\ze\t\+\|\t\+\zs \+/
-    autocmd BufWinEnter * syn match Todo /TODO\(:.*\)*/
-]])

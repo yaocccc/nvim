@@ -18,6 +18,7 @@ function M.config()
         md = '[^_^]:',
         vue = '//',
         sql = '--',
+        sol = '//',
     }
     G.g.vim_chunk_comments = {
         js = {'/**', ' *', ' */'},
@@ -26,6 +27,7 @@ function M.config()
         proto = {'/**', ' *', ' */'},
         md = {'[^_^]:', '    ', ''},
         vue = {'/**', ' *', ' */'},
+        sol = {'/**', ' *', ' */'},
     }
     G.map({
         { 'n', '??', ':NToggleComment<cr>', {silent = true, noremap = true}},
