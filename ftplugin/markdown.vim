@@ -1,5 +1,5 @@
 hi MDTask ctermfg=1
-hi MDDoneText cterm=italic,strikethrough
+hi MDDoneText ctermfg=37 cterm=italic,strikethrough
 hi MDTodoText cterm=NONE
 hi MDDoneDate cterm=italic,strikethrough ctermfg=71
 hi MDTodoDate ctermfg=71

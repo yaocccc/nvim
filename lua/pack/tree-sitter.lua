@@ -36,7 +36,10 @@ function M.config()
 
         ["@tag"] = {fg=172};
 
-        ["@text.literal"] = {fg=7}
+        ["@text.literal"] = {fg=7};
+
+        ["@text.todo.unchecked"] = {fg=172};
+        ["@text.todo.checked"] = {fg=37};
     })
     G.map({ { 'n', 'H', ':TSHighlightCapturesUnderCursor<CR>', {silent = true, noremap = true}} })
 end
