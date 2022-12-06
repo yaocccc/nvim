@@ -79,8 +79,9 @@ require('packer').startup({
         -- 部分个人自写插件
         require('pack/vim-comment').config()
         require('pack/vim-echo').config()
+        require('pack/vim-surround').config()
         use { 'yaocccc/vim-comment', config = "require('pack/vim-comment').setup()" }  -- 注释插件
-        use { 'yaocccc/vim-echo', cmd = "VECHO" }                                                     -- 快速echo、print
+        use { 'yaocccc/vim-echo', cmd = "VECHO" }                                      -- 快速echo、print
         use { 'yaocccc/vim-fcitx2en', event = 'InsertLeavePre' }                       -- 退出输入模式时自动切换到英文
         use { 'yaocccc/nvim-hlchunk' }                                                 -- 高亮{}范围
         use { 'yaocccc/vim-surround' }                                                 -- 操作成对的 ""  {}  [] 等的插件
