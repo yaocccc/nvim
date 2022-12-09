@@ -47,7 +47,7 @@
             "default": true
         }
     ],
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.1/clangd_15.0.1/bin/clangd",
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd",
     "prettier": {
         "tabWidth": 4,
         "printWidth": 160,

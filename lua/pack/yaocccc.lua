@@ -9,6 +9,11 @@ function M.config()
     G.map({
         { 'v', 'C', ':<c-u>VECHO<cr>', {silent = true, noremap = true}},
     })
+    G.g.vim_echo_by_file = {
+        js = 'console.log([ECHO])',
+        ts = 'console.log([ECHO])',
+        vue = 'console.log([ECHO])',
+    }
 
     -- vim-comment
     G.g.vim_line_comments = {
