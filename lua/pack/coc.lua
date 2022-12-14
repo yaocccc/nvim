@@ -20,8 +20,6 @@ function M.config()
         'coc-translator',
         'coc-git',
     }
-    G.cmd('autocmd FileType javascript,typescript,json vmap <buffer> = <Plug>(coc-format-selected)')
-    G.cmd('autocmd FileType javascript,typescript,json nmap <buffer> = <Plug>(coc-format-selected)')
     G.cmd("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
     G.cmd("hi! link CocPum Pmenu")
     G.cmd("hi! link CocMenuSel PmenuSel")
@@ -54,6 +52,10 @@ function M.config()
         { 'n', ')', "<Plug>(coc-git-nextchunk)", {silent = true} },
         { 'n', 'C', "get(b:, 'coc_git_blame', '') ==# 'Not committed yet' ? \"<Plug>(coc-git-chunkinfo)\" : \"<Plug>(coc-git-commit)\"", {silent = true, expr = true} },
         { 'n', '\\g', ":call coc#config('git.addGBlameToVirtualText',  !get(g:coc_user_config, 'git.addGBlameToVirtualText', 0)) | call nvim_buf_clear_namespace(bufnr(), -1, line('.') - 1, line('.'))<cr>", {silent = true} },
+        { 'x', '=', 'CocHasProvider("formatRange") ? "<Plug>(coc-format-selected)" : "="', {silent = true, noremap = true, expr = true}},
+        { 'n', '=', 'CocHasProvider("formatRange") ? "<Plug>(coc-format-selected)" : "="', {silent = true, noremap = true, expr = true}},
+
+
     })
 end
 

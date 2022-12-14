@@ -52,7 +52,8 @@
         "tabWidth": 4,
         "printWidth": 160,
         "singleQuote": true,
-        "disableSuccessMessage": true
+        "disableSuccessMessage": true,
+        "formatterPriority": -1
     },
     "go.goplsOptions": {
         "completeUnimported": true,
