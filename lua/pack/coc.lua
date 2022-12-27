@@ -10,7 +10,7 @@ function M.config()
         'coc-html', 'coc-css',
         'coc-clangd',
         'coc-go',
-        'coc-lua',
+        'coc-sumneko-lua',
         'coc-vimlsp',
         'coc-sh', 'coc-db',
         'coc-java', 'coc-pyright',
