@@ -1,8 +1,8 @@
 snippet head "head~"
 	---
 	title: ${0:`substitute(expand("%:t"), "." . expand("%:e"), "", "")`}
+	url: `substitute(expand("%:t"), "." . expand("%:e"), "", "")`
 	date: `strftime("%Y-%m-%d %H:%M:%S")`
-	categories: ${1}
 	tags: [${2}]
 	excerpt: ${3}
 	index_img: /img/${4}
