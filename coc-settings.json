@@ -3,6 +3,8 @@
     "suggest.floatConfig": { "border": true, "rounded": true },
     "diagnostic.floatConfig": { "border": true, "rounded": true },
     "signature.floatConfig": { "border": true, "rounded": true },
+    "list.autoPreview": true,
+    "outline.autoPreview": true,
     "git.floatConfig": { "border": true, "rounded": true },
     "notification.disabledProgressSources": ["*"],
     "diagnostic.signOffset": 1,
