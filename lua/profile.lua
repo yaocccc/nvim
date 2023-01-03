@@ -37,7 +37,6 @@ G.cmd([[
 -- 设置鼠标移动
 G.cmd([[
     set mouse=a
-    set selection=exclusive
 ]])
 
 -- 错误无提示音 去除屏幕闪烁

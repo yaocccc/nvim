@@ -38,7 +38,7 @@ require('packer').startup({
 
         -- 数据库可视化UI
         require('pack/vim-dadbod').config()
-        use { 'tpope/vim-dadbod' }
+        use { 'tpope/vim-dadbod', cmd = "DBUI" }
         use { 'kristijanhusak/vim-dadbod-ui', config = "require('pack/vim-dadbod').setup()", after = 'vim-dadbod' }
 
         -- coc-nvim

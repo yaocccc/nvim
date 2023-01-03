@@ -73,7 +73,7 @@ G.map({
     { 'n', '<s-down>',    'Vj',      { noremap = true } },
     { 'v', '<s-up>',      'k',       { noremap = true } },
     { 'v', '<s-down>',    'j',       { noremap = true } },
-    { 'n', '<s-left>',    'vh',      { noremap = true } },
+    { 'n', '<s-left>',    '<left>vh',{ noremap = true } },
     { 'n', '<s-right>',   'vl',      { noremap = true } },
 
     -- CTRL SHIFT + 方向 快速跳转
