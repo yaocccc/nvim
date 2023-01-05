@@ -9,3 +9,7 @@ snippet insert "insert ~"
 	(${2:fields})
 	VALUES
 	(${3:value});
+
+snippet delete "delete ~"
+	DELETE FROM ${1:tableName}
+	WHERE id in (${2::ids});

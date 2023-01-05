@@ -242,7 +242,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   | nvim-tree内 | W                    | 关闭所有打开的目录                   |
   | nvim-tree内 | <left>               | 关闭当前目录                         |
   | nvim-tree内 | <bs>                 | 回退到上级目录                       |
-  | nvim-tree内 | P                    | 当pwd置为选中目录                    |
+  | nvim-tree内 | P                    | cd到选中目录                         |
   | nvim-tree内 | H                    | 显示/隐藏 .文件                      |
   | nvim-tree内 | I                    | 显示/隐藏 忽略文件(gitignore等)      |
   | nvim-tree内 | d                    | 删除文件/文件夹                      |
@@ -251,6 +251,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   | nvim-tree内 | p                    | 从剪切板粘贴                         |
   | nvim-tree内 | y                    | 复制文件名                           |
   | nvim-tree内 | ?                    | 查看帮助                             |
+  | nvim-tree内 | C                    | 若当前查看的文件为外部文件 cd到目录  |
 
 </details>
 
