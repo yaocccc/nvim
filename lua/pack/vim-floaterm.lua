@@ -6,7 +6,7 @@ function M.toggleFT(name, cmd)
     if G.fn['floaterm#terminal#get_bufnr'](name) ~= -1 then
         G.cmd(string.format('exec "FloatermToggle %s"', name))
     else
-        G.cmd(string.format('FloatermNew --autoclose=0 --name=%s %s', name, cmd))
+        G.cmd(string.format('FloatermNew --name=%s %s', name, cmd))
     end
 end
 
@@ -34,7 +34,7 @@ function M.config()
     G.g.floaterm_title = ''
     G.g.floaterm_width = 0.8
     G.g.floaterm_height = 0.8
-    G.g.floaterm_autoclose = 1
+    G.g.floaterm_autoclose = 0
     G.g.floaterm_opener = 'edit'
     G.cmd("au BufEnter * if &buftype == 'terminal' | :call timer_start(50, { -> execute('startinsert!') }, { 'repeat': 3 }) | endif")
     G.cmd("hi FloatermBorder ctermfg=fg ctermbg=none")
