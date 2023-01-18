@@ -86,7 +86,7 @@ G.map({
     { 'v', '<c-s-up>',    '10k',     { noremap = true } },
     { 'v', '<c-s-down>',  '10j',     { noremap = true } },
     { 'v', '<c-s-left>',  '^',       { noremap = true } },
-    { 'v', '<c-s-right>', '$',       { noremap = true } },
+    { 'v', '<c-s-right>', '$h',      { noremap = true } },
 
     -- 选中全文 选中{ 复制全文
     { 'n', '<m-a>',       'ggVG',    { noremap = true } },
