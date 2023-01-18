@@ -92,6 +92,8 @@
 | normal | --                   | 折叠/反折叠                       |
 | visual | -                    | 折叠选中内容                      |
 | normal | space                | 在行首 第一个非空字符 行尾 跳转   |
+| normal | M                    | 保存view(折叠等等信息)            |
+| normal | L                    | 载入view(折叠等等信息)            |
 | normal | =                    | 格式化当前行                      |
 | visual | =                    | 格式化选中内容                    |
 | visual | t                    | 驼峰和下划线转换                  |

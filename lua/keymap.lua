@@ -139,6 +139,10 @@ G.map({
     { 'i', '<m-left>',    '<esc>:bp<cr>',     { noremap = true, silent = true } },
     { 'i', '<m-right>',   '<esc>:bn<cr>',     { noremap = true, silent = true } },
 
+    -- view
+    { 'n', 'M',           ':mkview<cr>',      { noremap = true, silent = true } },
+    { 'n', 'L',           ':loadview<cr>',    { noremap = true, silent = true } },
+
     -- tt 打开一个10行大小的终端
     { 'n', 'tt',          ':below 10sp | term<cr>a', { noremap = true, silent = true } },
 
