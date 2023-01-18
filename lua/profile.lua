@@ -65,9 +65,6 @@ G.cmd([[
     set nowrap
 ]])
 
--- 光标回到上次位置
-G.cmd([[ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif ]])
-
 -- 持久化撤销
 G.cmd([[
     set undofile

@@ -1,6 +1,5 @@
 local G = require('G')
 
-G.cmd([[au BufEnter * if &buftype == '' && &readonly == 1 | set buftype=acwrite | set noreadonly | endif]])
 G.cmd([[
 func MagicSave()
     " If the directory is not exited, create it
@@ -139,10 +138,6 @@ G.map({
     { 'i', '<m-left>',    '<esc>:bp<cr>',     { noremap = true, silent = true } },
     { 'i', '<m-right>',   '<esc>:bn<cr>',     { noremap = true, silent = true } },
 
-    -- view
-    { 'n', 'M',           ':mkview<cr>',      { noremap = true, silent = true } },
-    { 'n', 'L',           ':loadview<cr>',    { noremap = true, silent = true } },
-
     -- tt 打开一个10行大小的终端
     { 'n', 'tt',          ':below 10sp | term<cr>a', { noremap = true, silent = true } },
 
@@ -169,11 +164,16 @@ G.cmd([[
 
 -- 折叠
 G.map({
-    { 'n', '--', "foldclosed(line('.')) == -1 ? ':call MagicFold()<cr>' : 'za'", { noremap = true, silent = true, expr = true } },
-    { 'v', '-',  'zf', { noremap = true } },
+    { 'n', '--', ":call MagicFold()<cr>", { noremap = true, silent = true } },
+    { 'v', '-',  'zf', { noremap = true, silent = true } },
 })
 G.cmd([[
     fun! MagicFold()
+        if foldclosed(line('.')) != -1
+            exe 'norm! za'
+            return
+        endif
+
         let l:line = trim(getline('.'))
         if l:line == '' | return | endif
         let [l:up, l:down] = [0, 0]

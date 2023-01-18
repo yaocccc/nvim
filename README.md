@@ -32,6 +32,7 @@
 │  ├─ pack/            -- 各插件的配置目录
 │  ├─ G.lua            -- G: Global 封装了lua配置内用到的部分通用方法
 │  ├─ keymap.lua       -- 快捷键配置
+│  ├─ autocmd.lua      -- 自动命令
 │  ├─ packinit.lua     -- 插件配置入口
 │  └─ profile.lua      -- 环境变量(各种set)
 ├─ colors/             -- 样式相关(theme)
