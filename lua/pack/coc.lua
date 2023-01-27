@@ -15,7 +15,6 @@ function M.config()
         'coc-sh', 'coc-db',
         'coc-java', 'coc-pyright',
         'coc-toml', 'coc-solidity',
-        'coc-prettier',
         'coc-snippets', 'coc-pairs', 'coc-word',
         'coc-translator',
         'coc-git',
