@@ -266,6 +266,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   没啥好说明的 用就完了  
 
   可以用 H 快捷键看高亮组 然后到 lua/pack/tree-sitter.lua 中修改对应的样式  
+  R刷新高亮
 
 </details>
 

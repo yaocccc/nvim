@@ -41,7 +41,10 @@ function M.config()
         ["@text.todo.unchecked"] = {fg=172};
         ["@text.todo.checked"] = {fg=37};
     })
-    G.map({ { 'n', 'H', ':TSHighlightCapturesUnderCursor<CR>', {silent = true, noremap = true}} })
+    G.map({
+        { 'n', 'H', ':TSHighlightCapturesUnderCursor<CR>', {silent = true, noremap = true}},
+        { 'n', 'R', ':write | edit | TSBufEnable highlight<CR>', {silent = true, noremap = true}},
+    })
 end
 
 function M.setup()
