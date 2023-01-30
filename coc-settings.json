@@ -55,7 +55,7 @@
         "printWidth": 160,
         "singleQuote": true,
         "disableSuccessMessage": true,
-        "formatterPriority": -1
+        "formatterPriority": 999
     },
     "go.goplsOptions": {
         "completeUnimported": true,
