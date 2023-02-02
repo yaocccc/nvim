@@ -52,6 +52,7 @@ G.map({
 
     -- S保存 Q退出
     { 'n', 'S',           ':call MagicSave()<cr>', { noremap = true, silent = true } },
+    { 'v', 'S',           ':call MagicSave()<cr>', { noremap = true, silent = true } },
     { 'n', 'Q',           ':q!<cr>', { noremap = true, silent = true } },
 
     -- VISUAL SELECT模式 s-tab tab左右缩进
@@ -164,44 +165,9 @@ G.cmd([[
 
 -- 折叠
 G.map({
-    { 'n', '--', ":call MagicFold()<cr>", { noremap = true, silent = true } },
+    { 'n', '--', "za", { noremap = true, silent = true } },
     { 'v', '-',  'zf', { noremap = true, silent = true } },
 })
-G.cmd([[
-    fun! MagicFold()
-        if foldclosed(line('.')) != -1
-            exe 'norm! za'
-            return
-        endif
-
-        let l:line = trim(getline('.'))
-        if l:line == '' | return | endif
-        let [l:up, l:down] = [0, 0]
-        if l:line[0] == '}'
-            exe 'norm! ^%'
-            let l:up = line('.')
-            exe 'norm! %'
-        endif
-        if l:line[len(l:line) - 1] == '{'
-            exe 'norm! $%'
-            let l:down = line('.')
-            exe 'norm! %'
-        endif
-        try
-            if l:up != 0 && l:down != 0
-                exe 'norm! ' . l:up . 'GV' . l:down . 'Gzf'
-            elseif l:up != 0
-                exe 'norm! V' . l:up . 'Gzf'
-            elseif l:down != 0
-                exe 'norm! V' . l:down . 'Gzf'
-            else
-                exe 'norm! za'
-            endif
-        catch
-            redraw!
-        endtry
-    endf
-]])
 
 -- space 行首行尾跳转
 G.map({

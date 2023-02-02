@@ -2,9 +2,6 @@ local G = require('G')
 local M = {}
 
 function M.config()
-    -- vim-surround
-    G.g.use_toggle_surround = 0
-
     -- vim-echo
     G.map({
         { 'v', 'C', ':<c-u>VECHO<cr>', {silent = true, noremap = true}},

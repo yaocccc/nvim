@@ -82,6 +82,7 @@ G.cmd([[
 
 -- show
 G.cmd([[
+    hi Normal ctermfg=7 ctermbg=NONE cterm=NONE \" 添加默认颜色设置 避免载入主题时报错
     colorscheme solarized8_high
     set cmdheight=1
     set updatetime=300

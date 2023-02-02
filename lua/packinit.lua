@@ -22,15 +22,15 @@ require('packer').startup({
         use { "dstein64/vim-startuptime", cmd = "StartupTime" }
 
         -- 中文help doc
-        use { 'yianwillis/vimcdoc', event = 'VimEnter' }
+        use { 'yianwillis/vimcdoc', event = "CmdLineEnter" }
 
         -- vv 快速选中内容插件
         require('pack/vim-expand-region').config()
-        use { 'terryma/vim-expand-region', config = "require('pack/vim-expand-region').setup()", event = 'CursorHold' }
+        use { 'terryma/vim-expand-region', config = "require('pack/vim-expand-region').setup()", keys = { 'v', 'V' } }
 
         -- ff 高亮光标下的word
         require('pack/vim-interestingwords').config()
-        use { 'lfv89/vim-interestingwords', config = "require('pack/vim-interestingwords').setup()", event = 'CursorHold' }
+        use { 'lfv89/vim-interestingwords', config = "require('pack/vim-interestingwords').setup()", fn = 'InterestingWords' }
 
         -- 多光标插件
         require('pack/vim-visual-multi').config()
@@ -43,7 +43,7 @@ require('packer').startup({
 
         -- coc-nvim
         require('pack/coc').config()
-        use { 'neoclide/coc.nvim', config = "require('pack/coc').setup()", branch = 'release' }
+        use { 'neoclide/coc.nvim', config = "require('pack/coc').setup()", branch = 'release', event = { 'InsertEnter', 'CmdLineEnter', 'CursorHold' }, fn = 'CocAction', keys = '<Plug>(coc-definition)' }
 
         -- github copilot
         require('pack/copilot').config()
@@ -55,7 +55,7 @@ require('packer').startup({
 
         -- fzf
         require('pack/fzf').config()
-        use { 'junegunn/fzf' }
+        use { 'junegunn/fzf', event = "CmdLineEnter" }
         use { 'junegunn/fzf.vim', config = "require('pack/fzf').setup()", run = 'cd ~/.fzf && ./install --all', after = "fzf" }
 
         -- tree-sitter
@@ -78,11 +78,11 @@ require('packer').startup({
 
         -- 部分个人自写插件
         require('pack/yaocccc').config()                                               -- yaocccc/* 共用一个config
-        use { 'yaocccc/vim-comment' }                                                  -- 注释插件
+        use { 'yaocccc/vim-comment', cmd = '*ToggleComment' }                          -- 注释插件
         use { 'yaocccc/vim-echo', cmd = "VECHO" }                                      -- 快速echo、print
         use { 'yaocccc/vim-fcitx2en', event = 'InsertLeavePre' }                       -- 退出输入模式时自动切换到英文
-        use { 'yaocccc/nvim-hlchunk' }                                                 -- 高亮{}范围
-        use { 'yaocccc/vim-surround' }                                                 -- 操作成对的 ""  {}  [] 等的插件
+        use { 'yaocccc/nvim-hlchunk', event = { 'CursorMoved', 'CursorMovedI' } }      -- 高亮{}范围
+        use { 'yaocccc/vim-surround', event = 'ModeChanged' }                          -- 操作成对的 ""  {}  [] 等的插件
         use { 'yaocccc/vim-showmarks' }                                                -- 显示mark在signcolumn
     end,
     config = {

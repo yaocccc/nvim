@@ -1,6 +1,14 @@
 local G = require('G')
 local M = {}
 
+function M.parser_bootstrap()
+    local lang = G.api.nvim_eval('&ft')
+    local has_parser = require('nvim-treesitter.parsers').has_parser(lang)
+    if not has_parser then
+        G.cmd([[ try | silent! call execute('TSInstall ' . &ft) | catch | endtry ]])
+    end
+end
+
 function M.config()
     G.hi({
         ["@variable"] = {fg="NONE"};
@@ -45,19 +53,18 @@ function M.config()
         { 'n', 'H', ':TSHighlightCapturesUnderCursor<CR>', {silent = true, noremap = true}},
         { 'n', 'R', ':write | edit | TSBufEnable highlight<CR>', {silent = true, noremap = true}},
     })
+    -- some custom highlights
+    G.cmd('match Todo /TODO\\(:.*\\)*/')
 end
 
 function M.setup()
     require('nvim-treesitter.configs').setup {
-        ensure_installed = "all",
-        ignore_install = { "swift", "phpdoc" },
+        ensure_installed = {},
         highlight = {
             enable = true
         },
     }
-
-    -- some custom highlights
-    G.cmd('match Todo /TODO\\(:.*\\)*/')
+    G.cmd([[ au FileType * lua require('pack/tree-sitter').parser_bootstrap() ]])
 end
 
 return M
