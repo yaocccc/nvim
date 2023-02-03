@@ -1,5 +1,6 @@
 local G = require('G')
 local M = {}
+
 function M.parser_bootstrap()
     local parsers = require("nvim-treesitter.parsers")
     local lang = parsers.ft_to_lang(G.api.nvim_eval('&ft'))
