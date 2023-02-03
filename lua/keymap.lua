@@ -23,6 +23,8 @@ G.map({
     { 'n', '_',           '<c-x>',   { noremap = true } },
     { 'n', ',',           '@q',      { noremap = true } },
 
+    { 'n', '\\',          ':nohlsearch<CR>', { noremap = true } },
+
     -- 快速删除
     { 'n', '<bs>',        '"_ciw',   { noremap = true } },
     { 'i', '<c-h>',       'col(".") == col("$") ? \'<esc>"_db"_xa\' : \'<esc>"_db"_xi\'', { noremap = true, expr = true } },
