@@ -44,7 +44,7 @@ G.opt.wrap = false
 
 -- 持久化撤销
 G.opt.undofile = true
-G.opt.undodir = '$HOME/.config/nvim/cache/undodir'
+G.opt.undodir = os.getenv('HOME') .. '/.config/nvim/cache/undodir'
 
 -- vim保存1000条文件记录
 G.opt.viminfo = "!,'10000,<50,s10,h"
@@ -52,7 +52,7 @@ G.opt.viminfo = "!,'10000,<50,s10,h"
 -- 折叠
 G.opt.foldenable = true
 G.opt.foldmethod = 'manual'
-G.opt.viewdir = '$HOME/.config/nvim/cache/viewdir'
+G.opt.viewdir = os.getenv('HOME') .. '/.config/nvim/cache//viewdir'
 
 -- show
 G.opt.cmdheight = 1
