@@ -26,11 +26,11 @@ require('packer').startup({
 
         -- vv 快速选中内容插件
         require('pack/vim-expand-region').config()
-        use { 'terryma/vim-expand-region', config = "require('pack/vim-expand-region').setup()", keys = { 'v', 'V' } }
+        use { 'terryma/vim-expand-region', config = "require('pack/vim-expand-region').setup()" }
 
         -- ff 高亮光标下的word
         require('pack/vim-interestingwords').config()
-        use { 'lfv89/vim-interestingwords', config = "require('pack/vim-interestingwords').setup()", fn = 'InterestingWords' }
+        use { 'lfv89/vim-interestingwords', config = "require('pack/vim-interestingwords').setup()" }
 
         -- 多光标插件
         require('pack/vim-visual-multi').config()
