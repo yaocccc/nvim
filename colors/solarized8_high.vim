@@ -44,8 +44,8 @@ hi SpellCap ctermfg=61 ctermbg=NONE cterm=underline
 hi SpellLocal ctermfg=136 ctermbg=NONE cterm=underline
 hi SpellRare ctermfg=37 ctermbg=NONE cterm=underline
 hi Title ctermfg=166 ctermbg=NONE cterm=bold
-hi FoldColumn ctermfg=fg ctermbg=NONE cterm=NONE
-hi Folded ctermfg=253 ctermbg=NONE cterm=bold
+hi FoldColumn ctermfg=111 ctermbg=NONE cterm=NONE
+hi Folded ctermfg=248 ctermbg=NONE cterm=bold
 hi LineNr ctermfg=243 ctermbg=NONE cterm=NONE
 hi Terminal ctermfg=fg ctermbg=NONE cterm=NONE
 hi DiffAdd ctermfg=106 ctermbg=236 cterm=NONE

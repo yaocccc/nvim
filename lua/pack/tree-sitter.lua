@@ -44,6 +44,10 @@ function M.config()
         ["@boolean"] = { fg = 37 };
 
         ["@tag"] = { fg = 172 };
+        ["@tag.attribute"] = { fg = 166 };
+        ["@tag.delimiter"] = { fg = 150 };
+        ["@conditional.ternary"] = { fg = 1 };
+        ["@punctuation.special"] = { fg = 166 };
 
         ["@text.literal"] = { fg = 7 };
 

@@ -167,8 +167,8 @@ G.cmd([[
 
 -- 折叠
 G.map({
-    { 'n', '--', "za", { noremap = true, silent = true } },
-    { 'v', '-',  'zf', { noremap = true, silent = true } },
+    { 'n', '-', "za", { noremap = true, silent = true } },
+    { 'v', '-', 'zf', { noremap = true, silent = true } },
 })
 
 -- space 行首行尾跳转
