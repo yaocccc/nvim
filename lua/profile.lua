@@ -52,7 +52,7 @@ G.opt.viminfo = "!,'10000,<50,s10,h"
 -- 折叠
 G.opt.foldenable = true
 G.opt.foldmethod = 'manual'
-G.opt.viewdir = os.getenv('HOME') .. '/.config/nvim/cache//viewdir'
+G.opt.viewdir = os.getenv('HOME') .. '/.config/nvim/cache/viewdir'
 G.opt.foldtext = 'v:lua.MagicFoldText()'
 
 function MagicFoldText()
