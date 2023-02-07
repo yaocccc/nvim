@@ -98,7 +98,10 @@ function M.setup()
             indent_markers = { enable = true },
             icons = {
                 git_placement = "after", webdev_colors = true,
-                glyphs = { git = { unstaged = "~", staged = "✓", unmerged = "", renamed = "+", untracked = "?", deleted = "", ignored = " " } }
+                glyphs = {
+                    git = { unstaged = "~", staged = "✓", unmerged = "", renamed = "+", untracked = "?", deleted = "", ignored = " " },
+                    folder = { empty = "", empty_open = "" }
+                }
             }
         },
         filters = { dotfiles = true },

@@ -42,8 +42,9 @@ require('packer').startup({
         use { 'kristijanhusak/vim-dadbod-ui', config = "require('pack/vim-dadbod').setup()", after = 'vim-dadbod' }
 
         -- coc-nvim
+        -- 如果想 lazy coc -> {  event = { 'InsertEnter', 'CmdLineEnter', 'CursorHold' }, fn = 'CocAction', keys = '<Plug>(coc-definition)' }
         require('pack/coc').config()
-        use { 'neoclide/coc.nvim', config = "require('pack/coc').setup()", branch = 'release', event = { 'InsertEnter', 'CmdLineEnter', 'CursorHold' }, fn = 'CocAction', keys = '<Plug>(coc-definition)' }
+        use { 'neoclide/coc.nvim', config = "require('pack/coc').setup()", branch = 'release' }
 
         -- github copilot
         require('pack/copilot').config()

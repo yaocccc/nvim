@@ -56,7 +56,8 @@ G.opt.viewdir = os.getenv('HOME') .. '/.config/nvim/cache/viewdir'
 G.opt.foldtext = 'v:lua.MagicFoldText()'
 
 function MagicFoldText()
-    local line = G.fn.getline(G.v.foldstart)
+    local spacetext = ("        "):sub(0, G.opt.shiftwidth:get())
+    local line = G.fn.getline(G.v.foldstart):gsub("\t", spacetext)
     local folded = G.v.foldend - G.v.foldstart + 1
     local empty = line:find('%S') - 1
     local funcs = {
