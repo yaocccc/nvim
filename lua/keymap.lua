@@ -135,7 +135,7 @@ G.map({
 
     -- 折叠
     { 'n', '-',           "za", { noremap = true, silent = true } },
-    { 'v', '-',           'zf', { noremap = true, silent = true } },
+    { 'v', '-',           ':call v:lua.MagicFold()<CR>', { noremap = true, silent = true } },
 
     -- space 行首行尾跳转
     { 'n', '<space>',     ':call v:lua.MagicMove()<cr>', { noremap = true, silent = true } },
@@ -183,4 +183,12 @@ function MagicToggleHump(upperCase)
     if upperCase then w = w:sub(1,1):upper() .. w:sub(2) end
     G.fn.setreg('t', w)
     G.fn.execute('normal! "tP')
+end
+
+-- 折叠(限制最大折叠层数 1)
+function MagicFold()
+    local max = 1
+    if G.fn.foldlevel("'<") > 0 then G.fn.execute("normal! '<zd") end
+    if G.fn.foldlevel("'>") > 0 then G.fn.execute("normal! '>zd") end
+    G.fn.execute('normal! gvzf')
 end
