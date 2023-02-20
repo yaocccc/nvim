@@ -91,6 +91,7 @@ require('packer').startup({
         use { 'yaocccc/vim-fcitx2en', event = 'InsertLeavePre' }                       -- 退出输入模式时自动切换到英文
         use { 'yaocccc/nvim-hlchunk', event = { 'CursorMoved', 'CursorMovedI' } }      -- 高亮{}范围
         use { 'yaocccc/vim-surround', event = 'ModeChanged' }                          -- 操作成对的 ""  {}  [] 等的插件
+        use { 'yaocccc/nvim-foldsign', event = 'CursorHold', config = 'require("nvim-foldsign").setup()' } -- signcolumn显示折叠信息
     end,
     config = {
         git = { clone_timeout = 120, depth = 1 },
@@ -104,3 +105,4 @@ require('packer').startup({
 if packer_bootstrap then
     require('packer').sync()
 end
+

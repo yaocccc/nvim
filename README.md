@@ -372,6 +372,15 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 
 </details>
 
+<details>
+  <summary style="cursor: pointer; text-decoration:underline; color: #2AD;">yaocccc/nvim-foldsign -- 在signcolumn显示折叠信息</summary>
+
+  [github: yaocccc/nvim-foldsign](https://github.com/yaocccc/nvim-foldsign)  
+
+  在signcolumn显示折叠信息 如果你使用折叠的话
+
+</details>
+
 ## Support
 
 <a href="https://www.buymeacoffee.com/yaocccc" target="_blank">
