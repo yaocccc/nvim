@@ -51,7 +51,6 @@ G.opt.viminfo = "!,'10000,<50,s10,h"
 
 -- 折叠
 G.opt.foldenable = true
-G.opt.foldcolumn = '1'
 G.opt.foldmethod = 'manual'
 G.opt.viewdir = os.getenv('HOME') .. '/.config/nvim/cache/viewdir'
 G.opt.foldtext = 'v:lua.MagicFoldText()'
@@ -87,7 +86,7 @@ G.opt.number = true
 G.opt.numberwidth = 2
 G.opt.cul = true
 G.opt.signcolumn = 'yes'
-G.opt.fillchars = 'fold:-,stlnc:#'
+G.opt.fillchars = 'fold: ,stlnc:#'
 G.cmd([[
     hi Normal ctermfg=7 ctermbg=NONE cterm=NONE \" 添加默认颜色设置 避免载入主题时报错
     colorscheme solarized8_high

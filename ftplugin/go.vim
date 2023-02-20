@@ -8,7 +8,7 @@ vnoremap <silent><buffer> F :<c-u>call <SID>gfor()<cr>jo
 vnoremap <silent><buffer> D :<c-u>call SurroundVaddPairs("/** ", " */")<cr>
 
 func s:gfor()
-    let tag = getline(line("."))[col("'<") - 1 : col("'>") - 2]
+    let tag = getline(line("."))[col("'<") - 1 : col("'>") - 2 + (&selection != 'exclusive' ? 1 : 0)]
     let l = line('.')
     let space = substitute(getline(l), '\v(^\s*).*', '\1', '')
 
