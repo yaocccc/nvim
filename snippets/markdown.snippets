@@ -25,7 +25,7 @@ snippet tddd "> > > task"
 	>>> - [ ] ${1}
 
 snippet ss "task start:"
-	S:${0:`strftime("%Y-%m-%d")`}
+	S:`strftime("%Y-%m-%d")`
 
 snippet dd "task deadline:"
 	D:${3:`strftime("%Y")`}-${2:`strftime("%m")`}-${1:`strftime("%d")`}

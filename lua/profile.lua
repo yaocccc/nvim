@@ -86,7 +86,7 @@ G.opt.number = true
 G.opt.numberwidth = 2
 G.opt.cul = true
 G.opt.signcolumn = 'yes'
-G.opt.fillchars = 'fold:-,stlnc:#'
+G.opt.fillchars = 'fold:-,stlnc:#,eob: ,foldsep:='
 G.cmd([[
     hi Normal ctermfg=7 ctermbg=NONE cterm=NONE \" 添加默认颜色设置 避免载入主题时报错
     colorscheme solarized8_high

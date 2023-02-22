@@ -1,15 +1,19 @@
 hi MDTask ctermfg=1
 hi MDDoneText ctermfg=37 cterm=italic,strikethrough
 hi MDTodoText cterm=NONE
-hi MDDoneDate cterm=italic,strikethrough ctermfg=71
+hi MDDoneDate cterm=strikethrough ctermfg=71
 hi MDTodoDate ctermfg=71
+hi Deadline ctermfg=162 cterm=bold,underline
+hi NearDeadline ctermfg=178 cterm=bold
 au FileType markdown syn match markdownError "\w\@<=\w\@="
 au FileType markdown syn match MDDoneDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained
 au FileType markdown syn match MDTodoDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained
 au FileType markdown syn match MDDoneText /- \[x\] \zs.*/ contains=MDDoneDate contained
 au FileType markdown syn match MDTodoText /- \[ \] \zs.*/ contains=MDTodoDate contained
 au FileType markdown syn match MDTask     /- \[\(x\| \)\] .*/ contains=MDDoneText,MDTodoText
-au FileType markdown call matchadd('Todo', 'D:'.strftime("%Y-%m-%d"))
+au FileType markdown call matchadd('Deadline', 'D:'.strftime("%Y-%m-%d"))
+au FileType markdown call matchadd('NearDeadline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 24))
+au FileType markdown call matchadd('NearDeadline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 48))
 
 let b:md_block = '```'
 setlocal shiftwidth=2
