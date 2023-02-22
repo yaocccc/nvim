@@ -53,6 +53,9 @@ require('packer').startup({
         require('pack/coc').config()
         use { 'neoclide/coc.nvim', config = "require('pack/coc').setup()", branch = 'release' }
 
+        -- wilder 弹出式命令行
+        use { 'gelguy/wilder.nvim', event = 'CmdlineEnter', run = 'UpdateRemotePlugins', config = 'require("pack/wilder").setup()' }
+
         -- github copilot
         require('pack/copilot').config()
         use { 'github/copilot.vim', config = "require('pack/copilot').setup()", event = 'InsertEnter' }
@@ -78,6 +81,7 @@ require('packer').startup({
 
         -- 文件管理器
         require('pack/nvim-tree').config()
+        use { 'kyazdani42/nvim-web-devicons' }
         use { 'kyazdani42/nvim-tree.lua', config = "require('pack/nvim-tree').setup()", cmd = { 'NvimTreeToggle', 'NvimTreeFindFileToggle' } }
 
         -- 状态栏 & 标题栏

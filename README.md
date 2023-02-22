@@ -231,6 +231,13 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 </details>
 
 <details>
+  <summary style="cursor: pointer; text-decoration:underline; color: #2AD;">gelguy/wilder.nvim -- 弹出式的命令行</summary>
+
+  [github: kyazdani42/nvim-tree.lua](https://github.com/gelguy/wilder.nvim)  
+
+</details>
+
+<details>
   <summary style="cursor: pointer; text-decoration:underline; color: #2AD;">kyazdani42/nvim-tree.lua -- 文件管理器</summary>
 
   [github: kyazdani42/nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)  
