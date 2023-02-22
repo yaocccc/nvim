@@ -40,7 +40,11 @@ function M.setup()
             border = 'rounded',
         })
     ))
-    G.cmd('source ' .. G.fn.stdpath('config') .. '/lua/pack/wilder.vim')
+    G.map({
+        { 'c', '<tab>', [[wilder#in_context() ? wilder#next() : '<tab>']], { noremap = true, expr = true } },
+        { 'c', '<Down>', [[wilder#in_context() ? wilder#next() : '<down>']], { noremap = true, expr = true } },
+        { 'c', '<up>', [[wilder#in_context() ? wilder#previous() : '<up>']], { noremap = true, expr = true } },
+    })
 end
 
 return M
