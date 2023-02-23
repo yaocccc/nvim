@@ -22,7 +22,7 @@ function M.setup()
                 wilder.check(function (_, x)
                     return G.fn.empty(x)
                 end),
-                wilder.history(),
+                wilder.history(15),
             },
             wilder.cmdline_pipeline({
                 fuzzy = 1,
@@ -42,6 +42,7 @@ function M.setup()
             left = { ' ', wilder.popupmenu_devicons() },
             right = { ' ', wilder.popupmenu_scrollbar() },
             border = 'rounded',
+            max_height = 17 -- 最大高度限制 因为要计算上下 所以17支持最多15个选项
         })
     ))
     G.cmd("silent! UpdateRemotePlugins")
