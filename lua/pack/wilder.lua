@@ -18,6 +18,12 @@ function M.setup()
     })
     wilder.set_option('pipeline', {
         wilder.branch(
+            {
+                wilder.check(function (ctx, x)
+                    return G.fn.empty(x)
+                end),
+                wilder.history(),
+            },
             wilder.cmdline_pipeline({
                 fuzzy = 1,
                 fuzzy_filter = wilder.vim_fuzzy_filter(),
