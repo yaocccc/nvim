@@ -30,7 +30,7 @@ function M.config()
 
         ["@statement"] = { fg = 166 };
         ["@special"] = { fg = 172 };
-        ["@comment"] = { fg = 71, sp = 'italic' };
+        ["@comment"] = { fg = 71, italic = true };
         ["@include"] = { fg = 1 };
         ["@type"] = { fg = 179 };
         ["@type.builtin"] = { fg = 150 };

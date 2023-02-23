@@ -15,11 +15,15 @@ function G.map(maps)
 end
 
 function G.hi(hls)
+    local colormode = G.o.termguicolors and '' or 'cterm'
     for group,color in pairs(hls) do
-        local fg = color.fg and ' ctermfg=' .. color.fg or ' ctermfg=NONE'
-        local bg = color.bg and ' ctermbg=' .. color.bg or ' ctermbg=NONE'
-        local sp = color.sp and ' cterm=' .. color.sp or ''
-        G.api.nvim_command('highlight ' .. group .. fg .. bg .. sp)
+        local opt = {}
+        if color.fg then opt[colormode .. 'fg'] = color.fg end
+        if color.bg then opt[colormode .. 'bg'] = color.bg end
+        if color.italic then opt.italic = true end
+        if color.bold then opt.bold = true end
+        if color.underline then opt.underline = true end
+        G.api.nvim_set_hl(0, group, opt)
     end
 end
 
