@@ -19,7 +19,7 @@ function M.setup()
     wilder.set_option('pipeline', {
         wilder.branch(
             {
-                wilder.check(function (ctx, x)
+                wilder.check(function (_, x)
                     return G.fn.empty(x)
                 end),
                 wilder.history(),
