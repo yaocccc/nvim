@@ -54,7 +54,7 @@ require('packer').startup({
         use { 'neoclide/coc.nvim', config = "require('pack/coc').setup()", branch = 'release' }
 
         -- wilder 弹出式命令行
-        use { 'gelguy/wilder.nvim', event = 'CmdlineEnter', run = 'UpdateRemotePlugins', config = 'require("pack/wilder").setup()' }
+        use { 'gelguy/wilder.nvim', event = 'CmdlineEnter', config = 'require("pack/wilder").setup()' }
 
         -- github copilot
         require('pack/copilot').config()

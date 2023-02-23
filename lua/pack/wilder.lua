@@ -45,6 +45,7 @@ function M.setup()
         { 'c', '<Down>', [[wilder#in_context() ? wilder#next() : '<down>']], { noremap = true, expr = true } },
         { 'c', '<up>', [[wilder#in_context() ? wilder#previous() : '<up>']], { noremap = true, expr = true } },
     })
+    G.cmd("silent! UpdateRemotePlugins")
 end
 
 return M

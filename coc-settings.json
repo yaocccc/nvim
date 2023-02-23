@@ -62,6 +62,7 @@
         "staticcheck": true
     },
     "git.enableGutters": true,
-    "volar.takeOverMode.enabled": true,
-    "Lua.telemetry.enable": true
+    "Lua.telemetry.enable": true,
+    "volar.takeOverMode.enabled": false,
+    "volar.autoCreateQuotes": true
 }
