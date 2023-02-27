@@ -88,7 +88,6 @@ hi Ignore ctermfg=NONE ctermbg=NONE cterm=NONE
 hi PreProc ctermfg=166 ctermbg=NONE cterm=NONE
 hi Special ctermfg=166 ctermbg=NONE cterm=NONE
 hi Statement ctermfg=166 ctermbg=NONE cterm=NONE
-hi Todo ctermfg=162 ctermbg=NONE cterm=bold
 hi Type ctermfg=136 ctermbg=NONE cterm=NONE
 hi Underlined ctermfg=61 ctermbg=NONE cterm=NONE
 hi CursorIM ctermfg=NONE ctermbg=fg cterm=NONE
