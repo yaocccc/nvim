@@ -10,3 +10,9 @@ G.cmd([[
     au FileType * try | silent! loadview | catch | endtry
     au BufLeave,BufWinLeave * silent! mkview
 ]])
+
+G.cmd([[
+    au InsertEnter * hi CursorLine ctermbg=235
+    au InsertLeave * hi CursorLine ctermbg=none
+]])
+

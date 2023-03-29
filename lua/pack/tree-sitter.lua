@@ -66,10 +66,10 @@ function M.config()
         Note = { fg = 234, bg = 78, bold = true };
         NoteText = { fg = 78, bg = 'NONE', bold = true };
     })
-    G.cmd([[call matchadd('Todo', '\s\{0,1\}TODO:\{0,1\}\s\{0,1\}')]])
-    G.cmd([[call matchadd('TodoText', '\s\{0,1\}TODO:\{0,1\}\s\{0,1\}\zs.*')]])
-    G.cmd([[call matchadd('Note', '\s\{0,1\}NOTE:\{0,1\}\s\{0,1\}')]])
-    G.cmd([[call matchadd('NoteText', '\s\{0,1\}NOTE:\{0,1\}\s\{0,1\}\zs.*')]])
+    G.cmd([[call matchadd('Todo', 'TODO:\{0,1\}')]])
+    G.cmd([[call matchadd('TodoText', 'TODO:\{0,1\}\zs.*')]])
+    G.cmd([[call matchadd('Note', 'NOTE:\{0,1\}')]])
+    G.cmd([[call matchadd('NoteText', 'NOTE:\{0,1\}\zs.*')]])
 end
 
 function M.setup()
