@@ -2,7 +2,7 @@ local G = require('G')
 local M = {}
 
 function M.DBUI()
-    G.cmd('set laststatus=0 showtabline=0 nonu signcolumn=no nofoldenable')
+    G.cmd('set showtabline=0 nonu signcolumn=no nofoldenable')
     G.cmd('exec "DBUI"')
 end
 

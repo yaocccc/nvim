@@ -10,7 +10,7 @@
 * [lua/keymap.lua 快捷键相关配置说明](#luakeymaplua-快捷键相关配置说明)
 * [lua/packinit.lua 插件相关的配置说明](#luapackinitlua-插件相关的配置说明)
 * [插件说明以及键位绑定](#插件说明以及键位绑定)
-* [Support](#support)
+* [Support: buy me a coffee](#support-buy-me-a-coffee)
 
 <!-- markdown-toc -->
 
@@ -388,14 +388,8 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 
 </details>
 
-## Support
+## Support: buy me a coffee
 
 <a href="https://www.buymeacoffee.com/yaocccc" target="_blank">
   <img src="https://github.com/yaocccc/yaocccc/raw/master/qr.png">
-</a>
-
-<br>
-
-<a href="https://www.buymeacoffee.com/yaocccc" target="_blank">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 200px !important;" >
 </a>
