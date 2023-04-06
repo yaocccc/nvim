@@ -14,7 +14,7 @@ function M.config()
         'coc-vimlsp',
         'coc-sh', 'coc-db',
         'coc-pyright',
-        'coc-toml', 'coc-solidity',
+        'coc-toml', '@nomicfoundation/coc-solidity',
         'coc-prettier',
         'coc-snippets', 'coc-pairs', 'coc-word',
         'coc-translator',
