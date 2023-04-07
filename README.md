@@ -390,6 +390,6 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 
 ## Support: buy me a coffee
 
-<a href="https://www.buymeacoffee.com/yaocccc" target="_blank">
+<a href="#TOP" target="_blank">
   <img src="https://github.com/yaocccc/yaocccc/raw/master/qr.png">
 </a>
