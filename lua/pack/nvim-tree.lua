@@ -2,6 +2,7 @@ local G = require('G')
 local M = {}
 
 -- 有时候进入到依赖文件内，此时想在依赖文件所在目录查看文件 nvim-tree 并没有一个很好的方法，所以写了这个func
+-- 使用 如果当前编辑文件不在目录内（或在ignore内），go会切换到目录内，再次go回到项目目录
 local inner_cwd = ""
 local outer_cwd = ""
 function M.magicCd()
@@ -45,7 +46,7 @@ function M.config()
     G.map({ { 'n', 'T', 'g:nvim_tree_firsttime != 1 ? ":NvimTreeToggle<cr>" : ":let g:nvim_tree_firsttime = 0<cr>:NvimTreeToggle $PWD<cr>"', {silent = true, noremap = true, expr = true}} })
     G.cmd("hi! NvimTreeCursorLine cterm=NONE ctermbg=238")
     G.cmd("hi! link NvimTreeFolderIcon NvimTreeFolderName")
-    G.cmd("au FileType NvimTree nnoremap <buffer> <silent> C :lua require('pack.nvim-tree').magicCd()<cr>")
+    G.cmd("au FileType NvimTree nnoremap <buffer> <silent> go :lua require('pack.nvim-tree').magicCd()<cr>")
 end
 
 function M.setup()

@@ -259,7 +259,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
   | nvim-tree内 | p                    | 从剪切板粘贴                         |
   | nvim-tree内 | y                    | 复制文件名                           |
   | nvim-tree内 | ?                    | 查看帮助                             |
-  | nvim-tree内 | C                    | 若当前查看的文件为外部文件 cd到目录  |
+  | nvim-tree内 | go                   | 若当前查看的文件为外部文件 cd到目录  |
 
 </details>
 
