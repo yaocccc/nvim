@@ -215,18 +215,18 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 
   [github: **junegunn/fzf.vim**](https://github.com/junegunn/fzf.vim)  
 
-  注意要配合ag使用，请自己手动安装: the_silver_searcher fd bat  
+  注意要配合rg使用，请自己手动安装: ripgrep fd bat  
 
   | 模式   | 键                   | 说明                                 |
   | ------ | --------             | ---------                            |
-  | normal | ctrl + a             | Ag搜索(全局文本搜索)                 |
+  | normal | ctrl + a             | Rg搜索(全局文本搜索)                 |
   | normal | ctrl + l             | 当前buffer文本搜索                   |
   | normal | ctrl + p             | 全局文件搜索                         |
   | normal | ctrl + g             | git变更文件搜索                      |
   | normal | ctrl + h             | 历史文件搜索                         |
   | fzf中  | ctrl + /             | 启动/关闭 预览                       |
-  | fzf中  | ctrl + n             | 下一个搜索词                         |
-  | fzf中  | ctrl + p             | 上一个搜索词                         |
+  | fzf中  | ctrl + n             | 下一个搜索历史                       |
+  | fzf中  | ctrl + p             | 上一个搜索历史                       |
 
 </details>
 
