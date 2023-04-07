@@ -4,6 +4,7 @@ local M = {}
 function M.DBUI()
     G.cmd('set showtabline=0 nonu signcolumn=no nofoldenable')
     G.cmd('exec "DBUI"')
+    G.cmd('only')
 end
 
 function M.config()

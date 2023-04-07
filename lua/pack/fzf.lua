@@ -10,20 +10,29 @@ function M.config()
             height=0.8
         }
     }
-    G.cmd("com! -bar -bang Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter=: --nth=4..'}), <bang>0)")
-    G.cmd("com! CHistory call CHistory()")
     G.cmd([[
-    func! CHistory()
-      call filter(v:oldfiles, "v:val =~ '^' . $PWD . '.*$'")
-      call fzf#vim#history(fzf#vim#with_preview(), 0)
-    endf
+        func! CHistory()
+          call filter(v:oldfiles, "v:val =~ '^' . $PWD . '.*$'")
+          call fzf#vim#history(fzf#vim#with_preview(), 0)
+        endf
+        function! RipgrepFzf(query, fullscreen)
+          let command_fmt = 'rg --glob "!vendor" --column --line-number --no-heading --color=always --smart-case -- %s || true'
+          let initial_command = printf(command_fmt, shellescape(a:query))
+          let reload_command = printf(command_fmt, '{q}')
+          let spec = {'options': ['--disabled', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+          let spec = fzf#vim#with_preview(spec, 'right', 'ctrl-/')
+          call fzf#vim#grep(initial_command, 1, spec, a:fullscreen)
+        endf
+
+        com! CHistory call CHistory()
+        com! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
     ]])
     G.map({
-        { 'n', '<c-a>', ':Ag<cr>', {silent = true, noremap = true}},
-        { 'n', '<c-p>', ':Files<cr>', {silent = true, noremap = true}},
-        { 'n', '<c-l>', ':BLines<cr>', {silent = true, noremap = true}},
-        { 'n', '<c-g>', ':GFiles?<cr>', {silent = true, noremap = true}},
-        { 'n', '<c-h>', ':CHistory<cr>', {silent = true, noremap = true}},
+        { 'n', '<c-a>', ':Rg<cr>',       { silent = true, noremap = true } },
+        { 'n', '<c-p>', ':Files<cr>',    { silent = true, noremap = true } },
+        { 'n', '<c-l>', ':BLines<cr>',   { silent = true, noremap = true } },
+        { 'n', '<c-g>', ':GFiles?<cr>',  { silent = true, noremap = true } },
+        { 'n', '<c-h>', ':CHistory<cr>', { silent = true, noremap = true } },
     })
 end
 
