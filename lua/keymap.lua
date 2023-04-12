@@ -53,8 +53,8 @@ G.map({
     { 'i', '<s-right>',   '<esc>ea',          { noremap = true } },
 
     -- SHIFT + 方向 选择文本
-    { 'i', '<s-up>',      '<esc>vk',          { noremap = true } },
-    { 'i', '<s-down>',    '<esc>vj',          { noremap = true } },
+    { 'i', '<s-up>',      '<esc>vkl',         { noremap = true } },
+    { 'i', '<s-down>',    '<esc>lvjh',        { noremap = true } },
     { 'n', '<s-up>',      'Vk',               { noremap = true } },
     { 'n', '<s-down>',    'Vj',               { noremap = true } },
     { 'v', '<s-up>',      'k',                { noremap = true } },
