@@ -64,5 +64,6 @@
     "git.enableGutters": true,
     "Lua.telemetry.enable": true,
     "volar.takeOverMode.enabled": false,
-    "volar.autoCreateQuotes": true
+    "volar.autoCreateQuotes": true,
+    "@nomicfoundation/coc-solidity.telemetry": true
 }
