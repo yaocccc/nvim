@@ -128,6 +128,7 @@ G.map({
 
     -- tt 打开一个10行大小的终端
     { 'n', 'tt',          ':below 10sp | term<cr>a',                          { noremap = true, silent = true } },
+    { 't', 'tw',          '<c-\\><c-n>:q!<cr>',                               { noremap = true, silent = true } },
 
     -- 切换是否wrap
     { 'n', '\\w',         "&wrap == 1 ? ':set nowrap<cr>' : ':set wrap<cr>'", { noremap = true, expr = true } },
