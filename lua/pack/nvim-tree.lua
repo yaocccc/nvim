@@ -51,7 +51,32 @@ end
 
 function M.setup()
     local nvim_tree = require("nvim-tree")
+
+    local function on_attach(bufnr)
+        local api = require("nvim-tree.api")
+        local function opts(desc)
+            return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+        end
+
+        api.config.mappings.default_on_attach(bufnr)
+        vim.keymap.set('n', 'P', api.tree.change_root_to_node, opts('CD'))
+        vim.keymap.set('n', '<BS>', api.tree.change_root_to_parent, opts('Up'))
+        vim.keymap.set('n', '<Esc>', api.tree.close, opts('Close'))
+        vim.keymap.set('n', '<Left>', api.node.navigate.parent_close, opts('Close Directory'))
+        vim.keymap.set('n', '<Right>', api.node.open.edit, opts('Open'))
+        vim.keymap.set('n', '<CR>',  api.node.open.edit, opts('Open'))
+        vim.keymap.set('n', ')', api.node.navigate.git.next, opts('Next Git'))
+        vim.keymap.set('n', '(', api.node.navigate.git.prev, opts('Prev Git'))
+        vim.keymap.set('n', '>', api.node.navigate.diagnostics.next, opts('Next Diagnostic'))
+        vim.keymap.set('n', '<', api.node.navigate.diagnostics.prev, opts('Prev Diagnostic'))
+        vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+        vim.keymap.set('n', 'A', api.fs.create, opts('Create'))
+        vim.keymap.set('n', 'a', api.fs.create, opts('Create'))
+        vim.keymap.set('n', 'r', api.fs.rename, opts('Rename'))
+    end
+
     nvim_tree.setup({
+        on_attach = on_attach,
         sort_by = "case_sensitive",
         actions = {
             open_file = {
@@ -59,23 +84,6 @@ function M.setup()
             }
         },
         view = {
-            mappings = {
-                list = {
-                    { key = "P", action = "cd" },
-                    { key = "<BS>", action = "dir_up" },
-                    { key = "<Esc>", action = "close" },
-                    { key = "<Tab>", action = "expand" },
-                    { key = "<Right>", action = "expand" },
-                    { key = "<Left>", action = "close_node" },
-                    { key = ")", action = "next_git_item" },
-                    { key = "(", action = "prev_git_item" },
-                    { key = ">", action = "next_diag_item" },
-                    { key = "<", action = "prev_diag_item" },
-                    { key = "?", action = "toggle_help" },
-                    { key = "A", action = "create" },
-                    { key = "C", action = "" },
-                },
-            },
             float = {
                 enable = true,
                 open_win_config = function()
