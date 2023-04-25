@@ -1,3 +1,5 @@
+" 定义一些task相关高亮
+" 例如 - [ ] 任务内容 D:2023-04-25 S:2023-04-25 
 hi MDTask ctermfg=1
 hi MDDoneText ctermfg=37 cterm=italic,strikethrough
 hi MDTodoText cterm=NONE
@@ -14,6 +16,16 @@ au FileType markdown syn match MDTask     /- \[\(x\| \)\] .*/ contains=MDDoneTex
 au FileType markdown call matchadd('Deadline', 'D:'.strftime("%Y-%m-%d"))
 au FileType markdown call matchadd('NearDeadline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 24))
 au FileType markdown call matchadd('NearDeadline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 48))
+
+" 定义代码块高亮
+hi MDCode ctermbg=236
+hi MDCodeBlock ctermbg=234
+hi MDCodeBlockHeader ctermbg=235
+hi MDCodeBlockFoot ctermbg=235
+au FileType markdown syn match MDCode /`.\+`/
+au FileType markdown syn match MDCodeBlockHeader /^```.\+$/
+au FileType markdown syn match MDCodeBlockFoot /^```$/
+" au FileType markdown syn region MDCodeBlock start=/^```.\+$/ end=/^```$/ keepend contains=ALL concealends
 
 let b:md_block = '```'
 setlocal shiftwidth=2

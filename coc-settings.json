@@ -21,10 +21,12 @@
     "tabnine.priority": 80,
     "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
     "pairs.enableBackspace": true,
-    "translator.engines": ["youdao"],
+    "translator.engines": ["youdao", "google"],
     "tsserver.trace.server": "messages",
     "tsserver.enableJavascript": true,
-    "tsserver.enable": true,
+    "tsserver.enable": false,
+    "volar.takeOverMode.enabled": true,
+    "volar.autoCreateQuotes": true,
     "pyright.inlayHints.enable": false,
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
@@ -63,7 +65,5 @@
     },
     "git.enableGutters": true,
     "Lua.telemetry.enable": true,
-    "volar.takeOverMode.enabled": false,
-    "volar.autoCreateQuotes": true,
     "@nomicfoundation/coc-solidity.telemetry": true
 }
