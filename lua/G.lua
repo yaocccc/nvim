@@ -10,19 +10,26 @@ G.opt = vim.opt
 
 function G.map(maps)
     for _,map in pairs(maps) do
-        G.api.nvim_set_keymap(map[1], map[2], map[3], map[4])
+        if map[4]["buffer"] then
+            map[4]["buffer"] = nil
+            G.api.nvim_buf_set_keymap(0, map[1], map[2], map[3], map[4])
+        else
+            G.api.nvim_set_keymap(map[1], map[2], map[3], map[4])
+        end
+
     end
 end
 
 function G.hi(hls)
     local colormode = G.o.termguicolors and '' or 'cterm'
     for group,color in pairs(hls) do
-        local opt = {}
+        local opt = color
         if color.fg then opt[colormode .. 'fg'] = color.fg end
         if color.bg then opt[colormode .. 'bg'] = color.bg end
-        if color.italic then opt.italic = true end
-        if color.bold then opt.bold = true end
-        if color.underline then opt.underline = true end
+        opt.bold = color.bold
+        opt.underline = color.underline
+        opt.italic = color.italic
+        opt.strikethrough = color.strikethrough
         G.api.nvim_set_hl(0, group, opt)
     end
 end

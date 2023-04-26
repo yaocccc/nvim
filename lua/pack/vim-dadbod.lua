@@ -8,6 +8,7 @@ function M.DBUI()
 end
 
 function M.config()
+    G.g.omni_sql_no_default_maps = 1
     G.g.db_ui_save_location = '~/.cache'
     G.g.db_ui_use_nerd_fonts = 1
     G.g.db_ui_force_echo_notifications = 1
