@@ -47,10 +47,10 @@ local function _markdown()
         ["MDTodoText"] = { italic = true, strikethrough = false },
         ["deadline"] = { fg = 162, bold = true, underline = true },
         ["nearline"] = { fg = 178, bold = true },
-        ["MDH1"] = { fg = 3, bold = true },
-        ["MDH2"] = { fg = 4, bold = true },
-        ["MDH3"] = { fg = 5, bold = true },
-        ["MDH4"] = { fg = 6, bold = true },
+        ["MDH1"] = { fg = 76, bold = false },
+        ["MDH2"] = { fg = 184, bold = false },
+        ["MDH3"] = { fg = 45, bold = false },
+        ["MDH4"] = { fg = 173, bold = false },
     })
     G.cmd([[
         call matchadd('deadline', 'D:'.strftime("%Y-%m-%d"))

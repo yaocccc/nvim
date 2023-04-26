@@ -47,12 +47,13 @@ function M.config()
         ["@tag.attribute"] = { fg = 166 };
         ["@tag.delimiter"] = { fg = 150 };
         ["@conditional.ternary"] = { fg = 1 };
-        ["@punctuation.special"] = { fg = 166 };
+        ["@punctuation.special"] = { fg = 'none' };
 
         ["@text.literal"] = { fg = 7 };
 
         ["@text.todo.unchecked"] = { fg = 172 };
         ["@text.todo.checked"] = { fg = 37 };
+        ["@text.title"] = { fg = 'none' };
     })
     G.map({
         { 'n', 'H', ':TSHighlightCapturesUnderCursor<CR>', { silent = true, noremap = true } },
