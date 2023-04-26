@@ -41,10 +41,10 @@ end
 local function _markdown()
     G.cmd("call timer_start(0, 'v:lua.G_markdown_syn')") -- 延迟加载syn
     G.hi({
-        ["MDDoneDate"] = { fg = 71, strikethrough = true },
-        ["MDTodoDate"] = { fg = 71 },
+        ["MDTodoDate"] = { fg = 71, italic = false },
+        ["MDDoneDate"] = { fg = 71, italic = true, strikethrough = true },
+        ["MDTodoText"] = { italic = false },
         ["MDDoneText"] = { fg = 37, italic = true, strikethrough = true },
-        ["MDTodoText"] = { italic = true, strikethrough = false },
         ["deadline"] = { fg = 162, bold = true, underline = true },
         ["nearline"] = { fg = 178, bold = true },
         ["MDH1"] = { fg = 76, bold = false },
