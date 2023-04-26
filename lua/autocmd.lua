@@ -45,17 +45,19 @@ local function _markdown()
         ["MDDoneDate"] = { fg = 71, italic = true, strikethrough = true },
         ["MDTodoText"] = { italic = false },
         ["MDDoneText"] = { fg = 37, italic = true, strikethrough = true },
-        ["deadline"] = { fg = 162, bold = true, underline = true },
-        ["nearline"] = { fg = 178, bold = true },
-        ["MDH1"] = { fg = 76, bold = false },
-        ["MDH2"] = { fg = 184, bold = false },
-        ["MDH3"] = { fg = 45, bold = false },
-        ["MDH4"] = { fg = 173, bold = false },
+        ["MDDeadline"] = { fg = 162, bold = true, underline = true },
+        ["MDNearline"] = { fg = 178, bold = true },
+        ["MDH1"] = { bg = 235, fg = 76, bold = true },
+        ["MDH2"] = { bg = 235, fg = 184, bold = false },
+        ["MDH3"] = { bg = 235, fg = 45, bold = false },
+        ["MDH4"] = { bg = 235, fg = 173, bold = false },
+        ["MDCodeHF"] = { bg = 234 },
+        ["MDCode"] = { bg = 237 },
     })
     G.cmd([[
-        call matchadd('deadline', 'D:'.strftime("%Y-%m-%d"))
-        call matchadd('nearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 24))
-        call matchadd('nearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 48))
+        call matchadd('MDDeadline', 'D:'.strftime("%Y-%m-%d"))
+        call matchadd('MDNearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 24))
+        call matchadd('MDNearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 48))
     ]])
     G.cmd([[
         let b:md_block = '```'
@@ -87,6 +89,8 @@ function G_markdown_syn()
     G.cmd([[syn match MDH2 /^## .*/]])
     G.cmd([[syn match MDH3 /^### .*/]])
     G.cmd([[syn match MDH4 /^#### .*/]])
+    G.cmd([[syn match MDCodeHF /^```.*/]])
+    G.cmd([[syn match MDCode /`[^`]\+`/]])
 end
 
 function G_markdown_toggleCheck()
