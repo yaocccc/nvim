@@ -338,6 +338,15 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 </details>
 
 <details>
+  <summary style="cursor: pointer; text-decoration:underline; color: #2AD;">yaocccc/nvim-hl-mdcodeblock.lua -- 高亮markdown中的代码块</summary>
+
+  [github: yaocccc/nvim-hl-mdcodeblock.lua](https://github.com/yaocccc/nvim-hl-mdcodeblock.lua)  
+
+  没啥好说明的 用就完了
+
+</details>
+
+<details>
   <summary style="cursor: pointer; text-decoration:underline; color: #2AD;">yaocccc/vim-surround -- 快速操作({["'`等的</summary>
 
   [github: yaocccc/vim-surround](https://github.com/yaocccc/vim-surround)  
