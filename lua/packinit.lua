@@ -73,7 +73,6 @@ require('packer').startup({
         require('pack/tree-sitter').config()
         use { 'nvim-treesitter/nvim-treesitter', config = "require('pack/tree-sitter').setup()", run = ':TSUpdate', event = 'BufRead' }
         use { 'nvim-treesitter/playground', after = 'nvim-treesitter' }
-        use { 'lukas-reineke/headlines.nvim', after = 'nvim-treesitter', config = "require('pack/markdown').setup_headlines()" }
 
         -- markdown预览插件 导航生成插件
         require('pack/markdown').config()
@@ -97,6 +96,7 @@ require('packer').startup({
         use { 'yaocccc/nvim-hlchunk', event = { 'CursorMoved', 'CursorMovedI' } }      -- 高亮{}范围
         use { 'yaocccc/vim-surround', event = 'ModeChanged' }                          -- 操作成对的 ""  {}  [] 等的插件
         use { 'yaocccc/nvim-foldsign', event = 'CursorHold', config = 'require("nvim-foldsign").setup()' } -- signcolumn显示折叠信息
+        use { 'yaocccc/nvim-hl-mdcodeblock.lua', after = 'nvim-treesitter', config = "require('pack/markdown').setup_hlcodeblock()" }
     end,
     config = {
         git = { clone_timeout = 120, depth = 1 },
