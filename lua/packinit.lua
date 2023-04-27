@@ -73,6 +73,7 @@ require('packer').startup({
         require('pack/tree-sitter').config()
         use { 'nvim-treesitter/nvim-treesitter', config = "require('pack/tree-sitter').setup()", run = ':TSUpdate', event = 'BufRead' }
         use { 'nvim-treesitter/playground', after = 'nvim-treesitter' }
+        use { 'lukas-reineke/headlines.nvim', after = 'nvim-treesitter', config = "require('pack/markdown').setup_headlines()" }
 
         -- markdown预览插件 导航生成插件
         require('pack/markdown').config()

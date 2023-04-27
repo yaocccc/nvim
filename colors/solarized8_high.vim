@@ -63,7 +63,7 @@ hi Conceal ctermfg=32 ctermbg=NONE cterm=NONE
 hi CursorColumn ctermfg=NONE ctermbg=240 cterm=NONE
 hi Directory ctermfg=32 ctermbg=NONE cterm=NONE
 hi EndOfBuffer ctermfg=NONE ctermbg=NONE cterm=NONE
-hi ErrorMsg ctermfg=160 ctermbg=230 cterm=reverse
+hi ErrorMsg ctermfg=160 ctermbg=230
 hi Search ctermfg=31 ctermbg=7 cterm=reverse
 hi IncSearch ctermfg=5 ctermbg=7 cterm=reverse
 hi CurSearch ctermfg=5 ctermbg=7 cterm=reverse
@@ -82,7 +82,7 @@ hi WarningMsg ctermfg=166 ctermbg=NONE cterm=bold
 hi WildMenu ctermfg=230 ctermbg=236 cterm=reverse
 hi Comment ctermfg=71 ctermbg=NONE cterm=italic
 hi Constant ctermfg=37 ctermbg=NONE cterm=NONE
-hi Error ctermfg=160 ctermbg=230 cterm=bold,reverse
+hi Error ctermfg=160 ctermbg=230 cterm=bold
 hi Identifier ctermfg=32 ctermbg=NONE cterm=NONE
 hi Ignore ctermfg=NONE ctermbg=NONE cterm=NONE
 hi PreProc ctermfg=166 ctermbg=NONE cterm=NONE
