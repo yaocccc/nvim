@@ -55,8 +55,8 @@ local function _markdown()
         call matchadd('MDNearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 48))
     ]])
     G.map({
-        { "n", "<cr>", ":call v:lua.G_markdown_toggleCheck()<cr><cr>", { noremap = true, silent = true, buffer = true } },
-        { "n", "<2-LeftMouse>", ":call v:lua.G_markdown_toggleCheck()<cr><2-LeftMouse>", { noremap = true, silent = true, buffer = true } },
+        { "n", "<cr>", ":call v:lua.G_markdown_toggleCheck(0)<cr><cr>", { noremap = true, silent = true, buffer = true } },
+        { "n", "<2-LeftMouse>", ":call v:lua.G_markdown_toggleCheck(1)<cr><2-LeftMouse>", { noremap = true, silent = true, buffer = true } },
         { "v", "B", ':<c-u>call SurroundVaddPairs("**", "**")<cr>', { noremap = true, silent = true, buffer = true } },
         { "v", "I", ':<c-u>call SurroundVaddPairs("*", "*")<cr>', { noremap = true, silent = true, buffer = true } },
         { "v", "T", ':<c-u>call SurroundVaddPairs("- [ ] ", "")<cr>', { noremap = true, silent = true, buffer = true } },
@@ -104,12 +104,13 @@ function G_markdown_loadafter()
     ]])
 end
 
-function G_markdown_toggleCheck()
+function G_markdown_toggleCheck(needsave)
     local line = G.fn.getline('.')
     if line:match('^- %[ %]') then line = line:gsub('%[ %]', '[x]')
     elseif line:match('^- %[x%]') then line = line:gsub('%[x%]', '[ ]')
     else return end
     G.fn.setline('.', line)
+    if needsave then G.cmd('w') end
 end
 
 function G_markdown_toggleMPTheme()
