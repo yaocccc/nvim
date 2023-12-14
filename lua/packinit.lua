@@ -58,7 +58,7 @@ require('packer').startup({
 
         -- github copilot
         require('pack/copilot').config()
-        use { 'github/copilot.vim', config = "require('pack/copilot').setup()", event = 'InsertEnter' }
+        use { 'github/copilot.vim', config = "require('pack/copilot').setup()" }
 
         -- 浮动终端
         require('pack/vim-floaterm').config()
@@ -88,9 +88,8 @@ require('packer').startup({
         require('pack/nvim-lines').config()
         use { 'yaocccc/nvim-lines.lua', config = "require('pack/nvim-lines').setup()" }
 
-        use { 'jbyuki/venn.nvim', cmd = 'VBox', config = function()
-            G.map({ { 'v', '<space>', ':VBox<cr>', { noremap = true, silent = true } } })
-        end }
+        require('pack/venn').config()
+        use { 'jbyuki/venn.nvim', cmd = 'VBox' }
 
         -- 部分个人自写插件
         require('pack/yaocccc').config()                                               -- yaocccc/* 共用一个config
