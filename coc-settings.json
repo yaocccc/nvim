@@ -24,7 +24,7 @@
     "translator.engines": ["youdao", "google"],
     "tsserver.trace.server": "messages",
     "tsserver.enableJavascript": true,
-    "tsserver.enable": false,
+    "tsserver.enable": true,
     "volar.takeOverMode.enabled": true,
     "volar.autoCreateQuotes": true,
     "pyright.inlayHints.enable": false,
