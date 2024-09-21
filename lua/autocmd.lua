@@ -106,8 +106,8 @@ end
 
 function G_markdown_toggleCheck(needsave)
     local line = G.fn.getline('.')
-    if line:match('^- %[ %]') then line = line:gsub('%[ %]', '[x]')
-    elseif line:match('^- %[x%]') then line = line:gsub('%[x%]', '[ ]')
+    if line:match('^%s*- %[ %]') then line = line:gsub('%[ %]', '[x]')
+    elseif line:match('^%s*- %[x%]') then line = line:gsub('%[x%]', '[ ]')
     else return end
     G.fn.setline('.', line)
     if needsave then G.cmd('w') end

@@ -76,7 +76,7 @@ hi PmenuSel ctermfg=NONE ctermbg=239 cterm=NONE
 hi PmenuThumb ctermfg=NONE ctermbg=243 cterm=NONE
 hi Question ctermfg=37 ctermbg=NONE cterm=bold
 hi SignColumn ctermfg=247 ctermbg=NONE cterm=NONE
-hi Visual cterm=reverse
+hi Visual ctermfg=NONE cterm=reverse
 hi VisualNOS ctermfg=NONE ctermbg=236 cterm=reverse
 hi WarningMsg ctermfg=166 ctermbg=NONE cterm=bold
 hi WildMenu ctermfg=230 ctermbg=236 cterm=reverse

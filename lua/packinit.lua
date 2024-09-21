@@ -44,9 +44,9 @@ require('packer').startup({
         use { 'mg979/vim-visual-multi', config = "require('pack/vim-visual-multi').setup()", event = 'CursorHold' }
 
         -- 数据库可视化UI
-        require('pack/vim-dadbod').config()
-        use { 'tpope/vim-dadbod', cmd = "DBUI" }
-        use { 'kristijanhusak/vim-dadbod-ui', config = "require('pack/vim-dadbod').setup()", after = 'vim-dadbod' }
+        -- require('pack/vim-dadbod').config()
+        -- use { 'tpope/vim-dadbod', cmd = "DBUI" }
+        -- use { 'kristijanhusak/vim-dadbod-ui', config = "require('pack/vim-dadbod').setup()", after = 'vim-dadbod' }
 
         -- coc-nvim
         -- 如果想 lazy coc -> {  event = { 'InsertEnter', 'CmdLineEnter', 'CursorHold' }, fn = 'CocAction', keys = '<Plug>(coc-definition)' }
@@ -66,8 +66,7 @@ require('packer').startup({
 
         -- fzf
         require('pack/fzf').config()
-        use { 'junegunn/fzf', event = "CmdLineEnter" }
-        use { 'junegunn/fzf.vim', config = "require('pack/fzf').setup()", run = 'cd ~/.fzf && ./install --all', after = "fzf" }
+        use { "ibhagwan/fzf-lua", requires = { "nvim-tree/nvim-web-devicons" } }
 
         -- tree-sitter
         require('pack/tree-sitter').config()
