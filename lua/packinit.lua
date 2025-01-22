@@ -66,7 +66,7 @@ require('packer').startup({
 
         -- fzf
         require('pack/fzf').config()
-        use { "ibhagwan/fzf-lua", requires = { "nvim-tree/nvim-web-devicons" } }
+        use { "ibhagwan/fzf-lua", branch = 'main', requires = { "nvim-tree/nvim-web-devicons" } }
 
         -- tree-sitter
         require('pack/tree-sitter').config()
@@ -92,7 +92,7 @@ require('packer').startup({
         use { 'yaocccc/vim-comment', cmd = '*ToggleComment' }                          -- 注释插件
         use { 'yaocccc/vim-echo', cmd = "VECHO" }                                      -- 快速echo、print
         use { 'yaocccc/vim-fcitx2en', event = 'InsertLeavePre' }                       -- 退出输入模式时自动切换到英文
-        use { 'yaocccc/nvim-hlchunk', event = { 'CursorMoved', 'CursorMovedI', 'BufRead' } }      -- 高亮{}范围
+        use { 'yaocccc/nvim-hlchunk' }                                                 -- 高亮{}范围
         use { 'yaocccc/vim-surround', event = 'ModeChanged' }                          -- 操作成对的 ""  {}  [] 等的插件
         use { 'yaocccc/nvim-foldsign', event = 'CursorHold', config = 'require("nvim-foldsign").setup()' } -- signcolumn显示折叠信息
         use { 'yaocccc/nvim-hl-mdcodeblock.lua', after = 'nvim-treesitter', config = "require('pack/markdown').setup_hlcodeblock()" }
