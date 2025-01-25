@@ -9,6 +9,16 @@ G.api = vim.api
 G.opt = vim.opt
 G.treesitter = vim.treesitter
 
+-- 批量设置快捷键
+-- usage: G.map({
+--     { {mode}, {lhs}, {rhs}, {opts} },
+--     { {mode}, {lhs}, {rhs}, {opts} },
+--     ...,
+-- })
+-- {mode} Mode short-name (map command prefix: "n", "i", "v", "x", …)
+-- {lhs}  Left-hand-side |{lhs}| of the mapping.
+-- {rhs}  Right-hand-side |{rhs}| of the mapping.
+-- {opts} Optional parameters map: Accepts all |:map-arguments| as keys
 function G.map(maps)
     for _,map in pairs(maps) do
         if map[4]["buffer"] then
@@ -20,6 +30,12 @@ function G.map(maps)
     end
 end
 
+-- 批量设置高亮
+-- usage: G.hi({
+--     ["HIGROUP1"] = { fg = 71, bg = 3, italic = false, bold = true },
+--     ["HIGROUP2"] = { fg = 71, italic = true, strikethrough = true },
+--     ...,
+-- })
 function G.hi(hls)
     local colormode = G.o.termguicolors and '' or 'cterm'
     for group,color in pairs(hls) do

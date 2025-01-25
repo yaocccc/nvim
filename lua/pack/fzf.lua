@@ -17,7 +17,8 @@ function M.config()
         { 'n', '<c-b>', ':lua require("fzf-lua").buffers()<cr>', { silent = true, noremap = true } },
         { 'n', '<c-l>', ':lua require("fzf-lua").blines()<cr>', { silent = true, noremap = true } },
         { 'n', '<c-g>', ':lua require("fzf-lua").git_status({cwd = "$PWD"})<cr>', { silent = true, noremap = true } },
-        { 'n', '<c-h>', ':CHistory<cr>', { silent = true, noremap = true } },
+        { 'n', '<c-h>', ':lua require("fzf-lua").oldfiles()<cr>', { silent = true, noremap = true } },
+        -- { 'n', '<c-h>', ':CHistory<cr>', { silent = true, noremap = true } },
     })
 end
 
@@ -154,7 +155,7 @@ function M.setup()
             prompt                  = 'History❯ ',
             cwd_only                = true,
             stat_file               = true,
-            include_current_session = false,
+            include_current_session = true,
         },
         buffers = {
             prompt        = 'Buffers❯ ',

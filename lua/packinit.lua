@@ -66,7 +66,7 @@ require('packer').startup({
 
         -- fzf
         require('pack/fzf').config()
-        use { "ibhagwan/fzf-lua", branch = 'main', requires = { "nvim-tree/nvim-web-devicons" } }
+        use { "ibhagwan/fzf-lua", branch = 'main', requires = { "nvim-tree/nvim-web-devicons" }, config = "require('pack/fzf').setup()" }
 
         -- tree-sitter
         require('pack/tree-sitter').config()
