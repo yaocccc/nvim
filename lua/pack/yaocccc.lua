@@ -12,9 +12,6 @@ function M.config()
         vue = 'console.log([ECHO])',
     }
 
-    -- hl-chunk
-    G.g.hlchunk_files = '*.ts,*.js,*.json,*.c,*.cpp,*.rs,*.h,*.hpp,*.lua,*.vue'
-
     -- vim-comment
     G.g.vim_line_comments = {
         vim = '"',

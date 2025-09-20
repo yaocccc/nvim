@@ -5,8 +5,8 @@ function M.config()
 end
 
 function M.setup()
-    require('ccc').setup({
-    })
+    local ccc = require('ccc')
+    ccc.setup({})
 end
 
 return M
