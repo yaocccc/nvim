@@ -21,11 +21,12 @@ function G.map(maps)
 end
 
 function G.hi(hls)
-    local colormode = G.o.termguicolors and '' or 'cterm'
     for group,color in pairs(hls) do
         local opt = color
-        if color.fg then opt[colormode .. 'fg'] = color.fg end
-        if color.bg then opt[colormode .. 'bg'] = color.bg end
+        if color.fg then opt['fg'] = color.fg end
+        if color.bg then opt['bg'] = color.bg end
+        if color.ctermfg then opt['ctermfg'] = color.ctermfg end
+        if color.ctermbg then opt['ctermbg'] = color.ctermbg end
         opt.bold = color.bold
         opt.underline = color.underline
         opt.italic = color.italic

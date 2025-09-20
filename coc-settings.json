@@ -51,7 +51,7 @@
             "default": true
         }
     ],
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd",
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/19.1.2/clangd_19.1.2/bin/clangd",
     "prettier": {
         "tabWidth": 4,
         "printWidth": 160,
@@ -65,5 +65,6 @@
     },
     "git.enableGutters": true,
     "Lua.telemetry.enable": true,
-    "@nomicfoundation/coc-solidity.telemetry": true
+    "@nomicfoundation/coc-solidity.telemetry": true,
+    "snippets.ultisnips.pythonPrompt": false
 }

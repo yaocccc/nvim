@@ -39,8 +39,8 @@ function M.setup()
     ))
     G.cmd("silent! UpdateRemotePlugins")
     G.hi({
-        WilderAccent = { fg = 12 },
-        WilderSelectedAccent = { fg = 12, bg = 239 },
+        WilderAccent = { fg = "#00afaf" },
+        WilderSelectedAccent = { fg = "#00afaf", bg = "#4e4e4e" },
     })
     G.map({
         { 'c', '<tab>', [[wilder#in_context() ? wilder#next() : '<tab>']], { noremap = true, expr = true } },

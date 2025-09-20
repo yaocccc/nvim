@@ -6,8 +6,8 @@ G.api.nvim_create_autocmd({ "BufEnter" }, { command = [[if &buftype == '' && &re
 G.api.nvim_create_autocmd({ "BufReadPost" }, { command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]] })
 G.api.nvim_create_autocmd({ "FileType" }, { command = "try | silent! loadview | catch | endtry" })
 G.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, { command = "silent! mkview" })
-G.api.nvim_create_autocmd({ "InsertEnter" }, { command = "hi CursorLine ctermbg=235" })
-G.api.nvim_create_autocmd({ "InsertLeave" }, { command = "hi CursorLine ctermbg=none" })
+G.api.nvim_create_autocmd({ "InsertEnter" }, { command = "hi CursorLine ctermbg=235 guibg=#262626" })
+G.api.nvim_create_autocmd({ "InsertLeave" }, { command = "hi CursorLine ctermbg=none guibg=none" })
 
 -- 以下是for不同文件类型的相关配置
 
@@ -42,12 +42,12 @@ end
 
 local function _markdown()
     G.hi({
-        ["MDTodoDate"] = { fg = 71, italic = false },
-        ["MDDoneDate"] = { fg = 71, italic = true, strikethrough = true },
+        ["MDTodoDate"] = { fg = "#5faf5f", italic = false }, -- 71
+        ["MDDoneDate"] = { fg = "#5faf5f", italic = true, strikethrough = true }, -- 71
         ["MDTodoText"] = { italic = false },
-        ["MDDoneText"] = { fg = 37, italic = true, strikethrough = true },
-        ["MDDeadline"] = { fg = 162, bold = true, underline = true },
-        ["MDNearline"] = { fg = 178, bold = true },
+        ["MDDoneText"] = { fg = "#00afaf", italic = true, strikethrough = true }, -- 37
+        ["MDDeadline"] = { fg = "#d70087", bold = true, underline = true }, -- 162
+        ["MDNearline"] = { fg = "#d7af00", bold = true }, -- 178
     })
     G.cmd([[
         call matchadd('MDDeadline', 'D:'.strftime("%Y-%m-%d"))
@@ -93,9 +93,9 @@ function G_markdown_loadafter()
     G.cmd([[syn match markdownError "\w\@<=\w\@="]])
     G.cmd([[syn match MDDoneDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained]])
     G.cmd([[syn match MDTodoDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained]])
-    G.cmd([[syn match MDDoneText /- \[x\] \zs.*/ contains=MDDoneDate contained]])
+    G.cmd([[syn match MDDoneText /\zs.*- \[x\] \zs.*/ contains=MDDoneDate contained]])
     G.cmd([[syn match MDTodoText /- \[ \] \zs.*/ contains=MDTodoDate contained]])
-    G.cmd([[syn match MDTask /- \[\(x\| \)\] .*/ contains=MDDoneText,MDTodoText]])
+    G.cmd([[syn match MDTask /\zs.*- \[\(x\| \)\] .*/ contains=MDDoneText,MDTodoText]])
     G.cmd([[
         let b:md_block = '```'
         setlocal shiftwidth=2
@@ -118,4 +118,12 @@ function G_markdown_toggleMPTheme()
     G.cmd('MarkdownPreviewStop')
     G.cmd('sleep 500m')
     G.cmd('MarkdownPreview')
+end
+
+function G_toggleBar(status)
+    G.cmd('set laststatus=' .. status)
+    G.cmd('set showtabline=' .. status)
+    if status == 0 then
+        G.o.winbar = ' '
+    end
 end

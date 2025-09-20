@@ -44,7 +44,7 @@ end
 function M.config()
     G.g.nvim_tree_firsttime = 1
     G.map({ { 'n', 'T', 'g:nvim_tree_firsttime != 1 ? ":NvimTreeToggle<cr>" : ":let g:nvim_tree_firsttime = 0<cr>:NvimTreeToggle $PWD<cr>"', {silent = true, noremap = true, expr = true}} })
-    G.cmd("hi! NvimTreeCursorLine cterm=NONE ctermbg=238")
+    G.cmd("hi! NvimTreeCursorLine cterm=NONE ctermbg=238 guibg=#444444")
     G.cmd("hi! link NvimTreeFolderIcon NvimTreeFolderName")
     G.cmd("au FileType NvimTree nnoremap <buffer> <silent> go :lua require('pack.nvim-tree').magicCd()<cr>")
 end

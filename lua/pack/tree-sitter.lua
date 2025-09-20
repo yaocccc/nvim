@@ -12,47 +12,65 @@ end
 
 function M.config()
     G.hi({
-        ["@variable"] = { fg = "NONE" };
-        ["@function"] = { fg = 32 };
-        ["@function.call"] = { fg = 32 };
-        ["@operator"] = { fg = 166 };
-        ["@keyword.operator"] = { fg = 166 };
+        ["@identifier"] = { fg = "NONE" }, -- 32
+        ["@variable"] = { fg = "NONE" }, -- 32
+        ["@function"] = { fg = "#0087ff" }, -- 32
+        ["@function.call"] = { fg = "#0087ff" }, -- 32
+        ["@operator"] = { fg = "#d75f00" }, -- 32
+        ["@keyword.operator"] = { fg = "#d75f00" }, -- 32
 
-        ["@property"] = { fg = 172 };
-        ["@field"] = { fg = 150 };
-        ["@method"] = { fg = 166 };
-        ["@method.call"] = { fg = 9 };
-        ["@parameter"] = { fg = 9 };
+        ["@property"] = { fg = "#d78700" }, -- 32
+        ["@field"] = { fg = "#afd7af" }, -- 32
+        ["@method"] = { fg = "#d75f00" }, -- 32
+        ["@method.call"] = { fg = "#ff0000" }, -- 32
+        ["@parameter"] = { fg = "#ff0000" }, -- 32
 
-        ["@keyword"] = { fg = 1 };
-        ["@keyword.function"] = { fg = 32 };
-        ["@exception"] = { fg = 32 };
+        ["@keyword"] = { fg = "#ff6666" }, -- 32
+        ["@keyword.function"] = { fg = "#0087ff" }, -- 32
+        ["@exception"] = { fg = "#0087ff" }, -- 32
 
-        ["@statement"] = { fg = 166 };
-        ["@special"] = { fg = 172 };
-        ["@comment"] = { fg = 71, italic = true };
-        ["@include"] = { fg = 1 };
-        ["@type"] = { fg = 179 };
-        ["@type.builtin"] = { fg = 150 };
-        ["@punctuation.bracket"] = { fg = 151 };
+        ["@statement"] = { fg = "#d75f00" }, -- 32
+        ["@special"] = { fg = "#d78700" }, -- 32
+        ["@comment"] = { fg = "#5faf5f", italic = true }, -- 32
+        ["@include"] = { fg = "#800000" }, -- 32
+        ["@type"] = { fg = "#d7af5f" }, -- 32
+        ["@type.builtin"] = { fg = "#afd7af" }, -- 32
+        ["@punctuation.bracket"] = { fg = "#afd7d7" }, -- 32
 
-        ["@constructor"] = { fg = 172 };
-        ["@namespace"] = { fg = 172 };
+        ["@constructor"] = { fg = "#d78700" }, -- 32
+        ["@namespace"] = { fg = "#d78700" }, -- 32
 
-        ["@string"] = { fg = 37 };
-        ["@number"] = { fg = 37 };
-        ["@boolean"] = { fg = 37 };
+        ["@string"] = { fg = "#00afaf" }, -- 32
+        ["@number"] = { fg = "#00afaf" }, -- 32
+        ["@boolean"] = { fg = "#00afaf" }, -- 32
 
-        ["@tag"] = { fg = 172 };
-        ["@tag.attribute"] = { fg = 166 };
-        ["@tag.delimiter"] = { fg = 150 };
-        ["@conditional.ternary"] = { fg = 1 };
-        ["@punctuation.special"] = { fg = 172 };
+        ["@tag"] = { fg = "#d78700" }, -- 32
+        ["@tag.attribute"] = { fg = "#d75f00" }, -- 32
+        ["@tag.delimiter"] = { fg = "#afd7af" }, -- 32
+        ["@conditional.ternary"] = { fg = "#800000" }, -- 32
+        ["@punctuation.special"] = { fg = "#d78700" }, -- 32
 
-        ["@text.literal"] = { fg = 7 };
+        ["@text.literal"] = { fg = "#c0c0c0" }, -- 32
 
-        ["@text.todo.unchecked"] = { fg = 172 };
-        ["@text.todo.checked"] = { fg = 37 };
+        ["@text.todo.unchecked"] = { fg = "#d78700" }, -- 32
+        ["@text.todo.checked"] = { fg = "#00afaf" }, -- 32
+
+        ["@markup.heading.1"] = { fg = "#87d7ff", bold = true }, -- 32
+        ["@markup.heading.2"] = { fg = "#00afff", bold = true }, -- 32
+        ["@markup.heading.3"] = { fg = "#afafff", bold = true }, -- 32
+        ["@markup.heading.4"] = { fg = "#d78700", bold = true }, -- 32
+        ["@markup.heading.5"] = { fg = "#d7af5f", bold = true }, -- 32
+        ["@markup.heading.6"] = { fg = "#ff0000", bold = true }, -- 32
+
+        ["@markup.raw.block@label"] = { fg = "#008000" }, -- 32
+
+        ["@markup.raw.block"] = { fg = "#c0c0c0" }, -- 32
+        ["@markup.quote"] = { fg = "#5faf5f", italic = true }, -- 32
+        ["@markup.italic"] = { italic = true }, -- 32
+        ["@markup.bold"] = { bold = true }, -- 32
+        ["@markup.strikethrough"] = { strikethrough = true }, -- 32
+        ["@markup.link"] = { fg = "#afafff", underline = true }, -- 32
+        ["@markup.list"] = { fg = "#5fafd7" }, -- 32
     })
     G.map({
         { 'n', 'H', ':TSHighlightCapturesUnderCursor<CR>', { silent = true, noremap = true } },
@@ -61,10 +79,10 @@ function M.config()
 
     -- some custom highlights
     G.hi({
-        Todo = { fg = 234, bg = 38, bold = true };
-        TodoText = { fg = 38, bg = 'NONE', bold = true };
-        Note = { fg = 234, bg = 78, bold = true };
-        NoteText = { fg = 78, bg = 'NONE', bold = true };
+        Todo = { fg = "#1c1c1c", bg = "#00afd7", bold = true }; -- 234/38
+        TodoText = { fg = "#00afd7", bg = 'NONE', bold = true }; -- 38
+        Note = { fg = "#1c1c1c", bg = "#5fd787", bold = true }; -- 234/78
+        NoteText = { fg = "#5fd787", bg = 'NONE', bold = true }; -- 78
     })
     G.cmd([[call matchadd('Todo', 'TODO:\{0,1\}')]])
     G.cmd([[call matchadd('TodoText', 'TODO:\{0,1\}\zs.*')]])
@@ -75,9 +93,10 @@ end
 function M.setup()
     require('nvim-treesitter.configs').setup({
         -- 列举常用语言自动安装parser
-        ensure_installed = { 'typescript', 'javascript', 'vue', 'go', 'lua', 'markdown' },
+        ensure_installed = { 'typescript', 'javascript', 'vue', 'go', 'lua', 'markdown', 'markdown_inline' },
         highlight = {
-            enable = true
+            enable = true,
+            additional_vim_regex_highlighting = { "markdown" },
         },
     })
     M.parser_bootstrap()

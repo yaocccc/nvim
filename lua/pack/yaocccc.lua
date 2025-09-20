@@ -13,7 +13,7 @@ function M.config()
     }
 
     -- hl-chunk
-    G.g.hlchunk_files = '*.ts,*.js,*.json,*.go,*.c,*.cpp,*.rs,*.h,*.hpp,*.lua,*.vue'
+    G.g.hlchunk_files = '*.ts,*.js,*.json,*.c,*.cpp,*.rs,*.h,*.hpp,*.lua,*.vue'
 
     -- vim-comment
     G.g.vim_line_comments = {

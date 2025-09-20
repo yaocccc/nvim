@@ -14,7 +14,7 @@
     --color-border-secondary: #eaecef;
     --color-border-tertiary: #d1d5da;
     --color-kbd-foreground: #444d56;
-    --color-markdown-blockquote-border: #99CC33;
+    --color-markdown-blockquote-border: #eaecef;
     --color-markdown-blockquote-bg: #fafafa;
     --color-markdown-table-border: #dfe2e5;
     --color-markdown-table-tr-border: #c6cbd1;
@@ -168,6 +168,12 @@
 }
 .markdown-body ul {
   list-style-type: disc;
+}
+.markdown-body ul li {
+    margin-bottom: 1em;
+}
+.markdown-body ul li ul {
+  border-left: 5px solid var(--color-markdown-blockquote-border);
 }
 .markdown-body dl {
   margin-bottom: 1.3em

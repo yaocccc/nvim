@@ -76,7 +76,9 @@ require('packer').startup({
         -- markdown预览插件 导航生成插件
         require('pack/markdown').config()
         use { 'mzlogin/vim-markdown-toc', ft = 'markdown' }
-        use { 'iamcco/markdown-preview.nvim', config = "require('pack/markdown').setup()", run = 'cd app && yarn install', cmd = 'MarkdownPreview', ft = 'markdown' }
+        use { 'iamcco/markdown-preview.nvim', config = "require('pack/markdown').setup()", run = function() vim.fn["mkdp#util#install"]() end, cmd = 'MarkdownPreview', ft = 'markdown' }
+
+        use { 'uga-rosa/ccc.nvim', config = "require('pack/ccc').setup()", cmd = 'CccPick' } -- 颜色选择器
 
         -- 文件管理器
         require('pack/nvim-tree').config()
@@ -92,10 +94,9 @@ require('packer').startup({
         use { 'yaocccc/vim-comment', cmd = '*ToggleComment' }                          -- 注释插件
         use { 'yaocccc/vim-echo', cmd = "VECHO" }                                      -- 快速echo、print
         use { 'yaocccc/vim-fcitx2en', event = 'InsertLeavePre' }                       -- 退出输入模式时自动切换到英文
-        use { 'yaocccc/nvim-hlchunk', event = { 'CursorMoved', 'CursorMovedI' } }      -- 高亮{}范围
+        -- use { 'yaocccc/nvim-hlchunk', event = { 'CursorMoved', 'CursorMovedI' } }      -- 高亮{}范围
         use { 'yaocccc/vim-surround', event = 'ModeChanged' }                          -- 操作成对的 ""  {}  [] 等的插件
         use { 'yaocccc/nvim-foldsign', event = 'CursorHold', config = 'require("nvim-foldsign").setup()' } -- signcolumn显示折叠信息
-        use { 'yaocccc/nvim-hl-mdcodeblock.lua', after = 'nvim-treesitter', config = "require('pack/markdown').setup_hlcodeblock()" }
     end,
     config = {
         git = { clone_timeout = 120, depth = 1 },

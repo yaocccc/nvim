@@ -2,7 +2,7 @@ local G = require('G')
 
 G.g.python3_host_prog = os.getenv('PYTHON') -- export PYTHON=$(which python3)
 G.g.editorconfig = false
-G.opt.termguicolors = false
+G.opt.termguicolors = true
 G.opt.showcmd = true
 G.opt.encoding = 'utf-8'
 G.opt.wildmenu = true
@@ -50,7 +50,7 @@ G.opt.signcolumn = 'yes'
 G.opt.fillchars = 'fold:-,stlnc:#,eob: ,foldsep:='
 
 G.cmd([[
-    hi Normal ctermfg=7 ctermbg=NONE cterm=NONE
+    hi Normal ctermfg=7 guifg=#c0c0c0 ctermbg=NONE cterm=NONE
     colorscheme solarized8_high
     let &t_SI .= '\e[5 q'
     let &t_EI .= '\e[1 q'
