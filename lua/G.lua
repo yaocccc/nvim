@@ -7,7 +7,8 @@ G.v = vim.v
 G.fn = vim.fn
 G.api = vim.api
 G.opt = vim.opt
-G.treesitter = vim.treesitter
+G.list_contains = vim.list_contains
+G.ts = vim.treesitter
 
 function G.map(maps)
     for _,map in pairs(maps) do

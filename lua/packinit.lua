@@ -56,8 +56,8 @@ require('packer').startup({
         use { 'gelguy/wilder.nvim', event = 'CmdlineEnter', config = 'require("pack/wilder").setup()' }
 
         -- github copilot
-        -- require('pack/copilot').config()
-        -- use { 'github/copilot.vim', config = "require('pack/copilot').setup()" }
+        require('pack/copilot').config()
+        use { "zbirenbaum/copilot.lua", config = "require('pack/copilot').setup()", event = "InsertEnter" }
 
         -- 浮动终端
         require('pack/vim-floaterm').config()
@@ -69,8 +69,7 @@ require('packer').startup({
 
         -- tree-sitter
         require('pack/tree-sitter').config()
-        use { 'nvim-treesitter/nvim-treesitter', config = "require('pack/tree-sitter').setup()", run = ':TSUpdate', event = 'BufRead' }
-        use { 'nvim-treesitter/playground', after = 'nvim-treesitter' }
+        use { 'nvim-treesitter/nvim-treesitter', config = "require('pack/tree-sitter').setup()", run = ':TSUpdate' }
 
         -- indentmini 缩进线插件
         use { 'nvimdev/indentmini.nvim', config = "require('pack/indentmini').setup()" }

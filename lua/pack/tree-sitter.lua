@@ -1,13 +1,20 @@
 local G = require('G')
 local M = {}
 
-function M.parser_bootstrap()
-    local parsers = require("nvim-treesitter.parsers")
-    local lang = parsers.ft_to_lang(G.api.nvim_eval('&ft'))
-    local has_parser = parsers.has_parser(lang)
-    if not has_parser then
-        G.cmd("try | call execute('TSInstall " .. lang .. "') | catch | endtry")
+function M.intall(lang)
+    local treesitter = require('nvim-treesitter')
+    if G.list_contains(treesitter.get_available(), lang) then
+        if not G.list_contains(treesitter.get_installed(), lang) then
+            treesitter.install { lang }
+            G.ts.start()
+        end
     end
+end
+
+function M.parser_bootstrap()
+    local filetype = G.api.nvim_eval('&ft')
+    local lang = G.ts.language.get_lang(filetype)
+    M.intall(lang)
 end
 
 function M.config()
@@ -72,10 +79,6 @@ function M.config()
         ["@markup.link"] = { fg = "#afafff", underline = true }, -- 32
         ["@markup.list"] = { fg = "#5fafd7" }, -- 32
     })
-    G.map({
-        { 'n', 'H', ':TSHighlightCapturesUnderCursor<CR>', { silent = true, noremap = true } },
-        { 'n', 'R', ':write | edit | TSBufEnable highlight<CR>', { silent = true, noremap = true } },
-    })
 
     -- some custom highlights
     G.hi({
@@ -91,16 +94,12 @@ function M.config()
 end
 
 function M.setup()
-    require('nvim-treesitter.configs').setup({
-        -- 列举常用语言自动安装parser
-        ensure_installed = { 'typescript', 'javascript', 'vue', 'go', 'lua', 'markdown', 'markdown_inline' },
-        highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = { "markdown" },
-        },
-    })
+    require('nvim-treesitter').setup()
+    local langs = { 'typescript', 'javascript', 'vue', 'go', 'lua', 'markdown', 'markdown_inline' }
+    for idx in pairs(langs) do M.intall(langs[idx]) end
     M.parser_bootstrap()
     G.cmd([[ au FileType * lua require('pack/tree-sitter').parser_bootstrap() ]])
+    G.cmd([[ au BufRead * lua vim.treesitter.start() ]])
 end
 
 return M
