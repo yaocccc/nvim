@@ -56,8 +56,8 @@ require('packer').startup({
         use { 'gelguy/wilder.nvim', event = 'CmdlineEnter', config = 'require("pack/wilder").setup()' }
 
         -- github copilot
-        require('pack/copilot').config()
-        use { 'github/copilot.vim', config = "require('pack/copilot').setup()" }
+        -- require('pack/copilot').config()
+        -- use { 'github/copilot.vim', config = "require('pack/copilot').setup()" }
 
         -- 浮动终端
         require('pack/vim-floaterm').config()

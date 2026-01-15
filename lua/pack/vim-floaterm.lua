@@ -22,6 +22,21 @@ end
 function M.runFile()
     G.cmd('w')
     local ft = G.eval('&ft')
+    local width = G.api.nvim_win_get_width(0)
+    local height = G.api.nvim_win_get_height(0)
+
+    if width <= 100 then
+        G.g.floaterm_title = '─RUN:' .. ft
+        G.g.floaterm_position = 'bottom'
+        G.g.floaterm_width = width
+        G.g.floaterm_height = math.min(20, math.floor(height * 0.8))
+    else
+        G.g.floaterm_title = ''
+        G.g.floaterm_position = 'center'
+        G.g.floaterm_width = 0.8
+        G.g.floaterm_height = 0.8
+    end
+
     local run_cmd = { javascript = 'node', typescript = 'ts-node', html = 'google-chrome-stable', python = 'python', go = 'go run', sh = 'bash', lua = 'lua' }
     if run_cmd[ft] then M.toggleFT('RUN', run_cmd[ft] .. ' %')
     elseif ft == 'markdown' then G.cmd('MarkdownPreview')

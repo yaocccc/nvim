@@ -33,6 +33,7 @@ hi! link Structure Type
 hi! link Tag Special
 hi! link Typedef Type
 hi! link lCursor Cursor
+hi! link WinBar StatusLine
 
 " 高亮定义，同时支持 GUI 和 256 色
 hi Normal guifg=#c0c0c0 guibg=NONE ctermfg=7 ctermbg=NONE cterm=NONE gui=NONE
@@ -102,6 +103,9 @@ hi ReplaceMode guifg=#d75f00 guibg=#ffffd7 ctermfg=166 ctermbg=230 cterm=reverse
 hi VisualMode guifg=#d70087 guibg=#ffffd7 ctermfg=162 ctermbg=230 cterm=reverse gui=reverse
 hi CommandMode guifg=#d70087 guibg=#ffffd7 ctermfg=162 ctermbg=230 cterm=reverse gui=reverse
 hi TermCursorNC guifg=#262626 guibg=#767676 ctermfg=235 ctermbg=243 cterm=NONE gui=NONE
-hi GitGutterAdd guifg=#87af00 ctermfg=106
-hi GitGutterChange guifg=#af8700 ctermfg=136
-hi GitGutterDelete guifg=#d70000 ctermfg=160
+hi GitGutterAdd guifg=#40e08f ctermfg=106
+hi GitGutterChange guifg=#e7df2f ctermfg=136
+hi GitGutterDelete guifg=#ff3686 ctermfg=160
+hi DiagnosticSignError guifg=#ff7686 guibg=NONE ctermfg=160 ctermbg=NONE
+hi DiagnosticSignWarn guifg=#e7df2f guibg=NONE ctermfg=136 ctermbg=NONE
+hi DiagnosticSignInfo guifg=#30f08f guibg=NONE ctermfg=37 ctermbg=NONE
