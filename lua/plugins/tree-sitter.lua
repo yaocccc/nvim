@@ -3,17 +3,17 @@ local M = {}
 
 function M.intall(lang)
     local treesitter = require('nvim-treesitter')
-    if G.list_contains(treesitter.get_available(), lang) then
-        if not G.list_contains(treesitter.get_installed(), lang) then
+    if vim.list_contains(treesitter.get_available(), lang) then
+        if not vim.list_contains(treesitter.get_installed(), lang) then
             treesitter.install { lang }
-            G.ts.start()
+            vim.treesitter.start()
         end
     end
 end
 
 function M.parser_bootstrap()
-    local filetype = G.api.nvim_eval('&ft')
-    local lang = G.ts.language.get_lang(filetype)
+    local filetype = vim.api.nvim_eval('&ft')
+    local lang = vim.treesitter.language.get_lang(filetype)
     M.intall(lang)
 end
 
@@ -87,18 +87,18 @@ function M.init()
         Note = { fg = "#1c1c1c", bg = "#5fd787", bold = true }; -- 234/78
         NoteText = { fg = "#5fd787", bg = 'NONE', bold = true }; -- 78
     })
-    G.cmd([[call matchadd('Todo', 'TODO!*:\{0,1\}')]])
-    G.cmd([[call matchadd('TodoText', 'TODO!*:\{0,1\}\zs.*')]])
-    G.cmd([[call matchadd('Note', 'NOTE!*:\{0,1\}')]])
-    G.cmd([[call matchadd('NoteText', 'NOTE!*:\{0,1\}\zs.*')]])
+    vim.cmd([[call matchadd('Todo', 'TODO!*:\{0,1\}')]])
+    vim.cmd([[call matchadd('TodoText', 'TODO!*:\{0,1\}\zs.*')]])
+    vim.cmd([[call matchadd('Note', 'NOTE!*:\{0,1\}')]])
+    vim.cmd([[call matchadd('NoteText', 'NOTE!*:\{0,1\}\zs.*')]])
 end
 
 function M.config()
     require('nvim-treesitter').setup()
     local langs = { 'typescript', 'javascript', 'vue', 'go', 'lua', 'markdown', 'markdown_inline' }
     for idx in pairs(langs) do M.intall(langs[idx]) end
-    G.cmd([[ au FileType * lua require('plugins/tree-sitter').M.parser_bootstrap() ]])
-    G.cmd([[ au BufRead,BufNewFile * lua vim.treesitter.start() ]])
+    vim.cmd([[ au FileType * lua require('plugins/tree-sitter').M.parser_bootstrap() ]])
+    vim.cmd([[ au BufRead,BufNewFile * lua vim.treesitter.start() ]])
     M.parser_bootstrap()
 end
 

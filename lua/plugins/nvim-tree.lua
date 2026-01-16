@@ -2,10 +2,10 @@ local G = require('G')
 local M = {}
 
 function M.init()
-    G.g.nvim_tree_firsttime = 1
+    vim.g.nvim_tree_firsttime = 1
     G.map({ { 'n', 'T', 'g:nvim_tree_firsttime != 1 ? ":NvimTreeToggle<cr>" : ":let g:nvim_tree_firsttime = 0<cr>:NvimTreeToggle $PWD<cr>"', {silent = true, noremap = true, expr = true}} })
-    G.cmd("hi! NvimTreeCursorLine cterm=NONE ctermbg=238 guibg=#444444")
-    G.cmd("hi! link NvimTreeFolderIcon NvimTreeFolderName")
+    vim.cmd("hi! NvimTreeCursorLine cterm=NONE ctermbg=238 guibg=#444444")
+    vim.cmd("hi! link NvimTreeFolderIcon NvimTreeFolderName")
 end
 
 function M.cofig()
@@ -46,8 +46,8 @@ function M.cofig()
             float = {
                 enable = true,
                 open_win_config = function()
-                    local columns = G.o.columns
-                    local lines = G.o.lines
+                    local columns = vim.o.columns
+                    local lines = vim.o.lines
                     local width = math.max(math.floor(columns * 0.5), 50)
                     local height = math.max(math.floor(lines * 0.5), 20)
                     local left = math.ceil((columns - width) * 0.5)

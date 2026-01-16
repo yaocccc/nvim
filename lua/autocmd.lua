@@ -2,18 +2,18 @@ local G = require('G')
 
 -- 以下是全局的autocmd
 
-G.api.nvim_create_autocmd({ "BufEnter" }, { command = [[if &buftype == '' && &readonly == 1 | set buftype=acwrite | set noreadonly | endif]] })
-G.api.nvim_create_autocmd({ "BufReadPost" }, { command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]] })
-G.api.nvim_create_autocmd({ "FileType" }, { command = "try | silent! loadview | catch | endtry" })
-G.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, { command = "silent! mkview" })
-G.api.nvim_create_autocmd({ "InsertEnter" }, { command = "hi CursorLine ctermbg=235 guibg=#262626" })
-G.api.nvim_create_autocmd({ "InsertLeave" }, { command = "hi CursorLine ctermbg=none guibg=none" })
+vim.api.nvim_create_autocmd({ "BufEnter" }, { command = [[if &buftype == '' && &readonly == 1 | set buftype=acwrite | set noreadonly | endif]] })
+vim.api.nvim_create_autocmd({ "BufReadPost" }, { command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]] })
+vim.api.nvim_create_autocmd({ "FileType" }, { command = "try | silent! loadview | catch | endtry" })
+vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, { command = "silent! mkview" })
+vim.api.nvim_create_autocmd({ "InsertEnter" }, { command = "hi CursorLine ctermbg=235 guibg=#262626" })
+vim.api.nvim_create_autocmd({ "InsertLeave" }, { command = "hi CursorLine ctermbg=none guibg=none" })
 
 -- 以下是for不同文件类型的相关配置
 
 local function _go()
-    G.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go" }, command = "silent! call CocAction('runCommand', 'editor.action.organizeImport')" })
-    G.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go" }, command = "call CocAction('format')" })
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go" }, command = "silent! call CocAction('runCommand', 'editor.action.organizeImport')" })
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go" }, command = "call CocAction('format')" })
     G.map({ { "v", "D", ":<c-u>call SurroundVaddPairs(\"/** \", \" */\")<cr>", { noremap = true, silent = true, buffer = true } }, })
 end
 
@@ -36,7 +36,7 @@ local function _python()
 end
 
 local function _vue()
-    G.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.vue" }, command = "call CocAction('format')" })
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.vue" }, command = "call CocAction('format')" })
     G.map({ { "v", "D", ":<c-u>call SurroundVaddPairs(\"<!--\", \"--> \")<cr>", { noremap = true, silent = true, buffer = true } }, })
 end
 
@@ -49,7 +49,7 @@ local function _markdown()
         ["MDDeadline"] = { fg = "#d70087", bold = true, underline = true }, -- 162
         ["MDNearline"] = { fg = "#d7af00", bold = true }, -- 178
     })
-    G.cmd([[
+    vim.cmd([[
         call matchadd('MDDeadline', 'D:'.strftime("%Y-%m-%d"))
         call matchadd('MDNearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 24))
         call matchadd('MDNearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 48))
@@ -65,7 +65,7 @@ local function _markdown()
         { "n", "<F6>", ':call v:lua.G_markdown_toggleMPTheme()<cr>', { noremap = true, silent = true, buffer = true } },
         { "i", "<F6>", '<esc>:call v:lua.G_markdown_toggleMPTheme()<cr>', { noremap = true, silent = true, buffer = true } },
     })
-    G.cmd("call timer_start(0, 'v:lua.G_markdown_loadafter')") -- 延迟加载
+    vim.cmd("call timer_start(0, 'v:lua.G_markdown_loadafter')") -- 延迟加载
 end
 
 local map = {
@@ -78,10 +78,10 @@ local map = {
 }
 
 for filetype, func in pairs(map) do
-    G.api.nvim_create_autocmd({ "FileType" }, {
+    vim.api.nvim_create_autocmd({ "FileType" }, {
         pattern = { filetype },
         callback = function ()
-            if G.b.loaded == 1 then return end; G.b.loaded = 1
+            if vim.b.loaded == 1 then return end; vim.b.loaded = 1
             func()
         end
     })
@@ -90,13 +90,13 @@ end
 -- 部分需要暴露到全局的函数
 
 function G_markdown_loadafter()
-    G.cmd([[syn match markdownError "\w\@<=\w\@="]])
-    G.cmd([[syn match MDDoneDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained]])
-    G.cmd([[syn match MDTodoDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained]])
-    G.cmd([[syn match MDDoneText /\zs.*- \[x\] \zs.*/ contains=MDDoneDate contained]])
-    G.cmd([[syn match MDTodoText /- \[ \] \zs.*/ contains=MDTodoDate contained]])
-    G.cmd([[syn match MDTask /\zs.*- \[\(x\| \)\] .*/ contains=MDDoneText,MDTodoText]])
-    G.cmd([[
+    vim.cmd([[syn match markdownError "\w\@<=\w\@="]])
+    vim.cmd([[syn match MDDoneDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained]])
+    vim.cmd([[syn match MDTodoDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained]])
+    vim.cmd([[syn match MDDoneText /\zs.*- \[x\] \zs.*/ contains=MDDoneDate contained]])
+    vim.cmd([[syn match MDTodoText /- \[ \] \zs.*/ contains=MDTodoDate contained]])
+    vim.cmd([[syn match MDTask /\zs.*- \[\(x\| \)\] .*/ contains=MDDoneText,MDTodoText]])
+    vim.cmd([[
         let b:md_block = '```'
         setlocal shiftwidth=2
         setlocal softtabstop=2
@@ -105,25 +105,25 @@ function G_markdown_loadafter()
 end
 
 function G_markdown_toggleCheck(needsave)
-    local line = G.fn.getline('.')
+    local line = vim.fn.getline('.')
     if line:match('^%s*- %[ %]') then line = line:gsub('%[ %]', '[x]')
     elseif line:match('^%s*- %[x%]') then line = line:gsub('%[x%]', '[ ]')
     else return end
-    G.fn.setline('.', line)
-    if needsave then G.cmd('w') end
+    vim.fn.setline('.', line)
+    if needsave then vim.cmd('w') end
 end
 
 function G_markdown_toggleMPTheme()
-    G.g.mkdp_theme = G.g.mkdp_theme == 'dark' and 'light' or 'dark'
-    G.cmd('MarkdownPreviewStop')
-    G.cmd('sleep 500m')
-    G.cmd('MarkdownPreview')
+    vim.g.mkdp_theme = vim.g.mkdp_theme == 'dark' and 'light' or 'dark'
+    vim.cmd('MarkdownPreviewStop')
+    vim.cmd('sleep 500m')
+    vim.cmd('MarkdownPreview')
 end
 
 function G_toggleBar(status)
-    G.cmd('set laststatus=' .. status)
-    G.cmd('set showtabline=' .. status)
+    vim.cmd('set laststatus=' .. status)
+    vim.cmd('set showtabline=' .. status)
     if status == 0 then
-        G.o.winbar = ' '
+        vim.o.winbar = ' '
     end
 end

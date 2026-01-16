@@ -5,7 +5,7 @@ function M.accept()
     if require("copilot.suggestion").is_visible() then
         require("copilot.suggestion").accept()
     else
-        G.api.nvim_feedkeys(G.keycode("<Right>"), "n", true)
+        vim.api.nvim_feedkeys(vim.keycode("<Right>"), "n", true)
     end
 end
 
@@ -30,7 +30,7 @@ function M.config()
     })
 
     G.hi({ ["CopilotSuggestion"] = { fg = "#6e6e6e", italic = false } })
-    G.keymap.set('i', '<right>', M.accept, { silent = true, expr = true })
+    vim.keymap.set('i', '<right>', M.accept, { silent = true, expr = true })
 end
 
 return { "zbirenbaum/copilot.lua", event = "InsertEnter", config = M.config }

@@ -2,7 +2,7 @@ local G = require('G')
 local M = {}
 
 function M.config()
-    G.g.coc_global_extensions = {
+    vim.g.coc_global_extensions = {
         'coc-marketplace',
         '@yaegassy/coc-volar',
         'coc-tsserver',
@@ -21,9 +21,9 @@ function M.config()
         'coc-git',
         '@yaegassy/coc-tailwindcss3',
     }
-    G.cmd("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
-    G.cmd("hi! link CocPum Pmenu")
-    G.cmd("hi! link CocMenuSel PmenuSel")
+    vim.cmd("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
+    vim.cmd("hi! link CocPum Pmenu")
+    vim.cmd("hi! link CocMenuSel PmenuSel")
     G.map({
         { 'n', '<F2>', '<Plug>(coc-rename)', {silent = true} },
         { 'n', 'gd', '<Plug>(coc-definition)', {silent = true} },

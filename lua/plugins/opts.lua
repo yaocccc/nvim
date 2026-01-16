@@ -29,16 +29,16 @@ function M.config_vv()
 end
 
 function M.config_mp()
-    G.g.mkdp_markdown_css = '/home/chenyc/.config/nvim/colors/markdown.css'
-    G.g.mkdp_page_title = '${name}'
-    G.g.mkdp_preview_options = { hide_yaml_meta = 1, disable_filename = 1 }
-    G.g.vmt_fence_text = 'markdown-toc'
+    vim.g.mkdp_markdown_css = '/home/chenyc/.config/nvim/colors/markdown.css'
+    vim.g.mkdp_page_title = '${name}'
+    vim.g.mkdp_preview_options = { hide_yaml_meta = 1, disable_filename = 1 }
+    vim.g.vmt_fence_text = 'markdown-toc'
 end
 
 function M.init_mc()
-    G.g.VM_theme = 'ocean'
-    G.g.VM_highlight_matches = 'underline'
-    G.g.VM_maps = {
+    vim.g.VM_theme = 'ocean'
+    vim.g.VM_highlight_matches = 'underline'
+    vim.g.VM_maps = {
         ['Find Under'] = '<C-n>',
         ['Find Subword Under'] = '<C-n>',
         ['Select All'] = '<C-d>',
@@ -67,5 +67,5 @@ return {
     { "terryma/vim-expand-region", config = M.config_vv },
     { "mg979/vim-visual-multi", event = 'CursorHold', init = M.init_mc },
     { "mzlogin/vim-markdown-toc", ft = 'markdown' },
-    { "iamcco/markdown-preview.nvim", build = function() G.fn["mkdp#util#install"]() end, cmd = 'MarkdownPreview', ft = 'markdown', config = M.config_mp },
+    { "iamcco/markdown-preview.nvim", build = function() vim.fn["mkdp#util#install"]() end, cmd = 'MarkdownPreview', ft = 'markdown', config = M.config_mp },
 }

@@ -1,55 +1,53 @@
-local G = require('G')
+vim.g.python3_host_prog = os.getenv('PYTHON') -- export PYTHON=$(which python3)
+vim.g.editorconfig = false
+vim.opt.termguicolors = true
+vim.opt.showcmd = true
+vim.opt.encoding = 'utf-8'
+vim.opt.wildmenu = true
+vim.opt.pumheight = 10
+vim.opt.conceallevel = 0
+vim.opt.clipboard = 'unnamed,unnamedplus'
+vim.opt.hlsearch = true
+vim.opt.showmatch = true
+vim.opt.incsearch = true
+vim.opt.inccommand = ''
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.timeoutlen = 400
+vim.opt.backspace = 'indent,eol,start'
+vim.opt.whichwrap = 'b,s,<,>,h,'
+vim.opt.mouse = 'a'
+vim.opt.vb = true
+vim.opt.hidden = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.smarttab = true
+vim.opt.expandtab = true
+vim.opt.backup = false
+vim.opt.swapfile = false
+vim.opt.wrap = false
+vim.opt.undofile = true
+vim.opt.undodir = os.getenv('HOME') .. '/.config/nvim/cache/undodir'
+vim.opt.viminfo = "!,'10000,<50,s10,h"
+vim.opt.foldenable = true
+vim.opt.foldmethod = 'manual'
+vim.opt.viewdir = os.getenv('HOME') .. '/.config/nvim/cache/viewdir'
+vim.opt.foldtext = 'v:lua.MagicFoldText()'
+vim.opt.cmdheight = 1
+vim.opt.updatetime = 300
+vim.opt.shortmess = 'filnxtToOcIF'
+vim.opt.scrolloff = 5
+vim.opt.showmode = false
+vim.opt.number = true
+vim.opt.numberwidth = 2
+vim.opt.cul = true
+vim.opt.signcolumn = 'yes'
+vim.opt.fillchars = 'fold:-,stlnc:#,eob: ,foldsep:='
 
-G.g.python3_host_prog = os.getenv('PYTHON') -- export PYTHON=$(which python3)
-G.g.editorconfig = false
-G.opt.termguicolors = true
-G.opt.showcmd = true
-G.opt.encoding = 'utf-8'
-G.opt.wildmenu = true
-G.opt.pumheight = 10
-G.opt.conceallevel = 0
-G.opt.clipboard = 'unnamed,unnamedplus'
-G.opt.hlsearch = true
-G.opt.showmatch = true
-G.opt.incsearch = true
-G.opt.inccommand = ''
-G.opt.ignorecase = true
-G.opt.smartcase = true
-G.opt.timeoutlen = 400
-G.opt.backspace = 'indent,eol,start'
-G.opt.whichwrap = 'b,s,<,>,h,'
-G.opt.mouse = 'a'
-G.opt.vb = true
-G.opt.hidden = true
-G.opt.autoindent = true
-G.opt.smartindent = true
-G.opt.tabstop = 4
-G.opt.softtabstop = 4
-G.opt.shiftwidth = 4
-G.opt.smarttab = true
-G.opt.expandtab = true
-G.opt.backup = false
-G.opt.swapfile = false
-G.opt.wrap = false
-G.opt.undofile = true
-G.opt.undodir = os.getenv('HOME') .. '/.config/nvim/cache/undodir'
-G.opt.viminfo = "!,'10000,<50,s10,h"
-G.opt.foldenable = true
-G.opt.foldmethod = 'manual'
-G.opt.viewdir = os.getenv('HOME') .. '/.config/nvim/cache/viewdir'
-G.opt.foldtext = 'v:lua.MagicFoldText()'
-G.opt.cmdheight = 1
-G.opt.updatetime = 300
-G.opt.shortmess = 'filnxtToOcIF'
-G.opt.scrolloff = 5
-G.opt.showmode = false
-G.opt.number = true
-G.opt.numberwidth = 2
-G.opt.cul = true
-G.opt.signcolumn = 'yes'
-G.opt.fillchars = 'fold:-,stlnc:#,eob: ,foldsep:='
-
-G.cmd([[
+vim.cmd([[
     hi Normal ctermfg=7 guifg=#c0c0c0 ctermbg=NONE cterm=NONE
     colorscheme solarized8_high
     let &t_SI .= '\e[5 q'
@@ -59,9 +57,9 @@ G.cmd([[
 ]])
 
 function MagicFoldText()
-    local spacetext = ("        "):sub(0, G.opt.shiftwidth:get())
-    local line = G.fn.getline(G.v.foldstart):gsub("\t", spacetext)
-    local folded = G.v.foldend - G.v.foldstart + 1
+    local spacetext = ("        "):sub(0, vim.opt.shiftwidth:get())
+    local line = vim.fn.getline(vim.v.foldstart):gsub("\t", spacetext)
+    local folded = vim.v.foldend - vim.v.foldstart + 1
     local findresult = line:find('%S')
     if not findresult then return '+ folded ' .. folded .. ' lines ' end
     local empty = findresult - 1

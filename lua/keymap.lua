@@ -149,29 +149,29 @@ G.map({
 -- 光标在$ 0 ^依次跳转
 function MagicMove()
     local first = 1
-    local head = #G.fn.getline('.') - #G.fn.substitute(G.fn.getline('.'), '^\\s*', '', 'G') + 1
-    local before = G.fn.col('.')
-    G.fn.execute(before == first and first ~= head and 'norm! ^' or 'norm! $')
-    local after = G.fn.col('.')
+    local head = #vim.fn.getline('.') - #vim.fn.substitute(vim.fn.getline('.'), '^\\s*', '', 'G') + 1
+    local before = vim.fn.col('.')
+    vim.fn.execute(before == first and first ~= head and 'norm! ^' or 'norm! $')
+    local after = vim.fn.col('.')
     if before == after then
-        G.fn.execute('norm! 0')
+        vim.fn.execute('norm! 0')
     end
 end
 
 -- 1 当目录不存在时 先创建目录, 2 当前文件是acwrite时, 用sudo保存
 function MagicSave()
-    if G.fn.empty(G.fn.glob(G.fn.expand('%:p:h'))) then G.fn.system('mkdir -p ' .. G.fn.expand('%:p:h')) end
-    if G.o.buftype == 'acwrite' then
-        G.fn.execute('w !sudo tee > /dev/null %')
+    if vim.fn.empty(vim.fn.glob(vim.fn.expand('%:p:h'))) then vim.fn.system('mkdir -p ' .. vim.fn.expand('%:p:h')) end
+    if vim.o.buftype == 'acwrite' then
+        vim.fn.execute('w !sudo tee > /dev/null %')
     else
-        G.fn.execute('w')
+        vim.fn.execute('w')
     end
 end
 
 -- 驼峰转换 MagicToggleHump(true) 首字母大写 MagicToggleHump(false) 首字母小写
 function MagicToggleHump(upperCase)
-    G.fn.execute('normal! gv"tx')
-    local w = G.fn.getreg('t')
+    vim.fn.execute('normal! gv"tx')
+    local w = vim.fn.getreg('t')
     local toHump = w:find('_') ~= nil
     if toHump then
         w = w:gsub('_(%w)', function(c) return c:upper() end)
@@ -180,6 +180,6 @@ function MagicToggleHump(upperCase)
     end
     if w:sub(1, 1) == '_' then w = w:sub(2) end
     if upperCase then w = w:sub(1,1):upper() .. w:sub(2) end
-    G.fn.setreg('t', w)
-    G.fn.execute('normal! "tP')
+    vim.fn.setreg('t', w)
+    vim.fn.execute('normal! "tP')
 end

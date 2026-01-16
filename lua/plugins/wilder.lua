@@ -10,7 +10,7 @@ function M.config()
     wilder.set_option('pipeline', {
         wilder.branch(
             {
-                wilder.check(function (_, x) return G.fn.empty(x) end),
+                wilder.check(function (_, x) return vim.fn.empty(x) end),
                 wilder.history(15)
             },
             wilder.cmdline_pipeline({
@@ -33,7 +33,7 @@ function M.config()
             max_height = 12 -- 最大高度限制 因为要计算上下 所以12支持最多10个选项
         })
     ))
-    G.cmd("silent! UpdateRemotePlugins")
+    vim.cmd("silent! UpdateRemotePlugins")
     G.hi({
         WilderAccent = { fg = "#00afaf" },
         WilderSelectedAccent = { fg = "#00afaf", bg = "#4e4e4e" },
