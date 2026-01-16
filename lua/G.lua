@@ -9,6 +9,8 @@ G.api = vim.api
 G.opt = vim.opt
 G.list_contains = vim.list_contains
 G.ts = vim.treesitter
+G.keymap = vim.keymap
+G.keycode = vim.keycode
 
 function G.map(maps)
     for _,map in pairs(maps) do

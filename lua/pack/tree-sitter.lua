@@ -99,7 +99,7 @@ function M.setup()
     for idx in pairs(langs) do M.intall(langs[idx]) end
     M.parser_bootstrap()
     G.cmd([[ au FileType * lua require('pack/tree-sitter').parser_bootstrap() ]])
-    G.cmd([[ au BufRead * lua vim.treesitter.start() ]])
+    G.cmd([[ au BufRead,BufNewFile * lua vim.treesitter.start() ]])
 end
 
 return M
