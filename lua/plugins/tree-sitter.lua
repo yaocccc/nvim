@@ -17,7 +17,7 @@ function M.parser_bootstrap()
     M.intall(lang)
 end
 
-function M.config()
+function M.init()
     G.hi({
         ["@identifier"] = { fg = "NONE" }, -- 32
         ["@variable"] = { fg = "NONE" }, -- 32
@@ -93,13 +93,13 @@ function M.config()
     G.cmd([[call matchadd('NoteText', 'NOTE!*:\{0,1\}\zs.*')]])
 end
 
-function M.setup()
+function M.config()
     require('nvim-treesitter').setup()
     local langs = { 'typescript', 'javascript', 'vue', 'go', 'lua', 'markdown', 'markdown_inline' }
     for idx in pairs(langs) do M.intall(langs[idx]) end
-    M.parser_bootstrap()
-    G.cmd([[ au FileType * lua require('pack/tree-sitter').parser_bootstrap() ]])
+    G.cmd([[ au FileType * lua require('plugins/tree-sitter').M.parser_bootstrap() ]])
     G.cmd([[ au BufRead,BufNewFile * lua vim.treesitter.start() ]])
+    M.parser_bootstrap()
 end
 
-return M
+return { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate', init = M.init, config = M.config, M = M }

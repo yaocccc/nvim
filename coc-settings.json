@@ -66,5 +66,6 @@
     "git.enableGutters": true,
     "Lua.telemetry.enable": true,
     "@nomicfoundation/coc-solidity.telemetry": true,
-    "snippets.ultisnips.pythonPrompt": false
+    "snippets.ultisnips.pythonPrompt": false,
+    "Lua.diagnostics.globals": ["vim"]
 }

@@ -8,7 +8,7 @@
 * [配置结构](#配置结构)
 * [lua/profile.lua 通用基础配置说明](#luaprofilelua-通用基础配置说明)
 * [lua/keymap.lua 快捷键相关配置说明](#luakeymaplua-快捷键相关配置说明)
-* [lua/packinit.lua 插件相关的配置说明](#luapackinitlua-插件相关的配置说明)
+* [lua/plugins/ 插件相关的配置说明](#luaplugins-插件相关的配置说明)
 * [插件说明以及键位绑定](#插件说明以及键位绑定)
 * [Support: buy me a coffee](#support-buy-me-a-coffee)
 
@@ -21,9 +21,9 @@
     cd ~/.config
     git clone https://github.com/yaocccc/nvim
     ```
-2. 启动vim 等待自动安装packer(包管理工具、如果你没有安装的话) 会自动安装所有插件
+2. 启动vim 等待自动安装lazy.nvim(包管理工具、如果你没有安装的话) 会自动安装所有插件
 
-3. 每次修改过lua/packinit.lua 请重启后PackerSync
+3. 每次修改过lua/plugins/ 中的插件配置后，请运行 :Lazy sync 同步插件
 
 ## 配置结构
 
@@ -34,7 +34,8 @@
 │  ├─ G.lua            -- G: Global 封装了lua配置内用到的部分通用方法
 │  ├─ profile.lua      -- 环境变量(各种set)
 │  ├─ keymap.lua       -- 快捷键配置
-│  ├─ packinit.lua     -- 插件配置入口
+│  ├─ plugins/         -- lazy.nvim 插件配置目录
+│  ├─ lazy-init.lua    -- lazy.nvim 初始化
 │  └─ autocmd.lua      -- 自动命令
 ├─ colors/             -- 样式相关(theme)
 ├─ snippets/           -- 代码片段
@@ -98,7 +99,10 @@
 
 PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 
-## lua/packinit.lua 插件相关的配置说明
+## lua/plugins/ 插件相关的配置说明
+
+插件配置已迁移到 lazy.nvim，所有插件配置文件位于 `lua/plugins/` 目录下。  
+使用 `:Lazy` 命令可以打开插件管理界面，使用 `:Lazy sync` 同步插件。
 
 ## 插件说明以及键位绑定
 
@@ -165,7 +169,7 @@ PS: 如果需要格式化js和ts代码，请手动安装: npm i js-beautify -g
 
   guide: 如果无法使用 请  
   1. 修改 lua/pack/markdown.lua 中的 G.g.mkdp_browser 去掉或者修改成自己使用的浏览器
-  2. cd ~/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim/app && yarn
+  2. cd ~/.local/share/nvim/lazy/markdown-preview.nvim/app && yarn
 
   | 模式   | 键                   | 说明                                 |
   | ------ | --------             | ---------                            |

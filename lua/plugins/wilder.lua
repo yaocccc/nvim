@@ -2,10 +2,6 @@ local G = require('G')
 local M = {}
 
 function M.config()
-    -- do nothing
-end
-
-function M.setup()
     local wilder = require('wilder')
     wilder.setup({
         modes = { ':', '/', '?' },
@@ -50,4 +46,4 @@ function M.setup()
     })
 end
 
-return M
+return { "gelguy/wilder.nvim", event = 'CmdlineEnter', config = M.config }

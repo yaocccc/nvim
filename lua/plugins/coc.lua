@@ -57,12 +57,6 @@ function M.config()
         { 'x', '=', 'CocHasProvider("formatRange") ? "<Plug>(coc-format-selected)" : "="', {silent = true, noremap = true, expr = true}},
         { 'n', '=', 'CocHasProvider("formatRange") ? "<Plug>(coc-format-selected)" : "="', {silent = true, noremap = true, expr = true}},
     })
-    -- G.cmd([[ autocmd CursorHold * silent call CocActionAsync('highlight') ]])
-    -- G.cmd("hi CocHighlightText gui=bold")
 end
 
-function M.setup()
-    -- do nothing
-end
-
-return M
+return { "neoclide/coc.nvim", branch = 'release', config = M.config }

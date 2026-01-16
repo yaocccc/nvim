@@ -10,11 +10,6 @@ function M.accept()
 end
 
 function M.config()
-    G.hi({ ["CopilotSuggestion"] = { fg = "#6e6e6e", italic = false } })
-    G.keymap.set('i', '<right>', M.accept, { silent = true, expr = true })
-end
-
-function M.setup()
     require("copilot").setup({
         suggestion = {
             enabled = true,
@@ -33,6 +28,9 @@ function M.setup()
             },
         },
     })
+
+    G.hi({ ["CopilotSuggestion"] = { fg = "#6e6e6e", italic = false } })
+    G.keymap.set('i', '<right>', M.accept, { silent = true, expr = true })
 end
 
-return M
+return { "zbirenbaum/copilot.lua", event = "InsertEnter", config = M.config }
