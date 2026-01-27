@@ -11,6 +11,15 @@ function M.intall(lang)
     end
 end
 
+function M.start()
+    local treesitter = require('nvim-treesitter')
+    local filetype = vim.api.nvim_eval('&ft')
+    local lang = vim.treesitter.language.get_lang(filetype)
+    if vim.list_contains(treesitter.get_installed(), lang) then
+        vim.treesitter.start()
+    end
+end
+
 function M.parser_bootstrap()
     local filetype = vim.api.nvim_eval('&ft')
     local lang = vim.treesitter.language.get_lang(filetype)
@@ -98,8 +107,9 @@ function M.config()
     local langs = { 'typescript', 'javascript', 'vue', 'go', 'lua', 'markdown', 'markdown_inline' }
     for idx in pairs(langs) do M.intall(langs[idx]) end
     vim.cmd([[ au FileType * lua require('plugins/tree-sitter').M.parser_bootstrap() ]])
-    vim.cmd([[ au BufRead,BufNewFile * lua vim.treesitter.start() ]])
+    vim.cmd([[ au BufRead,BufNewFile * lua require('plugins/tree-sitter').M.start() ]])
     M.parser_bootstrap()
+    G.map({ { 'n', 'R', ':e %<cr>', { noremap = true, silent = true } } }) -- reload current file
 end
 
 return { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate', init = M.init, config = M.config, M = M }

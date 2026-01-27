@@ -3,11 +3,9 @@
     "suggest.floatConfig": { "border": true, "rounded": true },
     "diagnostic.floatConfig": { "border": true, "rounded": true },
     "signature.floatConfig": { "border": true, "rounded": true },
-    "list.autoPreview": true,
     "outline.autoPreview": true,
     "git.floatConfig": { "border": true, "rounded": true },
     "notification.disabledProgressSources": ["*"],
-    "diagnostic.signOffset": 1,
     "diagnostic.errorSign": "┃",
     "diagnostic.warningSign": "┃",
     "diagnostic.infoSign": "┃",
@@ -17,17 +15,11 @@
     "list.floatPreview": true,
     "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
     "snippets.ultisnips.directories": ["~/.config/nvim/snippets/ultisnips"],
-    "snippets.extends.javascript": ["typescript"],
-    "tabnine.priority": 80,
     "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
     "pairs.enableBackspace": true,
     "translator.engines": ["youdao", "google"],
     "tsserver.trace.server": "messages",
-    "tsserver.enableJavascript": true,
     "tsserver.enable": true,
-    "volar.takeOverMode.enabled": true,
-    "volar.autoCreateQuotes": true,
-    "pyright.inlayHints.enable": false,
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
@@ -43,28 +35,11 @@
     "git.addGBlameToVirtualText": false,
     "git.addGBlameToBufferVar": true,
     "git.splitWindowCommand": "below 10sp",
-    "java.clean.workspace": true,
-    "java.configuration.runtimes": [
-        {
-            "name": "JavaSE-14",
-            "path": "/opt/jdk-14.0.2",
-            "default": true
-        }
-    ],
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/19.1.2/clangd_19.1.2/bin/clangd",
-    "prettier": {
-        "tabWidth": 4,
-        "printWidth": 160,
-        "singleQuote": true,
-        "disableSuccessMessage": true,
-        "formatterPriority": 999
-    },
     "go.goplsOptions": {
         "completeUnimported": true,
         "staticcheck": true
     },
     "git.enableGutters": true,
-    "Lua.telemetry.enable": true,
     "@nomicfoundation/coc-solidity.telemetry": true,
     "snippets.ultisnips.pythonPrompt": false,
     "Lua.diagnostics.globals": ["vim"]

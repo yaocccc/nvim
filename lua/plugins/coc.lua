@@ -59,4 +59,4 @@ function M.config()
     })
 end
 
-return { "neoclide/coc.nvim", branch = 'release', config = M.config }
+return { "neoclide/coc.nvim", branch = 'release', config = M.config, enabled = true }
