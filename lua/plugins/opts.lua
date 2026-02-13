@@ -67,5 +67,5 @@ return {
     { "terryma/vim-expand-region", config = M.config_vv },
     { "mg979/vim-visual-multi", event = 'CursorHold', init = M.init_mc },
     { "mzlogin/vim-markdown-toc", ft = 'markdown' },
-    { "iamcco/markdown-preview.nvim", build = function() vim.fn["mkdp#util#install"]() end, cmd = 'MarkdownPreview', ft = 'markdown', config = M.config_mp },
+    { "iamcco/markdown-preview.nvim", build = function() vim.fn["mkdp#util#install"]() end, ft = 'markdown', config = M.config_mp },
 }

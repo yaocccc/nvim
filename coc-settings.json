@@ -42,5 +42,9 @@
     "git.enableGutters": true,
     "@nomicfoundation/coc-solidity.telemetry": true,
     "snippets.ultisnips.pythonPrompt": false,
-    "Lua.diagnostics.globals": ["vim"]
+    "Lua.diagnostics.globals": ["vim"],
+    "prettier.tabWidth": 4,
+    "prettier.printWidth": 160,
+    "prettier.singleQuote": true,
+    "prettier.formatterPriority": 999
 }
