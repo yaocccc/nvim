@@ -6,7 +6,6 @@ function M.intall(lang)
     if vim.list_contains(treesitter.get_available(), lang) then
         if not vim.list_contains(treesitter.get_installed(), lang) then
             treesitter.install { lang }
-            vim.treesitter.start()
         end
     end
 end
@@ -24,6 +23,7 @@ function M.parser_bootstrap()
     local filetype = vim.api.nvim_eval('&ft')
     local lang = vim.treesitter.language.get_lang(filetype)
     M.intall(lang)
+    M.start()
 end
 
 function M.init()
