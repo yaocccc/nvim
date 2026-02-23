@@ -58,6 +58,15 @@ function M.init_mc()
     }
 end
 
+M.config_tt = function()
+    require("babel").setup({
+        keymaps = {
+            translate = "mm",
+            translate_word = "mm",
+        },
+    })
+end
+
 return {
     { "dstein64/vim-startuptime", cmd = "StartupTime" },
     { "yianwillis/vimcdoc", event = "CmdLineEnter" },
@@ -68,4 +77,5 @@ return {
     { "mg979/vim-visual-multi", event = 'CursorHold', init = M.init_mc },
     { "mzlogin/vim-markdown-toc", ft = 'markdown' },
     { "iamcco/markdown-preview.nvim", build = function() vim.fn["mkdp#util#install"]() end, ft = 'markdown', config = M.config_mp },
+    { "yaocccc/babel.nvim", version = "*", config = M.config_tt },
 }

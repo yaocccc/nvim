@@ -17,8 +17,6 @@ function M.config()
         'coc-toml', '@nomicfoundation/coc-solidity',
         'coc-prettier',
         'coc-snippets', 'coc-pairs', 'coc-word',
-        'coc-translator',
-        'coc-git',
         '@yaegassy/coc-tailwindcss3',
     }
     vim.cmd("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
@@ -48,12 +46,6 @@ function M.config()
         { 'n', '<F4>', "get(g:, 'coc_enabled', 0) == 1 ? ':CocDisable<cr>' : ':CocEnable<cr>'", {silent = true, noremap = true, expr = true} },
         { 'n', '<F9>', ":CocCommand snippets.editSnippets<cr>", {silent = true, noremap = true} },
         { 'n', '<c-e>', ":CocList --auto-preview diagnostics<cr>", {silent = true} },
-        { 'n', 'mm', "<Plug>(coc-translator-p)", {silent = true} },
-        { 'v', 'mm', "<Plug>(coc-translator-pv)", {silent = true} },
-        { 'n', '(', "<Plug>(coc-git-prevchunk)", {silent = true} },
-        { 'n', ')', "<Plug>(coc-git-nextchunk)", {silent = true} },
-        { 'n', 'C', "get(b:, 'coc_git_blame', '') ==# 'Not committed yet' ? \"<Plug>(coc-git-chunkinfo)\" : \"<Plug>(coc-git-commit)\"", {silent = true, expr = true} },
-        { 'n', '\\g', ":call coc#config('git.addGBlameToVirtualText',  !get(g:coc_user_config, 'git.addGBlameToVirtualText', 0)) | call nvim_buf_clear_namespace(bufnr(), -1, line('.') - 1, line('.'))<cr>", {silent = true} },
         { 'x', '=', 'CocHasProvider("formatRange") ? "<Plug>(coc-format-selected)" : "="', {silent = true, noremap = true, expr = true}},
         { 'n', '=', 'CocHasProvider("formatRange") ? "<Plug>(coc-format-selected)" : "="', {silent = true, noremap = true, expr = true}},
     })
