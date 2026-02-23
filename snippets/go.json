@@ -1,0 +1,101 @@
+{
+  "fmt.Println": {
+    "prefix": "cl",
+    "body": "fmt.Println($1)"
+  },
+  "fmt.Println 2": {
+    "prefix": "fp",
+    "body": "fmt.Println($1)"
+  },
+  "append": {
+    "prefix": "ap",
+    "body": "append(${1:slice}, ${0:value})"
+  },
+  "break": {
+    "prefix": "br",
+    "body": "break"
+  },
+  "channel": {
+    "prefix": "ch",
+    "body": "chan ${0:int}"
+  },
+  "defer": {
+    "prefix": "df",
+    "body": "defer ${0:func}()"
+  },
+  "interface": {
+    "prefix": "in",
+    "body": "interface{}"
+  },
+  "full interface": {
+    "prefix": "int",
+    "body": [
+      "interface ${1:name} {",
+      "\t${2:/* methods */}",
+      "}"
+    ]
+  },
+  "if": {
+    "prefix": "if",
+    "body": [
+      "if ${1:/* condition */} {",
+      "\t$0",
+      "}"
+    ]
+  },
+  "else": {
+    "prefix": "el",
+    "body": [
+      "else {",
+      "\t$0",
+      "}"
+    ]
+  },
+  "for": {
+    "prefix": "for",
+    "body": [
+      "for ${1}{",
+      "\t$0",
+      "}"
+    ]
+  },
+  "function": {
+    "prefix": "fun",
+    "body": [
+      "func ${1:funcName}(${2}) ${3:error} {",
+      "\t${4}",
+      "}",
+      "$0"
+    ]
+  },
+  "make": {
+    "prefix": "make",
+    "body": "make(${1:[]string}, ${0:0})"
+  },
+  "map": {
+    "prefix": "map",
+    "body": "map[${1:string}]${0:int}"
+  },
+  "main": {
+    "prefix": "main",
+    "body": [
+      "func main() {",
+      "\t${1}",
+      "}",
+      "$0"
+    ]
+  },
+  "package": {
+    "prefix": "pa",
+    "body": "package ${1:main}"
+  },
+  "MapToId": {
+    "prefix": "ids",
+    "body": [
+      "${1}Ids := []int{}",
+      "for _, ${1} := range ${1}s {",
+      "\t${1}Ids = append(${1}Ids, ${1}.Id)",
+      "}"
+    ]
+  }
+}

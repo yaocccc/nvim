@@ -1,0 +1,26 @@
+{
+  "select": {
+    "prefix": "select",
+    "body": "SELECT ${3:*} FROM ${1:tableName} WHERE ${2:where} ORDER BY id DESC LIMIT 100;"
+  },
+  "update": {
+    "prefix": "update",
+    "body": "UPDATE ${1:tableName} SET ${2:updation} WHERE (id = ${3::id});"
+  },
+  "insert": {
+    "prefix": "insert",
+    "body": [
+      "INSERT INTO ${1:tableName}",
+      "(${2:fields})",
+      "VALUES",
+      "(${3:value});"
+    ]
+  },
+  "delete": {
+    "prefix": "delete",
+    "body": [
+      "DELETE FROM ${1:tableName}",
+      "WHERE id in (${2::ids});"
+    ]
+  }
+}

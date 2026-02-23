@@ -1,28 +1,47 @@
--- {
---   'neovim/nvim-lspconfig',
---   dependencies = { 'saghen/blink.cmp' },
+-- 不同的lsp和ft直接的映射
+local lsp_by_ft = {
+    lua = { "lua_ls" },
+    solidity = { "solidity_ls" },
+    javascript = { "vtsls", "tailwindcss" },
+    javascriptreact = { "vtsls", "tailwindcss" },
+    typescript = { "vtsls", "tailwindcss" },
+    typescriptreact = { "vtsls", "tailwindcss" },
+    vue = { "vue_ls", "vtsls", "tailwindcss" },
+    html = { "html", "tailwindcss" },
+    css = { "cssls", "tailwindcss" },
+    scss = { "cssls", "tailwindcss" },
+    less = { "cssls", "tailwindcss" },
+    json = { "jsonls" },
+    jsonc = { "jsonls" },
+    go = { "gopls" },
+    gomod = { "gopls" },
+    gowork = { "gopls" },
+    gotmpl = { "gopls" },
+    sh = { "bashls" },
+    bash = { "bashls" },
+    zsh = { "bashls" },
+}
 
---   -- example using `opts` for defining servers
---   opts = {
---     servers = {
---       lua_ls = {}
---     }
---   },
---   config = function(_, opts)
---     local lspconfig = require('lspconfig')
---     for server, config in pairs(opts.servers) do
---       -- passing config.capabilities to blink.cmp merges with the capabilities in your
---       -- `opts[server].capabilities, if you've defined it
---       config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
---       lspconfig[server].setup(config)
---     end
---   end
+vim.diagnostic.config({ signs = { text = { [1] = '┃', [2] = '┃', [3] = '┃', [4] = '┃' } }, update_in_insert = false })
+vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+        vim.diagnostic.open_float(nil, {
+            scope = "cursor",
+            focusable = false,
+            border = "rounded",
+            header = "",
+            prefix = "",
+        })
+    end
+})
 
---  -- example calling setup directly for each LSP
---   config = function()
---     local capabilities = require('blink.cmp').get_lsp_capabilities()
---     local lspconfig = require('lspconfig')
+local function enable_servers(filetype)
+    for _, server in ipairs(lsp_by_ft[filetype] or {}) do
+        vim.lsp.enable(server)
+    end
+end
 
---     lspconfig['lua_ls'].setup({ capabilities = capabilities })
---   end
--- }
+vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "VimEnter" }, {
+    group = vim.api.nvim_create_augroup("MYLSPINIT", { clear = true }),
+    callback = function(event) enable_servers(vim.bo[event.buf].filetype) end,
+})

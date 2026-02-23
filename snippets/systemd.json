@@ -1,0 +1,6 @@
+{
+  "ExecStart": {
+    "prefix": "exec",
+    "body": "ExecStart=-/sbin/agetty -o '-p -f chenyc' -n -a chenyc --noclear %I \\$TERM"
+  }
+}

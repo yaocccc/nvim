@@ -1,0 +1,10 @@
+{
+  "function": {
+    "prefix": "fun",
+    "body": [
+      "func! ${1:name}(${2:param})",
+      "\t${3}",
+      "endf"
+    ]
+  }
+}

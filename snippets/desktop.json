@@ -1,0 +1,10 @@
+{
+  "Exec Telegram": {
+    "prefix": "exec",
+    "body": "Exec=env QT_QPA_PLATFORM=xcb Telegram -- %u"
+  },
+  "Exec WeChat": {
+    "prefix": "execw",
+    "body": "Exec=env QT_IM_MODULE=fcitx SDL_IM_MODULE=fcitx GLFW_IM_MODULE=ibus /opt/wechat/wechat %U"
+  }
+}

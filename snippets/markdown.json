@@ -1,0 +1,141 @@
+{
+  "head": {
+    "prefix": "head",
+    "body": [
+      "---",
+      "title: ${1:$TM_FILENAME_BASE}",
+      "url: $TM_FILENAME_BASE",
+      "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+      "tags: [${2}]",
+      "excerpt: ${3}",
+      "index_img: /img/${4}",
+      "mermaid: ${5:false}",
+      "---"
+    ],
+    "description": "front matter"
+  },
+  "picture": {
+    "prefix": "pic",
+    "body": "![${2:avatar}](${1})"
+  },
+  "task": {
+    "prefix": "td",
+    "body": "- [ ] ${1}"
+  },
+  "> task": {
+    "prefix": "td>",
+    "body": "> - [ ] ${1}"
+  },
+  ">> task": {
+    "prefix": "td>>",
+    "body": ">> - [ ] ${1}"
+  },
+  ">>> task": {
+    "prefix": "td>>>",
+    "body": ">>> - [ ] ${1}"
+  },
+  "task start": {
+    "prefix": "ss",
+    "body": "S:$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE"
+  },
+  "task deadline": {
+    "prefix": "dd",
+    "body": "D:$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE"
+  },
+  "reference": {
+    "prefix": "ref",
+    "body": "[${1}](${2})"
+  },
+  "code block": {
+    "prefix": "cc",
+    "body": [
+      "```${1:plaintext}",
+      "\t$0",
+      "```"
+    ]
+  },
+  "mermaid": {
+    "prefix": "mer",
+    "body": [
+      "```mermaid",
+      "graph TB",
+      "\t${1:A --> B}",
+      "```"
+    ]
+  },
+  "subgraph": {
+    "prefix": "sub",
+    "body": [
+      "```mermaid",
+      "graph TB",
+      "\tsubgraph ${1:g1}",
+      "\tend",
+      "\tsubgraph g2",
+      "\tend",
+      "```"
+    ]
+  },
+  "classDiagram": {
+    "prefix": "classDiagram",
+    "body": [
+      "```mermaid",
+      "classDiagram",
+      "\tclass ${1:c} {",
+      "\t}",
+      "```"
+    ]
+  },
+  "class": {
+    "prefix": "class",
+    "body": [
+      "class ${1:c} {",
+      "\t${2}",
+      "}"
+    ]
+  },
+  "table 2": {
+    "prefix": "t2",
+    "body": [
+      "| ${1:head} | ${2:head} |",
+      "| ---- | ---- |",
+      "|      |      |"
+    ]
+  },
+  "table 3": {
+    "prefix": "t3",
+    "body": [
+      "| ${1:head} | ${2:head} | ${3:head} |",
+      "| ---- | ---- | ---- |",
+      "|      |      |      |"
+    ]
+  },
+  "table 4": {
+    "prefix": "t4",
+    "body": [
+      "| ${1:head} | ${2:head} | ${3:head} | ${4:head} |",
+      "| ---- | ---- | ---- | ---- |",
+      "|      |      |      |      |"
+    ]
+  },
+  "table 5": {
+    "prefix": "t5",
+    "body": [
+      "| ${1:head} | ${2:head} | ${3:head} | ${4:head} | ${5:head} |",
+      "| ---- | ---- | ---- | ---- | ---- |",
+      "|      |      |      |      |      |"
+    ]
+  },
+  "details": {
+    "prefix": "details",
+    "body": [
+      "<details style=\"cursor: pointer; text-decoration:underline; color: #2AD;\">",
+      "\t<summary>${1}</summary>",
+      "\t${2}",
+      "</details>"
+    ]
+  },
+  "space": {
+    "prefix": "sp",
+    "body": "&nbsp;"
+  }
+}

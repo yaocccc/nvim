@@ -1,0 +1,16 @@
+{
+  "name": "nvim-snippets",
+  "contributes": {
+    "snippets": [
+      { "language": "all", "path": "./all.json" },
+      { "language": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"], "path": "./javascript.json" },
+      { "language": ["go", "gomod"], "path": "./go.json" },
+      { "language": ["html"], "path": "./html.json" },
+      { "language": ["vim"], "path": "./vim.json" },
+      { "language": ["markdown"], "path": "./markdown.json" },
+      { "language": ["sql", "mysql"], "path": "./sql.json" },
+      { "language": ["systemd"], "path": "./systemd.json" },
+      { "language": ["desktop"], "path": "./desktop.json" }
+    ]
+  }
+}

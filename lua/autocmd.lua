@@ -1,7 +1,6 @@
 local G = require('G')
 
 -- 以下是全局的autocmd
-
 vim.api.nvim_create_autocmd({ "BufEnter" }, { command = [[if &buftype == '' && &readonly == 1 | set buftype=acwrite | set noreadonly | endif]] })
 vim.api.nvim_create_autocmd({ "BufReadPost" }, { command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]] })
 vim.api.nvim_create_autocmd({ "FileType" }, { command = "try | silent! loadview | catch | endtry" })
@@ -10,10 +9,12 @@ vim.api.nvim_create_autocmd({ "InsertEnter" }, { command = "hi CursorLine ctermb
 vim.api.nvim_create_autocmd({ "InsertLeave" }, { command = "hi CursorLine ctermbg=none guibg=none" })
 
 -- 以下是for不同文件类型的相关配置
-
 local function _go()
-    vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go" }, command = "silent! call CocAction('runCommand', 'editor.action.organizeImport')" })
-    vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go" }, command = "call CocAction('format')" })
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go" }, callback = function ()
+        vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
+        vim.wait(100)
+        vim.lsp.buf.format({ async = false })
+    end })
     G.map({ { "v", "D", ":<c-u>call SurroundVaddPairs(\"/** \", \" */\")<cr>", { noremap = true, silent = true, buffer = true } }, })
 end
 
@@ -36,7 +37,7 @@ local function _python()
 end
 
 local function _vue()
-    vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.vue" }, command = "call CocAction('format')" })
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.vue" }, callback = function () vim.lsp.buf.format({ async = false }) end })
     G.map({ { "v", "D", ":<c-u>call SurroundVaddPairs(\"<!--\", \"--> \")<cr>", { noremap = true, silent = true, buffer = true } }, })
 end
 
@@ -88,7 +89,6 @@ for filetype, func in pairs(map) do
 end
 
 -- 部分需要暴露到全局的函数
-
 function G_markdown_loadafter()
     vim.cmd([[syn match markdownError "\w\@<=\w\@="]])
     vim.cmd([[syn match MDDoneDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained]])

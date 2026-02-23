@@ -82,11 +82,5 @@ end
 
 return {
     { "kyazdani42/nvim-web-devicons" },
-    {
-        "kyazdani42/nvim-tree.lua",
-        cmd = { 'NvimTreeToggle', 'NvimTreeFindFileToggle' },
-        dependencies = { "kyazdani42/nvim-web-devicons" },
-        init = M.init,
-        config = M.cofig
-    }
+    { "kyazdani42/nvim-tree.lua", cmd = { 'NvimTreeToggle', 'NvimTreeFindFileToggle' }, dependencies = { "kyazdani42/nvim-web-devicons" }, init = M.init, config = M.cofig }
 }
