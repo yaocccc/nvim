@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, { command = "hi CursorLine ctermb
 local function _go()
     vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go" }, callback = function ()
         vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
-        vim.wait(100)
+        vim.wait(50)
         vim.lsp.buf.format({ async = false })
     end })
     G.map({ { "v", "D", ":<c-u>call SurroundVaddPairs(\"/** \", \" */\")<cr>", { noremap = true, silent = true, buffer = true } }, })

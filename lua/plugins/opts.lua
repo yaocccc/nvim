@@ -1,38 +1,44 @@
 local G = require('G')
 local M = {}
 
-function M.config_indent()
-    G.hi({
-        IndentLine = { fg = '#3c3c3c' },
-        IndentLineCurrent = { fg = '#3a4f6a' },
-    })
-    require("indentmini").setup({ only_current = false })
+local iwopts = {
+    colors = { '#aeee55', '#aa5522', '#225488', '#088823', '#eed724', '#bb3c7b', '#5478c0', '#047a89', '#a84247', '#ccf2e5' },
+    search_count = false,
+    navigation = false,
+    scroll_center = true,
+    color_key = "ff",
+    cancel_color_key = "FF",
+    cancel_search_key = 'FF',
+}
+
+function GitInfo()
+    local branch = vim.b.gitsigns_head or ''
+    local diff = vim.b.gitsigns_status or ''
+    return (string.len(branch) > 0 and string.format(" %s ", branch) or " none ") .. (string.len(diff) > 0 and string.format('%s ', vim.fn.trim(diff)) or '')
 end
 
-function M.config_ff()
-    require("interestingwords").setup {
-        colors = { '#aeee55', '#aa5522', '#225488', '#088823', '#eed724', '#bb3c7b', '#5478c0', '#047a89', '#a84247', '#ccf2e5' },
-        search_count = false,
-        navigation = false,
-        scroll_center = true,
-        color_key = "ff",
-        cancel_color_key = "FF",
-        select_mode = "random",  -- random or loop
-    }
+function ErrCount()
+    local diagnostics = vim.diagnostic.count(nil, { bufnr = 0 })
+    return string.format(' E%d ', diagnostics[vim.diagnostic.severity.ERROR] or 0)
 end
 
-function M.config_vv()
-    G.map({
-        { 'v', 'v', '<Plug>(expand_region_expand)', {silent = true}},
-        { 'v', 'V', '<Plug>(expand_region_shrink)', {silent = true}},
-    })
+function GetFt()
+    local name = vim.api.nvim_eval("expand('%:p')")
+    local ft = vim.api.nvim_eval('&ft')
+    local icon = require('nvim-lines.common').get_fileicon(ft, name)
+    return string.format(' %s ', string.len(ft) > 0 and icon .. ft or '~')
 end
 
-function M.config_mp()
-    vim.g.mkdp_markdown_css = '/home/chenyc/.config/nvim/colors/markdown.css'
-    vim.g.mkdp_page_title = '${name}'
-    vim.g.mkdp_preview_options = { hide_yaml_meta = 1, disable_filename = 1 }
-    vim.g.vmt_fence_text = 'markdown-toc'
+function M.init_line()
+    vim.g.powerline_symbols = { light_right = '', dark_right = '', light_left = '', dark_left = '' }
+    vim.g.line_powerline_enable = 1
+    vim.g.line_nerdfont_enable = 1
+    vim.g.line_unnamed_filename = '~'
+    vim.g.line_statusline_getters = { 'v:lua.GitInfo', 'v:lua.ErrCount', 'v:lua.GetFt' }
+    vim.g.line_hl = { none = 'NONE', light = 'NONE', dark = 'NONE', ['break'] = '244', space = 238 }
+    vim.cmd('au VimEnter * hi VimLine_Dark ctermfg=245 guifg=#8a8a8a')
+    vim.cmd('au VimEnter * hi VimLine_Buf_Dark ctermfg=245 guifg=#8a8a8a')
+    vim.cmd('au VimEnter * hi VimLine_Other ctermfg=245 guifg=#8a8a8a')
 end
 
 function M.init_mc()
@@ -58,42 +64,11 @@ function M.init_mc()
     }
 end
 
-function M.config_tt ()
-    require("babel").setup({
-        keymaps = {
-            translate = "mm",
-            translate_word = "mm",
-        },
-    })
-end
-
-function M.init_echo()
-    G.map({ { 'v', 'C', ':<c-u>VECHO<cr>', {silent = true, noremap = true}} })
-    vim.g.vim_echo_by_file = {
-        js = 'console.log([ECHO])',
-        ts = 'console.log([ECHO])',
-        vue = 'console.log([ECHO])',
-    }
-end
-
 function M.init_comment()
     vim.g.vim_line_comments = {
-        vim = '"',
-        vimrc = '"',
-        js = '//',
-        ts = '//',
-        java = '//',
-        class = '//',
-        c = '//',
-        h = '//',
-        go = '//',
-        lua = '--',
-        proto = '//',
-        ['go.mod'] = '//',
-        md = '[^_^]:',
-        vue = '//',
-        sql = '--',
-        sol = '//',
+        vim = '"', vimrc = '"',
+        js = '//', ts = '//', java = '//', class = '//', c = '//', h = '//', go = '//', proto = '//', ['go.mod'] = '//', vue = '//', sol = '//',
+        lua = '--', sql = '--', md = '[^_^]:',
     }
     vim.g.vim_chunk_comments = {
         js = {'/**', ' *', ' */'},
@@ -111,51 +86,44 @@ function M.init_comment()
     })
 end
 
-function GitInfo()
-    local branch = vim.g.coc_git_status or ''
-    local diff = vim.b.coc_git_status or ''
-    return (string.len(branch) > 0 and string.format(" %s ", branch) or " none ") .. (string.len(diff) > 0 and string.format('%s ', vim.fn.trim(diff)) or '')
+function M.init_echo()
+    local tmp = 'console.log([ECHO])'
+    G.map({ { 'v', 'C', ':<c-u>VECHO<cr>', { silent = true, noremap = true } } })
+    vim.g.vim_echo_by_file = { js = tmp, ts = tmp, vue = tmp }
 end
 
-function CocErrCount()
-    local coc_diagnostic_info = vim.b.coc_diagnostic_info or { error = 0 }
-    return string.format(' E%d ', coc_diagnostic_info.error)
+function M.init_mp()
+    vim.g.mkdp_markdown_css = vim.fn.stdpath('config') .. '/colors/markdown.css'
+    vim.g.mkdp_preview_options = { hide_yaml_meta = 1, disable_filename = 1 }
+    vim.g.vmt_fence_text = 'markdown-toc'
 end
 
-function GetFt()
-    local name = vim.api.nvim_eval("expand('%:p')")
-    local ft = vim.api.nvim_eval('&ft')
-    local icon = require('nvim-lines.common').get_fileicon(ft, name)
-    return string.format(' %s ', string.len(ft) > 0 and icon .. ft or '~')
-end
-
-function M.init_line()
-    vim.g.powerline_symbols = { light_right = '', dark_right = '', light_left = '', dark_left = '' }
-    vim.g.line_powerline_enable = 1
-    vim.g.line_nerdfont_enable = 1
-    vim.g.line_unnamed_filename = '~'
-    vim.g.line_statusline_getters = {'v:lua.GitInfo', 'v:lua.CocErrCount', 'v:lua.GetFt'}
-    vim.g.line_hl = { none = 'NONE', light = 'NONE', dark = 'NONE', ['break'] = '244', space = 238 }
-    vim.cmd('au VimEnter * hi VimLine_Dark ctermfg=245 guifg=#8a8a8a')
-    vim.cmd('au VimEnter * hi VimLine_Buf_Dark ctermfg=245 guifg=#8a8a8a')
-    vim.cmd('au VimEnter * hi VimLine_Other ctermfg=245 guifg=#8a8a8a')
+function M.config_tt()
+    vim.api.nvim_set_keymap('n', 'mm', "viw:Translate ZH<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('v', 'mm', ":'<,'>Translate ZH<CR>", { noremap = true, silent = true })
+    require("translate").setup({
+        default = { command = "translate_shell" },
+        silent = true,
+        preset = {
+            command = { translate_shell = { args = { "-e", "bing" } } }
+        }
+    })
 end
 
 return {
     { "dstein64/vim-startuptime", cmd = "StartupTime" },
     { "yianwillis/vimcdoc", event = "CmdLineEnter" },
-    { "uga-rosa/ccc.nvim", cmd = { 'CccPick', 'CccHighlighterEnable' }, config = function () require('ccc').setup() end  },
-    { "nvimdev/indentmini.nvim", config = M.config_indent },
-    { "Mr-LLLLL/interestingwords.nvim", keys = { 'ff', 'FF' }, config = M.config_ff },
-    { "terryma/vim-expand-region", config = M.config_vv },
+    { "uga-rosa/ccc.nvim", cmd = { 'CccPick', 'CccHighlighterEnable' }, opts = {} },
+    { "nvimdev/indentmini.nvim", opts = { only_current = false }, init = function() G.hi({ IndentLine = { fg = '#3c3c3c' }, IndentLineCurrent = { fg = '#3a4f6a' } }) end },
+    { "Mr-LLLLL/interestingwords.nvim", keys = { 'ff', 'FF' }, opts = iwopts },
+    { "terryma/vim-expand-region", init = function() G.map({ { 'v', 'v', '<Plug>(expand_region_expand)', {silent = true} }, { 'v', 'V', '<Plug>(expand_region_shrink)', {silent = true} } }) end },
     { "mg979/vim-visual-multi", event = 'CursorHold', init = M.init_mc },
-    { "mzlogin/vim-markdown-toc", ft = 'markdown' },
-    { "iamcco/markdown-preview.nvim", build = function() vim.fn["mkdp#util#install"]() end, ft = 'markdown', config = M.config_mp },
     { "yaocccc/nvim-lines.lua", init = M.init_line },
     { "yaocccc/vim-comment", cmd = { "NToggleComment", "VToggleComment", "CToggleComment" }, init = M.init_comment },
-    { "yaocccc/vim-echo", cmd = "VECHO", init = M.init_echo },
     { "yaocccc/nvim-foldsign", event = 'CursorHold', opts = {} },
     { "yaocccc/vim-surround", event = 'ModeChanged' },
     { "yaocccc/vim-fcitx2en", event = 'InsertLeavePre' },
-    { "yaocccc/babel.nvim", version = "*", config = M.config_tt },
+    { "yaocccc/vim-echo", cmd = "VECHO", init = M.init_echo },
+    { "iamcco/markdown-preview.nvim", build = "cd app && npm install", ft = 'markdown', init = M.init_mp },
+    { "uga-rosa/translate.nvim", keys = { "mm" }, config = M.config_tt },
 }

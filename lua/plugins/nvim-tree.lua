@@ -3,7 +3,7 @@ local M = {}
 
 function M.init()
     vim.g.nvim_tree_firsttime = 1
-    G.map({ { 'n', 'T', 'g:nvim_tree_firsttime != 1 ? ":NvimTreeToggle<cr>" : ":let g:nvim_tree_firsttime = 0<cr>:NvimTreeToggle $PWD<cr>"', {silent = true, noremap = true, expr = true}} })
+    G.map({ { 'n', 'T', 'g:nvim_tree_firsttime != 1 ? ":NvimTreeToggle<cr>" : ":let g:nvim_tree_firsttime = 0<cr>:NvimTreeToggle $PWD<cr>"', { silent = true, noremap = true, expr = true } } })
     vim.cmd("hi! NvimTreeCursorLine cterm=NONE ctermbg=238 guibg=#444444")
     vim.cmd("hi! link NvimTreeFolderIcon NvimTreeFolderName")
 end
@@ -23,7 +23,7 @@ function M.cofig()
         vim.keymap.set('n', '<Esc>', api.tree.close, opts('Close'))
         vim.keymap.set('n', '<Left>', api.node.navigate.parent_close, opts('Close Directory'))
         vim.keymap.set('n', '<Right>', api.node.open.edit, opts('Open'))
-        vim.keymap.set('n', '<CR>',  api.node.open.edit, opts('Open'))
+        vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
         vim.keymap.set('n', ')', api.node.navigate.git.next, opts('Next Git'))
         vim.keymap.set('n', '(', api.node.navigate.git.prev, opts('Prev Git'))
         vim.keymap.set('n', '>', api.node.navigate.diagnostics.next, opts('Next Diagnostic'))
@@ -52,7 +52,8 @@ function M.cofig()
                     local height = math.max(math.floor(lines * 0.5), 20)
                     local left = math.ceil((columns - width) * 0.5)
                     local top = math.ceil((lines - height) * 0.5 - 2)
-                    return { relative = "editor", border = "rounded", width = width, height = height, row = top, col = left }
+                    return { relative = "editor", border = "rounded", width = width, height = height, row = top, col =
+                    left }
                 end,
             }
         },
@@ -65,7 +66,8 @@ function M.cofig()
             group_empty = true,
             indent_markers = { enable = true },
             icons = {
-                git_placement = "after", webdev_colors = true,
+                git_placement = "after",
+                webdev_colors = true,
                 glyphs = {
                     git = { unstaged = "~", staged = "✓", unmerged = "", renamed = "+", untracked = "?", deleted = "", ignored = " " },
                     folder = { empty = "", empty_open = "" }
@@ -74,7 +76,9 @@ function M.cofig()
         },
         filters = { dotfiles = true },
         diagnostics = {
-            enable = true, show_on_dirs = true, debounce_delay = 50,
+            enable = true,
+            show_on_dirs = true,
+            debounce_delay = 50,
             icons = { hint = "", info = "", warning = "", error = "" }
         },
     })
@@ -82,5 +86,5 @@ end
 
 return {
     { "kyazdani42/nvim-web-devicons" },
-    { "kyazdani42/nvim-tree.lua", cmd = { 'NvimTreeToggle', 'NvimTreeFindFileToggle' }, dependencies = { "kyazdani42/nvim-web-devicons" }, init = M.init, config = M.cofig }
+    { "kyazdani42/nvim-tree.lua",    cmd = { 'NvimTreeToggle', 'NvimTreeFindFileToggle' }, dependencies = { "kyazdani42/nvim-web-devicons" }, init = M.init, config = M.cofig }
 }

@@ -1,34 +1,7 @@
 -- LSP 相关的插件配置
-
 local M = {}
 
-function M.mason_config()
-    require("mason").setup({ ui = { border = "rounded" } })
-    local registry = require("mason-registry")
-    local ensure_installed = {
-        "lua-language-server",
-        "vue-language-server",
-        "vtsls",
-        "json-lsp",
-        "html-lsp",
-        "css-lsp",
-        "clangd",
-        "gopls",
-        "bash-language-server",
-        "vim-language-server",
-        "taplo",
-        "tailwindcss-language-server",
-        "nomicfoundation-solidity-language-server",
-    }
-    for _, name in ipairs(ensure_installed) do
-        local ok, pkg = pcall(registry.get_package, name)
-        if ok and not pkg:is_installed() then
-            pkg:install()
-        end
-    end
-end
-
-function M.blink_init()
+function M.init_blink()
     vim.cmd("hi BlinkCmpLabelMatch guifg=#00afaf")
 end
 
@@ -38,47 +11,35 @@ M.blink_opts = {
         ['<Up>'] = { 'select_prev', 'fallback' },
         ['<Down>'] = { 'select_next', 'fallback' },
         ['<Tab>'] = { 'select_next', 'fallback' },
-        ['<S-Tab>'] = { 'select_prev', 'fallback' },
         ['<Enter>'] = { 'select_and_accept', 'fallback' },
         ['<C-f>'] = { 'select_and_accept', 'fallback' },
         ['<C-y>'] = { 'select_and_accept', 'fallback' },
         ['<C-e>'] = { 'cancel', 'fallback' },
-        ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<C-k>'] = { 'show', 'show_documentation', 'hide_documentation' },
     },
     appearance = { nerd_font_variant = 'mono' },
     completion = {
-        documentation = {
-            auto_show = true,
-            auto_show_delay_ms = 200,
-            window = { border = 'rounded' },
-        },
+        documentation = { auto_show = true, auto_show_delay_ms = 200, window = { border = 'rounded' } },
         menu = {
             border = 'rounded',
-            draw = {
-                columns = {
-                    { "kind_icon" },
-                    { "label", "label_description", gap = 1 },
-                },
-            },
+            draw = { columns = { { "kind_icon" }, { "label", "label_description", gap = 1 } } }
         },
-        list = {
-            selection = { preselect = true, auto_insert = false },
-        },
+        list = { selection = { preselect = true, auto_insert = true } },
         ghost_text = { enabled = false },
-        accept = {
-            auto_brackets = { enabled = true, default_brackets = { '(', ')', '[', ']', '{', '}', '"', '"', "'", "'" } },
-        },
+        accept = { auto_brackets = { enabled = false } }
     },
-    signature = {
-        enabled = true,
-        window = { border = 'rounded' },
-    },
+    signature = { enabled = true, window = { border = 'rounded' } },
     cmdline = {
-        keymap = { preset = 'inherit' },
-        completion = {
-            menu = { auto_show = true },
-            list = { selection = { preselect = true, auto_insert = true } }
-        }
+        keymap = {
+            ['<Tab>'] = { 'show_and_insert_or_accept_single', 'select_next' },
+            ['<Up>'] = { 'select_prev', 'fallback' },
+            ['<Down>'] = { 'select_next', 'fallback' },
+            ['<Left>'] = { },
+            ['<Right>'] = { },
+            ['<CR>'] = { 'select_and_accept', 'fallback' },
+            ['<C-e>'] = { 'cancel', 'fallback' },
+        },
+        completion = { menu = { auto_show = true }, list = { selection = { preselect = true, auto_insert = true } } }
     },
     sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer', "ripgrep", "datword" },
@@ -119,7 +80,8 @@ function M.saga_config()
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
             vim.keymap.set('n', 'gr', '<cmd>Lspsaga finder<cr>', opts)
             vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>', opts)
-            vim.keymap.set('n', '<F2>', '<cmd>Lspsaga rename<cr>', opts)
+            vim.keymap.set({ 'v', 'x', 'n' }, 'ga', '<cmd>Lspsaga code_action<cr>', opts)
+            vim.keymap.set('n', '<F2>', '<cmd>Lspsaga rename<cr>A', opts)
             vim.keymap.set('n', '<c-e>', '<cmd>Lspsaga show_buf_diagnostics<cr>', opts)
             vim.keymap.set({ 'v', 'x' }, '=', function()
                 vim.lsp.buf.format({ async = true })
@@ -130,7 +92,8 @@ function M.saga_config()
 end
 
 return {
-    { "mason-org/mason.nvim", lazy = false, config = M.mason_config },
+    { "mason-org/mason.nvim", lazy = false, opts = { ui = { border = "rounded" } } },
     { 'nvimdev/lspsaga.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons', 'saghen/blink.cmp' }, lazy = false, config = M.saga_config },
-    { 'saghen/blink.cmp', dependencies = { "xieyonn/blink-cmp-dat-word", "mikavilpas/blink-ripgrep.nvim" }, version = '1.*', lazy = false, init = M.blink_init, opts = M.blink_opts, opts_extend = { "sources.default" } }
+    { 'saghen/blink.cmp', dependencies = { "xieyonn/blink-cmp-dat-word", "mikavilpas/blink-ripgrep.nvim" }, version = '1.*', lazy = false, init = M.init_blink, opts = M.blink_opts, opts_extend = { "sources.default" } },
+    { 'windwp/nvim-autopairs', event = "InsertEnter", opts = { check_ts = true, ts_config = { lua = { 'string' }, javascript = { 'template_string' } } } },
 }

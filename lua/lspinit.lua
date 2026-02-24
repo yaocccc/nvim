@@ -1,5 +1,6 @@
--- 不同的lsp和ft直接的映射
-local lsp_by_ft = {
+local M = {}
+
+M.lsp_by_ft = {
     lua = { "lua_ls" },
     solidity = { "solidity_ls" },
     javascript = { "vtsls", "tailwindcss" },
@@ -22,6 +23,19 @@ local lsp_by_ft = {
     zsh = { "bashls" },
 }
 
+M.pkg_by_lsp = {
+    lua_ls = "lua-language-server",
+    vue_ls = "vue-language-server",
+    vtsls = "vtsls",
+    jsonls = "json-lsp",
+    html = "html-lsp",
+    cssls = "css-lsp",
+    gopls = "gopls",
+    bashls = "bash-language-server",
+    tailwindcss = "tailwindcss-language-server",
+    solidity_ls = "nomicfoundation-solidity-language-server",
+}
+
 vim.diagnostic.config({ signs = { text = { [1] = '┃', [2] = '┃', [3] = '┃', [4] = '┃' } }, update_in_insert = false })
 vim.api.nvim_create_autocmd("CursorHold", {
     callback = function()
@@ -35,13 +49,19 @@ vim.api.nvim_create_autocmd("CursorHold", {
     end
 })
 
-local function enable_servers(filetype)
-    for _, server in ipairs(lsp_by_ft[filetype] or {}) do
-        vim.lsp.enable(server)
-    end
-end
-
 vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "VimEnter" }, {
     group = vim.api.nvim_create_augroup("MYLSPINIT", { clear = true }),
-    callback = function(event) enable_servers(vim.bo[event.buf].filetype) end,
+    callback = function(event)
+        local registry = require("mason-registry")
+        for _, lsp in ipairs(M.lsp_by_ft[vim.bo[event.buf].filetype] or {}) do
+            local pkg_name = M.pkg_by_lsp[lsp]
+            local ok, pkg = pcall(registry.get_package, pkg_name)
+            if ok and not pkg:is_installed() then
+                print("Installing " .. pkg_name .. " for " .. lsp)
+                pkg:install()
+                vim.lsp.enable(lsp)
+            end
+            vim.lsp.enable(lsp)
+        end
+    end,
 })
