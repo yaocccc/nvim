@@ -11,7 +11,7 @@ M.blink_opts = {
         ['<Up>'] = { 'select_prev', 'fallback' },
         ['<Down>'] = { 'select_next', 'fallback' },
         ['<Tab>'] = { 'select_next', 'fallback' },
-        ['<Enter>'] = { 'select_and_accept', 'fallback' },
+        ['<CR>'] = { 'select_and_accept', 'fallback' },
         ['<C-f>'] = { 'select_and_accept', 'fallback' },
         ['<C-y>'] = { 'select_and_accept', 'fallback' },
         ['<C-e>'] = { 'cancel', 'fallback' },
@@ -95,5 +95,4 @@ return {
     { "mason-org/mason.nvim", lazy = false, opts = { ui = { border = "rounded" } } },
     { 'nvimdev/lspsaga.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons', 'saghen/blink.cmp' }, lazy = false, config = M.saga_config },
     { 'saghen/blink.cmp', dependencies = { "xieyonn/blink-cmp-dat-word", "mikavilpas/blink-ripgrep.nvim" }, version = '1.*', lazy = false, init = M.init_blink, opts = M.blink_opts, opts_extend = { "sources.default" } },
-    { 'windwp/nvim-autopairs', event = "InsertEnter", opts = { check_ts = true, ts_config = { lua = { 'string' }, javascript = { 'template_string' } } } },
 }

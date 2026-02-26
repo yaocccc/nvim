@@ -1,4 +1,3 @@
-local G = require('G')
 local M = {}
 
 function M.config()
@@ -12,7 +11,7 @@ function M.config()
             keymap = { accept = false, next = "<C-down>", prev = "<c-up>", accept_word = false, accept_line = false, dismiss = false, toggle_auto_trigger = false },
         },
     })
-    G.hi({ ["CopilotSuggestion"] = { fg = "#6e6e6e", italic = false } })
+    vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#6e6e6e", italic = false })
 
     local accept = function()
         if require("copilot.suggestion").is_visible() then

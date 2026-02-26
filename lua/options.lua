@@ -35,7 +35,6 @@ vim.opt.viminfo = "!,'10000,<50,s10,h"
 vim.opt.foldenable = true
 vim.opt.foldmethod = 'manual'
 vim.opt.viewdir = vim.fn.stdpath('config') .. '/cache/viewdir'
-vim.opt.foldtext = 'v:lua.MagicFoldText()' -- 方法的定义在 lua/keymap.lua 中
 vim.opt.cmdheight = 1
 vim.opt.updatetime = 300
 vim.opt.shortmess = 'filnxtToOcIF'
@@ -55,3 +54,26 @@ vim.cmd([[
     let &t_vb = ''
     let &t_ut = ''
 ]])
+
+-- 展示FoldText的方法
+function MagicFoldText()
+    local spacetext = ("        "):sub(0, vim.opt.shiftwidth:get())
+    local line = vim.fn.getline(vim.v.foldstart):gsub("\t", spacetext)
+    local folded = vim.v.foldend - vim.v.foldstart + 1
+    local findresult = line:find('%S')
+    if not findresult then return '+ folded ' .. folded .. ' lines ' end
+    local empty = findresult - 1
+    local funcs = {
+        [0] = function(_) return '' .. line end,
+        [1] = function(_) return '+' .. line:sub(2) end,
+        [2] = function(_) return '+ ' .. line:sub(3) end,
+        [-1] = function(c)
+            local result = ' ' .. line:sub(c + 1)
+            local foldednumlen = #tostring(folded)
+            for _ = 1, c - 2 - foldednumlen do result = '-' .. result end
+            return '+' .. folded .. result
+        end,
+    }
+    return funcs[empty <= 2 and empty or -1](empty) .. ' folded ' .. folded .. ' lines '
+end
+vim.opt.foldtext = 'MagicFoldText()' -- 方法的定义在 lua/keymap.lua 中

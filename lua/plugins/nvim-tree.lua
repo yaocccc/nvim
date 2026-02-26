@@ -1,9 +1,15 @@
-local G = require('G')
 local M = {}
 
 function M.init()
     vim.g.nvim_tree_firsttime = 1
-    G.map({ { 'n', 'T', 'g:nvim_tree_firsttime != 1 ? ":NvimTreeToggle<cr>" : ":let g:nvim_tree_firsttime = 0<cr>:NvimTreeToggle $PWD<cr>"', { silent = true, noremap = true, expr = true } } })
+    vim.keymap.set('n', 'T', function()
+        if vim.g.nvim_tree_firsttime == 1 then
+            vim.g.nvim_tree_firsttime = 0
+            require("nvim-tree.api").tree.toggle({ path = "$PWD" })
+        else
+            require("nvim-tree.api").tree.toggle()
+        end
+    end, { silent = true, noremap = true })
     vim.cmd("hi! NvimTreeCursorLine cterm=NONE ctermbg=238 guibg=#444444")
     vim.cmd("hi! link NvimTreeFolderIcon NvimTreeFolderName")
 end

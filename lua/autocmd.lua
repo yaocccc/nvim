@@ -1,5 +1,3 @@
-local G = require('G')
-
 -- 以下是全局的autocmd
 vim.api.nvim_create_autocmd({ "BufEnter" }, { command = [[if &buftype == '' && &readonly == 1 | set buftype=acwrite | set noreadonly | endif]] })
 vim.api.nvim_create_autocmd({ "BufReadPost" }, { command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]] })
@@ -15,57 +13,50 @@ local function _go()
         vim.wait(50)
         vim.lsp.buf.format({ async = false })
     end })
-    G.map({ { "v", "D", ":<c-u>call SurroundVaddPairs(\"/** \", \" */\")<cr>", { noremap = true, silent = true, buffer = true } }, })
+    vim.keymap.set('v', 'D', ':<c-u>call SurroundVaddPairs("/** ", " */")<cr>', { noremap = true, silent = true, buffer = true })
 end
 
 local function _javascript()
-    G.map({
-        { "v", "D", ":<c-u>call SurroundVaddPairs(\"/** \", \" */\")<cr>", { noremap = true, silent = true, buffer = true } },
-        { "v", "T", ":<c-u>call SurroundVaddPairs(\"try {\", \"} catch (e) {}\")<cr>", { noremap = true, silent = true, buffer = true } },
-    })
+    vim.keymap.set('v', 'D', ':<c-u>call SurroundVaddPairs("/** ", " */")<cr>', { noremap = true, silent = true, buffer = true })
+    vim.keymap.set('v', 'T', ':<c-u>call SurroundVaddPairs("try {", "} catch (e) {}")<cr>', { noremap = true, silent = true, buffer = true })
 end
 
 local function _typescript()
-    G.map({
-        { "v", "D", ":<c-u>call SurroundVaddPairs(\"/** \", \" */\")<cr>", { noremap = true, silent = true, buffer = true } },
-        { "v", "T", ":<c-u>call SurroundVaddPairs(\"try {\", \"} catch (e: any) {}\")<cr>", { noremap = true, silent = true, buffer = true } },
-    })
+    vim.keymap.set('v', 'D', ':<c-u>call SurroundVaddPairs("/** ", " */")<cr>', { noremap = true, silent = true, buffer = true })
+    vim.keymap.set('v', 'T', ':<c-u>call SurroundVaddPairs("try {", "} catch (e) {}")<cr>', { noremap = true, silent = true, buffer = true })
 end
 
 local function _python()
-    G.map({ { "v", "D", ":<c-u>call SurroundVaddPairs(\"/** \", \" */\")<cr>", { noremap = true, silent = true, buffer = true } }, })
+    vim.keymap.set('v', 'D', ':<c-u>call SurroundVaddPairs("\"\"\" ", " \"\"\"")<cr>', { noremap = true, silent = true, buffer = true })
 end
 
 local function _vue()
     vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.vue" }, callback = function () vim.lsp.buf.format({ async = false }) end })
-    G.map({ { "v", "D", ":<c-u>call SurroundVaddPairs(\"<!--\", \"--> \")<cr>", { noremap = true, silent = true, buffer = true } }, })
+    vim.keymap.set('v', 'D', ':<c-u>call SurroundVaddPairs("<!-- ", " -->")<cr>', { noremap = true, silent = true, buffer = true })
 end
 
 local function _markdown()
-    G.hi({
-        ["MDTodoDate"] = { fg = "#5faf5f", italic = false }, -- 71
-        ["MDDoneDate"] = { fg = "#5faf5f", italic = true, strikethrough = true }, -- 71
-        ["MDTodoText"] = { italic = false },
-        ["MDDoneText"] = { fg = "#00afaf", italic = true, strikethrough = true }, -- 37
-        ["MDDeadline"] = { fg = "#d70087", bold = true, underline = true }, -- 162
-        ["MDNearline"] = { fg = "#d7af00", bold = true }, -- 178
-    })
+    vim.api.nvim_set_hl(0, "MDTodoDate", { fg = "#5faf5f", italic = false })
+    vim.api.nvim_set_hl(0, "MDDoneDate", { fg = "#5faf5f", italic = true, strikethrough = true })
+    vim.api.nvim_set_hl(0, "MDTodoText", { italic = false })
+    vim.api.nvim_set_hl(0, "MDDoneText", { fg = "#00afaf", italic = true, strikethrough = true })
+    vim.api.nvim_set_hl(0, "MDDeadline", { fg = "#d70087", bold = true, underline = true })
+    vim.api.nvim_set_hl(0, "MDNearline", { fg = "#d7af00", bold = true })
     vim.cmd([[
         call matchadd('MDDeadline', 'D:'.strftime("%Y-%m-%d"))
         call matchadd('MDNearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 24))
         call matchadd('MDNearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 48))
     ]])
-    G.map({
-        { "n", "<cr>", ":call v:lua.G_markdown_toggleCheck(0)<cr><cr>", { noremap = true, silent = true, buffer = true } },
-        { "n", "<2-LeftMouse>", ":call v:lua.G_markdown_toggleCheck(1)<cr><2-LeftMouse>", { noremap = true, silent = true, buffer = true } },
-        { "v", "B", ':<c-u>call SurroundVaddPairs("**", "**")<cr>', { noremap = true, silent = true, buffer = true } },
-        { "v", "I", ':<c-u>call SurroundVaddPairs("*", "*")<cr>', { noremap = true, silent = true, buffer = true } },
-        { "v", "T", ':<c-u>call SurroundVaddPairs("- [ ] ", "")<cr>', { noremap = true, silent = true, buffer = true } },
-        { "v", "`", ':<c-u>call SurroundVaddPairs("`", "``")<cr>', { noremap = true, silent = true, buffer = true } },
-        { "v", "C", ':<c-u>call SurroundVaddPairs("```plaintext", "```")<cr>', { noremap = true, silent = true, buffer = true } },
-        { "n", "<F6>", ':call v:lua.G_markdown_toggleMPTheme()<cr>', { noremap = true, silent = true, buffer = true } },
-        { "i", "<F6>", '<esc>:call v:lua.G_markdown_toggleMPTheme()<cr>', { noremap = true, silent = true, buffer = true } },
-    })
+    vim.keymap.set('n', '<cr>', ':call v:lua.G_markdown_toggleCheck(0)<cr><cr>', { noremap = true, silent = true, buffer = true })
+    vim.keymap.set('n', '<2-LeftMouse>', ':call v:lua.G_markdown_toggleCheck(1)<cr><2-LeftMouse>', { noremap = true, silent = true, buffer = true })
+    vim.keymap.set('v', 'B', ':<c-u>call SurroundVaddPairs("**", "**")<cr>', { noremap = true, silent = true, buffer = true })
+    vim.keymap.set('v', 'I', ':<c-u>call SurroundVaddPairs("*", "*")<cr>', { noremap = true, silent = true, buffer = true })
+    vim.keymap.set('v', 'T', ':<c-u>call SurroundVaddPairs("- [ ] ", "")<cr>', { noremap = true, silent = true, buffer = true })
+    vim.keymap.set('v', '`', ':<c-u>call SurroundVaddPairs("`", "``")<cr>', { noremap = true, silent = true, buffer = true })
+    vim.keymap.set('v', 'C', ':<c-u>call SurroundVaddPairs("```plaintext", "```")<cr>', { noremap = true, silent = true, buffer = true })
+    vim.keymap.set('n', '<F6>', ':call v:lua.G_markdown_toggleMPTheme()<cr>', { noremap = true, silent = true, buffer = true })
+    vim.keymap.set('i', '<F6>', '<esc>:call v:lua.G_markdown_toggleMPTheme()<cr>', { noremap = true, silent = true, buffer = true })
+
     vim.cmd("call timer_start(0, 'v:lua.G_markdown_loadafter')") -- 延迟加载
 end
 

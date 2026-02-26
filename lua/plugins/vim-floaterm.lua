@@ -1,4 +1,3 @@
-local G = require('G')
 local M = {}
 
 -- toggleFT func: 存在对应名称的窗口则toggle，否则新建
@@ -12,10 +11,8 @@ end
 
 -- 用于快速设定floatterm的相关map
 function M.setFTToggleMap(key, name, cmd)
-    G.map({
-        { 'n', key, string.format(":lua require('plugins/vim-floaterm').M.toggleFT('%s', '%s')<cr>", name, cmd),                                                                          { silent = true, noremap = true } },
-        { 't', key, "&ft == \"floaterm\" ? printf('<c-\\><c-n>:FloatermHide<cr>%s', floaterm#terminal#get_bufnr('" .. name .. "') == bufnr('%') ? '' : '" .. key .. "') : '" .. key .. "'", { silent = true, expr = true } },
-    })
+    vim.keymap.set('n', key, string.format(":lua require('plugins/vim-floaterm').M.toggleFT('%s', '%s')<cr>", name, cmd), { silent = true, noremap = true })
+    vim.keymap.set('t', key, string.format("&ft == \"floaterm\" ? printf('<c-\\><c-n>:FloatermHide<cr>%s', floaterm#terminal#get_bufnr('%s') == bufnr('%%') ? '' : '%s') : '%s'", key, name, key, key), { silent = true, expr = true })
 end
 
 -- 特殊func 定义了F5行为时根据当前文件类型调用不同的命令
@@ -63,11 +60,10 @@ function M.config()
     M.setFTToggleMap('<c-t>', 'TERM', '')
     M.setFTToggleMap('<c-f>', 'RANGER', 'ranger')
     -- M.setFTToggleMap('<c-b>', 'DBUI', 'nvim +CALLDB')
-    G.map({
-        { 'n', '<F5>', ':lua require("plugins/vim-floaterm").M.runFile()<cr>',                                                                                    { silent = true, noremap = true } },
-        { 'i', '<F5>', '<esc>:lua require("plugins/vim-floaterm").M.runFile()<cr>',                                                                               { silent = true, noremap = true } },
-        { 't', '<F5>', "&ft == \"floaterm\" ? printf('<c-\\><c-n>:FloatermHide<cr>%s', floaterm#terminal#get_bufnr('RUN') == bufnr('%') ? '' : '<F5>') : '<F5>'", { silent = true, expr = true } }
-    })
+    vim.keymap.set('n', '<F5>', ':lua require("plugins/vim-floaterm").M.runFile()<cr>', { silent = true, noremap = true })
+    vim.keymap.set('i', '<F5>', '<esc>:lua require("plugins/vim-floaterm").M.runFile()<cr>', { silent = true, noremap = true })
+    vim.keymap.set('t', '<F5>', "&ft == \"floaterm\" ? printf('<c-\\><c-n>:FloatermHide<cr>%s', floaterm#terminal#get_bufnr('RUN') == bufnr('%') ? '' : '<F5>') : '<F5>'", { silent = true, expr = true })
+
 end
 
 return { "voldikss/vim-floaterm", config = M.config, M = M }

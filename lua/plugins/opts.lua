@@ -1,4 +1,3 @@
-local G = require('G')
 local M = {}
 
 local iwopts = {
@@ -18,8 +17,8 @@ function GitInfo()
 end
 
 function ErrCount()
-    local diagnostics = vim.diagnostic.count(nil, { bufnr = 0 })
-    return string.format(' E%d ', diagnostics[vim.diagnostic.severity.ERROR] or 0)
+    local diagnostics = vim.diagnostic.count(nil, { bufnr = vim.api.nvim_get_current_buf() })
+    return string.format('  err=%d  ', diagnostics[vim.diagnostic.severity.ERROR] or 0)
 end
 
 function GetFt()
@@ -79,16 +78,14 @@ function M.init_comment()
         vue = {'/**', ' *', ' */'},
         sol = {'/**', ' *', ' */'},
     }
-    G.map({
-        { 'n', '??', ':NToggleComment<cr>', {silent = true, noremap = true}},
-        { 'v', '/', ':<c-u>VToggleComment<cr>', {silent = true, noremap = true}},
-        { 'v', '?', ':<c-u>CToggleComment<cr>', {silent = true, noremap = true}},
-    })
+    vim.keymap.set('n', '??', ':NToggleComment<cr>', { silent = true, noremap = true })
+    vim.keymap.set('v', '/', ':<c-u>VToggleComment<cr>', { silent = true, noremap = true })
+    vim.keymap.set('v', '?', ':<c-u>CToggleComment<cr>', { silent = true, noremap = true })
 end
 
 function M.init_echo()
     local tmp = 'console.log([ECHO])'
-    G.map({ { 'v', 'C', ':<c-u>VECHO<cr>', { silent = true, noremap = true } } })
+    vim.keymap.set('v', 'C', ':<c-u>VECHO<cr>', { silent = true, noremap = true })
     vim.g.vim_echo_by_file = { js = tmp, ts = tmp, vue = tmp }
 end
 
@@ -114,9 +111,7 @@ return {
     { "dstein64/vim-startuptime", cmd = "StartupTime" },
     { "yianwillis/vimcdoc", event = "CmdLineEnter" },
     { "uga-rosa/ccc.nvim", cmd = { 'CccPick', 'CccHighlighterEnable' }, opts = {} },
-    { "nvimdev/indentmini.nvim", opts = { only_current = false }, init = function() G.hi({ IndentLine = { fg = '#3c3c3c' }, IndentLineCurrent = { fg = '#3a4f6a' } }) end },
     { "Mr-LLLLL/interestingwords.nvim", keys = { 'ff', 'FF' }, opts = iwopts },
-    { "terryma/vim-expand-region", init = function() G.map({ { 'v', 'v', '<Plug>(expand_region_expand)', {silent = true} }, { 'v', 'V', '<Plug>(expand_region_shrink)', {silent = true} } }) end },
     { "mg979/vim-visual-multi", event = 'CursorHold', init = M.init_mc },
     { "yaocccc/nvim-lines.lua", init = M.init_line },
     { "yaocccc/vim-comment", cmd = { "NToggleComment", "VToggleComment", "CToggleComment" }, init = M.init_comment },
@@ -126,4 +121,19 @@ return {
     { "yaocccc/vim-echo", cmd = "VECHO", init = M.init_echo },
     { "iamcco/markdown-preview.nvim", build = "cd app && npm install", ft = 'markdown', init = M.init_mp },
     { "uga-rosa/translate.nvim", keys = { "mm" }, config = M.config_tt },
+    {
+        "terryma/vim-expand-region",
+        init = function()
+            vim.keymap.set('v', 'v', '<Plug>(expand_region_expand)', { silent = true })
+            vim.keymap.set('v', 'V', '<Plug>(expand_region_shrink)', { silent = true })
+        end
+    },
+    {
+        "nvimdev/indentmini.nvim",
+        opts = { only_current = false },
+        init = function()
+            vim.api.nvim_set_hl(0, 'IndentLine', { fg = '#3c3c3c' })
+            vim.api.nvim_set_hl(0, 'IndentLineCurrent', { fg = '#3a4f6a' })
+        end
+    },
 }
