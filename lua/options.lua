@@ -1,3 +1,5 @@
+vim.cmd('hi Normal ctermfg=7 guifg=#c0c0c0 ctermbg=NONE cterm=NONE')
+vim.cmd.colorscheme('solarized8_high')
 vim.g.python3_host_prog = os.getenv('PYTHON') -- export PYTHON=$(which python3)
 vim.g.editorconfig = false
 vim.opt.termguicolors = true
@@ -45,15 +47,15 @@ vim.opt.numberwidth = 2
 vim.opt.cul = true
 vim.opt.signcolumn = 'yes'
 vim.opt.fillchars = 'fold:-,stlnc:#,eob: ,foldsep:='
+vim.opt.foldtext = 'MagicFoldText()'
 
-vim.cmd([[
-    hi Normal ctermfg=7 guifg=#c0c0c0 ctermbg=NONE cterm=NONE
-    colorscheme solarized8_high
-    let &t_SI .= '\e[5 q'
-    let &t_EI .= '\e[1 q'
-    let &t_vb = ''
-    let &t_ut = ''
-]])
+-- 以下是全局的autocmd
+vim.api.nvim_create_autocmd({ "BufEnter" }, { command = [[if &buftype == '' && &readonly == 1 | set buftype=acwrite | set noreadonly | endif]] })
+vim.api.nvim_create_autocmd({ "BufReadPost" }, { command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]] })
+vim.api.nvim_create_autocmd({ "FileType" }, { command = "try | silent! loadview | catch | endtry" })
+vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, { command = "silent! mkview" })
+vim.api.nvim_create_autocmd({ "InsertEnter" }, { command = "hi CursorLine ctermbg=235 guibg=#262626" })
+vim.api.nvim_create_autocmd({ "InsertLeave" }, { command = "hi CursorLine ctermbg=none guibg=none" })
 
 -- 展示FoldText的方法
 function MagicFoldText()
@@ -76,4 +78,3 @@ function MagicFoldText()
     }
     return funcs[empty <= 2 and empty or -1](empty) .. ' folded ' .. folded .. ' lines '
 end
-vim.opt.foldtext = 'MagicFoldText()' -- 方法的定义在 lua/keymap.lua 中

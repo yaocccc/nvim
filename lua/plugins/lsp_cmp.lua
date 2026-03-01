@@ -2,7 +2,8 @@
 local M = {}
 
 function M.init_blink()
-    vim.cmd("hi BlinkCmpLabelMatch guifg=#00afaf")
+    vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpActiveParameter", { fg = "#00afaf", bold = true })
+    vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#00afaf" })
 end
 
 M.blink_opts = {
@@ -39,13 +40,15 @@ M.blink_opts = {
             ['<CR>'] = { 'select_and_accept', 'fallback' },
             ['<C-e>'] = { 'cancel', 'fallback' },
         },
+        sources = { "fixedkeyword", "cmdline", "buffer" },
         completion = { menu = { auto_show = true }, list = { selection = { preselect = true, auto_insert = true } } }
     },
     sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer', "ripgrep", "datword" },
         providers = {
             datword = { name = "datword", module = "blink-cmp-dat-word", opts = { paths = {  vim.fn.stdpath('config') .. "/word.txt" } } },
-            ripgrep = { name = "ripgrep", module = "blink-ripgrep", opts = { debounce_ms = 200, max_item_count = 1000 } },
+            ripgrep = { name = "ripgrep", module = "blink-ripgrep", opts = { debounce_ms = 200, max_item_count = 100 } },
+            fixedkeyword = { name = 'keyword 固定在第一位', module = 'fixedkeyword', opts = {}, score_offset = 999 }
         }
     },
     fuzzy = { implementation = "prefer_rust_with_warning" },
@@ -94,5 +97,14 @@ end
 return {
     { "mason-org/mason.nvim", lazy = false, opts = { ui = { border = "rounded" } } },
     { 'nvimdev/lspsaga.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons', 'saghen/blink.cmp' }, lazy = false, config = M.saga_config },
-    { 'saghen/blink.cmp', dependencies = { "xieyonn/blink-cmp-dat-word", "mikavilpas/blink-ripgrep.nvim" }, version = '1.*', lazy = false, init = M.init_blink, opts = M.blink_opts, opts_extend = { "sources.default" } },
+    {
+        'saghen/blink.cmp',
+        dependencies = { "xieyonn/blink-cmp-dat-word", "mikavilpas/blink-ripgrep.nvim", "yaocccc/blink-cmp-fixedkeyword" },
+        version = '1.*',
+        lazy = false,
+        init = M.init_blink,
+        opts = M.blink_opts,
+        opts_extend = { "sources.default" } 
+    },
+
 }

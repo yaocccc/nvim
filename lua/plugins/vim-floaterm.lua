@@ -53,13 +53,10 @@ function M.config()
     vim.g.floaterm_height = 0.8
     vim.g.floaterm_autoclose = 0
     vim.g.floaterm_opener = 'edit'
-    vim.cmd(
-    "au BufEnter * if &buftype == 'terminal' | :call timer_start(50, { -> execute('startinsert!') }, { 'repeat': 3 }) | endif")
+    vim.cmd("au BufEnter * if &buftype == 'terminal' | :call timer_start(50, { -> execute('startinsert!') }, { 'repeat': 3 }) | endif")
     vim.cmd("hi FloatermBorder ctermfg=fg ctermbg=none")
 
     M.setFTToggleMap('<c-t>', 'TERM', '')
-    M.setFTToggleMap('<c-f>', 'RANGER', 'ranger')
-    -- M.setFTToggleMap('<c-b>', 'DBUI', 'nvim +CALLDB')
     vim.keymap.set('n', '<F5>', ':lua require("plugins/vim-floaterm").M.runFile()<cr>', { silent = true, noremap = true })
     vim.keymap.set('i', '<F5>', '<esc>:lua require("plugins/vim-floaterm").M.runFile()<cr>', { silent = true, noremap = true })
     vim.keymap.set('t', '<F5>', "&ft == \"floaterm\" ? printf('<c-\\><c-n>:FloatermHide<cr>%s', floaterm#terminal#get_bufnr('RUN') == bufnr('%') ? '' : '<F5>') : '<F5>'", { silent = true, expr = true })

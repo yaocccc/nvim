@@ -169,3 +169,12 @@ for _, c in ipairs({ '(', '[', '{', ')', ']', '}', '"', "'", '`' }) do
     vim.keymap.set('i', c, function() return magic_insertpair(c) end, { expr = true, noremap = true })
 end
 vim.keymap.set('i', '<BS>', magic_delpair, { expr = true, noremap = true })
+
+-- 对外提供，供命令行直接调用设置bar不显示
+function G_toggleBar(status)
+    vim.cmd('set laststatus=' .. status)
+    vim.cmd('set showtabline=' .. status)
+    if status == 0 then
+        vim.o.winbar = ' '
+    end
+end
