@@ -17,7 +17,7 @@ function GitInfo()
 end
 
 function ErrCount()
-    local diagnostics = vim.diagnostic.count(nil, { bufnr = vim.api.nvim_get_current_buf() })
+    local diagnostics = vim.diagnostic.count(0, { severity = vim.diagnostic.severity.ERROR })
     return string.format('  err=%d  ', diagnostics[vim.diagnostic.severity.ERROR] or 0)
 end
 
@@ -95,18 +95,6 @@ function M.init_mp()
     vim.g.vmt_fence_text = 'markdown-toc'
 end
 
-function M.config_tt()
-    vim.api.nvim_set_keymap('n', 'mm', "viw:Translate ZH<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('v', 'mm', ":'<,'>Translate ZH<CR>", { noremap = true, silent = true })
-    require("translate").setup({
-        default = { command = "translate_shell" },
-        silent = true,
-        preset = {
-            command = { translate_shell = { args = { "-e", "bing" } } }
-        }
-    })
-end
-
 return {
     { "dstein64/vim-startuptime", cmd = "StartupTime" },
     { "yianwillis/vimcdoc", event = "CmdLineEnter" },
@@ -120,7 +108,6 @@ return {
     { "yaocccc/vim-fcitx2en", event = 'InsertLeavePre' },
     { "yaocccc/vim-echo", cmd = "VECHO", init = M.init_echo },
     { "iamcco/markdown-preview.nvim", build = "cd app && npm install", ft = 'markdown', init = M.init_mp },
-    { "uga-rosa/translate.nvim", keys = { "mm" }, config = M.config_tt },
     {
         "terryma/vim-expand-region",
         init = function()
@@ -135,5 +122,12 @@ return {
             vim.api.nvim_set_hl(0, 'IndentLine', { fg = '#3c3c3c' })
             vim.api.nvim_set_hl(0, 'IndentLineCurrent', { fg = '#3a4f6a' })
         end
+    },
+    {
+        "acidsugarx/babel.nvim",
+        version = "*",
+        config = M.config_tt,
+        keys = { 'mm' },
+        opts = { target = "zh", display = "float", keymaps = { translate = "mm", translate_word = "mm" }, float = { nvim_open_win = { relative = "cursor", row = 1, col = 0, anchor = "NW", border = "single", title = "" }, max_width = 50, max_height = 10 } }
     },
 }

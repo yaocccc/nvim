@@ -1,7 +1,7 @@
 local M = {}
 
 function M.toggle()
-    require("nvim-tree.api").tree.toggle({ path = vim.fn.getcwd() })
+    require("nvim-tree.api").tree.toggle({ path = os.getenv("PWD") })
 end
 
 function M.init()

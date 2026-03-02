@@ -1,4 +1,5 @@
 {
+  "babel.nvim": { "branch": "main", "commit": "cd76c79deb9eb0f61b06a2e4f33f8cc28eba4f9d" },
   "blink-cmp-dat-word": { "branch": "main", "commit": "0c58fe92bd94710c52a5cb3a89c63a47bc851733" },
   "blink-cmp-fixedkeyword": { "branch": "master", "commit": "8ebecdb9de5efc5cddd60544bb50fd99ff1aea9f" },
   "blink-ripgrep.nvim": { "branch": "main", "commit": "841e530f202c1dd96acc7034478517be3929fc27" },
@@ -18,7 +19,6 @@
   "nvim-tree.lua": { "branch": "master", "commit": "018a078c1e149bcd0c4e65c92aabb8e12501d769" },
   "nvim-treesitter": { "branch": "main", "commit": "b9171ede5de41b3f2dfa33fe33ebd585d795f928" },
   "nvim-web-devicons": { "branch": "master", "commit": "737cf6c657898d0c697311d79d361288a1343d50" },
-  "translate.nvim": { "branch": "main", "commit": "1a841e56407ba02e919ed9af573dbe531404aebb" },
   "vim-comment": { "branch": "master", "commit": "efc0472cf21614268a8dcc2904d686a24d7c66d6" },
   "vim-echo": { "branch": "master", "commit": "7c07cb57d31649d65f3905e9867756291746ac5a" },
   "vim-expand-region": { "branch": "master", "commit": "966513543de0ddc2d673b5528a056269e7917276" },
