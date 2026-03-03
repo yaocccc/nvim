@@ -11,7 +11,15 @@ M.blink_opts = {
         preset = 'default',
         ['<Up>'] = { 'select_prev', 'fallback' },
         ['<Down>'] = { 'select_next', 'fallback' },
-        ['<Tab>'] = { 'select_next', 'fallback' },
+        ['<Tab>'] = {
+            function(cmp)
+                if cmp.is_visible() then return cmp.select_next() end
+                local col = vim.fn.col('.') - 1
+                local needshow = not cmp.is_visible() and col > 0 and vim.fn.getline('.'):sub(col, col):match('%S')
+                if needshow then return cmp.show() end
+            end,
+            'fallback'
+        },
         ['<CR>'] = { 'select_and_accept', 'fallback' },
         ['<C-f>'] = { 'select_and_accept', 'fallback' },
         ['<C-y>'] = { 'select_and_accept', 'fallback' },
@@ -37,7 +45,22 @@ M.blink_opts = {
             ['<Down>'] = { 'select_next', 'fallback' },
             ['<Left>'] = { },
             ['<Right>'] = { },
-            ['<CR>'] = { 'select_and_accept', 'fallback' },
+            ['<CR>'] = {
+                -- 搜索模式时 如果所有选项都是相同的，则直接提交
+                function(cmp)
+                    if vim.fn.getcmdtype() == '/' and cmp.is_visible() then
+                        local items = require('blink.cmp.completion.list').items
+                        local all_same = #items > 0
+                        for i = 2, #items do if items[i].label ~= items[1].label then all_same = false break end end
+                        if all_same then
+                            cmp.accept_and_enter()
+                            return true
+                        end
+                    end
+                end,
+                'select_and_accept',
+                'fallback'
+            },
             ['<C-e>'] = { 'cancel', 'fallback' },
         },
         sources = { "fixedkeyword", "cmdline", "buffer" },
@@ -85,7 +108,8 @@ function M.saga_config()
             vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>', opts)
             vim.keymap.set({ 'v', 'x', 'n' }, 'ga', '<cmd>Lspsaga code_action<cr>', opts)
             vim.keymap.set('n', '<F2>', '<cmd>Lspsaga rename<cr>A', opts)
-            vim.keymap.set('n', '<c-e>', '<cmd>Lspsaga show_workspace_diagnostics<cr>', opts)
+            vim.keymap.set('n', '<c-e>', '<cmd>Lspsaga show_buf_diagnostics<cr>', opts)
+            vim.keymap.set('n', '\\e', '<cmd>Lspsaga show_workspace_diagnostics<cr>', opts)
             vim.keymap.set({ 'v', 'x' }, '=', function()
                 vim.lsp.buf.format({ async = true })
                 vim.api.nvim_input('<Esc>')
