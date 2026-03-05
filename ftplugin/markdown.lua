@@ -1,7 +1,3 @@
-vim.bo.shiftwidth  = 2
-vim.bo.tabstop     = 2
-vim.bo.softtabstop = 2
-
 -- 快速toggle todo状态
 function G_markdown_toggleCheck(needsave)
     local line = vim.fn.getline('.')
@@ -11,7 +7,6 @@ function G_markdown_toggleCheck(needsave)
     vim.fn.setline('.', line)
     if needsave == 1 then vim.cmd('w') end
 end
-
 
 vim.keymap.set('n', '<cr>', ':call v:lua.G_markdown_toggleCheck(0)<cr><cr>', { noremap = true, silent = true, buffer = true })
 vim.keymap.set('n', '<2-LeftMouse>', ':call v:lua.G_markdown_toggleCheck(1)<cr><2-LeftMouse>', { noremap = true, silent = true, buffer = true })
@@ -34,16 +29,21 @@ vim.defer_fn(function() G_markdown_loadafter(vim.api.nvim_get_current_buf()) end
 function G_markdown_loadafter(bufnr)
     vim.api.nvim_buf_call(bufnr, function()
         if not vim.api.nvim_buf_is_valid(bufnr) then return end
-        vim.cmd([[syn match markdownError "\w\@<=\w\@="]])
-        vim.cmd([[syn match MDDoneDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained]])
-        vim.cmd([[syn match MDTodoDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained]])
-        vim.cmd([[syn match MDDoneText /\zs.*- \[x\] \zs.*/ contains=MDDoneDate contained]])
-        vim.cmd([[syn match MDTodoText /- \[ \] \zs.*/ contains=MDTodoDate contained]])
-        vim.cmd([[syn match MDTask /\zs.*- \[\(x\| \)\] .*/ contains=MDDoneText,MDTodoText]])
+
+        vim.bo.shiftwidth  = 2
+        vim.bo.tabstop     = 2
+        vim.bo.softtabstop = 2
+
         vim.cmd([[
-        call matchadd('MDDeadline', 'D:'.strftime("%Y-%m-%d"))
-        call matchadd('MDNearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 24))
-        call matchadd('MDNearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 48))
-    ]])
+            syn match markdownError "\w\@<=\w\@="
+            syn match MDDoneDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained
+            syn match MDTodoDate /[SD]:\d\{4\}\([\/-]\d\d\)\{2\}/ contained
+            syn match MDDoneText /\zs.*- \[x\] \zs.*/ contains=MDDoneDate contained
+            syn match MDTodoText /- \[ \] \zs.*/ contains=MDTodoDate contained
+            syn match MDTask /\zs.*- \[\(x\| \)\] .*/ contains=MDDoneText,MDTodoText
+            call matchadd('MDDeadline', 'D:'.strftime("%Y-%m-%d"))
+            call matchadd('MDNearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 24))
+            call matchadd('MDNearline', 'D:'.strftime("%Y-%m-%d", localtime() + 3600 * 48))
+        ]])
     end)
 end

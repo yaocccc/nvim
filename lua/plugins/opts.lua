@@ -107,6 +107,7 @@ return {
     { "yaocccc/vim-surround", event = 'ModeChanged' },
     { "yaocccc/vim-fcitx2en", event = 'InsertLeavePre' },
     { "yaocccc/vim-echo", cmd = "VECHO", init = M.init_echo },
+    { 'MeanderingProgrammer/render-markdown.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter' }, opts = { code = { width = 'block', right_pad = 4, language_pad = 3, border = 'thin' } }, },
     { "iamcco/markdown-preview.nvim", build = "cd app && npm install", ft = 'markdown', init = M.init_mp },
     {
         "terryma/vim-expand-region",

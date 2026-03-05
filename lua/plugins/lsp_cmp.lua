@@ -20,8 +20,7 @@ M.blink_opts = {
             end,
             'fallback'
         },
-        ['<CR>'] = { 'select_and_accept', 'fallback' },
-        ['<C-f>'] = { 'select_and_accept', 'fallback' },
+        ['<CR>'] = { 'accept', 'fallback' },
         ['<C-y>'] = { 'select_and_accept', 'fallback' },
         ['<C-e>'] = { 'cancel', 'fallback' },
         ['<C-k>'] = { 'show', 'show_documentation', 'hide_documentation' },
