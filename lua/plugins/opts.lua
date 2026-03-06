@@ -1,15 +1,5 @@
 local M = {}
 
-local iwopts = {
-    colors = { '#aeee55', '#aa5522', '#225488', '#088823', '#eed724', '#bb3c7b', '#5478c0', '#047a89', '#a84247', '#ccf2e5' },
-    search_count = false,
-    navigation = false,
-    scroll_center = true,
-    color_key = "ff",
-    cancel_color_key = "FF",
-    cancel_search_key = 'FF',
-}
-
 function GitInfo()
     local branch = vim.b.gitsigns_head or ''
     local diff = vim.b.gitsigns_status or ''
@@ -96,11 +86,25 @@ function M.init_mp()
     vim.g.vmt_fence_text = 'markdown-toc'
 end
 
+function M.config_iw()
+    local iw = require("interestingwords")
+    iw.setup({
+        colors = { '#aeee55', '#aa5522', '#225488', '#088823', '#eed724', '#bb3c7b', '#5478c0', '#047a89', '#a84247', '#ccf2e5' },
+        search_count = false,
+        navigation = true,
+        scroll_center = true,
+        color_key = "ff",
+        cancel_color_key = "FF",
+    })
+    -- 自行搜索时，取消所有高亮
+    vim.api.nvim_create_autocmd("CmdlineEnter", { pattern = {"/", "?" }, callback = function() iw.UncolorAllWords(false) end })
+end
+
 return {
     { "dstein64/vim-startuptime", cmd = "StartupTime" },
     { "yianwillis/vimcdoc", event = "CmdLineEnter" },
     { "uga-rosa/ccc.nvim", cmd = { 'CccPick', 'CccHighlighterEnable' }, opts = {} },
-    { "Mr-LLLLL/interestingwords.nvim", keys = { 'ff', 'FF' }, opts = iwopts },
+    { "Mr-LLLLL/interestingwords.nvim", keys = { 'ff', 'FF' }, config = M.config_iw },
     { "mg979/vim-visual-multi", event = 'CursorHold', init = M.init_mc },
     { "yaocccc/nvim-lines.lua", init = M.init_line },
     { "yaocccc/vim-comment", cmd = { "NToggleComment", "VToggleComment", "CToggleComment" }, init = M.init_comment },
