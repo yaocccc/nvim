@@ -25,10 +25,11 @@ vim.api.nvim_set_hl(0, "MDDeadline", { fg = "#d70087", bold = true, underline = 
 vim.api.nvim_set_hl(0, "MDNearline", { fg = "#d7af00", bold = true })
 
 -- 延迟加载，避免高亮冲突
-vim.defer_fn(function() G_markdown_loadafter(vim.api.nvim_get_current_buf()) end, 0)
-function G_markdown_loadafter(bufnr)
-    vim.api.nvim_buf_call(bufnr, function()
-        if not vim.api.nvim_buf_is_valid(bufnr) then return end
+local bufnr = vim.api.nvim_get_current_buf()
+vim.defer_fn(function() G_markdown_loadafter(bufnr) end, 0)
+function G_markdown_loadafter(_bufnr)
+    vim.api.nvim_buf_call(_bufnr, function()
+        if not vim.api.nvim_buf_is_valid(_bufnr) then return end
 
         vim.bo.shiftwidth  = 2
         vim.bo.tabstop     = 2

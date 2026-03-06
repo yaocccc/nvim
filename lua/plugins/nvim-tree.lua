@@ -1,7 +1,13 @@
 local M = {}
+M.isfirst = true
 
 function M.toggle()
-    require("nvim-tree.api").tree.toggle({ path = os.getenv("PWD") })
+    local options = { }
+    if M.isfirst then
+        options.path = os.getenv("PWD")
+        M.isfirst = false
+    end
+    require("nvim-tree.api").tree.toggle(options)
 end
 
 function M.init()
@@ -12,7 +18,6 @@ end
 
 function M.cofig()
     local nvim_tree = require("nvim-tree")
-
     local function on_attach(bufnr)
         local api = require("nvim-tree.api")
         local function opts(desc)

@@ -60,6 +60,7 @@ function M.init_mc()
         ['Decrease'] = '_',
         ["Undo"] = 'u',
         ["Redo"] = '<C-r>',
+        ["I Return"] = '',
     }
 end
 
@@ -107,7 +108,7 @@ return {
     { "yaocccc/vim-surround", event = 'ModeChanged' },
     { "yaocccc/vim-fcitx2en", event = 'InsertLeavePre' },
     { "yaocccc/vim-echo", cmd = "VECHO", init = M.init_echo },
-    { 'MeanderingProgrammer/render-markdown.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter' }, opts = { code = { width = 'block', right_pad = 4, language_pad = 3, border = 'thin' } }, },
+    { 'MeanderingProgrammer/render-markdown.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter' }, opts = { code = { width = 'block', render_modes = true, right_pad = 1, border = 'thin', style = 'normal' }, sign = { enabled = false } } },
     { "iamcco/markdown-preview.nvim", build = "cd app && npm install", ft = 'markdown', init = M.init_mp },
     {
         "terryma/vim-expand-region",
@@ -118,7 +119,8 @@ return {
     },
     {
         "nvimdev/indentmini.nvim",
-        opts = { only_current = false },
+        opts = { only_current = false, exclude = { 'markdown', 'help', 'text', 'rst' } },
+        event = 'BufReadPre',
         init = function()
             vim.api.nvim_set_hl(0, 'IndentLine', { fg = '#3c3c3c' })
             vim.api.nvim_set_hl(0, 'IndentLineCurrent', { fg = '#3a4f6a' })
