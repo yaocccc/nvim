@@ -7,6 +7,7 @@ function M.init_blink()
 end
 
 M.blink_opts = {
+    enabled = function() return vim.bo.filetype ~= 'sagarename' end,
     keymap = {
         preset = 'default',
         ['<Up>'] = { 'select_prev', 'fallback' },
