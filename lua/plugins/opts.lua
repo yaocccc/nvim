@@ -108,8 +108,13 @@ return {
     { "yaocccc/vim-surround", event = 'ModeChanged' },
     { "yaocccc/vim-fcitx2en", event = 'InsertLeavePre' },
     { "yaocccc/vim-echo", cmd = "VECHO", init = M.init_echo },
-    { 'MeanderingProgrammer/render-markdown.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter' }, opts = { code = { width = 'block', render_modes = true, right_pad = 1, border = 'thin', style = 'normal' }, sign = { enabled = false } } },
     { "iamcco/markdown-preview.nvim", build = "cd app && npm install", ft = 'markdown', init = M.init_mp },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        opts = { code = { width = 'block', render_modes = true, right_pad = 1, border = 'thin', style = 'normal' }, sign = { enabled = false } },
+        init = function() vim.keymap.set('n', '<F6>', ':RenderMarkdown toggle<cr>', { silent = true, noremap = true }) end
+    },
     {
         "terryma/vim-expand-region",
         init = function()
