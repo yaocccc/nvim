@@ -70,7 +70,7 @@ M.blink_opts = {
         default = { 'lsp', 'path', 'snippets', 'buffer', "ripgrep", "datword" },
         providers = {
             datword = { name = "datword", module = "blink-cmp-dat-word", opts = { paths = {  vim.fn.stdpath('config') .. "/word.txt" } } },
-            ripgrep = { name = "ripgrep", module = "blink-ripgrep", opts = { debounce_ms = 200, max_item_count = 100 } },
+            ripgrep = { name = "ripgrep", module = "blink-ripgrep", opts = { debounce_ms = 200, max_item_count = 100, backend = { use = 'gitgrep', ignore_paths = { 'node_modules' } } } },
             fixedkeyword = { name = 'keyword 固定在第一位', module = 'fixedkeyword', opts = {}, score_offset = 999 }
         }
     },
@@ -128,7 +128,7 @@ return {
         lazy = false,
         init = M.init_blink,
         opts = M.blink_opts,
-        opts_extend = { "sources.default" } 
+        opts_extend = { "sources.default" }
     },
 
 }

@@ -51,6 +51,10 @@ function M.init_mc()
         ["Undo"] = 'u',
         ["Redo"] = '<C-r>',
         ["I Return"] = '',
+        ["I Up Arrow"] = '',
+        ["I Down Arrow"] = '',
+        ["I Left Arrow"] = '',
+        ["I Right Arrow"] = '',
     }
 end
 
@@ -116,8 +120,12 @@ return {
     {
         'MeanderingProgrammer/render-markdown.nvim',
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        opts = { code = { width = 'block', render_modes = true, right_pad = 1, border = 'thin', style = 'normal' }, sign = { enabled = false } },
-        init = function() vim.keymap.set('n', '<F6>', ':RenderMarkdown toggle<cr>', { silent = true, noremap = true }) end
+        init = function() vim.keymap.set('n', '<F6>', ':RenderMarkdown toggle<cr>', { silent = true, noremap = true }) end,
+        opts = {
+            code = { width = 'block', render_modes = true, right_pad = 1, border = 'thin', style = 'normal' },
+            sign = { enabled = false },
+            checkbox = { unchecked = { icon = ' - 󰄱 ' }, checked = { icon = ' - 󰱒 ' } },
+        }
     },
     {
         "terryma/vim-expand-region",
@@ -136,7 +144,8 @@ return {
         end
     },
     {
-        "acidsugarx/babel.nvim",
+        -- "acidsugarx/babel.nvim",
+        "yaocccc/babel.nvim",
         version = "*",
         config = M.config_tt,
         keys = { 'mm' },

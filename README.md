@@ -2,19 +2,6 @@
 
 ---
 
-<!-- markdown-toc GitLab -->
-
-* [如何使用](#如何使用)
-* [配置结构](#配置结构)
-* [lua/options.lua 通用基础配置说明](#luaoptionslua-通用基础配置说明)
-* [lua/keymap.lua 快捷键相关配置说明](#luakeymaplua-快捷键相关配置说明)
-* [lua/lspinit.lua LSP 配置说明](#lualspinitlua-lsp-配置说明)
-* [lua/plugins/ 插件相关的配置说明](#luaplugins-插件相关的配置说明)
-* [插件说明以及键位绑定](#插件说明以及键位绑定)
-* [Support: buy me a coffee](#support-buy-me-a-coffee)
-
-<!-- markdown-toc -->
-
 ## 如何使用
 
 1. 将项目clone至 ~/.config/nvim 目录中(注意备份好自己的配置)  
