@@ -3,17 +3,17 @@ local M = {}
 M.lsp_by_ft = {
     lua = { "lua_ls" },
     solidity = { "solidity_ls" },
-    javascript = { "vtsls", "tailwindcss" },
-    javascriptreact = { "vtsls", "tailwindcss" },
-    typescript = { "vtsls", "tailwindcss" },
-    typescriptreact = { "vtsls", "tailwindcss" },
+    javascript = { "vtsls", "biome", "tailwindcss" },
+    javascriptreact = { "vtsls", "biome", "tailwindcss" },
+    typescript = { "vtsls", "biome", "tailwindcss" },
+    typescriptreact = { "vtsls", "biome", "tailwindcss" },
     vue = { "vue_ls", "vtsls", "tailwindcss" },
     html = { "html", "tailwindcss" },
     css = { "cssls", "tailwindcss" },
     scss = { "cssls", "tailwindcss" },
     less = { "cssls", "tailwindcss" },
-    json = { "jsonls" },
-    jsonc = { "jsonls" },
+    json = { "jsonls", "biome" },
+    jsonc = { "jsonls", "biome" },
     go = { "gopls" },
     gomod = { "gopls" },
     gowork = { "gopls" },
@@ -34,6 +34,7 @@ M.pkg_by_lsp = {
     bashls = "bash-language-server",
     tailwindcss = "tailwindcss-language-server",
     solidity_ls = "nomicfoundation-solidity-language-server",
+    biome = "biome",
 }
 
 vim.diagnostic.config({ signs = { text = { [1] = '┃', [2] = '┃', [3] = '┃', [4] = '┃' } }, update_in_insert = false })

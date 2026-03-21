@@ -25,8 +25,8 @@ return {
                 return
             end
 
-            local param = table.unpack(result)
-            local id, command, payload = table.unpack(param)
+            local param = unpack(result)
+            local id, command, payload = unpack(param)
             ts_client:exec_cmd({
                 title = 'vue_request_forward',
                 command = 'typescript.tsserverRequest',

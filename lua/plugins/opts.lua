@@ -124,7 +124,7 @@ return {
         opts = {
             code = { width = 'block', render_modes = true, right_pad = 1, border = 'thin', style = 'normal' },
             sign = { enabled = false },
-            checkbox = { unchecked = { icon = ' - 󰄱 ' }, checked = { icon = ' - 󰱒 ' } },
+            checkbox = { enabled = false },
         }
     },
     {
