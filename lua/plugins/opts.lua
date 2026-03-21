@@ -151,4 +151,18 @@ return {
         keys = { 'mm' },
         opts = { target = "zh", display = "float", keymaps = { translate = "mm", translate_word = "mm" }, float = { nvim_open_win = { relative = "cursor", row = 1, col = 0, anchor = "NW", border = "single", title = "" }, max_width = 50, max_height = 10 } }
     },
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        opts = { jump = { autojump = true, register = true }, modes = { char = { enabled = false } } },
+        init = function()
+            vim.api.nvim_set_hl(0, 'FlashBackdrop', { fg = '#6e6e6e' })
+            vim.api.nvim_set_hl(0, 'FlashLabel', { fg = '#ff007c', bold = true })
+            vim.api.nvim_set_hl(0, 'FlashMatch', { fg = '#5fd7ff', underline = true })
+            vim.api.nvim_set_hl(0, 'FlashCurrent', { fg = '#ffd700', bold = true })
+        end,
+        keys = {
+            { "f", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+        },
+    }
 }

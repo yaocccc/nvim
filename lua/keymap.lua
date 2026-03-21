@@ -65,10 +65,25 @@ local function magic_delpair() -- 删除成对的括号和引号
     return '<BS>'
 end
 
+local function magic_enter() -- 光标在搜索匹配上时按回车取消高亮，否则正常回车
+    if vim.v.hlsearch == 1 and vim.fn.getreg('/') ~= '' then
+        local pos = vim.fn.searchpos(vim.fn.getreg('/'), 'bcnW')
+        if pos[1] == vim.fn.line('.') and pos[2] > 0 then
+            if vim.fn.matchend(vim.fn.getline('.'), vim.fn.getreg('/'), pos[2] - 1) >= vim.fn.col('.') then
+                vim.cmd('nohlsearch')
+                return
+            end
+        end
+    end
+    local cr = vim.api.nvim_replace_termcodes('<CR>', true, false, true)
+    vim.api.nvim_feedkeys(cr, 'n', false)
+end
+
 vim.keymap.set('n', 's', '<nop>', opts('禁用s键，避免误触'))
 vim.keymap.set({ 'n', 'v' }, ';', ':', opts('将;键映射为:，方便输入命令', { silent = false }))
 vim.keymap.set('n', ',', '@q', opts(',执行宏q'))
 vim.keymap.set('n', '\\', ':nohlsearch<CR>', opts('按\\取消高亮搜索'))
+vim.keymap.set('n', '<CR>', magic_enter, opts('搜索高亮时回车取消高亮'))
 vim.keymap.set('n', '+', '<c-a>', opts('+ = ctrl-a'))
 vim.keymap.set('n', '_', '<c-x>', opts('- = ctrl-x'))
 vim.keymap.set('n', '<bs>', '"_ciw', opts('快速删除'))
