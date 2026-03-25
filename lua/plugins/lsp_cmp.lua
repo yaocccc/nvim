@@ -5,6 +5,15 @@ function M.init_blink()
     vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpActiveParameter", { fg = "#00afaf", bold = true })
     vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#00afaf" })
     vim.api.nvim_set_hl(0, "BlinkCmpMenuScrollbar", { fg = "#ff87d7" })
+    vim.api.nvim_create_autocmd('CmdlineEnter', {
+        callback = function()
+            local type = vim.fn.getcmdtype()
+            if type == '/' or type == '?' or type == ':' then
+                vim.schedule(function() if vim.fn.mode() == 'c' then require('blink.cmp').show() end end)
+            end
+        end,
+        desc = 'auto show cmp or search history',
+    })
 end
 
 M.blink_opts = {
@@ -16,6 +25,7 @@ M.blink_opts = {
         ['<Tab>'] = {
             function(cmp)
                 if cmp.is_visible() then return cmp.select_next() end
+                if cmp.snippet_active() then return cmp.accept() end -- snippet中时，tab跳转到下一个项
                 local col = vim.fn.col('.') - 1
                 local needshow = not cmp.is_visible() and col > 0 and vim.fn.getline('.'):sub(col, col):match('%S')
                 if needshow then return cmp.show() end
@@ -64,7 +74,7 @@ M.blink_opts = {
             },
             ['<C-e>'] = { 'cancel', 'fallback' },
         },
-        sources = { "fixedkeyword", "cmdline", "buffer" },
+        sources = { "clhistory", "cmdline", "buffer" },
         completion = { menu = { auto_show = true }, list = { selection = { preselect = true, auto_insert = true } } }
     },
     sources = {
@@ -72,7 +82,7 @@ M.blink_opts = {
         providers = {
             datword = { name = "datword", module = "blink-cmp-dat-word", opts = { paths = {  vim.fn.stdpath('config') .. "/word.txt" } } },
             ripgrep = { name = "ripgrep", module = "blink-ripgrep", opts = { debounce_ms = 200, max_item_count = 100, backend = { use = 'gitgrep', ignore_paths = { 'node_modules' } } } },
-            fixedkeyword = { name = 'keyword 固定在第一位', module = 'fixedkeyword', opts = {}, score_offset = 999 }
+            clhistory = { name = 'history', module = 'cmdlinehistory', opts = {}, score_offset = 999 },
         }
     },
     fuzzy = { implementation = "prefer_rust_with_warning" },
@@ -150,7 +160,7 @@ return {
     { 'nvimdev/lspsaga.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons', 'saghen/blink.cmp' }, lazy = false, config = M.saga_config },
     {
         'saghen/blink.cmp',
-        dependencies = { "xieyonn/blink-cmp-dat-word", "mikavilpas/blink-ripgrep.nvim", "yaocccc/blink-cmp-fixedkeyword" },
+        dependencies = { "xieyonn/blink-cmp-dat-word", "mikavilpas/blink-ripgrep.nvim", "yaocccc/blink-cmp-cmdlinehistory" },
         version = '1.*',
         lazy = false,
         init = M.init_blink,

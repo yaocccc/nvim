@@ -1,0 +1,80 @@
+{
+    "space": {
+        "prefix": "sp",
+        "body": "&nbsp;",
+        "description": "space"
+    },
+    "undefined": {
+        "prefix": "un",
+        "body": "undefined"
+    },
+    "if": {
+        "prefix": "if",
+        "body": ["if ($1) {", "\t$0", "}"],
+        "description": "if (condition) { ... }"
+    },
+    "switch": {
+        "prefix": "switch",
+        "body": [
+            "switch (${1:expression}) {",
+            "\tcase '${3:case}':",
+            "\t\t$4",
+            "\t\tbreak;",
+            "\t$0",
+            "\tdefault:",
+            "\t\t$2",
+            "}"
+        ]
+    },
+    "case": {
+        "prefix": "case",
+        "body": ["case '${1:case}':", "\t$0", "\tbreak;"],
+        "description": "case 'xyz': ... break"
+    },
+    "try": {
+        "prefix": "try",
+        "body": [
+            "try {",
+            "\t$1",
+            "} catch (e) {",
+            "\t${2:/* handle error */}",
+            "}"
+        ],
+        "description": "try { ... } catch(e) { ... }"
+    },
+    "return": {
+        "prefix": "re",
+        "body": "return $1;"
+    },
+    "for": {
+        "prefix": "for",
+        "body": ["for (const $1 of $2) {", "\t$0", "}"],
+        "description": "for loop"
+    },
+    "while": {
+        "prefix": "wh",
+        "body": ["while (${1:/* condition */}) {", "\t$0", "}"],
+        "description": "while (condition) { ... }"
+    },
+    "console.log": {
+        "prefix": "cl",
+        "body": "console.log($0);"
+    },
+    "import": {
+        "prefix": "im",
+        "body": "import ${2} from '${1}';",
+        "description": "import xyz from 'xyz'"
+    },
+    "await": {
+        "prefix": "aw",
+        "body": "await $0"
+    },
+    "comment": {
+        "prefix": "cm",
+        "body": "<!-- $0 -->"
+    },
+    "constructor": {
+        "prefix": "con",
+        "body": ["constructor(${1}) {", "\t${2}", "}"]
+    }
+}

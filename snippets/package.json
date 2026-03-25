@@ -3,7 +3,7 @@
   "contributes": {
     "snippets": [
       { "language": "all", "path": "./all.json" },
-      { "language": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"], "path": "./javascript.json" },
+      { "language": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"], "path": "./typescript.json" },
       { "language": ["go", "gomod"], "path": "./go.json" },
       { "language": ["html"], "path": "./html.json" },
       { "language": ["vim"], "path": "./vim.json" },

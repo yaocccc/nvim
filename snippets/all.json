@@ -11,7 +11,7 @@
   },
   "mark": {
     "prefix": "mark",
-    "body": "$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE: $1",
+    "body": "$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE: ",
     "description": "mark"
   },
   "descriptor": {

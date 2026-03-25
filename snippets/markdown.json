@@ -20,19 +20,19 @@
   },
   "task": {
     "prefix": "td",
-    "body": "- [ ] ${1}"
+    "body": "- [ ] "
   },
   "> task": {
     "prefix": "td>",
-    "body": "> - [ ] ${1}"
+    "body": "> - [ ] "
   },
   ">> task": {
     "prefix": "td>>",
-    "body": ">> - [ ] ${1}"
+    "body": ">> - [ ] "
   },
   ">>> task": {
     "prefix": "td>>>",
-    "body": ">>> - [ ] ${1}"
+    "body": ">>> - [ ] "
   },
   "task start": {
     "prefix": "ss",

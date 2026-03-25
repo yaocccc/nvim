@@ -1,5 +1,4 @@
 require('ui/highlights')  -- 配色
-vim.cmd('hi Normal ctermfg=7 guifg=#c0c0c0 ctermbg=NONE cterm=NONE')
 vim.g.python3_host_prog = os.getenv('PYTHON') -- export PYTHON=$(which python3)
 vim.g.editorconfig = false
 vim.opt.termguicolors = true

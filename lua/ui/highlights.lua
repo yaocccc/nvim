@@ -37,7 +37,8 @@ local links = {
 for from, to in pairs(links) do
     hl(from, { link = to })
 end
-hl('Normal', { fg = '#c0c0c0' })
+
+hl('Normal', { fg = '#c0c0c0', ctermfg = 7 })
 hl('NormalFloat', {})
 hl('Cursor', { fg = 'fg', bg = 'fg' })
 hl('CursorLineNr', { fg = '#5fd7ff', bold = true })

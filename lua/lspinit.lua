@@ -1,5 +1,7 @@
 local M = {}
 
+M.installing = {}
+
 M.lsp_by_ft = {
     lua = { "lua_ls" },
     solidity = { "solidity_ls" },
@@ -58,6 +60,8 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "VimEnter" }, {
             local pkg_name = M.pkg_by_lsp[lsp]
             local ok, pkg = pcall(registry.get_package, pkg_name)
             if ok and not pkg:is_installed() then
+                if M.installing[pkg_name] then return end
+                M.installing[pkg_name] = true
                 print("Installing " .. pkg_name .. " for " .. lsp)
                 pkg:install()
             end
