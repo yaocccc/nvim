@@ -9,4 +9,22 @@ function M.init()
     vim.keymap.set('n', '<c-h>', function() require("fzf-lua").oldfiles({ cwd = os.getenv("PWD"), cwd_only = true }) end, { silent = true, noremap = true })
 end
 
-return { "ibhagwan/fzf-lua", dependencies = { "kyazdani42/nvim-web-devicons" }, init = M.init }
+return {
+    "ibhagwan/fzf-lua",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+    init = M.init,
+    opts = {
+        hls = {
+            border      = "FloatBorder",
+            scrollbar_f = "FzfLuaScrollBorderFull",
+            scrollbar_e = "FzfLuaScrollBorderEmpty",
+        },
+        winopts = {
+            border = require("ui/gradient_border").get(),
+            preview = {
+                border = require("ui/gradient_border").get()
+            }
+        }
+
+    }
+}

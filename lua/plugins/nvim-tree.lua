@@ -59,8 +59,7 @@ function M.cofig()
                     local height = math.max(math.floor(lines * 0.5), 20)
                     local left = math.ceil((columns - width) * 0.5)
                     local top = math.ceil((lines - height) * 0.5 - 2)
-                    return { relative = "editor", border = "rounded", width = width, height = height, row = top, col =
-                    left }
+                    return { relative = "editor", border = require('ui/gradient_border').get(), width = width, height = height, row = top, col = left }
                 end,
             }
         },

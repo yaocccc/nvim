@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
         vim.diagnostic.open_float(nil, {
             scope = "cursor",
             focusable = false,
-            border = "rounded",
+            border = require("ui/gradient_border").get(),
             header = "",
             prefix = "",
         })

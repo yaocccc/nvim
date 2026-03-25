@@ -44,7 +44,7 @@ function M.config()
         max_file_length              = 40000, -- Disable if file is longer than this (in lines)
         preview_config               = {
             relative = 'cursor',
-            border = 'rounded',
+            border = require("ui/gradient_border").get(),
             row = 1,
             col = 0
         },
