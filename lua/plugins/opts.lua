@@ -85,7 +85,6 @@ function M.init_echo()
 end
 
 function M.init_mp()
-    vim.g.mkdp_markdown_css = vim.fn.stdpath('config') .. '/colors/markdown.css'
     vim.g.mkdp_preview_options = { hide_yaml_meta = 1, disable_filename = 1 }
     vim.g.vmt_fence_text = 'markdown-toc'
 end
