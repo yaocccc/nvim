@@ -21,6 +21,5 @@ return {
                 border = require("ui/gradient_border").get()
             }
         }
-
     }
 }

@@ -3,8 +3,9 @@ local M = {}
 
 function M.init_blink()
     vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpActiveParameter", { fg = "#00afaf", bold = true })
+    vim.api.nvim_set_hl(0, "BlinkCmpKind", { fg = "#87afff" })
     vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#00afaf" })
-    vim.api.nvim_set_hl(0, "BlinkCmpMenuScrollbar", { fg = "#ff87d7" })
+    vim.api.nvim_set_hl(0, "BlinkCmpScrollBarThumb", { bg = "#87afff" })
     vim.api.nvim_create_autocmd('CmdlineEnter', {
         callback = function()
             local type = vim.fn.getcmdtype()
@@ -82,7 +83,7 @@ M.blink_opts = {
         providers = {
             datword = { name = "datword", module = "blink-cmp-dat-word", opts = { paths = {  vim.fn.stdpath('config') .. "/word.txt" } } },
             ripgrep = { name = "ripgrep", module = "blink-ripgrep", opts = { debounce_ms = 200, max_item_count = 100, backend = { use = 'gitgrep', ignore_paths = { 'node_modules' } } } },
-            clhistory = { name = 'history', module = 'cmdlinehistory', opts = {}, score_offset = 999 },
+            clhistory = { name = 'history', module = 'cmdlinehistory', opts = { }, score_offset = 999 },
         }
     },
     fuzzy = { implementation = "prefer_rust_with_warning" },
@@ -149,7 +150,19 @@ M.conform_opts = {
     },
     formatters = {
         biome = {
-            args = { 'format', '--stdin-file-path', '$FILENAME', '--indent-style', 'space', '--indent-width', '4', '--javascript-formatter-quote-style', 'single' },
+            args = {
+                'format',
+                '--stdin-file-path',
+                '$FILENAME',
+                '--indent-style',
+                'space',
+                '--indent-width',
+                '4',
+                '--line-width',
+                '160',
+                '--javascript-formatter-quote-style',
+                'single'
+            },
         },
     },
 }

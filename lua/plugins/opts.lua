@@ -111,7 +111,7 @@ return {
     { "mg979/vim-visual-multi", event = 'CursorHold', init = M.init_mc },
     { "yaocccc/nvim-lines.lua", init = M.init_line },
     { "yaocccc/vim-comment", cmd = { "NToggleComment", "VToggleComment", "CToggleComment" }, init = M.init_comment },
-    { "yaocccc/nvim-foldsign", event = 'CursorHold', opts = {} },
+    { "yaocccc/nvim-foldsign", event = 'CursorHold', opts = { foldsigns = { open = '', close = '', seps = { '│', '┃' } } } },
     { "yaocccc/vim-surround", event = 'ModeChanged' },
     { "yaocccc/vim-fcitx2en", event = 'InsertLeavePre' },
     { "yaocccc/vim-echo", cmd = "VECHO", init = M.init_echo },
