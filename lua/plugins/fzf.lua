@@ -1,6 +1,7 @@
 return {
     "ibhagwan/fzf-lua",
     dependencies = { "kyazdani42/nvim-web-devicons" },
+    init = function() vim.g.fzf_history_dir = vim.fn.stdpath('state') .. '/fzf-history' end,
     keys = {
         { "<c-p>", mode = "n", function() require("fzf-lua").files({ cwd = os.getenv("PWD") }) end,                     desc = "Find Files" },
         { "<c-a>", mode = "n", function() require("fzf-lua").live_grep({ cwd = os.getenv("PWD") }) end,                 desc = "Live Grep" },

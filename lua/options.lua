@@ -46,7 +46,7 @@ vim.opt.numberwidth = 2
 vim.opt.cul = true
 vim.opt.signcolumn = 'yes'
 vim.opt.fillchars = 'fold:-,stlnc:#,eob: ,foldsep:='
-vim.opt.foldtext = 'MagicFoldText()'
+vim.opt.foldtext = 'v:lua.MagicFoldText()'
 
 -- 以下是全局的autocmd
 vim.api.nvim_create_autocmd({ "BufEnter" }, { command = [[if &buftype == '' && &readonly == 1 | set buftype=acwrite | set noreadonly | endif]] })
